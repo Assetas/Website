@@ -106,7 +106,7 @@ Wix may change or go away later, so we save a complete reference copy first.
 
 ## Phase 2: Replicate every page (about 1–2 weeks)
 
-**Status (2026-11-17): Batches A and B done.**
+**Status (2026-11-17): done.** All four batches are rebuilt (all 26 pages).
 - Batch A: Home, Platform, Pricing, Contact.
 - Batch B: /assets, /forms, /compliance, /telemetry, /platform/emissions, /ai, /reporting, /workflows.
 - Batch C: /industry, /oilandgas, /municipality, /infrastructure, /defense, /ldar, /spcc, /security.
@@ -260,7 +260,7 @@ Build order:
 
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 
-1. **Design system:** consolidate fonts (drop the licensed Wix fonts), set a type scale, a spacing scale, a color palette with contrast checks, and button and link states. Write it down in `src/assets/css/tokens.css`.
+1. **Design system:** consolidate fonts (drop the licensed Wix fonts), set a type scale, a spacing scale, a color palette with contrast checks, and button and link states. Write it down in `src/static/css/tokens.css` (done).
 2. **Information architecture:** check the overlap between `/oilandgas`, `/ldar` and `/spcc`, and between `/industry` and the separate industry pages. Decide what `/platform/about` should be: it's really "About us", so it may belong at `/about` with a redirect. Retire or rebuild `/inquiry-services-page`.
 3. **Content:** tighten the copy, pick a consistent hero formula, and update the privacy policy, which is dated 2017 and should be reviewed by legal.
 4. **SEO:** give every page a unique title and description (fixes the duplicate `/platform/about` title), generate the sitemap, add Organization and SoftwareApplication schema.org data, and a default OG image.
@@ -289,7 +289,7 @@ Decided (2026-11-17):
 3. **Fonts:** use free substitutes during replication. Wix Madefor Text and Epilogue come from Google Fonts. Crave Fine and Helvetica Neue get the closest free match, which we pick in Phase 1. The final fonts are settled in Phase 4.
 4. **Video hosting:** self-hosted, compressed H.264 MP4 with poster images, in `src/assets/video/`.
 
-Still open:
+Decided later:
 
 5. ~~**Form backend**~~ Decided: FormSubmit, delivering to sales@assetas.com.
 6. ~~**Trek downloads**~~ Decided: GitHub Releases on this repo (release `trek-v4.0.2.0`).
