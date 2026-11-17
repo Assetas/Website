@@ -19,6 +19,34 @@
   <meta property="og:description" content="{{ description }}">
   {%- endif %}
   <meta property="og:url" content="{{ canonical }}">
+  {%- set ogImage = (ogImage or "/static/img/og-default.png") | absoluteUrl %}
+  <meta property="og:image" content="{{ ogImage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Assetas">
+  <meta name="twitter:card" content="summary_large_image">
+  {%- if page.url == "/" %}
+  {#- Organization details for search engines (home page only). -#}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Assetas Inc.",
+    "url": "{{ '/' | absoluteUrl }}",
+    "logo": "{{ '/static/img/assetas-logo.png' | absoluteUrl }}",
+    "email": "info@assetas.com",
+    "telephone": "+1-303-731-8629",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1001 Bannock Street, Ste 414",
+      "addressLocality": "Denver",
+      "addressRegion": "CO",
+      "postalCode": "80204",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+  {%- endif %}
 
   <link rel="icon" href="/static/favicon.ico" sizes="48x48 32x32">
   <link rel="preconnect" href="https://fonts.googleapis.com">
