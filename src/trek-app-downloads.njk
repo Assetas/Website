@@ -3,11 +3,16 @@ layout: layouts/base.njk
 title: "Trek App Downloads | Assetas"
 description: ""
 permalink: /trek-app-downloads.html
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
 ---
-<section class="section">
+<section class="hero">
   <div class="container">
     <h1>Trek App Downloads</h1>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+    {#- Files are attached to the trek-v4.0.2.0 GitHub Release (see site.trekRelease). -#}
+    <ul class="download-list">
+      <li><a href="{{ site.trekRelease }}/Trek_Android.zip">Android (aab)</a></li>
+      <li><a href="{{ site.trekRelease }}/Trek_iOS.zip">iOS (ipa)</a></li>
+      <li><a href="{{ site.trekRelease }}/Trek_x64.zip">Microsoft (msixupload)</a></li>
+    </ul>
   </div>
 </section>

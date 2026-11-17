@@ -18,4 +18,6 @@ export default {
   // Where the contact form posts. Empty until a form backend is chosen (see PLAN.md, open decision 5);
   // while it's empty the form shows a notice and its submit button is disabled.
   formAction: "",
+  // Trek app packages are published as a GitHub Release (they're too big for the repo).
+  trekRelease: "https://github.com/Assetas/Website/releases/download/trek-v4.0.2.0",
 };

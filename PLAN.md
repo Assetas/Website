@@ -110,7 +110,21 @@ Wix may change or go away later, so we save a complete reference copy first.
 - Batch A: Home, Platform, Pricing, Contact.
 - Batch B: /assets, /forms, /compliance, /telemetry, /platform/emissions, /ai, /reporting, /workflows.
 - Batch C: /industry, /oilandgas, /municipality, /infrastructure, /defense, /ldar, /spcc, /security.
-- Batch D is still placeholders (6 pages).
+- Batch D: /trek, /trek-app-downloads, /platform/about, /privacy, /terms, /inquiry-services-page.
+- **All 26 pages are rebuilt.** Static files total 42 MB, including 10 videos.
+
+**Still open before Phase 3 sign-off:**
+- **Trek downloads:** `/trek-app-downloads` links to a GitHub Release (`site.trekRelease`, tag `trek-v4.0.2.0`) that hasn't been published yet, so those three links return 404. The files are Trek 4.0.2.0 store packages: `Trek_Android.zip` (.aab, 39 MB), `Trek_iOS.zip` (.ipa, 36 MB), and `Trek_x64.zip` (.msixupload, 117 MB). They're already public on the live site.
+- **Contact form backend** (open decision 5).
+
+**Found while building Batch D** (candidates for the Phase 4 list):
+- `/platform/about` uses the Emissions page's title and description. The copy keeps it for now; this is the known duplicate-title bug.
+- On `/trek`, the app-store QR codes are hidden behind the video on the live site. They're shown below it in the copy. The live page also repeats the hero text in a gray band, which is left out.
+- On `/trek`, "Get Trek" links to `/oilandgas#operational-excellence`. It probably should go to the QR codes or the downloads page.
+- `/terms` marks almost every line as an `<h1>` on the live site, and `/privacy` uses plain paragraphs for its section titles. Both now have a proper heading structure (`tools/extract-richtext.mjs`), with the wording unchanged. The "Version 2.0 / Last Updated" block moved to the top of `/terms`, where it appears visually on the live site.
+- `/privacy` is dated July 24, 2017 and should be reviewed by legal.
+- `/inquiry-services-page` is an empty Wix booking page ("Nothing to book right now"). It isn't linked from anywhere, so it's a candidate to remove (with a redirect) in Phase 4.
+- `/about`, `/platform/about`, `/ldar`, `/spcc`, `/telemetry` and `/reporting` all contain the same hidden Wix template text ("Describe the service… Book Now"). It's left out everywhere.
 
 **Found while building Batch C** (candidates for the Phase 4 list):
 - On the live `/defense` page, the two Air Force stat captions are visually swapped: 80% is shown with "check-in time" and 92% with "lost tool search". The copy uses the pairing from the Home page and from the page's own text order: 92% check-in, 80% lost-tool search. Worth confirming with whoever owns the numbers.

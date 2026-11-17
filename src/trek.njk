@@ -3,12 +3,47 @@ layout: layouts/base.njk
 title: "Trek: Assetas in your Pocket | Field Work Management"
 description: "Trek: Assetas in your Pocket with mobile tools for field inspections, maintenance checks, and work orders. See how Assetas keeps work moving."
 permalink: /trek.html
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
 ---
-<section class="section">
+<section class="hero">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">Platform<span class="sep">/</span>Trek app</p>
+      <h1>Your work, in your pocket.</h1>
+      <p class="lead">Trek is the Assetas mobile app for the field. Every inspection, maintenance check, work order, and document — in your hands, in the field, and offline capable.</p>
+      <div class="button-row">
+        <a class="button" href="/contact">Book a demo</a>
+        {#- The live site links "Get Trek" to /oilandgas#operational-excellence. -#}
+        <a class="button button--outline" href="/oilandgas#operational-excellence">Get Trek</a>
+      </div>
+    </div>
+    <div class="trek-visual">
+      <img src="/static/img/trek/trek-app.webp" width="302" height="623" alt="Trek home screen, synchronized: 4 tasks, 1 evaluation, 4 draft forms and 5 documents, with shortcuts for a new form, lookup and the outbox.">
+      <ul class="tags"><li>Works offline</li><li>iOS and Android</li><li>Auto sync</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top">
   <div class="container">
-    <h1>Your work, in your pocket.</h1>
-    <p class="lead">Trek: Assetas in your Pocket with mobile tools for field inspections, maintenance checks, and work orders. See how Assetas keeps work moving.</p>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+    <div class="media media--narrow media--center">
+      <video controls preload="none" playsinline poster="/static/video/trek-overview.jpg" width="1280" height="720">
+        <source src="/static/video/trek-overview.mp4" type="video/mp4">
+      </video>
+    </div>
+    {#- On the live site this image is hidden behind the video. -#}
+    <img class="qr-codes" src="/static/img/trek/trek-qr-codes.webp" width="563" height="221" alt="QR codes to download Trek from the App Store, Google Play and the Microsoft Store" loading="lazy">
+  </div>
+</section>
+
+{#- The live page repeats the hero text in a gray band here (likely a layout mistake); left out. -#}
+
+<section class="cta-band cta-band--accent">
+  <div class="container">
+    <h2>See Assetas in the office and the field</h2>
+    <div class="button-row">
+      <a class="button" href="/contact">Book a demo</a>
+      <a class="button button--ghost" href="/platform">See the platform</a>
+    </div>
   </div>
 </section>
