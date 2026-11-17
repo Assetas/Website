@@ -1,5 +1,7 @@
 # Brand values (captured from www.assetas.com, 2026-11-17)
 
+> **Phase 4 update:** the live values now live in `src/static/css/tokens.css`, and the visual reference is the `/design-system` page. The tables below record what was captured from the live site, plus the Phase 4 additions.
+
 These values come from the Phase 1 capture (`npm run capture`), which counts the colors, fonts and sizes used across all 26 pages at 1440 px. They're the starting point for the replica. Phase 4 can change them.
 
 ## Colors
@@ -11,7 +13,9 @@ These values come from the Phase 1 capture (`npm run capture`), which counts the
 | `--color-surface` | `#f4f4f4` | Page background behind the header and footer, alternate sections |
 | `--color-bg` | `#ffffff` | Main content panel (rounded top corners), cards |
 | `--color-button` | `#3b3b3b` | Primary buttons ("Book a demo") |
-| `--color-accent` | `#cc7722` | Eyebrow labels ("THE OT + COMPLIANCE PLATFORM"), big stat numbers |
+| `--color-accent` | `#cc7722` | Brand orange. **Phase 4:** big stat numbers, rules, markers and icons only (3.4:1 on white) |
+| `--color-accent-text` | `#a65c12` | **Added in Phase 4:** small orange text (eyebrows, labels), orange buttons and orange bands (5.1:1) |
+| `--color-accent-on-dark` | `#eb9f55` | **Added in Phase 4:** small orange text on dark bands (5.1:1 on #3b3b3b) |
 | `--color-dark` | `#2c2c2c` | Dark sections and panels |
 | `--color-link` | `#006dff` | The dropdown border, and the blue in the logo. Rarely used for text. |
 | `--color-border` | `#dadada` | Dividers, outline buttons |

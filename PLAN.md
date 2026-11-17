@@ -212,6 +212,20 @@ Build order:
 
 ## Phase 4: Clean up and redesign (iterative)
 
+**Decided 2026-11-17:**
+- **Two oranges:** brand `#cc7722` for large and decorative uses; `#a65c12` for small text and for orange fills behind white text; `#eb9f55` for small orange text on dark bands.
+- **Playfair Display** stays as the display serif.
+- **Changes go straight to main** (no pull requests). The `v1-replica` tag is the fallback.
+
+**Step 1, design system: done (2026-11-17).**
+- `src/static/css/tokens.css` holds every color, font, size and spacing value, with contrast ratios noted. `main.css` uses only those tokens.
+- The `/design-system` page (not in the nav or sitemap) is the visual reference.
+- Small orange text and the orange buttons and bands now use the darker orange. The orange call-to-action bands are visibly darker as a result.
+- There's a visible keyboard focus outline on every control.
+- Fixed a Batch C bug: the dark call-to-action band on `/municipality` rendered light gray, so its white heading was invisible.
+- **Lighthouse accessibility is 100 on all 26 pages and the thank-you page** (it was 95–96).
+- Next in Phase 4: the information architecture (step 2), then the content and SEO fixes in the backlog in `docs/phase-3-signoff.md`.
+
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 
 1. **Design system:** consolidate fonts (drop the licensed Wix fonts), set a type scale, a spacing scale, a color palette with contrast checks, and button and link states. Write it down in `src/assets/css/tokens.css`.

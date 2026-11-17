@@ -1,0 +1,84 @@
+---
+layout: layouts/base.njk
+title: "Design system | Assetas"
+description: "Colors, type, buttons and patterns used across the Assetas website."
+permalink: /design-system.html
+sitemap: false
+---
+{#- Internal reference page: not in the navigation or sitemap. Values come from static/css/tokens.css. -#}
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">Internal reference</p>
+    <h1>Design system</h1>
+    <p class="lead">The colors, fonts, sizes and patterns the site is built from. Every value lives in <code>src/static/css/tokens.css</code>; change it there and it changes everywhere.</p>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <h2>Colors</h2>
+    <p>Contrast is measured against WCAG 2.2: normal text needs 4.5:1, large text (24px+, or 19px+ bold) and icons need 3:1.</p>
+    <ul class="swatches">
+      <li><span style="background:#000000"></span><strong>Text</strong><code>--color-text</code> #000000<br>Headings · 21:1 on white</li>
+      <li><span style="background:#3b3b3b"></span><strong>Body</strong><code>--color-body</code> #3b3b3b<br>Body copy, primary buttons · 11.2:1</li>
+      <li><span style="background:#6b6b6b"></span><strong>Muted</strong><code>--color-muted</code> #6b6b6b<br>Secondary text · 5.3:1</li>
+      <li><span style="background:#f4f4f4"></span><strong>Surface</strong><code>--color-surface</code> #f4f4f4<br>Header, footer, gray sections</li>
+      <li><span style="background:#2c2c2c"></span><strong>Dark</strong><code>--color-dark</code> #2c2c2c<br>Darkest bands</li>
+      <li><span style="background:#dadada"></span><strong>Border</strong><code>--color-border</code> #dadada<br>Dividers, outlines</li>
+      <li><span style="background:#cc7722"></span><strong>Brand orange</strong><code>--color-accent</code> #cc7722<br>Big numbers, rules, icons only · 3.4:1</li>
+      <li><span style="background:#a65c12"></span><strong>Orange for text</strong><code>--color-accent-text</code> #a65c12<br>Small orange text, orange buttons and bands · 5.1:1</li>
+      <li><span style="background:#eb9f55"></span><strong>Orange on dark</strong><code>--color-accent-on-dark</code> #eb9f55<br>Small orange text on dark bands · 5.1:1</li>
+      <li><span style="background:#006dff"></span><strong>Link blue</strong><code>--color-link</code> #006dff<br>Links, focus outline, logo · 4.5:1</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <h2>Type</h2>
+    <div class="type-specimen">
+      <p class="eyebrow">Eyebrow · Epilogue 600, uppercase, orange for text</p>
+      <h1>Heading 1 · Epilogue 600</h1>
+      <h2>Heading 2 · Epilogue 600</h2>
+      <h3>Heading 3 · Epilogue 600</h3>
+      <h4>Heading 4 · Epilogue 600</h4>
+      <p class="lead">Lead paragraph · Wix Madefor Text, slightly larger, for the first paragraph under a heading.</p>
+      <p>Body · Wix Madefor Text 400. Every sensor reading, inspection, work order, and emission point lands in one data model — mapped to the requirement it satisfies.</p>
+      <p class="small-print">Small · captions, footnotes, tags.</p>
+      <p class="stat">92%</p>
+      <blockquote class="pull-quote">Quote · Playfair Display. "The ability to work online/offline is a must."</blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Buttons and links</h2>
+    <div class="button-row">
+      <a class="button" href="#">Primary</a>
+      <a class="button button--outline" href="#">Secondary</a>
+      <a class="button button--accent" href="#">Accent</a>
+    </div>
+    <p><a class="arrow-link" href="#">Text link with arrow</a> &nbsp; <a class="text-link" href="#">Inline link</a></p>
+    <p class="small-print">Press Tab to see the keyboard focus outline on each control.</p>
+    <ul class="tags"><li>Tag</li><li>Another tag</li><li class="is-dark">Selected</li></ul>
+  </div>
+</section>
+
+<section class="cta-band cta-band--accent">
+  <div class="container">
+    <p class="eyebrow">Orange band</p>
+    <h2>Closing call-to-action band</h2>
+    <p class="lead">White text on the darker orange passes contrast at every size.</p>
+    <a class="button" href="#">Book a demo</a>
+  </div>
+</section>
+
+<section class="section dark-band">
+  <div class="container">
+    <p class="eyebrow">Dark band eyebrow uses orange on dark</p>
+    <h2>Dark band</h2>
+    <p>Text on dark bands uses the light neutral.</p>
+    <p class="stat">1,284</p>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+/* Assetas design tokens: every color, font, size and spacing value the site uses.
+   Change a value here and it changes everywhere. See /design-system for a visual reference.
+   Contrast ratios are WCAG 2.2: normal text needs 4.5:1, large text (24px+, or 19px+ bold) needs 3:1. */
+
+:root {
+  /* Neutrals */
+  --color-text: #000000;          /* headings, primary text */
+  --color-body: #3b3b3b;          /* body copy: 11.2:1 on white, 10.2:1 on surface */
+  --color-muted: #6b6b6b;         /* secondary text: 5.3:1 on white, 4.9:1 on surface */
+  --color-bg: #ffffff;            /* main content panel */
+  --color-surface: #f4f4f4;       /* header, footer, alternate sections */
+  --color-dark: #2c2c2c;          /* darkest bands */
+  --color-on-dark: #f4f4f4;       /* text on dark bands: 10.2:1 on #3b3b3b */
+  --color-border: #dadada;
+
+  /* Brand orange, in three strengths (decided in Phase 4: "two oranges", plus one for dark bands) */
+  --color-accent: #cc7722;        /* brand orange: big stat numbers, rules, markers, decoration only (3.4:1) */
+  --color-accent-text: #a65c12;   /* small orange text on white/surface, and orange fills behind white text (5.1:1) */
+  --color-accent-on-dark: #eb9f55;/* small orange text on #3b3b3b / #2c2c2c bands (5.1:1 / 6.4:1) */
+
+  /* Actions */
+  --color-button: #3b3b3b;        /* primary buttons: white text 11.2:1 */
+  --color-button-text: #ffffff;
+  --color-link: #006dff;          /* links and the logo blue: 4.5:1 on white */
+  --color-focus: #006dff;         /* keyboard focus outline */
+
+  /* Fonts */
+  --font-body: "Wix Madefor Text", system-ui, sans-serif;
+  --font-heading: "Epilogue", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;   /* quotes and stat numbers */
+
+  /* Type scale (fluid between ~390px and ~1440px wide) */
+  --text-h1: clamp(2rem, 4.5vw + 0.75rem, 4.25rem);
+  --text-h2: clamp(1.6rem, 3.5vw + 0.6rem, 3.25rem);
+  --text-h3: clamp(1.35rem, 2vw + 0.6rem, 2.25rem);
+  --text-h4: clamp(1.2rem, 1vw + 0.9rem, 1.55rem);
+  --text-lead: clamp(1.05rem, 0.5vw + 0.95rem, 1.25rem);
+  --text-body: clamp(1rem, 0.3vw + 0.95rem, 1.125rem);
+  --text-small: 0.95rem;
+
+  /* Spacing */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 5rem;
+
+  /* Layout */
+  --container: 86rem;
+  --radius: 0.5rem;
+  --radius-lg: 2rem;
+}
