@@ -249,7 +249,7 @@ Build order:
   - Every "Learn more" link carries hidden text naming its target, so screen readers announce "Learn more about Asset Intelligence". Lighthouse's link-text audit now passes.
   - New contextual links: Platform links to Telemetry, Trek, Reporting and Security, and Compliance links to Emissions. Pricing is still reachable only from the header.
 - **Search and social:**
-  - Default social-sharing image `static/img/og-default.png` (1200×630, the Assetas wordmark), with `og:image` and `twitter:card` on every page.
+  - Default social-sharing image `static/img/brand/og-default.png` (1200×630, the Assetas wordmark), with `og:image` and `twitter:card` on every page.
   - Organization structured data (name, logo, address, phone) on the Home page.
 - **Repo:** Gregory added a Dependabot config, a link-check gate in the deploy workflow, and an all-rights-reserved license note in the README.
 - **Pricing FAQ dropped** (your decision, 2026-11-17). The empty "Questions" section from the live site won't come back.
