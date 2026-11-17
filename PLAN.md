@@ -252,10 +252,10 @@ Build order:
   - Default social-sharing image `static/img/og-default.png` (1200×630, the Assetas wordmark), with `og:image` and `twitter:card` on every page.
   - Organization structured data (name, logo, address, phone) on the Home page.
 - **Repo:** Gregory added a Dependabot config, a link-check gate in the deploy workflow, and an all-rights-reserved license note in the README.
+- **Pricing FAQ dropped** (your decision, 2026-11-17). The empty "Questions" section from the live site won't come back.
 - **Waiting on input:**
   - The correct Air Force stats for `/defense`.
   - The documents behind "Download brief" (`/defense`) and "Read the full story" (`/oilandgas`).
-  - Questions and answers for the Pricing FAQ, or a decision to drop it.
   - Legal review of the 2017 privacy policy.
 
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).

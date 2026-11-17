@@ -62,7 +62,7 @@ Live-site issues kept in the replica so it matches the live site, to fix during 
 - **Numbers to confirm:** the Air Force stats on `/defense` are swapped on the live site.
 - ~~**Copy:** "the same record.." (`/compliance`), "Stale documentation turn…" and "…SPCC Plans standardized calcs…" (`/spcc`).~~ Fixed in Phase 4 step 3.
 - **Content:**
-  - The Pricing FAQ is empty.
+  - ~~The Pricing FAQ is empty.~~ Dropped in Phase 4 (your decision).
   - `/privacy` is dated 2017 and needs legal review.
   - ~~`/inquiry-services-page` is an empty booking page; remove it and redirect.~~ Done in Phase 4 step 2: it forwards to `/contact`.
 - **Design:** the color-contrast fix above, descriptive link text, and the full Phase 4 design-system work.
