@@ -1,0 +1,28 @@
+---
+# One small forwarding page per entry in _data/redirects.json.
+# GitHub Pages can't send server redirects, so each old URL gets a page that forwards right away
+# (meta refresh, plus a script that keeps any #section in the URL) and points search engines at
+# the new URL with a canonical link. The HTML base plugin adds the /Website/ prefix to href and
+# meta-refresh URLs but not inside the script, which is why only the script uses the url filter.
+pagination:
+  data: redirects
+  size: 1
+  alias: redirect
+permalink: "{{ redirect.from }}.html"
+eleventyExcludeFromCollections: true
+---
+{%- set target = redirect.to | url -%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Moved | Assetas</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ redirect.to | absoluteUrl }}">
+  <meta http-equiv="refresh" content="0; url={{ redirect.to }}">
+  <script>location.replace("{{ target }}" + location.hash);</script>
+</head>
+<body>
+  <p>This page has moved to <a href="{{ redirect.to }}">{{ redirect.to | absoluteUrl }}</a>.</p>
+</body>
+</html>

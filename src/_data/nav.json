@@ -54,7 +54,7 @@
     {
       "heading": "Company",
       "links": [
-        { "label": "About", "url": "/platform/about" },
+        { "label": "About", "url": "/about" },
         { "label": "Contact", "url": "/contact" },
         { "label": "Book a demo", "url": "/contact" }
       ]

@@ -224,7 +224,19 @@ Build order:
 - There's a visible keyboard focus outline on every control.
 - Fixed a Batch C bug: the dark call-to-action band on `/municipality` rendered light gray, so its white heading was invisible.
 - **Lighthouse accessibility is 100 on all 26 pages and the thank-you page** (it was 95–96).
-- Next in Phase 4: the information architecture (step 2), then the content and SEO fixes in the backlog in `docs/phase-3-signoff.md`.
+
+**Step 2, information architecture: done (2026-11-17).**
+- **Menus stay as they are on the live site** (your decision).
+- **No pages merged.** /oilandgas, /ldar and /spcc share only 6–14% of their distinctive vocabulary, so they're separate topics.
+- **About moved to `/about`,** with its own title and description. That fixes the duplicate Emissions title, and the footer now links there.
+- **`/inquiry-services-page` retired.** It forwards to `/contact`.
+- **Redirects:** `src/_data/redirects.json` lists each old → new URL, and `src/redirects.njk` builds a small forwarding page for each one. The forwarding page uses a meta refresh plus a script that keeps any `#section`, with a canonical link to the new URL and `noindex`. To move another page, add a line to the JSON.
+- **Link fixes:**
+  - "Get Trek" now goes to the QR codes on `/trek` (`#get-trek`).
+  - "See it on your assets" on `/workflows` now goes to `/assets`, as it does on `/platform/emissions`.
+  - "See how it works" on `/ai` now goes to its own `#how-it-works` section, instead of `/spcc`.
+- **Still only reachable from the menu** (no links from inside other pages): /telemetry, /platform/emissions, /reporting, /security, /trek, /pricing. Adding contextual links is part of the content step.
+- **Next in Phase 4:** the content and SEO fixes (steps 3–4) from the backlog in `docs/phase-3-signoff.md`.
 
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 

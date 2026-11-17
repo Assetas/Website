@@ -51,18 +51,18 @@ SEO scores on the preview are 58–66 because it's deliberately set to `noindex`
 Live-site issues kept in the replica so it matches the live site, to fix during cleanup. The details are in PLAN.md, Phase 2.
 
 - **Titles and descriptions:**
-  - `/platform/about` reuses the Emissions page's title and description.
+  - ~~`/platform/about` reuses the Emissions page's title and description.~~ Fixed in Phase 4 step 2: the page moved to `/about` with its own title and description.
   - The Home title is 90 characters and `/telemetry`'s is 70.
   - `/platform`'s description has a typo, "complaince".
   - `/trek-app-downloads` has no description.
 - **Links that go to the wrong place or nowhere:**
-  - "Get Trek" (`/trek`) and "See it on your assets" (`/workflows`) go to `/oilandgas#operational-excellence`, which doesn't exist.
-  - "See how it works" (`/ai`) goes to `/spcc`.
+  - ~~"Get Trek" (`/trek`) and "See it on your assets" (`/workflows`) go to `/oilandgas#operational-excellence`, which doesn't exist.~~ Fixed in Phase 4 step 2.
+  - ~~"See how it works" (`/ai`) goes to `/spcc`.~~ Fixed in Phase 4 step 2.
   - Buttons with no target on the live site now point to /contact or the case study PDF: "Download brief" (`/defense`), "Read the full story" (`/oilandgas`), and "Talk to our engineer" (`/telemetry`, `/reporting`, `/ai`).
 - **Numbers to confirm:** the Air Force stats on `/defense` are swapped on the live site.
 - **Copy:** "the same record.." (`/compliance`), "Stale documentation turn…" and "…SPCC Plans standardized calcs…" (`/spcc`).
 - **Content:**
   - The Pricing FAQ is empty.
   - `/privacy` is dated 2017 and needs legal review.
-  - `/inquiry-services-page` is an empty booking page; remove it and redirect.
+  - ~~`/inquiry-services-page` is an empty booking page; remove it and redirect.~~ Done in Phase 4 step 2: it forwards to `/contact`.
 - **Design:** the color-contrast fix above, descriptive link text, and the full Phase 4 design-system work.
