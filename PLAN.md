@@ -119,6 +119,7 @@ Wix may change or go away later, so we save a complete reference copy first.
 - There's a hidden `_honey` spam trap and FormSubmit's own captcha step.
 - Email is now required, so sales can reply. It was optional on the live site.
 - Tested locally with the request intercepted: empty forms are blocked and every field posts correctly.
+- **2026-11-17:** I sent a test submission from the preview, labeled "TEST - new website preview (please ignore)". FormSubmit replied "This form needs Activation" and emailed an 'Activate Form' link to sales@assetas.com. **Waiting on someone with that inbox to click it,** then send one more test to confirm delivery.
 - **To activate:** the first real submission makes FormSubmit send a one-time activation email to sales@assetas.com. Someone with access to that inbox must click it, or later submissions are held. FormSubmit then offers a random alias that can replace the plain address in `site.formAction`, so the address isn't visible in the page source.
 
 **Done:** The Trek downloads are published as the GitHub Release [trek-v4.0.2.0](https://github.com/Assetas/Website/releases/tag/trek-v4.0.2.0) (published 2026-11-17). All three links on `/trek-app-downloads` return 200, and the file sizes match the originals. For a new Trek version, publish a new release and update `site.trekRelease` in `src/_data/site.js`.
