@@ -109,8 +109,17 @@ Wix may change or go away later, so we save a complete reference copy first.
 **Status (2026-11-17): Batches A and B done.**
 - Batch A: Home, Platform, Pricing, Contact.
 - Batch B: /assets, /forms, /compliance, /telemetry, /platform/emissions, /ai, /reporting, /workflows.
-- Batches C and D are still placeholders (14 pages).
-- Static files total 31 MB, most of it the 9 compressed videos (3–5 MB each).
+- Batch C: /industry, /oilandgas, /municipality, /infrastructure, /defense, /ldar, /spcc, /security.
+- Batch D is still placeholders (6 pages).
+
+**Found while building Batch C** (candidates for the Phase 4 list):
+- On the live `/defense` page, the two Air Force stat captions are visually swapped: 80% is shown with "check-in time" and 92% with "lost tool search". The copy uses the pairing from the Home page and from the page's own text order: 92% check-in, 80% lost-tool search. Worth confirming with whoever owns the numbers.
+- The live `/defense` "Download brief" button and the `/oilandgas` "Read the full story" button don't link anywhere. In the copy they point to /contact and the forms case study PDF; replace them with the right documents.
+- The Home "Read the full story" link went to `/defense#Section%208`, an auto-generated Wix anchor. It now goes to `/defense#air-force-testimonial`.
+- `/oilandgas` has no `#operational-excellence` section, so the "See it on your assets" link on `/workflows` just lands at the top of `/oilandgas`.
+- `/ldar` and `/spcc` contain hidden leftover template text from Wix ("Our Services / Service 1 / Book Now"). It's left out.
+- On `/ldar`, the "Track leaks…" image panel is blank on the live site (it probably fails to load). The copy shows the AI assistant screenshot that the page references there.
+- Copy typos: "Stale documentation turn a site visit into findings" (`/spcc`), "Auto-generate draft SPCC Plans standardized calcs on company template" (`/spcc`).
 
 **Found while building Batch B** (candidates for the Phase 4 list):
 - `/telemetry`, `/reporting` and `/ai` have "Book a demo" and "Talk to our engineer" buttons that don't link anywhere on the live site. Both point to /contact in the copy.
