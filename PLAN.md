@@ -68,7 +68,7 @@ URLs: we'll output `contact.html`, `platform/emissions.html` and so on. GitHub P
 
 ## Phase 0: Set up the foundation (about 1 day)
 
-**Status (2026-11-17): built locally, not yet committed or deployed.** What's done:
+**Status (2026-11-17): done. Live at https://assetas.github.io/Website/.** What's done:
 - Eleventy 3.1.8 is scaffolded with a shared layout, a header with dropdowns and a mobile menu (`nav.json`), and a footer.
 - All 26 pages exist as placeholders, using the live site's titles and descriptions.
 - `robots.txt`, `sitemap.xml`, a 404 page and the deploy workflow are in place.
@@ -76,7 +76,7 @@ URLs: we'll output `contact.html`, `platform/emissions.html` and so on. GitHub P
   - Static files live in `src/static/` and are served at `/static/`, because the live site already has an `/assets` page.
   - `/platform` is built as both `platform.html` and `platform/index.html`, since the `platform/` folder also holds `about` and `emissions`.
   - Crawlers ignore `robots.txt` at `/Website/robots.txt`, because it isn't at the domain root. The page-level `noindex` tag is what actually keeps the preview out of search results.
-- **Check after the first deploy:** confirm that `/Website/platform`, `/Website/contact` and `/Website/assets` all load without a redirect loop or a 404.
+- Checked on the live preview: `/Website/platform`, `/Website/platform/`, `/Website/contact`, `/Website/assets` and the other pages all return 200 with no redirects. Unknown URLs get the custom 404 page.
 
 
 1. Scaffold Eleventy, add `.gitignore` and `package.json` scripts (`dev`, `build`, `capture`, `compare`), and the deploy workflow.
