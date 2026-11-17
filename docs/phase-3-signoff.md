@@ -44,7 +44,7 @@ SEO scores on the preview are 58–66 because it's deliberately set to `noindex`
 
 1. **Contact form activation.** Someone with the sales@assetas.com inbox needs to click FormSubmit's "Activate Form" email. Then send one more test to confirm delivery.
 2. **Preview analytics.** `site.gaId` is empty, so the preview has no GA4. Create a separate GA4 property for the preview if you want visitor data before cutover.
-3. **Tag the replica.** Tag this commit `v1-replica` as the fallback before Phase 4 changes start.
+3. ~~**Tag the replica.**~~ Done: `v1-replica` was tagged and pushed on 2026-11-17.
 
 ## Phase 4 backlog collected during the rebuild
 

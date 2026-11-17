@@ -203,7 +203,8 @@ Build order:
 **Status (2026-11-17): review done.** All 26 pages pass the visual, link, structure and Lighthouse checks; the full report is in [docs/phase-3-signoff.md](docs/phase-3-signoff.md).
 - The preview scores 96–100 for mobile performance, against 61–84 on the live Wix site.
 - The Home page weighs 0.25 MB, against 16.4 MB on the live site.
-- Still open: Contact form activation, a GA4 property for the preview (optional), and the `v1-replica` tag.
+- Tagged `v1-replica` on 2026-11-17 (commit abe5d9d). To get back to the replica: `git checkout v1-replica`.
+- Still open: Contact form activation, and a GA4 property for the preview (optional).
 
 - Run `tools/compare.mjs` across all 26 pages and review a gallery of the live and new versions side by side.
 - Run a full link check, submit a test form end to end, check that GA4 receives page views on the preview property, and run Lighthouse as a baseline.
