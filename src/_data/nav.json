@@ -31,17 +31,34 @@
     { "label": "Pricing", "url": "/pricing" },
     { "label": "Contact", "url": "/contact" }
   ],
+  "footerTagline": "Where Operational Technology meets compliance — one platform connecting the field to the boardroom.",
   "footer": [
-    { "label": "Oil & Gas", "url": "/oilandgas" },
-    { "label": "Municipalities", "url": "/municipality" },
-    { "label": "Platform", "url": "/platform" },
-    { "label": "Defense", "url": "/defense" },
-    { "label": "AI Features", "url": "/ai" },
-    { "label": "About", "url": "/platform/about" },
-    { "label": "Infrastructure", "url": "/infrastructure" },
-    { "label": "Security", "url": "/security" },
-    { "label": "Contact", "url": "/contact" },
-    { "label": "Pricing", "url": "/pricing" }
+    {
+      "heading": "Industries",
+      "links": [
+        { "label": "Oil & Gas", "url": "/oilandgas" },
+        { "label": "Municipalities", "url": "/municipality" },
+        { "label": "Defense", "url": "/defense" },
+        { "label": "Infrastructure", "url": "/infrastructure" }
+      ]
+    },
+    {
+      "heading": "Product",
+      "links": [
+        { "label": "Platform", "url": "/platform" },
+        { "label": "AI Features", "url": "/ai" },
+        { "label": "Security", "url": "/security" },
+        { "label": "Pricing", "url": "/pricing" }
+      ]
+    },
+    {
+      "heading": "Company",
+      "links": [
+        { "label": "About", "url": "/platform/about" },
+        { "label": "Contact", "url": "/contact" },
+        { "label": "Book a demo", "url": "/contact" }
+      ]
+    }
   ],
   "legal": [
     { "label": "Privacy Policy", "url": "/privacy" },

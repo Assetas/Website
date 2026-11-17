@@ -7,12 +7,15 @@
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
-    "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\""
+    "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\"",
+    "capture": "node tools/capture.mjs",
+    "download-media": "node tools/download-media.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.8"
+    "@11ty/eleventy": "^3.1.8",
+    "playwright": "^1.65.1"
   }
 }

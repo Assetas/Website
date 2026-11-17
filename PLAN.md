@@ -86,6 +86,16 @@ URLs: we'll output `contact.html`, `platform/emissions.html` and so on. GitHub P
 
 ## Phase 1: Capture the current site (about 1 day)
 
+**Status (2026-11-17): done.**
+- `npm run capture` (`tools/capture.mjs`, Playwright) saved all 26 pages to `reference/pages/<slug>/`. Each folder has screenshots at 1440, 768 and 390 px, `text.txt`, and `page.json` (meta tags, heading outline, sections, links, images, videos, and a census of colors and fonts).
+- `npm run download-media` (`tools/download-media.mjs`) saved 101 original images (59 MB), all 10 videos as 1080p MP4s (9–21 MB each, 140 MB total), and the PDF to `reference/media/`, with a `manifest.json` mapping each file to the pages that use it. The Trek zips are skipped unless you pass `--with-archives`; they'll go straight to GitHub Releases.
+- `reference/` is gitignored. Re-run both scripts on any machine to rebuild it.
+- Brand values, font substitutes and layout patterns are recorded in [docs/brand.md](docs/brand.md) and applied in `main.css`.
+  - Crave Fine → Playfair Display.
+  - Helvetica Neue is dropped; no visible text on the live site uses it.
+- The header, footer (now three columns on light gray, matching the live site) and logo are updated in the site shell.
+- **Largest pages to rebuild:** `/platform/emissions` (17 sections), `/ldar`, `/security` and `/spcc` (13 each). `/terms` and `/privacy` are long, but they're plain text.
+
 Wix may change or go away later, so we save a complete reference copy first.
 
 1. For each of the 26 URLs, use Playwright to save full-page screenshots at **1440 px, 768 px and 390 px** wide (`reference/<page>/`).
