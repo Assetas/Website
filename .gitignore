@@ -1,0 +1,10 @@
+node_modules/
+_site/
+reference/
+.cache/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.claude/worktrees/
+.claude/settings.local.json

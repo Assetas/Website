@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+title: "Operational & Compliance Technology | Assetas"
+description: "One data model joining assets, telemetry, inspections, and complaince. Telemetry ingestion, offline field capture, and a complete audit trail."
+# Built twice: /platform.html and /platform/index.html. The platform/ folder also holds
+# about.html and emissions.html, so whichever way GitHub Pages resolves /platform, the page is there.
+pagination:
+  data: outputs
+  size: 1
+  alias: output
+outputs: ["/platform.html", "/platform/index.html"]
+permalink: "{{ output }}"
+canonicalPath: /platform
+status: placeholder  # Phase 2 replaces this body with the real page content
+---
+<section class="section">
+  <div class="container">
+    <h1>Where operational execution meets regulatory compliance.</h1>
+    <p class="lead">One data model joining assets, telemetry, inspections, and complaince. Telemetry ingestion, offline field capture, and a complete audit trail.</p>
+    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+  </div>
+</section>

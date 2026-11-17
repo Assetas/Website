@@ -1,0 +1,18 @@
+{
+  "name": "assetas-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static rebuild of www.assetas.com for GitHub Pages",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8"
+  }
+}

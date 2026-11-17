@@ -1,0 +1,50 @@
+{
+  "header": [
+    {
+      "label": "Industry",
+      "url": "/industry",
+      "children": [
+        { "label": "Oil & Gas", "url": "/oilandgas" },
+        { "label": "Municipality", "url": "/municipality" },
+        { "label": "Defense", "url": "/defense" },
+        { "label": "Infrastructure", "url": "/infrastructure" }
+      ]
+    },
+    {
+      "label": "Platform",
+      "url": "/platform",
+      "children": [
+        { "label": "Assets", "url": "/assets" },
+        { "label": "Smart Forms", "url": "/forms" },
+        { "label": "Compliance", "url": "/compliance" },
+        { "label": "Telemetry", "url": "/telemetry" },
+        { "label": "Emissions", "url": "/platform/emissions" },
+        { "label": "AI", "url": "/ai" },
+        { "label": "Reporting", "url": "/reporting" },
+        { "label": "Workflows", "url": "/workflows" },
+        { "label": "LDAR", "url": "/ldar" },
+        { "label": "SPCC", "url": "/spcc" },
+        { "label": "Security", "url": "/security" },
+        { "label": "Trek", "url": "/trek" }
+      ]
+    },
+    { "label": "Pricing", "url": "/pricing" },
+    { "label": "Contact", "url": "/contact" }
+  ],
+  "footer": [
+    { "label": "Oil & Gas", "url": "/oilandgas" },
+    { "label": "Municipalities", "url": "/municipality" },
+    { "label": "Platform", "url": "/platform" },
+    { "label": "Defense", "url": "/defense" },
+    { "label": "AI Features", "url": "/ai" },
+    { "label": "About", "url": "/platform/about" },
+    { "label": "Infrastructure", "url": "/infrastructure" },
+    { "label": "Security", "url": "/security" },
+    { "label": "Contact", "url": "/contact" },
+    { "label": "Pricing", "url": "/pricing" }
+  ],
+  "legal": [
+    { "label": "Privacy Policy", "url": "/privacy" },
+    { "label": "Terms of Use", "url": "/terms" }
+  ]
+}

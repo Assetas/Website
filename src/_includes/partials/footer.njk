@@ -1,0 +1,24 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="/" aria-label="Assetas home">Assetas</a>
+      <a class="button" href="/contact">Book a demo</a>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        {%- for item in nav.footer %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+  </div>
+  <div class="container footer-legal">
+    <p>&copy; {{ site.year }} Assetas</p>
+    <ul>
+      {%- for item in nav.legal %}
+      <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {%- endfor %}
+      <li><a href="{{ site.statusUrl }}">System Status</a></li>
+    </ul>
+  </div>
+</footer>

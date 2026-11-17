@@ -1,0 +1,13 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+User-agent: *
+{% if site.noindex -%}
+# Preview build: keep it out of search engines until cutover.
+Disallow: /
+{%- else -%}
+Allow: /
+
+Sitemap: {{ "/sitemap.xml" | absoluteUrl }}
+{%- endif %}

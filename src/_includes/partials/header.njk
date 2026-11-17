@@ -1,0 +1,32 @@
+{%- set current = canonicalPath or (page.url | cleanUrl) -%}
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="/" aria-label="Assetas home">Assetas</a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="visually-hidden">Menu</span>
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul class="nav-list">
+        {%- for item in nav.header %}
+        <li class="nav-item{% if item.children %} has-children{% endif %}">
+          <a href="{{ item.url }}"{% if current == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          {%- if item.children %}
+          <ul class="subnav">
+            {%- for child in item.children %}
+            <li><a href="{{ child.url }}"{% if current == child.url %} aria-current="page"{% endif %}>{{ child.label }}</a></li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ul>
+      <div class="nav-actions">
+        <a class="link-signin" href="{{ site.appUrl }}">Sign in</a>
+        <a class="button" href="/contact#contact">Book a demo</a>
+      </div>
+    </nav>
+  </div>
+</header>
