@@ -3,12 +3,85 @@ layout: layouts/base.njk
 title: "Contact | Assetas"
 description: "Assetas unifies asset management, digital inspections, and compliance workflows in one platform for oil & gas, utilities, defense, and infrastructure."
 permalink: /contact.html
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
 ---
-<section class="section">
+<section class="hero">
   <div class="container">
-    <h1>See where your operations meet your obligations.</h1>
-    <p class="lead">Assetas unifies asset management, digital inspections, and compliance workflows in one platform for oil &amp; gas, utilities, defense, and infrastructure.</p>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Contact us</p>
+      <h1>See where your operations meet your obligations.</h1>
+      <p class="lead">Thirty minutes. Your industry, your regulatory context, your questions.</p>
+      <p>Bring your complex workflow — we'll show you how it lands in the data model. Or ask sales anything about pricing, deployment, and rollout.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top" id="contact">
+  <div class="container contact-stack">
+    <h2 class="contact-title">How can we help?</h2>
+
+    <form class="contact-form panel"{% if site.formAction %} action="{{ site.formAction }}" method="post"{% endif %}>
+      <fieldset class="field field--full">
+        <legend>How can we help? <span aria-hidden="true">*</span></legend>
+        <div class="choices">
+          <label><input type="checkbox" name="help" value="Book a demo"> Book a demo</label>
+          <label><input type="checkbox" name="help" value="Ask a sales question"> Ask a sales question</label>
+          <label><input type="checkbox" name="help" value="User support"> User support</label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="first-name">First name</label>
+        <input id="first-name" name="first_name" type="text" autocomplete="given-name" placeholder="Enter your first name">
+      </div>
+      <div class="field">
+        <label for="last-name">Last name</label>
+        <input id="last-name" name="last_name" type="text" autocomplete="family-name" placeholder="Enter your last name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="Enter your email">
+      </div>
+      <div class="field">
+        <label for="company">Company or organization <span aria-hidden="true">*</span></label>
+        <input id="company" name="company" type="text" autocomplete="organization" required>
+      </div>
+
+      <fieldset class="field field--full">
+        <legend>Industry <span aria-hidden="true">*</span></legend>
+        <div class="choices">
+          <label><input type="checkbox" name="industry" value="Oil & Gas"> Oil &amp; Gas</label>
+          <label><input type="checkbox" name="industry" value="Municipalities & Utilities"> Municipalities &amp; Utilities</label>
+          <label><input type="checkbox" name="industry" value="Defense"> Defense</label>
+          <label><input type="checkbox" name="industry" value="Infrastructure"> Infrastructure</label>
+          <label><input type="checkbox" name="industry" value="Other"> Other</label>
+        </div>
+      </fieldset>
+
+      <div class="field field--full">
+        <label for="demo-topics">What would you like the demo to cover?</label>
+        <textarea id="demo-topics" name="demo_topics" rows="3" placeholder="Asset, maintenance, smart forms, offline capability, operational workflows, compliance, emissions."></textarea>
+      </div>
+
+      <div class="field field--full">
+        <label class="choice-inline"><input type="checkbox" name="subscribe" value="yes"> Keep me posted on Assetas product updates and industry guides. We won't share your details, and you can unsubscribe any time.</label>
+      </div>
+
+      {%- if not site.formAction %}
+      <p class="field--full form-note" role="note">This preview doesn't send messages yet. Please email <a href="mailto:sales@assetas.com">sales@assetas.com</a> instead.</p>
+      {%- endif %}
+      <button class="button button--submit field--full" type="submit"{% if not site.formAction %} disabled{% endif %}>Submit</button>
+    </form>
+
+    <div class="contact-direct panel">
+      <h2 class="h4">Prefer to reach us directly?</h2>
+      <dl>
+        <dt>Sales</dt><dd><a href="mailto:sales@assetas.com?subject=Assetas%20-%20Sales%20Inquiry">sales@assetas.com</a></dd>
+        <dt>Support:</dt><dd><a href="mailto:support@assetas.com?subject=Assetas%20-%20Support%20Inquiry">support@assetas.com</a></dd>
+        <dt>Address:</dt><dd>1001 Bannock Street, Ste 414, Denver, CO 80204. USA</dd>
+        <dt>General Info:</dt><dd><a href="mailto:info@assetas.com?subject=Assetas%20-%20Info%20Inquiry">info@assetas.com</a></dd>
+        <dt>Phone:</dt><dd><a href="tel:+13037318629">(303) 731-8629</a></dd>
+      </dl>
+    </div>
   </div>
 </section>

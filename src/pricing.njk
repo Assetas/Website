@@ -3,12 +3,100 @@ layout: layouts/base.njk
 title: "Assetas Pricing: Plans for Every Size"
 description: "Compare Assetas plans — Standard, Professional, and Enterprise. Every tier includes the full data model and audit trail. Book a demo for pricing."
 permalink: /pricing.html
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
 ---
+<section class="hero">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Pricing</p>
+      <h1>Where scope meets scale.</h1>
+      <p class="lead">Plans that match how your organization grows — from a single facility to an enterprise portfolio, with straightforward terms.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <p class="measure">Every tier includes the full data model and audit trail. Tiers differ by modules, integrations, and administration — not by how trustworthy your records are or the number of records.</p>
+    <div class="plans">
+      <div class="plan">
+        <h2>Standard</h2>
+        <p>For individuals getting off spreadsheets and paper processes. No commitments or end date.</p>
+        <p class="price"><span class="stat">$0</span> forever</p>
+        <ul>
+          <li>Standard modules</li>
+          <li>Default mobile data collection</li>
+          <li>Default workflows &amp; reporting</li>
+        </ul>
+        <a class="button button--outline" href="https://app.assetas.com/Identity/Account/Register">Start Now</a>
+      </div>
+      <div class="plan">
+        <h2>Professional</h2>
+        <p>For small teams and operators with standard modules and workflows. Annual commitment.</p>
+        <p class="price"><span class="stat">$60</span>/user/mo.</p>
+        <ul>
+          <li>Professional modules</li>
+          <li>Mobile data collection</li>
+          <li>Dashboards and reports</li>
+          <li>Limited data integrations</li>
+        </ul>
+        <a class="button" href="/contact">Talk to Sales</a>
+      </div>
+      <div class="plan">
+        <h2>Enterprise</h2>
+        <p>Portfolio-wide operations with full-platform capabilities. Annual commitment.</p>
+        <p class="price"><span class="stat">$90</span>/user/mo.</p>
+        <ul>
+          <li>All modules</li>
+          <li>25 user minimum</li>
+          <li>Industrial AI models</li>
+          <li>Full API access &amp; integrations</li>
+          <li>Advanced configuration options</li>
+          <li>Uptime guarantees</li>
+        </ul>
+        <a class="button" href="/contact">Talk to Enterprise Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark-band">
+  <div class="container">
+    <p class="eyebrow">In every tier</p>
+    <h2>The record is never the upsell.</h2>
+    <p class="measure">Some vendors put complex pricing behind each tier. We don't. <strong>Every plan includes the full data model, complete traceability, and encrypted, role-controlled access.</strong> Higher tiers have additional capabilities and complexity to match your operating needs.</p>
+    <div class="ruled-grid">
+      <div><h3>The full data model</h3><p>Assets, telemetry, inspections, work orders, and requirements in one schema — no reduced version on smaller plans.</p></div>
+      <div><h3>Complete audit trail</h3><p>Every create, edit, sync, and sign-off logged with user, timestamp, and prior value. Immutable and exportable.</p></div>
+      <div><h3>Requirement mapping</h3><p>Records carry the rule they satisfy from day one, so compliance is a byproduct of running well.</p></div>
+      <div><h3>Offline field capture</h3><p>Crews work in dead zones on every plan. Capture time and coordinates are preserved on sync.</p></div>
+      <div><h3>Encryption &amp; access control</h3><p>Encryption in transit and at rest, plus role-based permissions — standard, not an add-on.</p></div>
+      <div><h3>Your data, exportable</h3><p>Full export of your records in open formats, any time. No hostage-taking at renewal.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
-    <h1>Where scope meets scale.</h1>
-    <p class="lead">Compare Assetas plans — Standard, Professional, and Enterprise. Every tier includes the full data model and audit trail. Book a demo for pricing.</p>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+    <div class="section-head">
+      <p class="eyebrow">Compare plans</p>
+      <h2>Compare Features</h2>
+      <p>Tiers differ by how much you need, the complexity of your operations, and the need to connect to other systems — not by the number of facilities, assets, or integrity of the record underneath.</p>
+    </div>
+    {% include "partials/pricing-compare.html" %}
+  </div>
+</section>
+
+{#- The live site has a "Questions / Clear answers on terms, security, and features." section here,
+    but it has no questions in it yet. Add it back once there are Q&As to show. -#}
+
+<section class="cta-band cta-band--accent">
+  <div class="container">
+    <h2>Get a number that reflects your operation.</h2>
+    <p class="lead">Tell us how many users and what tier you need. We'll scope the tier and quote it — no drawn-out discovery cycle.</p>
+    <div class="button-row">
+      <a class="button" href="/contact">Book a demo</a>
+      <a class="button button--ghost" href="/contact">Talk to sales</a>
+    </div>
   </div>
 </section>

@@ -11,12 +11,194 @@ pagination:
 outputs: ["/platform.html", "/platform/index.html"]
 permalink: "{{ output }}"
 canonicalPath: /platform
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
+cta:
+  accent: true
+  text: "Thirty minutes on your industry, your enterprise systems, your operational workflows. We'll show you how it lands in the data model."
+  button: "Book a live demo"
 ---
-<section class="section">
-  <div class="container">
-    <h1>Where operational execution meets regulatory compliance.</h1>
-    <p class="lead">One data model joining assets, telemetry, inspections, and complaince. Telemetry ingestion, offline field capture, and a complete audit trail.</p>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+<section class="hero">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">The Assetas platform</p>
+      <h1>Where operational execution meets regulatory compliance.</h1>
+      <p class="lead">One data model for assets, telemetry, inspections, and work orders — mapped to the regulatory requirement each satisfies. Crews capture once. Compliance reports generate from the same record.</p>
+      <p class="aside-note">IIoT and telemetry ingestion, offline mobile capture, and configurable workflows on a single asset model.</p>
+    </div>
+    <div class="hero-visual">
+      <img src="/static/img/platform/one-data-model.webp" width="611" height="556" alt="One data model: Skid A-114 at Cedar Ridge Plant. Telemetry, inspections, work orders, and assets feed one unified record, mapped to Title V, current, last synced 4 minutes ago. Capture once, prove anywhere: no re-keying. Requirement mapping: 100% of records.">
+    </div>
   </div>
 </section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <div class="media media--narrow media--center">
+      <video controls preload="none" playsinline poster="/static/video/platform-features.jpg" width="1280" height="720">
+        <source src="/static/video/platform-features.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <div class="panel">
+      <p class="eyebrow">One data model</p>
+      <h2>Everything you run – assets, telemetry, inspections, work orders – on one operational record.</h2>
+      <p class="measure">Most stacks scatter operational data across disconnected tools, so no one sees the whole asset. Assetas joins it at the data layer: field data drives workflows, workflows drive action, and the same record proves compliance without a second system.</p>
+      <p class="h4 panel-tagline">Your operational data, connected end to end.</p>
+    </div>
+    <div class="panel-row">
+      <div class="panel">
+        <h3 class="h4">Unified entities</h3>
+        <p>Assets, sites, telemetry, inspections, work orders, and requirements share one schema and one identifier space.</p>
+        <a class="arrow-link" href="/assets">Learn more</a>
+      </div>
+      <div class="panel">
+        <h3 class="h4">Connected workflows</h3>
+        <p>Emission thresholds, visual inspections, and maintenance work orders originate from the same record — a drift in a reading becomes a dispatched crew, not a missed signal.</p>
+        <a class="arrow-link" href="/workflows">Learn more</a>
+      </div>
+      <div class="panel">
+        <h3 class="h4">Audit-ready by default</h3>
+        <p>Because every record already carries the rule it satisfies, compliance is a byproduct of running well — not a separate project.</p>
+        <a class="arrow-link" href="/compliance">Learn more</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Capabilities</p>
+      <h2>Built for the field, wired to your enterprise stack.</h2>
+      <p>Four groups of capability, one continuous record — from getting operational data in, to acting on it in the field, to keeping every asset running and accountable.</p>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="capability-kicker">Operational data, meet your system of record.</p>
+        <h3>Data &amp; integrations</h3>
+        <p>Assetas sits alongside the systems you already run and pulls their data into one unified asset-based record. Conflict-free sync with unified schemas across all ingestion points.</p>
+        <ul class="label-rows">
+          <li><span class="pill">APIs &amp; ingestion</span><p>REST, webhooks, JSON, and GraphQL plus scheduled and streaming ingestion.</p></li>
+          <li><span class="pill">Historian &amp; SCADA</span><p>Connectors with backfill, so historical trends land alongside live reads.</p></li>
+          <li><span class="pill">Bi-directional sync</span><p>Sync with EAM/ERP systems over a documented, versioned API.</p></li>
+          <li><span class="pill">Threshold rules</span><p>Trigger inspections or work orders the moment a reading drifts out of spec.</p></li>
+        </ul>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/platform/integrations-panel.webp" width="563" height="391" alt="Integrations, live streams: OPC-UA from a compressor station historian (1,240 tags), Modbus TCP from a metering skid RTU cluster (streaming), MQTT from remote site edge gateways (18 sites), and a bi-directional REST API for EAM work order sync." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability capability--flip">
+      <div>
+        <p class="capability-kicker">The field, captured where it happens.</p>
+        <h3>Mobile field capture</h3>
+        <p>Crews record inspections at the asset with dispatch, photos, geotagging, smart logic, and workflows. No clipboards, no re-keying back at the office.</p>
+        <ul class="label-rows">
+          <li><span class="pill">Offline-first</span><p>Complete rounds with no signal; nothing is lost, nothing is invented on sync.</p></li>
+          <li><span class="pill">Guided inspections</span><p>Surface only the applicable requirements to save time and frustration.</p></li>
+          <li><span class="pill">Photo, geotag, sign</span><p>Attach rich data to each record at the point of capture.</p></li>
+          <li><span class="pill">Conflict-free sync</span><p>Preserves original capture time — not upload time — for a defensible record.</p></li>
+        </ul>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/platform/mobile-capture-phone.webp" width="352" height="661" alt="Phone showing an offline inspection round on Pipeline Segment 7 (PHMSA 192.739 valve inspection) with 4 records queued: no leakage observed, 742 psi within spec, a geotagged photo, and a Sign &amp; queue button." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="capability-kicker">Every record knows its requirement.</p>
+        <h3>Compliance engine</h3>
+        <p>Turn "are we compliant?" from a fire drill into a live status you can see any day of the year. Map every asset to specific obligations.</p>
+        <ul class="label-rows">
+          <li><span class="pill">Requirements library</span><p>Site permits, PHMSA, EPA, DoD, and state commission frameworks — extensible to yours.</p></li>
+          <li><span class="pill">Live status</span><p>What's satisfied, what's due, and what's overdue, by asset and by site.</p></li>
+          <li><span class="pill">Evidence packages</span><p>Assembled from the underlying records — GPS, time completed, user, photos.</p></li>
+          <li><span class="pill">Change-aware</span><p>Update a requirement once and every mapped record reflects it.</p></li>
+        </ul>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/platform/compliance-record-panel.webp" width="558" height="369" alt="Compliance record REC-40218 for Valve V-114, Segment 7 at Northridge Energy: requirement satisfied. The inspection record maps to PHMSA 192.739, pressure telemetry to EPA 40 CFR 60, and the next annual obligation is auto-scheduled in 214 days." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability capability--flip">
+      <div>
+        <p class="capability-kicker">Nothing changes without leaving a trace.</p>
+        <h3>Complete audit trail</h3>
+        <p>When an auditor asks who did what and when, the answer is already on record — not reconstructed after the fact.</p>
+        <ul class="label-rows">
+          <li><span class="pill">Full history</span><p>Field-level before and after values on every change, attributed to a user.</p></li>
+          <li><span class="pill">Immutable logs</span><p>Every create, edit, sync, and sign-off is logged with the user, time, and prior value.</p></li>
+          <li><span class="pill">Sync provenance</span><p>Distinguishes capture time from upload time, so offline work holds up.</p></li>
+          <li><span class="pill">Export on demand</span><p>Any asset, dataset, date range, or requirement.</p></li>
+        </ul>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/platform/audit-trail-panel.webp" width="575" height="367" alt="Audit trail for Valve V-114: captured in the field by M. Ortega, synced from offline by Device 7A with original time preserved, reviewed by L. Park, then signed off and mapped to PHMSA 192.739." loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Reporting, access &amp; security</p>
+      <h2>Enterprise-grade where it counts.</h2>
+    </div>
+    <div class="grid">
+      <div>
+        <h3 class="h4">Reporting</h3>
+        <p>Turn the live record into scheduled reports, dashboards, and regulator-ready exports — assembled from source data, not copied into a deck.</p>
+        <ul class="tags"><li>Dashboards</li><li>Regulator formats</li><li>Formatted reports</li><li>Email delivery</li></ul>
+      </div>
+      <div>
+        <h3 class="h4">Roles &amp; permissions</h3>
+        <p>Role-based access down to the field, site, and team structure. Technicians capture, reviewers sign off, auditors read.</p>
+        <ul class="tags"><li>RBAC</li><li>HIPAA</li><li>Site and team scoping</li></ul>
+      </div>
+      <div>
+        <h3 class="h4">Security posture</h3>
+        <p>Encryption in transit and at rest, single sign-on, and a controls program aligned to the standards regulated operators are held to.</p>
+        <ul class="tags"><li>Zero Trust</li><li>SOC 2 aligned</li><li>AES encryption</li><li>SSO/SAML</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section stats-band">
+  <div class="container">
+    <h2>Better operations run on one honest record.</h2>
+    <p>What operators see once field data and workflows live in one system.</p>
+    <ul class="stat-boxes">
+      <li><p class="stat">1</p><p>source of truth for every asset, site, crew, and permit.</p></li>
+      <li><p class="stat">0</p><p>re-keying between the field and the office</p></li>
+      <li><p class="stat">Live</p><p>operational status — issues surface the moment data drifts</p></li>
+      <li><p class="stat">100%</p><p>of records mapped to the requirement they satisfy</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">Future foundation</p>
+      <h2>Where today's operational data meets tomorrow's AI.</h2>
+      <p>AI is only as good as the data underneath it. Structured, governed, requirement-mapped records are the prerequisite for AI you can actually trust in a regulated operation — not a bolt-on afterward.</p>
+    </div>
+    <ul class="icon-list">
+      <li><span class="icon-tile"><img src="/static/img/icons/ai-node.svg" width="28" height="28" alt=""></span><p><strong>Consistent entities</strong>One naming scheme and schema across every asset, site, and record.</p></li>
+      <li><span class="icon-tile"><img src="/static/img/icons/ai-node.svg" width="28" height="28" alt=""></span><p><strong>Governed &amp; traceable</strong>Full lineage and access control — you know where every value came from.</p></li>
+      <li><span class="icon-tile"><img src="/static/img/icons/ai-node.svg" width="28" height="28" alt=""></span><p><strong>Requirement-labeled</strong>Records already carry the context that makes them useful to a model.</p></li>
+    </ul>
+  </div>
+</section>
+
+{% include "partials/cta-band.njk" %}

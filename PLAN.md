@@ -106,6 +106,25 @@ Wix may change or go away later, so we save a complete reference copy first.
 
 ## Phase 2: Replicate every page (about 1–2 weeks)
 
+**Status (2026-11-17): Batch A done** (Home, Platform, Pricing, Contact). Batches B–D are still placeholders.
+
+**Tools for each new page:**
+- `node tools/slice.mjs <slug>` cuts the live screenshot into readable slices.
+- `node tools/extract-svgs.mjs <slug>` saves the inline icons and logos.
+- `node tools/import-media.mjs <file> <dest>` resizes images to WebP and compresses videos.
+- `npm run compare -- <slug> [desktop|mobile]` puts the live and new versions side by side.
+- `npm run check` finds broken links, missing files and sideways scrolling.
+
+**Shared section styles** in `main.css`: hero, section-head, logo strip, cards and grid, features, tiles, testimonial, steps, panel and panel-row, capability with label-rows, tags, stats-band, icon-list, plans, dark-band with ruled-grid, comparison table, contact form, and the closing call-to-action band (`partials/cta-band.njk`; set `cta:` in front matter, with `accent: true` for the orange version).
+
+**Found while building Batch A:**
+- The Home and Platform videos are the same footage uploaded to Wix twice, so the site uses one copy (`static/video/platform-features.mp4`, 3.7 MB, compressed from 12 MB).
+- The live Pricing page has an empty FAQ: the "Questions / Clear answers on terms, security, and features." heading has no questions under it. It's left out of the copy, with a comment in `pricing.njk` marking where it goes.
+- The live Pricing comparison table is a Wix HTML embed (an iframe). It's now part of the page itself (`partials/pricing-compare.html`), and its tooltips work without JavaScript.
+- At phone width, the live Pricing page shows the Standard plan's "$0 forever" inside the Professional card. The copy doesn't have this bug.
+- The live description for `/platform` has a typo ("complaince"). It's kept for now and goes on the Phase 4 list.
+- **Contact form:** it's built with all the live fields, but `site.formAction` is empty. Until a backend is chosen, the form shows a notice pointing to sales@assetas.com and its Submit button is disabled.
+
 **How close should the copy be: close enough, and simple first.** The theme and page layouts will change later anyway, so we don't try to match the Wix site exactly. When an exact match and simple code pull in different directions, **choose simple HTML and CSS.**
 
 - **Must carry over:** all the text, the page order and section order, the images and videos, links and URLs, titles and meta tags, and the general look (brand colors, light or dark sections, roughly the same layout).

@@ -9,13 +9,16 @@
     "build": "eleventy",
     "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\"",
     "capture": "node tools/capture.mjs",
-    "download-media": "node tools/download-media.mjs"
+    "download-media": "node tools/download-media.mjs",
+    "compare": "node tools/compare.mjs",
+    "check": "node tools/check.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.8",
-    "playwright": "^1.65.1"
+    "playwright": "^1.65.1",
+    "sharp": "^0.35.5"
   }
 }

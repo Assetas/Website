@@ -15,4 +15,7 @@ export default {
   appUrl: "https://app.assetas.com/",
   statusUrl: "https://app.assetas.com/SystemHealth",
   year: new Date().getFullYear(),
+  // Where the contact form posts. Empty until a form backend is chosen (see PLAN.md, open decision 5);
+  // while it's empty the form shows a notice and its submit button is disabled.
+  formAction: "",
 };
