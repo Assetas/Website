@@ -3,12 +3,33 @@ layout: layouts/base.njk
 title: "Telemetry and Anomaly Detection | Smart Monitoring Solutions | Assetas"
 description: "Explore Telemetry and Anomaly Detection for smarter monitoring. See how Telemetry and Anomaly Detection helps your team act faster with us!"
 permalink: /telemetry.html
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
 ---
-<section class="section">
+<section class="hero">
   <div class="container">
+    <p class="eyebrow">Telemetry</p>
     <h1>Telemetry and Anomaly Detection: Catch Equipment Problems Early</h1>
-    <p class="lead">Explore Telemetry and Anomaly Detection for smarter monitoring. See how Telemetry and Anomaly Detection helps your team act faster with us!</p>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+    <p>Assetas keeps each asset’s sensor readings in the same place as its work orders, inspections and maintenance history. Readings such as pressures, temperatures, flow rates and run hours can come in through scheduled pulls from your field data systems or through data imports. Each reading is stored against its asset and sensor tag with its unit of measure and timestamp. You can mark readings as estimated or invalid, or correct them with an override, without losing the original value. Anomaly detection runs on a schedule for the assets and readings you pick. It compares each new reading with its recent neighbors and calculates an expected value and an upper and lower limit. Any reading outside those limits is flagged, so a failing pump or drifting sensor gets noticed before it causes a breakdown. You can adjust how sensitive each check is. The readings, flags and expected ranges are all available in reports, on dashboards and through the REST API, so your team can go from an alert to a work order in one system.</p>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <div class="media media--narrow media--center">
+      <video controls preload="none" playsinline poster="/static/video/telemetry-and-anomaly-detection.jpg" width="1280" height="720">
+        <source src="/static/video/telemetry-and-anomaly-detection.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+{#- On the live site these two buttons don't link anywhere; both point to /contact here. -#}
+<section class="section closing">
+  <div class="container">
+    <h2>See how anomaly detection works with your data.</h2>
+    <div class="button-row">
+      <a class="button" href="/contact">Book a demo</a>
+      <a class="button button--outline" href="/contact">Talk to our engineer</a>
+    </div>
   </div>
 </section>

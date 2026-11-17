@@ -3,12 +3,174 @@ layout: layouts/base.njk
 title: "Smart Forms: Offline Digital Inspections | Assetas"
 description: "Build offline forms that capture photos, GPS, and signatures at the asset — then map every user entry to workflow automation."
 permalink: /forms.html
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
 ---
+<section class="hero">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">Platform<span class="sep">/</span>Smart forms</p>
+      <h1>Where the tablet meets the work.</h1>
+      <p class="lead">Every field inspection, maintenance check, work order, and regulatory form — captured once, routed automatically, and tied to the record it satisfies.</p>
+      <p class="marker-note">Forms adapt as they're filled out — automatically.</p>
+    </div>
+    <div class="hero-visual">
+      <img src="/static/img/forms/hero-form-in-progress.webp" width="639" height="407" alt="Leak inspection form FORM-2281 in progress for Skid A-114, relief valve RV-22, started offline at 9:42 AM: leak observed yes, estimated leak rate 42 SCFH, component auto-filled from the registry. The leak-rate field appeared automatically after answering Yes.">
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <div class="media media--narrow media--center">
+      <video controls preload="none" playsinline poster="/static/video/creating-a-new-form.jpg" width="1280" height="720">
+        <source src="/static/video/creating-a-new-form.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">What smart forms does</p>
+      <h2>One form engine, four kinds of field work.</h2>
+      <p>Paper forms and static PDFs are the weak link in field data — questions that don't apply, handwriting re-keyed later, no way to route a failed inspection until someone remembers to call it in. Smart Forms behaves like software: it adapts to what's entered, pulls known data instead of asking twice, and moves the next step along on its own.</p>
+      <p>The same engine runs every kind of field capture — and because field work doesn't stop where cell coverage does, it all works fully offline.</p>
+      <ul class="tags"><li>Visual inspections</li><li>Work orders</li><li>Testing</li><li>Regulatory forms</li></ul>
+    </div>
+    <div class="capability-media">
+      <img src="/static/img/forms/sync-status.webp" width="530" height="267" alt="Sync status while offline: 14 forms queued, 0 records lost, 2 minutes since last sync. Queued: 9 inspections, 4 work orders, 1 regulatory form." loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Built-in intelligence, not add-on logic.</h2>
+      <p>Every form carries the same four capabilities — none of them require a separate tool or a workaround.</p>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="card-kicker">01 — Logic</p>
+        <h3>Conditional show/hide logic</h3>
+        <p>Follow-up fields appear only when the answer calls for them. Shorter forms, fewer wrong answers, and nothing irrelevant to scroll past on a phone screen in the rain.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/forms/conditional-logic.webp" width="531" height="346" alt="Leak inspection logic: Leak observed? answered Yes and shown; Estimated leak rate revealed by Yes and required; Repair already attempted? hidden until a leak is confirmed." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability capability--flip">
+      <div>
+        <p class="card-kicker">02 — Data</p>
+        <h3>Data-driven dropdowns</h3>
+        <p>Fields pull live from the asset registry and prior records — ID, location, history — instead of free text a technician has to remember or guess. Select the asset, and the form already knows it.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/forms/data-driven-dropdowns.webp" width="531" height="288" alt="Asset lookup for Skid A-114, auto-filled from the registry: location Cedar Ridge Plant, last inspection Jul 29, 2026, criticality High." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="card-kicker">03 — Routing</p>
+        <h3>Dispatch, escalation &amp; multi-step workflows</h3>
+        <p>A completed form can trigger the next step on its own: dispatch a work order, escalate a failed inspection, or route a regulatory form for sign-off — no one has to remember to follow up.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/forms/dispatch-workflow.webp" width="531" height="266" alt="Workflow for FORM-2281: form submitted offline at 9:47 AM (done), escalated to supervisor because the leak rate is above threshold (in progress), work order dispatched (queued, waiting on escalation)." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability capability--flip">
+      <div>
+        <p class="card-kicker">04 — Offline</p>
+        <h3>Offline-first field capture</h3>
+        <p>Forms work with zero signal — no internet, no cell data, no exceptions for remote sites. Everything syncs automatically the moment connectivity returns.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/forms/offline-capture.webp" width="531" height="318" alt="Field tablet 04, offline since 8:52 AM with 3 forms pending sync: 2 inspections and 1 work order captured. They will sync automatically when signal returns, with no re-entry required." loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
-    <h1>Where the tablet meets the work.</h1>
-    <p class="lead">Build offline forms that capture photos, GPS, and signatures at the asset — then map every user entry to workflow automation.</p>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+    <div class="section-head">
+      <p class="eyebrow">Built for your work</p>
+      <h2>One engine, every kind of field form.</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/forms.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Field &amp; regulatory inspections</h3>
+        <p>Routine rounds and regulatory submissions run on the same conditional, data-aware form engine.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/work-orders.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Work orders</h3>
+        <p>Preventive and corrective maintenance forms pull equipment history straight from the asset record.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/testing.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Testing</h3>
+        <p>Capture mechanical integrity, engine stack, and well integrity results without a separate system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Client proof — independent O&amp;G producer</p>
+      <h2>Fewer lost forms, more productive crews.</h2>
+    </div>
+    <ul class="stat-cards">
+      <li><p class="stat">24,800</p><p>offline forms submitted last year</p></li>
+      <li><p class="stat">16,776</p><p>hours saved</p></li>
+      <li><p class="stat">$1.7M</p><p>labor cost savings</p></li>
+    </ul>
+    <a class="button" href="/static/files/smart-forms-case-study.pdf">See the case study &#8599;</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Connects to</p>
+      <h2>One form, feeding every module.</h2>
+    </div>
+    <div class="grid">
+      <div>
+        <img class="card-media" src="/static/img/assets/registry.webp" width="386" height="193" alt="" loading="lazy">
+        <h3 class="h4">Feeds Smart Inspections</h3>
+        <p>Inspection forms and scheduling share the same underlying record — no duplicate entry.</p>
+      </div>
+      <div>
+        <img class="card-media" src="/static/img/assets/criticality.webp" width="386" height="193" alt="" loading="lazy">
+        <h3 class="h4">Triggers Workflow Automation</h3>
+        <p>A form submission is a workflow trigger — dispatch, escalation, and sign-off all start from the same event.</p>
+      </div>
+      <div>
+        <img class="card-media" src="/static/img/assets/condition.webp" width="386" height="193" alt="" loading="lazy">
+        <h3 class="h4">Feeds Compliance &amp; Emissions</h3>
+        <p>Regulatory forms map directly to the requirement they satisfy, ready for reporting the moment they sync.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band cta-band--accent">
+  <div class="container">
+    <h2>See a form adapt in real time.</h2>
+    <div class="button-row">
+      <a class="button" href="/contact">Book a demo</a>
+      <a class="button button--ghost" href="/platform">See the platform</a>
+    </div>
   </div>
 </section>

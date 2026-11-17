@@ -3,12 +3,157 @@ layout: layouts/base.njk
 title: "Workflow Automation for Field Operations | Assetas"
 description: "Turn findings into action automatically. Route work orders, trigger corrective actions, escalate overdue items, and notify the right crew — no re-keying."
 permalink: /workflows.html
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
 ---
+<section class="hero">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">Platform<span class="sep">/</span>Workflow automation</p>
+      <h1>Where every alert meets its owner.</h1>
+      <p class="lead">A failed inspection, an overdue work order, an observation — each one is assigned, escalated, and tracked automatically.</p>
+      <div class="button-row">
+        <a class="button" href="/contact">Book a demo</a>
+        <a class="button button--outline" href="/oilandgas#operational-excellence">See it on your assets</a>
+      </div>
+      <p class="marker-note">No-code configurable rules turn any event into communications, tasks, and additional action paths — with a full history of who did what, when.</p>
+    </div>
+    <div class="hero-visual">
+      <img src="/static/img/workflows/hero-escalation-chain.webp" width="569" height="350" alt="Escalation chain for a failed BMP inspection on berm B-12, triggered at 7:14 AM: found and logged with a photo and reading attached (done), auto-assigned to the field supervisor by location and role (done), and escalating because the SLA is at risk with 2 hours to breach (in progress).">
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">What workflow automation does</p>
+      <h2>The step after the finding, handled on its own.</h2>
+    </div>
+    <div class="split">
+      <div>
+        <p>Most systems are good at capturing a problem and bad at making sure someone does something about it. <strong>Workflow Automation closes that gap:</strong> any event in the platform — a failed inspection, a form submission, a threshold breach — can trigger a task, an assignment, a notification, or an escalation, without anyone manually routing it.</p>
+        <p>Rules run on conditions you set — asset criticality, location, requirement type — so the right person gets the right task, and nothing sits unassigned.</p>
+        <ul class="tags tags--white"><li>Inspection answer trigger</li><li>Overdue task</li><li>Limit thresholds</li><li>Form submissions</li></ul>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/workflows/this-week-summary.webp" width="512" height="258" alt="This week: 38 tasks auto-created, 3 currently escalated, 0 unassigned. Automated: 21 inspections, 14 work orders, 3 compliance items." loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
-    <h1>Where every alert meets its owner.</h1>
-    <p class="lead">Turn findings into action automatically. Route work orders, trigger corrective actions, escalate overdue items, and notify the right crew — no re-keying.</p>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Where a finding meets its follow-up.</h2>
+      <p>Every event that matters moves through the same four stages — configured once, applied every time.</p>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="card-kicker">01 — Rules</p>
+        <h3>Rules &amp; triggers</h3>
+        <p>Define what counts as an event worth acting on — a failed check, a missed threshold, a specific answer on a form — and what should happen next. No code required to configure a rule.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/workflows/rules-triggers.webp" width="512" height="277" alt="Rule for a failed containment check, active on containment inspections: BMP failure escalates. Trigger: inspection result is Fail. Condition: asset criticality is High. Action: create a task and notify the supervisor." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability capability--flip">
+      <div>
+        <p class="card-kicker">02 — Assignment</p>
+        <h3>Assignment &amp; routing</h3>
+        <p>Tasks route to the right person automatically — matched by role, location, or who's on shift — instead of landing in a shared inbox and waiting for someone to claim them.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/workflows/assignment-routing.webp" width="512" height="278" alt="Task TSK-3391 assigned: repair containment berm B-12, auto-routed by location and role to M. Ortega, field supervisor, matched to Dry Creek Pad, due within 24 hours." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="card-kicker">03 — Escalation</p>
+        <h3>Escalation paths</h3>
+        <p>If a task isn't acted on in time, it escalates on its own — to a supervisor, then a manager — following the path you define. Nothing quietly ages out past its deadline.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/workflows/escalation-paths.webp" width="512" height="314" alt="Escalation for TSK-3391: assigned to M. Ortega at 7:15 AM, due in 24 hours with no action taken, SLA breached and escalated to the ops manager, manager notified and awaiting acknowledgment." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability capability--flip">
+      <div>
+        <p class="card-kicker">04 — History</p>
+        <h3>Full audit trail</h3>
+        <p>Every automated action is logged — who was assigned, when it escalated, who closed it out. When the auditor asks who knew what and when, the answer is already written down.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/workflows/audit-trail.webp" width="531" height="313" alt="Audit log for TSK-3391: task created automatically at 7:14 AM, assigned to M. Ortega at 7:15 AM, escalated to the ops manager at 9:02 AM, manager notified at 9:04 AM. Every entry logged automatically." loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Built for your work</p>
+      <h2>Wherever something needs to happen next.</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/failed-inspections.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Failed inspections</h3>
+        <p>A failed check becomes an assigned repair task the moment it's submitted — no manual triage.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/overdue.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Overdue work orders</h3>
+        <p>Work orders approaching their due date notify the assignee, then escalate automatically if they slip.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/deadlines.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Regulatory deadlines</h3>
+        <p>Compliance submissions route for review and sign-off automatically as their due dates approach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Connects to</p>
+      <h2>Every module can trigger a workflow.</h2>
+    </div>
+    <div class="grid">
+      <div>
+        <img class="line-icon" src="/static/img/icons/link-assets.svg" width="52" height="52" alt="">
+        <h3 class="h4">Triggered by Assets</h3>
+        <p>An asset transfer request is a workflow trigger — dispatch, permitting, and sign-off all start from the same event.</p>
+      </div>
+      <div>
+        <img class="line-icon" src="/static/img/icons/link-forms.svg" width="52" height="52" alt="">
+        <h3 class="h4">Triggered by Smart Forms</h3>
+        <p>A form submission is a workflow trigger — notification, documentation, and next due date reset.</p>
+      </div>
+      <div>
+        <img class="line-icon" src="/static/img/icons/link-compliance.svg" width="52" height="52" alt="">
+        <h3 class="h4">Triggered by Compliance &amp; Emissions</h3>
+        <p>The full escalation and close-out history becomes the audit trail a regulatory submission relies on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band cta-band--accent">
+  <div class="container">
+    <h2>See how automation becomes owned work.</h2>
+    <div class="button-row">
+      <a class="button" href="/contact">Book a demo</a>
+      <a class="button button--ghost" href="/platform">See the platform</a>
+    </div>
   </div>
 </section>

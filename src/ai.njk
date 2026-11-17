@@ -3,12 +3,161 @@ layout: layouts/base.njk
 title: "AI-Ready Operational Data for Regulated Ops | Assetas"
 description: "AI is only as good as the record beneath it. Assetas structures asset, telemetry, and inspection data so models run on governed, traceable history."
 permalink: /ai.html
-status: placeholder  # Phase 2 replaces this body with the real page content
+status: replica
 ---
+<section class="hero">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">Platform<span class="sep">/</span>AI features</p>
+      <h1>Where a pattern meets its proof.</h1>
+      <p class="lead">AI trained specifically for industrial data watches every sensor feed, every inspection, every permit — surfacing what needs attention before it becomes a finding, without waiting on someone to notice.</p>
+      <div class="button-row">
+        <a class="button" href="/contact">Book a demo</a>
+        {#- The live site links this to the SPCC page's "how it works" section. -#}
+        <a class="button button--outline" href="/spcc#how-it-works">See how it works</a>
+      </div>
+      <p class="marker-note marker-note--accent">Trained on industrial data — not a general-purpose model.</p>
+    </div>
+    <div class="hero-visual">
+      <img src="/static/img/ai/hero-ai-activity.webp" width="671" height="605" alt="AI activity, live: 24/7 monitoring active across all connected feeds, with 3 anomalies flagged, 1 elevated sentiment and 12 IDs reconciled. A vibration anomaly on compressor C-4 at 128% above its 7-day baseline is flagged, elevated urgency in WO-8823 notes is escalated for supervisor review, and the nameplate for pump P-08 is matched to the asset registry.">
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
-    <h1>Where a pattern meets its proof.</h1>
-    <p class="lead">AI is only as good as the record beneath it. Assetas structures asset, telemetry, and inspection data so models run on governed, traceable history.</p>
-    <p><em>Placeholder page. The content will be rebuilt from the live site in Phase 2.</em></p>
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Platform<span class="sep">/</span>AI features</p>
+      <h2>Five models, one purpose-built foundation.</h2>
+      <p class="lead">General-purpose AI doesn't know what a compressor baseline looks like, or what a permit limit means. Assetas runs five models trained specifically on industrial data — sensor feeds, field documentation, permits, and equipment imagery — each doing one job well, all reading from the same structured record the rest of the platform already builds.</p>
+    </div>
+    <div class="panel panel--dark split">
+      <div>
+        <h3>Purpose-built now. The foundation for what's next.</h3>
+        <p>These models are trained for industrial applications specifically — not repurposed general-purpose AI. As your data model deepens across Asset Intelligence, Smart Forms, and Smart Inspections, it becomes the foundation for more advanced modeling down the line.</p>
+      </div>
+      <ul class="tags tags--on-dark"><li>Industrial-trained</li><li>Purpose-built</li><li class="is-accent-fill">Grows with your data</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top" id="how-it-works">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Five ways the platform watches, reads, and supports.</h2>
+      <p>Each AI capability runs on a different kind of input — sensor readings, written notes, permit text, or a photograph — and reports back in the same structured way.</p>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="card-kicker">01 — Anomaly detection</p>
+        <h3 class="h4">24/7 monitoring across SCADA &amp; historian feeds</h3>
+        <p>Every connected sensor and instrument feed is watched continuously against its own learned baseline — not a fixed threshold someone set once and forgot. A reading doesn't have to breach a hard limit to get flagged, just behave differently than it normally does.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/ai/anomaly-detection.webp" width="455" height="279" alt="Anomaly on compressor C-4, vibration tag VIB-0412 from a live SCADA feed: baseline 0.18 in/s, current reading 0.41 in/s, a 128% deviation from the 7-day baseline. Flagged automatically with no manual threshold set for this tag." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability capability--flip">
+      <div>
+        <p class="card-kicker">02 — Sentiment analysis</p>
+        <h3 class="h4">The tone behind inspections &amp; work orders</h3>
+        <p>Written notes carry more than the checkbox does — a technician's language can signal urgency or frustration well before it's stated outright. Sentiment analysis flags that tone and prioritizes attention; it doesn't replace a person's judgment.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/ai/sentiment-analysis.webp" width="455" height="266" alt="Sentiment on work order WO-8823 notes for Skid A-114: elevated, with urgency and frustration detected at 78, three severity levels above typical entries. Routed to a supervisor for review; a person still makes the call." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="card-kicker">03 — RAG</p>
+        <h3 class="h4">Retrieval-augmented analysis of permit conditions</h3>
+        <p>Permit documents run to dozens of pages of specific, binding conditions. Retrieval-augmented generation reads your actual permit text and answers against it directly — the citation comes from your document, not a generic answer about what permits usually say.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/ai/permit-query.webp" width="455" height="237" alt="Permit query on air permit TX-44921, condition 14(b): asked for the VOC limit for Skid A-114, answered 12.3 tons per year, cited from the permit document page 6, condition 14(b)." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability capability--flip">
+      <div>
+        <p class="card-kicker">04 — AI assistant</p>
+        <h3 class="h4">Ask it directly – regulatory &amp; environmental questions</h3>
+        <p>The same retrieval layer sits behind a chat interface, so anyone on the team can ask a plain-language question about a regulation, a permit condition, an asset's current status, or your own data and get an answer sourced from your actual records.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/ai/ai-assistant.webp" width="455" height="291" alt="Assistant chat. Is Skid A-114 within its Title V limits? Yes, CO2 is at 72% of its permitted limit as of today, sourced from the Title V permit and emissions log. When's the next LDAR survey due? Oct 15, on a quarterly cycle per NSPS OOOOb, sourced from the requirement register." loading="lazy">
+      </div>
+    </div>
+
+    <div class="capability">
+      <div>
+        <p class="card-kicker">05 — Object recognition</p>
+        <h3 class="h4">Reality capture for equipment identification</h3>
+        <p>Point a camera at a piece of equipment and the model identifies its class and reads its markings — stencil ID, serial number, make and model — then reconciles that against the asset registry automatically, instead of a technician typing it in by hand.</p>
+      </div>
+      <div class="capability-media">
+        <img src="/static/img/ai/reality-capture.webp" width="455" height="313" alt="Reality capture of pump P-08: a nameplate scan captured at 10:14 AM identifies a centrifugal pump, stencil ID P-08, serial number SN-88213X, and finds a matching make and model in the registry. Auto-matched to the existing asset record with no manual data entry." loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">The real problem</p>
+      <h2>Four kinds of input, one structured output.</h2>
+    </div>
+    <div class="grid grid--4">
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/sensor-feeds.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Sensor &amp; SCADA feeds</h3>
+        <p>Continuous instrument data compared against learned, asset-specific baselines.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/field-documentation.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Field documentation</h3>
+        <p>Inspection and work order notes, read for tone as well as content.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/permits.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Permits &amp; regulations</h3>
+        <p>Full permit and regulation text, queried directly rather than summarized from memory.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile"><img src="/static/img/icons/equipment.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Equipment in the field</h3>
+        <p>Photos of nameplates and markings, matched to the asset registry automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Proof</p>
+      <h2>Caught earlier. Answered faster.</h2>
+    </div>
+    <ul class="stat-cards">
+      <li><p class="stat">37 sec.</p><p>time to extract 108 conditions, including emission limits, from a 49-page Title V permit.</p><p class="stat-source">— Wind River Resources</p></li>
+      <li><p class="stat">2,488</p><p>flow-meter anomalies detected automatically</p><p class="stat-source">— Steam Cogen Facility, California</p></li>
+      <li><p class="stat">2.9x</p><p>improvement in precision, recall, and F1 from Assetas-tuned anomaly detection.</p><p class="stat-source">— Benchmark Study</p></li>
+    </ul>
+  </div>
+</section>
+
+{#- On the live site these two buttons don't link anywhere; both point to /contact here. -#}
+<section class="section closing">
+  <div class="container">
+    <h2>See the AI Assistant work with your data.</h2>
+    <div class="button-row">
+      <a class="button" href="/contact">Book a demo</a>
+      <a class="button button--outline" href="/contact">Talk to our engineer</a>
+    </div>
   </div>
 </section>

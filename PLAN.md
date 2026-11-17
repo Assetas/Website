@@ -106,7 +106,21 @@ Wix may change or go away later, so we save a complete reference copy first.
 
 ## Phase 2: Replicate every page (about 1–2 weeks)
 
-**Status (2026-11-17): Batch A done** (Home, Platform, Pricing, Contact). Batches B–D are still placeholders.
+**Status (2026-11-17): Batches A and B done.**
+- Batch A: Home, Platform, Pricing, Contact.
+- Batch B: /assets, /forms, /compliance, /telemetry, /platform/emissions, /ai, /reporting, /workflows.
+- Batches C and D are still placeholders (14 pages).
+- Static files total 31 MB, most of it the 9 compressed videos (3–5 MB each).
+
+**Found while building Batch B** (candidates for the Phase 4 list):
+- `/telemetry`, `/reporting` and `/ai` have "Book a demo" and "Talk to our engineer" buttons that don't link anywhere on the live site. Both point to /contact in the copy.
+- `/telemetry` and `/reporting` contain hidden leftover template text from Wix ("Describe the service…", "Book Now" three times). It's left out.
+- On `/ai`, "See how it works" goes to `/spcc#how-it-works`, not to this page's own "How it works" section. It's kept as on the live site; probably a mistake.
+- On `/workflows`, "See it on your assets" goes to `/oilandgas#operational-excellence`. Check that this anchor exists when `/oilandgas` is built.
+- The `/forms` case study link points to a PDF, now at `/static/files/smart-forms-case-study.pdf`.
+- The FAQ on `/platform/emissions` was collapsed accordions on the live site. The answers were pulled with `tools/extract-accordion.mjs` and are now `<details>` elements that work without JavaScript.
+- Copy typo on `/compliance`: "the same record.." has a double period.
+- Tools added: `node tools/page-brief.mjs <slug>` prints a page's text, links, images and icons in one go, and `slice` and `compare` now take `--scale`.
 
 **Tools for each new page:**
 - `node tools/slice.mjs <slug>` cuts the live screenshot into readable slices.

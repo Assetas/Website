@@ -1,7 +1,7 @@
 // Screenshot the local build next to the captured live page so they can be compared.
 //
 //   npm run dev                                 # in another terminal
-//   node tools/compare.mjs <slug> [desktop|tablet|mobile] [--base http://localhost:8080/Website/]
+//   node tools/compare.mjs <slug> [desktop|tablet|mobile] [--scale 0.5] [--base http://localhost:8080/Website/]
 //
 // Writes reference/compare/<slug>/<size>.png, a side-by-side image: live (left) | new (right),
 // cut into slices of 1100 px height (<size>-NN.png) so each one is easy to read.
@@ -13,7 +13,9 @@ import { pathToFileURL } from "node:url";
 const args = process.argv.slice(2);
 const baseIdx = args.indexOf("--base");
 const base = baseIdx === -1 ? "http://localhost:8080/Website/" : args[baseIdx + 1];
-const [slug, size = "desktop"] = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--base");
+const scaleIdx = args.indexOf("--scale");
+const scale = scaleIdx === -1 ? 1 : Number(args[scaleIdx + 1]);
+const [slug, size = "desktop"] = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--base" && args[i - 1] !== "--scale");
 if (!slug) throw new Error("usage: node tools/compare.mjs <slug> [desktop|tablet|mobile]");
 
 const WIDTHS = { desktop: 1440, tablet: 768, mobile: 390 };
@@ -21,6 +23,7 @@ const width = WIDTHS[size];
 const livePng = path.resolve("reference/pages", slug, `${size}.png`);
 const outDir = path.resolve("reference/compare", slug);
 await fs.mkdir(outDir, { recursive: true });
+for (const f of await fs.readdir(outDir)) if (f.startsWith(`${size}-`) && /-\d+\.png$/.test(f)) await fs.rm(path.join(outDir, f));
 const newPng = path.join(outDir, `${size}-new.png`);
 
 const browser = await chromium.launch();
@@ -39,17 +42,18 @@ await page.screenshot({ path: newPng, fullPage: true });
 // Compose live | new side by side, then slice.
 // (Loaded from a file:// page, because about:blank can't show file:// images.)
 const sheet = path.join(outDir, `${size}.html`);
-await fs.writeFile(sheet, `<!doctype html><style>body{margin:0;display:flex;gap:16px;background:#c00;align-items:flex-start}img{display:block;width:${width}px}</style>
+await fs.writeFile(sheet, `<!doctype html><style>body{margin:0;display:flex;gap:16px;background:#c00;align-items:flex-start}img{display:block;width:${Math.round(width * scale)}px}</style>
   <img src="${pathToFileURL(livePng).href}"><img src="${pathToFileURL(newPng).href}">`);
 const view = await browser.newPage();
 await view.goto(pathToFileURL(sheet).href, { waitUntil: "load" });
 const heights = await view.evaluate(() => [...document.images].map((i) => i.naturalHeight));
-const total = Math.max(...heights);
-await view.setViewportSize({ width: width * 2 + 16, height: Math.min(total, 16000) });
+const total = Math.round(Math.max(...heights) * scale);
+const pairWidth = Math.round(width * scale) * 2 + 16;
+await view.setViewportSize({ width: pairWidth, height: Math.min(total, 16000) });
 const step = 1100;
 let n = 0;
 for (let y = 0; y < total; y += step) {
-  await view.screenshot({ path: path.join(outDir, `${size}-${String(n).padStart(2, "0")}.png`), clip: { x: 0, y, width: width * 2 + 16, height: Math.min(step, total - y) }, fullPage: true });
+  await view.screenshot({ path: path.join(outDir, `${size}-${String(n).padStart(2, "0")}.png`), clip: { x: 0, y, width: pairWidth, height: Math.min(step, total - y) }, fullPage: true });
   n++;
 }
 await browser.close();
