@@ -34,3 +34,7 @@ The output goes to `_site/`. A push to `main` builds and deploys automatically t
 | `src/static/` | CSS, JS, images, video and files, published at `/static/`. It isn't called `assets/` because the live site already has an `/assets` page. |
 
 Write internal links as root-relative paths (`/contact`, `/static/...`). Eleventy's HTML base plugin adds the `/Website/` prefix on the preview build.
+
+## License
+
+Copyright © Assetas. All rights reserved. The repository is public so that GitHub Pages can host the site; that doesn't grant any license to the code, text, images, video or Trek downloads.
