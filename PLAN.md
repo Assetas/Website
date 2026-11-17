@@ -114,8 +114,9 @@ Wix may change or go away later, so we save a complete reference copy first.
 - **All 26 pages are rebuilt.** Static files total 42 MB, including 10 videos.
 
 **Still open before Phase 3 sign-off:**
-- **Trek downloads:** `/trek-app-downloads` links to a GitHub Release (`site.trekRelease`, tag `trek-v4.0.2.0`) that hasn't been published yet, so those three links return 404. The files are Trek 4.0.2.0 store packages: `Trek_Android.zip` (.aab, 39 MB), `Trek_iOS.zip` (.ipa, 36 MB), and `Trek_x64.zip` (.msixupload, 117 MB). They're already public on the live site.
 - **Contact form backend** (open decision 5).
+
+**Done:** The Trek downloads are published as the GitHub Release [trek-v4.0.2.0](https://github.com/Assetas/Website/releases/tag/trek-v4.0.2.0) (published 2026-11-17). All three links on `/trek-app-downloads` return 200, and the file sizes match the originals. For a new Trek version, publish a new release and update `site.trekRelease` in `src/_data/site.js`.
 
 **Found while building Batch D** (candidates for the Phase 4 list):
 - `/platform/about` uses the Emissions page's title and description. The copy keeps it for now; this is the known duplicate-title bug.
@@ -233,4 +234,4 @@ Decided (2026-11-17):
 Still open:
 
 5. **Form backend,** and who receives contact submissions today. This has to be settled before the Contact page is built in Batch A.
-6. **Trek downloads:** GitHub Releases on this public repo (the default unless we pick somewhere else), or another location such as Azure Blob.
+6. ~~**Trek downloads**~~ Decided: GitHub Releases on this repo (release `trek-v4.0.2.0`).
