@@ -15,9 +15,11 @@ export default {
   appUrl: "https://app.assetas.com/",
   statusUrl: "https://app.assetas.com/SystemHealth",
   year: new Date().getFullYear(),
-  // Where the contact form posts. Empty until a form backend is chosen (see PLAN.md, open decision 5);
-  // while it's empty the form shows a notice and its submit button is disabled.
-  formAction: "",
+  // Where the contact form posts. FormSubmit emails each submission to sales@assetas.com.
+  // The first submission sends FormSubmit's one-time activation email to that address; after
+  // activating, FormSubmit offers a random alias you can use here instead of the plain address.
+  // Set to "" to disable the form (it then shows a notice and a disabled Submit button).
+  formAction: "https://formsubmit.co/sales@assetas.com",
   // Trek app packages are published as a GitHub Release (they're too big for the repo).
   trekRelease: "https://github.com/Assetas/Website/releases/download/trek-v4.0.2.0",
 };

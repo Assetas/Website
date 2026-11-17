@@ -113,8 +113,13 @@ Wix may change or go away later, so we save a complete reference copy first.
 - Batch D: /trek, /trek-app-downloads, /platform/about, /privacy, /terms, /inquiry-services-page.
 - **All 26 pages are rebuilt.** Static files total 42 MB, including 10 videos.
 
-**Still open before Phase 3 sign-off:**
-- **Contact form backend** (open decision 5).
+**Contact form (decided 2026-11-17):** FormSubmit, delivering to sales@assetas.com (`site.formAction`).
+- Submissions go to `https://formsubmit.co/sales@assetas.com`, then the visitor lands on `/contact-thanks`.
+- Each field has a readable name, so the email reads "Company or organization: …", "Industry: Defense: Yes", and so on.
+- There's a hidden `_honey` spam trap and FormSubmit's own captcha step.
+- Email is now required, so sales can reply. It was optional on the live site.
+- Tested locally with the request intercepted: empty forms are blocked and every field posts correctly.
+- **To activate:** the first real submission makes FormSubmit send a one-time activation email to sales@assetas.com. Someone with access to that inbox must click it, or later submissions are held. FormSubmit then offers a random alias that can replace the plain address in `site.formAction`, so the address isn't visible in the page source.
 
 **Done:** The Trek downloads are published as the GitHub Release [trek-v4.0.2.0](https://github.com/Assetas/Website/releases/tag/trek-v4.0.2.0) (published 2026-11-17). All three links on `/trek-app-downloads` return 200, and the file sizes match the originals. For a new Trek version, publish a new release and update `site.trekRelease` in `src/_data/site.js`.
 
@@ -233,5 +238,5 @@ Decided (2026-11-17):
 
 Still open:
 
-5. **Form backend,** and who receives contact submissions today. This has to be settled before the Contact page is built in Batch A.
+5. ~~**Form backend**~~ Decided: FormSubmit, delivering to sales@assetas.com.
 6. ~~**Trek downloads**~~ Decided: GitHub Releases on this repo (release `trek-v4.0.2.0`).

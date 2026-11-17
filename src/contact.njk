@@ -21,50 +21,56 @@ status: replica
     <h2 class="contact-title">How can we help?</h2>
 
     <form class="contact-form panel"{% if site.formAction %} action="{{ site.formAction }}" method="post"{% endif %}>
+      {#- FormSubmit settings (https://formsubmit.co): email subject, where to go after sending,
+          a readable table layout, and a hidden honeypot field that bots fill in and people don't. -#}
+      <input type="hidden" name="_subject" value="New inquiry from the Assetas website">
+      <input type="hidden" name="_next" value="{{ '/contact-thanks' | absoluteUrl }}">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
       <fieldset class="field field--full">
         <legend>How can we help? <span aria-hidden="true">*</span></legend>
         <div class="choices">
-          <label><input type="checkbox" name="help" value="Book a demo"> Book a demo</label>
-          <label><input type="checkbox" name="help" value="Ask a sales question"> Ask a sales question</label>
-          <label><input type="checkbox" name="help" value="User support"> User support</label>
+          <label><input type="checkbox" name="How can we help: Book a demo" value="Yes"> Book a demo</label>
+          <label><input type="checkbox" name="How can we help: Ask a sales question" value="Yes"> Ask a sales question</label>
+          <label><input type="checkbox" name="How can we help: User support" value="Yes"> User support</label>
         </div>
       </fieldset>
 
       <div class="field">
         <label for="first-name">First name</label>
-        <input id="first-name" name="first_name" type="text" autocomplete="given-name" placeholder="Enter your first name">
+        <input id="first-name" name="First name" type="text" autocomplete="given-name" placeholder="Enter your first name">
       </div>
       <div class="field">
         <label for="last-name">Last name</label>
-        <input id="last-name" name="last_name" type="text" autocomplete="family-name" placeholder="Enter your last name">
+        <input id="last-name" name="Last name" type="text" autocomplete="family-name" placeholder="Enter your last name">
       </div>
       <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" placeholder="Enter your email">
+        <label for="email">Email <span aria-hidden="true">*</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="Enter your email" required>
       </div>
       <div class="field">
         <label for="company">Company or organization <span aria-hidden="true">*</span></label>
-        <input id="company" name="company" type="text" autocomplete="organization" required>
+        <input id="company" name="Company or organization" type="text" autocomplete="organization" required>
       </div>
 
       <fieldset class="field field--full">
         <legend>Industry <span aria-hidden="true">*</span></legend>
         <div class="choices">
-          <label><input type="checkbox" name="industry" value="Oil & Gas"> Oil &amp; Gas</label>
-          <label><input type="checkbox" name="industry" value="Municipalities & Utilities"> Municipalities &amp; Utilities</label>
-          <label><input type="checkbox" name="industry" value="Defense"> Defense</label>
-          <label><input type="checkbox" name="industry" value="Infrastructure"> Infrastructure</label>
-          <label><input type="checkbox" name="industry" value="Other"> Other</label>
+          <label><input type="checkbox" name="Industry: Oil & Gas" value="Yes"> Oil &amp; Gas</label>
+          <label><input type="checkbox" name="Industry: Municipalities & Utilities" value="Yes"> Municipalities &amp; Utilities</label>
+          <label><input type="checkbox" name="Industry: Defense" value="Yes"> Defense</label>
+          <label><input type="checkbox" name="Industry: Infrastructure" value="Yes"> Infrastructure</label>
+          <label><input type="checkbox" name="Industry: Other" value="Yes"> Other</label>
         </div>
       </fieldset>
 
       <div class="field field--full">
         <label for="demo-topics">What would you like the demo to cover?</label>
-        <textarea id="demo-topics" name="demo_topics" rows="3" placeholder="Asset, maintenance, smart forms, offline capability, operational workflows, compliance, emissions."></textarea>
+        <textarea id="demo-topics" name="Demo should cover" rows="3" placeholder="Asset, maintenance, smart forms, offline capability, operational workflows, compliance, emissions."></textarea>
       </div>
 
       <div class="field field--full">
-        <label class="choice-inline"><input type="checkbox" name="subscribe" value="yes"> Keep me posted on Assetas product updates and industry guides. We won't share your details, and you can unsubscribe any time.</label>
+        <label class="choice-inline"><input type="checkbox" name="Keep me posted on product updates" value="Yes"> Keep me posted on Assetas product updates and industry guides. We won't share your details, and you can unsubscribe any time.</label>
       </div>
 
       {%- if not site.formAction %}
