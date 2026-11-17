@@ -26,6 +26,17 @@ jobs:
       - run: npm ci
       # Preview build (pathPrefix /Website/, noindex). At cutover, set SITE_ENV: production here.
       - run: npm run build
+      # Block the deploy on broken internal links/assets or sideways scrolling on phones.
+      # The dev server serves _site with the same extensionless URLs as Pages.
+      # At cutover the path prefix goes away: change --base to http://localhost:8080/.
+      - run: npx playwright install --with-deps --only-shell chromium
+      - name: Check links and mobile layout
+        run: |
+          npx @11ty/eleventy --serve --port 8080 > serve.log 2>&1 &
+          server=$!
+          for i in $(seq 60); do curl -sf -o /dev/null http://localhost:8080/Website/ && break; sleep 1; done
+          npm run check -- --base http://localhost:8080/Website/ || { cat serve.log; exit 1; }
+          kill $server
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
