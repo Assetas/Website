@@ -52,15 +52,15 @@ Live-site issues kept in the replica so it matches the live site, to fix during 
 
 - **Titles and descriptions:**
   - ~~`/platform/about` reuses the Emissions page's title and description.~~ Fixed in Phase 4 step 2: the page moved to `/about` with its own title and description.
-  - The Home title is 90 characters and `/telemetry`'s is 70.
-  - `/platform`'s description has a typo, "complaince".
-  - `/trek-app-downloads` has no description.
+  - ~~The Home title is 90 characters and `/telemetry`'s is 70.~~ Shortened in Phase 4 step 3.
+  - ~~`/platform`'s description has a typo, "complaince".~~ Fixed in Phase 4 step 3.
+  - ~~`/trek-app-downloads` has no description.~~ Added in Phase 4 step 3.
 - **Links that go to the wrong place or nowhere:**
   - ~~"Get Trek" (`/trek`) and "See it on your assets" (`/workflows`) go to `/oilandgas#operational-excellence`, which doesn't exist.~~ Fixed in Phase 4 step 2.
   - ~~"See how it works" (`/ai`) goes to `/spcc`.~~ Fixed in Phase 4 step 2.
   - Buttons with no target on the live site now point to /contact or the case study PDF: "Download brief" (`/defense`), "Read the full story" (`/oilandgas`), and "Talk to our engineer" (`/telemetry`, `/reporting`, `/ai`).
 - **Numbers to confirm:** the Air Force stats on `/defense` are swapped on the live site.
-- **Copy:** "the same record.." (`/compliance`), "Stale documentation turn…" and "…SPCC Plans standardized calcs…" (`/spcc`).
+- ~~**Copy:** "the same record.." (`/compliance`), "Stale documentation turn…" and "…SPCC Plans standardized calcs…" (`/spcc`).~~ Fixed in Phase 4 step 3.
 - **Content:**
   - The Pricing FAQ is empty.
   - `/privacy` is dated 2017 and needs legal review.

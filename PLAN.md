@@ -238,6 +238,26 @@ Build order:
 - **Still only reachable from the menu** (no links from inside other pages): /telemetry, /platform/emissions, /reporting, /security, /trek, /pricing. Adding contextual links is part of the content step.
 - **Next in Phase 4:** the content and SEO fixes (steps 3–4) from the backlog in `docs/phase-3-signoff.md`.
 
+**Steps 3–4, content and SEO: the fixes that need no input are done (2026-11-17).**
+- **Titles:**
+  - Home: "Assetas | Asset Management, Inspections & Compliance" (was 90 characters).
+  - Telemetry: "Telemetry & Anomaly Detection | Assetas".
+- **Descriptions and copy:**
+  - `/trek-app-downloads` now has a description.
+  - Copy fixes: "complaince" (`/platform`), "record.." (`/compliance`), and "documentation turns" and "Plans with standardized calcs on your company template" (`/spcc`).
+- **Links:**
+  - Every "Learn more" link carries hidden text naming its target, so screen readers announce "Learn more about Asset Intelligence". Lighthouse's link-text audit now passes.
+  - New contextual links: Platform links to Telemetry, Trek, Reporting and Security, and Compliance links to Emissions. Pricing is still reachable only from the header.
+- **Search and social:**
+  - Default social-sharing image `static/img/og-default.png` (1200×630, the Assetas wordmark), with `og:image` and `twitter:card` on every page.
+  - Organization structured data (name, logo, address, phone) on the Home page.
+- **Repo:** Gregory added a Dependabot config, a link-check gate in the deploy workflow, and an all-rights-reserved license note in the README.
+- **Waiting on input:**
+  - The correct Air Force stats for `/defense`.
+  - The documents behind "Download brief" (`/defense`) and "Read the full story" (`/oilandgas`).
+  - Questions and answers for the Pricing FAQ, or a decision to drop it.
+  - Legal review of the 2017 privacy policy.
+
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 
 1. **Design system:** consolidate fonts (drop the licensed Wix fonts), set a type scale, a spacing scale, a color palette with contrast checks, and button and link states. Write it down in `src/assets/css/tokens.css`.
