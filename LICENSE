@@ -1,0 +1,11 @@
+Copyright (c) 2026 Assetas Inc. All rights reserved.
+
+This repository holds the source of the Assetas website. It is public only so
+that GitHub Pages can host the site. No license is granted to use, copy,
+modify, publish, distribute or sell any part of it, including the code,
+templates, styles, text, images, video, documents, logos, trademarks and the
+Trek app packages, without prior written permission from Assetas Inc.
+
+Third-party software and services that the site uses or links to (for example
+npm packages installed at build time, Google Fonts and Web3Forms) remain under
+their own licenses and terms.

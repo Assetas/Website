@@ -37,4 +37,4 @@ Write internal links as root-relative paths (`/contact`, `/static/...`). Elevent
 
 ## License
 
-Copyright © Assetas. All rights reserved. The repository is public so that GitHub Pages can host the site; that doesn't grant any license to the code, text, images, video or Trek downloads.
+Copyright © Assetas Inc. All rights reserved. The repository is public so that GitHub Pages can host the site; that doesn't grant any license to the code, text, images, video or Trek downloads. See [LICENSE](LICENSE).
