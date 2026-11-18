@@ -701,6 +701,11 @@ main { background: var(--color-bg); overflow: hidden; }
 .assetas-compare .tip { position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%); width: 250px; background: var(--color-band); color: var(--color-on-fill); font-size: var(--text-small); font-weight: 400; letter-spacing: normal; text-transform: none; text-align: left; padding: 11px 13px; border-radius: 8px; opacity: 0; visibility: hidden; pointer-events: none; z-index: 30; transition: opacity 0.16s ease; }
 .assetas-compare .tip::before { content: ""; position: absolute; right: 100%; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-right-color: var(--color-band); }
 .assetas-compare .info:hover .tip, .assetas-compare .info:focus .tip { opacity: 1; visibility: visible; }
+.assetas-compare sup, .compare-note sup { line-height: 0; }
+.assetas-compare .fn-ref a { margin-left: 2px; color: var(--color-accent-text); text-decoration: none; }
+.assetas-compare .fn-ref a:hover { text-decoration: underline; }
+.compare-note { margin-top: var(--space-3); font-size: var(--text-small); color: var(--color-body); }
+.compare-note + .compare-note { margin-top: var(--space-1); }
 /* Narrow screens keep the horizontal scroll; tooltips open upward so they can't add a vertical one. */
 @media (max-width: 47.99rem) {
   .assetas-compare .tip { top: auto; bottom: -10px; transform: none; }
