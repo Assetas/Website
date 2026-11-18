@@ -8,10 +8,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Read-only by default; only the deploy job gets Pages write access.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # Deploys queue one at a time; a new push to a PR cancels that PR's older run.
 concurrency:
@@ -21,6 +20,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -50,6 +50,10 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
