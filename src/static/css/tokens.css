@@ -46,6 +46,7 @@
   --color-grid: rgb(255 255 255 / 0.09);         /* drafting grid, major lines */
   --color-grid-fine: rgb(255 255 255 / 0.05);    /* drafting grid, minor lines */
   --color-scrim: rgb(0 0 0 / 0.55);              /* behind captions on photos */
+  --color-overlay: rgb(2 27 78 / 0.45);          /* dims the page behind the open menu */
 
   /* Actions */
   --color-button: #006dff;        /* primary buttons on white: white text 4.5:1 */
@@ -56,6 +57,7 @@
 
   /* Icons are single-color SVGs used as <img>; this filter paints them brand blue */
   --filter-brand: brightness(0) saturate(100%) invert(47%) sepia(84%) saturate(7041%) hue-rotate(209deg) brightness(103%) contrast(104%);
+  --filter-white: brightness(0) invert(1);  /* ...and this paints them white (on brand blue) */
 
   /* Shadows (navy-tinted) */
   --shadow-soft: 0 20px 50px rgb(2 27 78 / 0.06);
@@ -97,4 +99,5 @@
 
   /* Motion */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-spring: cubic-bezier(0.3, 1.35, 0.5, 1);  /* slight overshoot: menu icons on hover */
 }

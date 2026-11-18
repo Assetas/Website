@@ -1,24 +1,44 @@
+{#- Site header. Desktop: Industry and Platform open a full-width panel on hover or focus (CSS only);
+    phones and tablets: a drawer from the right with expandable sections. Content comes from
+    nav.json (each menu's intro, and each page's icon or image and one-liner); behaviour from
+    static/js/menu.js. -#}
 {%- set current = canonicalPath or (page.url | cleanUrl) -%}
 <header class="site-header">
   <div class="container header-inner">
     <a class="logo" href="/"><img src="/static/img/brand/assetas-logo-white.png" alt="Assetas home" width="226" height="55"></a>
 
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="visually-hidden">Menu</span>
-      <span class="menu-icon" aria-hidden="true"></span>
-    </button>
-
     <nav id="site-nav" class="site-nav" aria-label="Main">
+      <div class="drawer-head">
+        <span>Menu</span>
+        <button class="menu-close" type="button"><span class="visually-hidden">Close menu</span></button>
+      </div>
       <ul class="nav-list">
         {%- for item in nav.header %}
-        <li class="nav-item{% if item.children %} has-children{% endif %}">
-          <a href="{{ item.url }}"{% if current == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {%- set childUrls %}{% for child in item.children %}|{{ child.url }}{% endfor %}|{% endset %}
+        {%- set inSection = current == item.url or ("|" + current + "|") in childUrls %}
+        <li class="nav-item{% if item.children %} has-panel{% endif %}{% if inSection %} is-current{% endif %}" style="--n: {{ loop.index0 }}">
+          <a class="nav-top" href="{{ item.url }}"{% if current == item.url %} aria-current="page"{% endif %}>{{ item.label }}{% if item.children %}<span class="chev" aria-hidden="true"></span>{% endif %}</a>
           {%- if item.children %}
-          <ul class="subnav">
-            {%- for child in item.children %}
-            <li><a href="{{ child.url }}"{% if current == child.url %} aria-current="page"{% endif %}>{{ child.label }}</a></li>
-            {%- endfor %}
-          </ul>
+          <button class="nav-acc" type="button" aria-expanded="{{ 'true' if inSection else 'false' }}" aria-controls="nav-panel-{{ loop.index }}">{{ item.label }}<span class="chev" aria-hidden="true"></span></button>
+          <div class="nav-panel" id="nav-panel-{{ loop.index }}">
+            <div class="container panel-inner">
+              <a class="panel-intro" href="{{ item.url }}">
+                <span class="panel-eyebrow">{{ item.intro.eyebrow }}</span>
+                <strong>{{ item.intro.title }}</strong>
+                <span class="panel-text">{{ item.intro.text }}</span>
+                <span class="panel-more">{{ item.intro.more }} <span aria-hidden="true">→</span></span>
+              </a>
+              <ul class="panel-grid{% if item.children[0].image %} panel-grid--photos{% endif %}">
+                {%- for child in item.children %}
+                <li style="--i: {{ loop.index0 }}"><a href="{{ child.url }}"{% if current == child.url %} aria-current="page"{% endif %}>
+                  {%- if child.image %}<span class="panel-photo"><img src="{{ child.image }}" alt="" width="432" height="288" loading="lazy"></span>
+                  {%- else %}<span class="panel-icon"><img src="/static/img/icons/{{ child.icon }}" alt="" width="22" height="22" loading="lazy"></span>{% endif %}
+                  <span class="panel-label"><strong>{{ child.label }}</strong><small>{{ child.blurb }}</small></span>
+                </a></li>
+                {%- endfor %}
+              </ul>
+            </div>
+          </div>
           {%- endif %}
         </li>
         {%- endfor %}
@@ -28,5 +48,12 @@
         <a class="button" href="/contact#contact">Book a demo</a>
       </div>
     </nav>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="visually-hidden">Menu</span>
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
   </div>
+  <span class="nav-ink" aria-hidden="true"></span>
+  <div class="nav-scrim"></div>
 </header>

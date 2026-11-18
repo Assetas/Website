@@ -173,7 +173,7 @@ Wix may change or go away later, so we save a complete reference copy first.
 
 - **Must carry over:** all the text, the page order and section order, the images and videos, links and URLs, titles and meta tags, and the general look (brand colors, light or dark sections, roughly the same layout).
 - **Fine to approximate or drop:** exact spacing, font sizes and pixel positions, overlapping or absolutely positioned decorations, scroll and entrance animations, hover effects, and Wix-specific layout quirks.
-- **How to write the code:** semantic HTML (`header`, `nav`, `main`, `section`, `footer`), one small shared stylesheet, flexbox and grid with only a few breakpoints, and a handful of reusable section patterns instead of custom CSS for each page. Use no JavaScript except the mobile menu toggle and the analytics snippet.
+- **How to write the code:** semantic HTML (`header`, `nav`, `main`, `section`, `footer`), one small shared stylesheet, flexbox and grid with only a few breakpoints, and a handful of reusable section patterns instead of custom CSS for each page. Use no JavaScript except the header menu script (`static/js/menu.js`) and the analytics snippet.
 
 Build order:
 
@@ -267,6 +267,14 @@ Build order:
 - **Fixed while merging (they were wrong in the preview):** the hero's white corner highlight dropped white text to 3.6:1, so it's now a navy shade that only darkens; big numbers on blue use a lighter amber (3.2:1, was 2.8:1); tags in a hero were white on white; form field outlines are `#7389b0` (3.5:1, was 1.2:1).
 - **Checked:** `npm run check` passes (25 pages, 176 internal URLs, no overflow at 390px); a contrast scan of every text element on all pages finds no failures; no console errors.
 - **Next:** a Lighthouse pass (Inter is one variable font instead of three families, so performance should hold), then layout changes per component.
+
+**Step 8, header menu: "Mega panel" (chosen and applied 2026-11-18).**
+- Five menu designs were built on a local preview page (Mega panel, Floating dock, Drafting table, Full-screen, Product preview) and the Mega panel was picked. The menu items and their order are unchanged.
+- **Desktop:** Industry and Platform open a full-width white panel under the header, on hover or keyboard focus (CSS only). A navy intro card on the left links to the overview page; Platform shows its 12 pages with an icon and a one-liner each, and Industry shows a photo card for each sector. The page behind dims, the panel unfolds downward and its items fade in one after another. An amber bar slides under the item you point at and rests under the current section.
+- **Phones and tablets (under 1024px):** a white drawer slides in from the right; Industry and Platform expand in place, and "Book a demo" and "Sign in" sit at the bottom. The page behind is dimmed and inert while it's open; Escape, the close button or a tap outside closes it.
+- **Where it lives:** `partials/header.njk`, the header block in `main.css`, `static/js/menu.js`. The intro text, one-liners, icons and images are in `nav.json` (`intro` on each menu, `blurb` plus `icon` or `image` on each page). The industry photos are 432×288 thumbnails in `static/img/menu/` (about 66 KB together, lazy-loaded).
+- **New tokens:** `--color-overlay` (page dim), `--filter-white` (white icons), `--ease-spring` (icon hover). Animations switch off with "reduce motion".
+- **To review:** the one-liners are drafts written from each page's meta description.
 
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 
