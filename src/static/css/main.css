@@ -257,9 +257,8 @@ main { background: var(--color-bg); overflow: hidden; }
 
 /* Media frame (video, screenshots) */
 .media { border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface); box-shadow: var(--shadow-raised); }
-.media video { width: 100%; }
-.media--narrow { max-width: 55rem; }
-.media--center { margin-inline: auto; }
+.media--video { max-width: var(--video-width); margin-inline: auto; aspect-ratio: 16 / 9; }
+.media--video video { width: 100%; height: 100%; object-fit: cover; }
 .measure { max-width: 52rem; }
 
 /* Logo strip: customer logos in one tone on an ice panel */

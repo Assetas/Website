@@ -294,6 +294,10 @@ Build order:
 - **Header spacing:** with five top-level items, the header tightens between 1024 and 1280px (smaller logo, less padding) so "Book a demo" stays on one line.
 - **To review:** the new copy (the Programs intro and one-liners in `nav.json`, and the page text).
 
+**Step 11, one video size (2026-11-18).**
+- All 10 videos are 1280×720. Every one now sits in `<div class="media media--video">`: 55rem (880px) wide at most, centered, in a fixed 16:9 frame. The width lives in one token, `--video-width` in `tokens.css`. The home page video was left-aligned before; it's centered now like the rest.
+- `.media--narrow` and `.media--center` are gone (videos were their only users). The rule is written down in `CLAUDE.md`.
+
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 
 1. **Design system:** consolidate fonts (drop the licensed Wix fonts), set a type scale, a spacing scale, a color palette with contrast checks, and button and link states. Write it down in `src/static/css/tokens.css` (done).

@@ -90,6 +90,7 @@
 
   /* Layout */
   --container: 86rem;
+  --video-width: 55rem;           /* 880px: every <video>, 16:9 (495px tall) */
   --radius: 0.875rem;             /* 14px: inputs, small panels */
   --radius-lg: 1.75rem;           /* 28px: cards, panels, media */
   --radius-xl: 2rem;              /* 32px: testimonial card */
