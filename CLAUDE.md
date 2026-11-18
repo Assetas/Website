@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The www.assetas.com website, built with Eleventy v3 + Nunjucks and deployed to GitHub Pages from the public repo `Assetas/Website`. Until it goes live on the domain, the preview is at https://assetas.github.io/Website/. The **Open items** section at the end of this file is the backlog: check it before starting new work, add anything left unresolved, and strike items when they're done. Git history is the change log.
 
-The repo is public: never commit drafts, internal notes or secrets. Changes go straight to `main` (no PRs); the `v1-replica` tag is the fallback.
+The repo is public: never commit drafts, internal notes or secrets. Changes go straight to `main` (no PRs); the `v1-replica` tag is the fallback. Several people push to `main`, so run `git pull --rebase` before starting work and again before pushing. Never force-push.
 
 ## Commands
 
