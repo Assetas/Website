@@ -73,6 +73,14 @@ All new or rewritten copy (page text, headings, buttons, `nav.json` intros and b
 - `check.mjs` (`npm run check`) and `audit.mjs` — see Commands. Both use Playwright.
 - `node tools/import-media.mjs <source> <dest> [--width 1600] [--quality 80] [--audio]` — copy an original into `src/static/<dest>`: images → resized WebP, videos → H.264 mp4 (max 1280 wide, no audio unless `--audio`) + jpg poster, anything else copied as is.
 
+## GitHub Pages limits
+
+The limits are the same on every plan. On the free plan, the repo has to stay public. As of November 2026 the built site and `.git` were each about 45 MB.
+- **Hard limits:** the published site can be at most 1 GB. The source repo should stay under 1 GB. Git warns on files over 50 MB and rejects files over 100 MB, so large downloads go on a GitHub Release, as Trek does (up to 2 GB per file, and release downloads don't count toward Pages bandwidth). A deploy fails after 10 minutes.
+- **Soft limits:** 100 GB of bandwidth a month, and GitHub may rate-limit with `429` responses during big traffic spikes. Videos use the most bandwidth, so keep them compressed with `import-media.mjs`. GitHub doesn't report Pages bandwidth, so watch GA4 traffic instead. The 10 builds an hour limit doesn't apply to our Actions workflow.
+- **Usage policy:** a company marketing site is fine. The site can't be used for e-commerce or SaaS, or to collect passwords or payments. Forms post to Web3Forms, not to Pages.
+- **No server features:** no server-side redirects (use `redirects.json`), custom headers, access control, or server code. Each site gets one custom domain, and the apex redirects to `www`.
+
 ## Going live on www.assetas.com
 
 Nothing changes in DNS until we decide to go live. When we do:
