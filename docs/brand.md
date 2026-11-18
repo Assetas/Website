@@ -1,5 +1,7 @@
 # Brand values (captured from www.assetas.com, 2026-11-17)
 
+> **Redesign (2026-11-18): "Blueprint".** The site moved to a new look: Electric Blue `#006dff` as a surface for the header, heroes and closing band; white pages with ice `#edf4ff` sections; deep field navy `#021b4e` for headings, dark bands and the footer; safety amber `#ffc21a` for the main action on blue. Inter replaces Wix Madefor Text, Epilogue and Playfair Display. The orange values below are the old brand and are no longer used. Current values and contrast notes: `src/static/css/tokens.css` and `/design-system`.
+>
 > **Phase 4 update:** the live values now live in `src/static/css/tokens.css`, and the visual reference is the `/design-system` page. The tables below record what was captured from the live site, plus the Phase 4 additions.
 
 These values come from the Phase 1 capture (`npm run capture`), which counts the colors, fonts and sizes used across all 26 pages at 1440 px. They're the starting point for the replica. Phase 4 can change them.

@@ -12,16 +12,6 @@ export default {
   // The live site's GA4 property is G-HJYFX0NXR6. The preview should get its own property;
   // leave it empty to turn analytics off.
   gaId: production ? "G-HJYFX0NXR6" : "",
-  // Candidate redesign themes (src/static/css/themes/). Off in production. On the preview,
-  // ?theme=<name> or the floating switcher picks one; ?theme=original goes back.
-  themePreview: !production,
-  themes: [
-    { id: "voltage", label: "Voltage" },
-    { id: "prism", label: "Prism" },
-    { id: "kinetic", label: "Kinetic" },
-    { id: "blueprint", label: "Blueprint" },
-    { id: "aurora", label: "Aurora" },
-  ],
   appUrl: "https://app.assetas.com/",
   statusUrl: "https://app.assetas.com/SystemHealth",
   year: new Date().getFullYear(),

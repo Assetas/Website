@@ -258,14 +258,15 @@ Build order:
   - The documents behind "Download brief" (`/defense`) and "Read the full story" (`/oilandgas`).
   - Legal review of the 2017 privacy policy.
 
-**Step 7 exploration, theme candidates (2026-11-17): built locally, not committed.**
-- Direction: primary color `#006DFF`, primary font Inter; catchy, modern, electric.
-- Five candidates in `src/static/css/themes/`: Voltage (dark, technical), Prism (light, premium gradients), Kinetic (bold, square, ink and lime), Blueprint (brand blue as the surface, safety amber actions) and Aurora (dark indigo, glass, serif accents), plus `_shared.css`. Each only overrides tokens and component styles; the markup is the same.
-- On preview builds, `?theme=<id>` loads one (remembered in the browser) and a floating switcher flips between them; `?theme=original` goes back. `site.themePreview` turns this off in production.
-- `main.css` now uses four new tokens (`--color-on-fill`, `--color-band`, `--color-button-hover`, `--color-accent-hover`) where it hard-wired white text on dark bands. The current design renders pixel-identical.
-- `static/img/brand/assetas-logo-light.png`: the logo with a white wordmark, for dark backgrounds.
-- Checked: every palette's text colors meet WCAG AA; no horizontal overflow at 390px on all 26 pages in any theme; `npm run check` passes.
-- **Next:** pick one (or combine parts), move it into `tokens.css` and `main.css`, then remove the switcher and the theme files.
+**Step 7, new look: "Blueprint" (chosen and applied 2026-11-18).**
+- Direction: primary color `#006DFF`, Inter as the only font; catchy, modern, electric. Five candidates were built as switchable themes (Voltage, Prism, Kinetic, Blueprint, Aurora; commit a44f42c) and Blueprint was picked.
+- **The look:** brand blue is a surface. The header, every hero and the closing band are blocks of `#006DFF` with a faint drafting grid; pages are white with ice (`#edf4ff`) sections; deep field navy (`#021b4e`) carries headings, dark bands and the footer; safety amber (`#ffc21a`) marks the main action on blue. Pill buttons, 28px card radius, cards lift on hover.
+- **Where it lives:** `tokens.css` (all values, with contrast notes) and `main.css` (each component rule). The theme switcher, the five theme files and `site.themePreview` are gone. `/design-system` shows the new palette and components.
+- **Fonts:** Inter (variable, with optical sizes) replaces Wix Madefor Text, Epilogue and Playfair Display.
+- **Logo:** the header and footer use `img/brand/assetas-logo-white.png` (the same artwork, all white). The JSON-LD and social image still use the original colors.
+- **Fixed while merging (they were wrong in the preview):** the hero's white corner highlight dropped white text to 3.6:1, so it's now a navy shade that only darkens; big numbers on blue use a lighter amber (3.2:1, was 2.8:1); tags in a hero were white on white; form field outlines are `#7389b0` (3.5:1, was 1.2:1).
+- **Checked:** `npm run check` passes (25 pages, 176 internal URLs, no overflow at 390px); a contrast scan of every text element on all pages finds no failures; no console errors.
+- **Next:** a Lighthouse pass (Inter is one variable font instead of three families, so performance should hold), then layout changes per component.
 
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 

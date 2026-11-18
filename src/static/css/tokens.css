@@ -1,37 +1,73 @@
 /* Assetas design tokens: every color, font, size and spacing value the site uses.
    Change a value here and it changes everywhere. See /design-system for a visual reference.
-   Contrast ratios are WCAG 2.2: normal text needs 4.5:1, large text (24px+, or 19px+ bold) needs 3:1. */
+   Contrast ratios are WCAG 2.2: normal text needs 4.5:1, large text (24px+, or 19px+ bold) and
+   UI boundaries need 3:1.
+
+   Look: "Blueprint" (chosen 2026-11-18). Brand blue is a surface: the header, every hero and the
+   closing band are blocks of #006dff with a drafting grid. Pages are white with ice sections;
+   deep navy carries the dark bands and the footer. Safety amber marks the main action on blue.
+   Inter throughout. */
 
 :root {
-  /* Neutrals */
-  --color-text: #000000;          /* headings, primary text */
-  --color-body: #3b3b3b;          /* body copy: 11.2:1 on white, 10.2:1 on surface */
-  --color-muted: #6b6b6b;         /* secondary text: 5.3:1 on white, 4.9:1 on surface */
-  --color-bg: #ffffff;            /* main content panel */
-  --color-surface: #f4f4f4;       /* header, footer, alternate sections */
-  --color-dark: #2c2c2c;          /* darkest bands */
-  --color-on-dark: #f4f4f4;       /* text on dark bands: 10.2:1 on #3b3b3b */
-  --color-on-fill: #ffffff;       /* headings and strong text on dark bands and accent fills */
-  --color-band: #3b3b3b;          /* dark bands and panels (stats, dark CTA, dark-band, tooltips) */
-  --color-border: #dadada;
+  /* Ink and neutrals */
+  --color-text: #021b4e;          /* Deep field navy: headings, primary text. 16.5:1 on white */
+  --color-body: #33466b;          /* Steel: body copy. 9.4:1 on white, 8.5:1 on ice */
+  --color-muted: #4e5f80;         /* secondary text: 6.4:1 on white, 5.8:1 on ice */
+  --color-bg: #ffffff;            /* page */
+  --color-surface: #edf4ff;       /* Ice: alternate sections, panels, icon circles */
+  --color-border: #d3e2f8;        /* dividers and card outlines (decorative) */
+  --color-border-input: #7389b0;  /* form field outlines: 3.5:1 on white, 3.2:1 on ice */
+  --color-rule: rgb(2 27 78 / 0.3); /* strong table rules */
 
-  /* Brand orange, in three strengths (decided in Phase 4: "two oranges", plus one for dark bands) */
-  --color-accent: #cc7722;        /* brand orange: big stat numbers, rules, markers, decoration only (3.4:1) */
-  --color-accent-text: #a65c12;   /* small orange text on white/surface, and orange fills behind white text (5.1:1) */
-  --color-accent-on-dark: #eb9f55;/* small orange text on #3b3b3b / #2c2c2c bands (5.1:1 / 6.4:1) */
+  /* Brand blue */
+  --color-brand: #006dff;         /* Electric blue: header, hero, closing band, buttons. White text 4.5:1 */
+  --color-brand-deep: #0062e6;    /* bottom of the hero gradient. White text 5.4:1 */
+  --color-brand-shade: rgb(2 27 78 / 0.18); /* navy shading on blue blocks (only ever darkens, so text contrast only rises) */
+  --color-brand-glow: rgb(0 109 255 / 0.45); /* blue glow on navy panels */
+  --color-accent: #006dff;        /* big numerals, rules and markers on white: 4.5:1, 4.1:1 on ice */
+  --color-accent-text: #0058d6;   /* small blue text: eyebrows, labels. 6.2:1 on white, 5.6:1 on ice */
+  --color-accent-hover: #0047b3;
+  --color-link: #0058d6;          /* inline links: 6.2:1 on white */
+
+  /* Safety amber: the main action on blue, and accents on navy. Never text on white (1.6:1). */
+  --color-amber: #ffc21a;         /* navy text on amber 10.2:1; amber on navy 10.2:1 */
+  --color-amber-hover: #ffd352;
+  --color-amber-light: #ffd352;   /* big numerals on brand blue: 3.2:1 (large text only) */
+
+  /* Navy bands and footer */
+  --color-dark: #021b4e;          /* statement band, footer */
+  --color-band: #021b4e;          /* dark bands and panels (stats, dark CTA, dark-band, tooltips) */
+  --color-on-dark: #b5c6e6;       /* body text on navy: 9.6:1 */
+  --color-on-dark-muted: #8fa3c8; /* secondary text on navy: 6.5:1 */
+  --color-accent-on-dark: #ffc21a;/* small accent text on navy: amber 10.2:1 */
+  --color-on-fill: #ffffff;       /* text on blue (4.5:1) and navy (16.5:1) */
+  --color-on-fill-line: rgb(255 255 255 / 0.22); /* rules and outlines on blue and navy */
+  --color-on-fill-tint: rgb(255 255 255 / 0.08); /* chips and tags on navy, tiles on blue */
+  --color-grid: rgb(255 255 255 / 0.09);         /* drafting grid, major lines */
+  --color-grid-fine: rgb(255 255 255 / 0.05);    /* drafting grid, minor lines */
+  --color-scrim: rgb(0 0 0 / 0.55);              /* behind captions on photos */
 
   /* Actions */
-  --color-button: #3b3b3b;        /* primary buttons: white text 11.2:1 */
+  --color-button: #006dff;        /* primary buttons on white: white text 4.5:1 */
   --color-button-text: #ffffff;
-  --color-button-hover: #000000;
-  --color-accent-hover: #8f4f10;  /* hover on orange buttons */
-  --color-link: #006dff;          /* links and the logo blue: 4.5:1 on white */
-  --color-focus: #006dff;         /* keyboard focus outline */
+  --color-button-hover: #0058d6;  /* white text 6.2:1 */
+  --color-focus: #021b4e;         /* keyboard focus: 16.5:1 on white, 3.6:1 on brand blue */
+  --color-focus-on-dark: #ffc21a; /* keyboard focus on navy: 10.2:1 */
 
-  /* Fonts */
-  --font-body: "Wix Madefor Text", system-ui, sans-serif;
-  --font-heading: "Epilogue", system-ui, sans-serif;
-  --font-display: "Playfair Display", Georgia, serif;   /* quotes and stat numbers */
+  /* Icons are single-color SVGs used as <img>; this filter paints them brand blue */
+  --filter-brand: brightness(0) saturate(100%) invert(47%) sepia(84%) saturate(7041%) hue-rotate(209deg) brightness(103%) contrast(104%);
+
+  /* Shadows (navy-tinted) */
+  --shadow-soft: 0 20px 50px rgb(2 27 78 / 0.06);
+  --shadow-raised: 0 30px 60px -30px rgb(2 27 78 / 0.5);
+  --shadow-float: 0 40px 80px -30px rgb(2 27 78 / 0.6);
+  --shadow-menu: 0 20px 50px rgb(2 27 78 / 0.3);
+  --shadow-hover: 0 20px 40px -24px rgb(0 109 255 / 0.6);
+
+  /* Fonts: Inter for everything (variable, with optical sizes) */
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;   /* quotes and stat numbers */
 
   /* Type scale (fluid between ~390px and ~1440px wide) */
   --text-h1: clamp(2rem, 4.5vw + 0.75rem, 4.25rem);
@@ -41,6 +77,7 @@
   --text-lead: clamp(1.05rem, 0.5vw + 0.95rem, 1.25rem);
   --text-body: clamp(1rem, 0.3vw + 0.95rem, 1.125rem);
   --text-small: 0.95rem;
+  --text-label: 0.8rem;           /* eyebrows and small uppercase labels */
 
   /* Spacing */
   --space-1: 0.5rem;
@@ -51,6 +88,13 @@
 
   /* Layout */
   --container: 86rem;
-  --radius: 0.5rem;
-  --radius-lg: 2rem;
+  --radius: 0.875rem;             /* 14px: inputs, small panels */
+  --radius-lg: 1.75rem;           /* 28px: cards, panels, media */
+  --radius-xl: 2rem;              /* 32px: testimonial card */
+  --radius-pill: 999px;           /* buttons, tags */
+  --grid-major: 120px;            /* drafting grid spacing */
+  --grid-minor: 24px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }

@@ -60,6 +60,10 @@
       ]
     }
   ],
+  "social": [
+    { "label": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/company/assetas" },
+    { "label": "YouTube", "icon": "youtube", "url": "https://www.youtube.com/@assetasinc" }
+  ],
   "legal": [
     { "label": "Privacy Policy", "url": "/privacy" },
     { "label": "Terms of Use", "url": "/terms" }
