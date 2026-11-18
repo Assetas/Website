@@ -92,6 +92,7 @@ Nothing changes in DNS until we decide to go live. When we do:
 - Real documents for "Download brief" (`/defense`, now → `/contact`) and "Read the full story" (`/oilandgas`, now → the Smart Forms case study PDF). "Book a demo" and "Talk to our engineer" on `/telemetry`, `/reporting` and `/ai` both go to `/contact`.
 - Legal review of `/privacy` (dated July 24, 2017; keep its wording until then).
 - Contact form: send one test from the preview and confirm it arrives at sales@assetas.com.
+- `/pricing` compare table: the tier values on these rows are suggestions that need confirming with whoever owns pricing — Bulk-import existing records, Score criticality & lifecycle, Track permit limits & deviations, Submit electronic reports, Run LDAR programs, Keep SPCC plans current, Audit log retention, Export logs to your SIEM, Require multi-factor sign-in, Get security documentation. Their tooltips reuse claims from `/assets`, `/compliance`, `/platform/emissions`, `/ldar`, `/spcc` and `/security`.
 - Preview analytics: `site.gaId` is empty on the preview. Create a separate GA4 property if visitor data is wanted before going live.
 
 **Copy to review:** the `nav.json` intros and one-liners, and the `/programs` page text.
