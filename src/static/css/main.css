@@ -240,8 +240,10 @@ main { background: var(--color-bg); overflow: hidden; }
   -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent); mask-image: linear-gradient(180deg, #000 40%, transparent);
 }
 .hero h1, .hero h2, .hero h3, .hero p, .hero .lead, .hero .inline-list, .hero .section-head .lead { color: var(--color-on-fill); }
-.hero .eyebrow { display: inline-block; padding: 0.4rem 0.85rem; border-radius: var(--radius-pill); background: var(--color-amber); color: var(--color-text); }
-.hero .eyebrow::before { background: var(--color-text); }
+.hero .eyebrow { color: var(--color-on-fill); }
+.hero .eyebrow::before { content: none; }
+/* Tick used as a separator inside an eyebrow, matching the leading tick's shape */
+.eyebrow .tick { display: inline-block; width: 0.9em; height: 0.3em; margin-inline: 0.55em; border-radius: 2px; background: var(--color-amber); vertical-align: 0.2em; }
 .hero h1 u { text-decoration-color: var(--color-amber); text-decoration-thickness: 0.09em; text-underline-offset: 0.1em; }
 .hero .button--outline { background: transparent; color: var(--color-on-fill); border-color: var(--color-on-fill); }
 .hero .button--outline:hover { background: var(--color-on-fill); color: var(--color-text); }
