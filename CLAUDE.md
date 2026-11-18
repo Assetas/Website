@@ -28,6 +28,7 @@ There are no unit tests. `npm run check` is the gate: CI (`.github/workflows/dep
 - **Shell:** `src/_includes/layouts/base.njk` (meta, OG/Twitter tags, Organization JSON-LD on home, GA) + `partials/` (header, footer, CTA band, pricing table). Menus and footer links come from `src/_data/nav.json`.
 - **Redirects:** GitHub Pages can't do server redirects. Add `{ from, to, note }` to `src/_data/redirects.json`; `src/redirects.njk` paginates it into meta-refresh + JS forwarding pages (keeps `#hash`, canonical to target, noindex).
 - **Styling:** `src/static/css/tokens.css` defines every color/font/size/spacing token (with contrast notes); `main.css` must use only those tokens. The `/design-system` page (not in nav or sitemap) is the visual reference. Orange usage rule: `#cc7722` only for large/decorative uses, `#a65c12` for small text and fills behind white text, `#eb9f55` for small orange text on dark bands.
+- **Videos:** every `<video>` uses `autoplay muted loop playsinline controls` plus a `poster` and `width`/`height` (no `preload="none"`, which delays playback). Keep `controls` so visitors can pause or unmute. Import new videos with `tools/import-media.mjs` to get the mp4 + jpg poster.
 - **Static files:** `src/static/` is passed through to `/static/` (not `/assets/`, which is a page URL).
 
 ## Reference capture tooling (`tools/`)
