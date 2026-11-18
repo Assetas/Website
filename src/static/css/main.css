@@ -537,6 +537,70 @@ main { background: var(--color-bg); overflow: hidden; }
 /* Single-message page */
 .empty-state { min-height: 24rem; display: grid; place-items: center; text-align: center; }
 
+/* 404 page (src/404.njk). The hero ends in a sensor feed that spikes, drops out and goes dashed; it plays
+   once on load (about 4.5 s) and shows finished with reduced motion. Then a work-order ticket for the
+   missing page, the closest matches, and a directory of the menus. */
+.hero--signal { padding-bottom: 0; }
+.signal { margin-top: var(--space-3); }
+.signal-plot { position: relative; height: 7rem; }
+.signal-trace { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 5px var(--color-amber-glow)); }
+.signal-trace stop { stop-color: var(--color-amber); }
+.signal-trace path { fill: none; stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.signal-lost { stroke: var(--color-amber); stroke-dasharray: 6 7; opacity: 0.7; }
+.signal-dot { position: absolute; left: 65.83%; top: 80%; width: 0.7rem; height: 0.7rem; margin: -0.35rem 0 0 -0.35rem; border-radius: 50%; background: var(--color-amber); box-shadow: 0 0 0 4px var(--color-amber-glow); }
+.signal-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--color-amber); opacity: 0; }
+.signal-labels { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); }
+.signal-tag { font-size: var(--text-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-on-fill); font-feature-settings: "tnum"; }
+.signal-readout { display: inline-flex; align-items: center; gap: 0.45em; padding: 0.3rem 0.75rem; border-radius: var(--radius-pill); background: var(--color-amber); color: var(--color-text); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.signal-readout::before { content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--color-text); }
+.signal-live { animation: signal-draw 2.2s cubic-bezier(0.3, 0, 0.4, 1) 0.3s both; }
+.signal-lost { animation: signal-draw 1s linear 2.5s both; }
+.signal-dot { animation: signal-pop 0.4s var(--ease-spring) 2.45s both; }
+.signal-dot::after { animation: signal-ping 0.8s var(--ease) 2.6s 2; }
+.signal-labels { animation: signal-fade 0.6s var(--ease) 2.7s both; }
+@keyframes signal-draw { from { clip-path: inset(-2rem 100% -2rem 0); } to { clip-path: inset(-2rem 0 -2rem 0); } }
+@keyframes signal-pop { from { transform: scale(0); } }
+@keyframes signal-ping { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(3.2); } }
+@keyframes signal-fade { from { opacity: 0; } }
+
+.not-found { display: grid; gap: var(--space-4); align-items: start; }
+@media (min-width: 56rem) { .not-found { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-5); } }
+.ticket { border: 1.5px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg); box-shadow: var(--shadow-soft); }
+.ticket-head { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--color-dark); }
+.ticket-head p { margin: 0; font-size: var(--text-label); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.ticket-id { color: var(--color-accent-on-dark); font-feature-settings: "tnum"; }
+.ticket-status { padding: 0.2rem 0.7rem; border: 1.5px solid var(--color-amber); border-radius: var(--radius-pill); color: var(--color-accent-on-dark); }
+.ticket-body { padding: var(--space-3); }
+.ticket-body h2 { margin-bottom: var(--space-2); }
+.ticket-fields { margin: 0; }
+.ticket-fields div { display: grid; gap: 0.15rem var(--space-2); padding-block: 0.7rem; border-top: 1px dashed var(--color-border-input); }
+.ticket-fields dt { font-size: var(--text-label); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-text); padding-top: 0.2em; }
+.ticket-fields dd { margin: 0; color: var(--color-text); overflow-wrap: anywhere; }
+.ticket-fields time { font-feature-settings: "tnum"; }
+@media (min-width: 30rem) { .ticket-fields div { grid-template-columns: 11rem minmax(0, 1fr); } }
+.ticket-path { padding: 0.1rem 0.45rem; border-radius: 0.35rem; background: var(--color-surface); font-weight: 600; }
+.matches-list { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: grid; gap: var(--space-1); }
+.match { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: var(--space-2); padding: 0.9rem 1.15rem; border: 1.5px solid var(--color-border); border-radius: var(--radius); text-decoration: none; color: var(--color-text); transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.2s var(--ease); }
+.match::after { content: "\2192"; grid-row: 1 / span 2; grid-column: 2; color: var(--color-accent); font-weight: 700; transition: transform 0.2s var(--ease); }
+.match:hover { border-color: var(--color-brand); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.match:hover::after { transform: translateX(3px); }
+.match-label { font-weight: 700; }
+.match-path { grid-column: 1; font-size: var(--text-small); color: var(--color-accent-text); overflow-wrap: anywhere; }
+
+.directory { display: grid; gap: var(--space-4) var(--space-3); }
+@media (min-width: 48rem) { .directory { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .directory { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); } }
+@media (min-width: 48rem) and (max-width: 63.99rem) { .directory-group--wide { grid-column: 1 / -1; } }
+.directory-heading { font-size: var(--text-label); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--space-2); }
+.directory-heading::before { content: ""; display: block; width: 1.75rem; height: 2px; margin-bottom: 0.65rem; background: var(--color-amber); }
+.directory-heading a { color: var(--color-accent-text); text-decoration: none; }
+.directory-heading a:hover { text-decoration: underline; }
+.directory-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2) var(--space-3); }
+@media (min-width: 30rem) { .directory-group--wide ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.directory-group li a { font-weight: 700; color: var(--color-text); text-decoration: none; }
+.directory-group li a:hover { color: var(--color-accent-text); text-decoration: underline; }
+.directory-group li p { margin: 0.15rem 0 0; font-size: var(--text-small); color: var(--color-muted); }
+
 /* About page */
 .about-photo { margin: 0; justify-self: center; max-width: 28rem; }
 .about-photo figcaption { margin-top: var(--space-1); font-size: 0.8rem; }
