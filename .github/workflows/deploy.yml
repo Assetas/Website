@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Pull requests (Dependabot's included) get the same build and check, but never deploy.
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -10,9 +13,10 @@ permissions:
   pages: write
   id-token: write
 
+# Deploys queue one at a time; a new push to a PR cancels that PR's older run.
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -37,11 +41,13 @@ jobs:
           for i in $(seq 60); do curl -sf -o /dev/null http://localhost:8080/Website/ && break; sleep 1; done
           npm run check -- --base http://localhost:8080/Website/ || { cat serve.log; exit 1; }
           kill $server
-      - uses: actions/upload-pages-artifact@v5
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:

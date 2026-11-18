@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The www.assetas.com website, built with Eleventy v3 + Nunjucks and deployed to GitHub Pages from the public repo `Assetas/Website`. Until it goes live on the domain, the preview is at https://assetas.github.io/Website/. The **Open items** section at the end of this file is the backlog: check it before starting new work, add anything left unresolved, and strike items when they're done. Git history is the change log.
 
-The repo is public: never commit drafts, internal notes or secrets. Changes go straight to `main` (no PRs); the `v1-replica` tag is the fallback. Several people push to `main`, so run `git pull --rebase` before starting work and again before pushing. Never force-push.
+The repo is public: never commit drafts, internal notes or secrets. Changes go straight to `main` (no PRs, apart from Dependabot's); the `v1-replica` tag is the fallback. A tag ruleset stops `v1-replica` and `trek-v*` tags from being moved or deleted. Several people push to `main`, so run `git pull --rebase` before starting work and again before pushing. Never force-push.
 
 ## Commands
 
@@ -18,7 +18,7 @@ npm run check    # needs dev server running; broken internal links/assets + hori
 node tools/audit.mjs [--base URL]   # headings/titles/descriptions/images per page + external link check
 ```
 
-There are no unit tests. `npm run check` is the gate: CI (`.github/workflows/deploy.yml`) builds, serves `_site`, runs it against `http://localhost:8080/Website/`, and blocks the deploy on failure. Both `check` and `audit` crawl pages from `sitemap.xml`, so pages excluded from the sitemap aren't checked; the one exception is the 404 page, which `check` loads at `/spc` (expecting a 404 status and at least one suggestion).
+There are no unit tests. `npm run check` is the gate: CI (`.github/workflows/deploy.yml`) builds, serves `_site`, runs it against `http://localhost:8080/Website/`, and blocks the deploy on failure. Pull requests into `main` (Dependabot's included) run the same build and check but never deploy, so wait for a green check before merging one. Both `check` and `audit` crawl pages from `sitemap.xml`, so pages excluded from the sitemap aren't checked; the one exception is the 404 page, which `check` loads at `/spc` (expecting a 404 status and at least one suggestion).
 
 ## Architecture
 
