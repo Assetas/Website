@@ -11,6 +11,8 @@
   --color-surface: #f4f4f4;       /* header, footer, alternate sections */
   --color-dark: #2c2c2c;          /* darkest bands */
   --color-on-dark: #f4f4f4;       /* text on dark bands: 10.2:1 on #3b3b3b */
+  --color-on-fill: #ffffff;       /* headings and strong text on dark bands and accent fills */
+  --color-band: #3b3b3b;          /* dark bands and panels (stats, dark CTA, dark-band, tooltips) */
   --color-border: #dadada;
 
   /* Brand orange, in three strengths (decided in Phase 4: "two oranges", plus one for dark bands) */
@@ -21,6 +23,8 @@
   /* Actions */
   --color-button: #3b3b3b;        /* primary buttons: white text 11.2:1 */
   --color-button-text: #ffffff;
+  --color-button-hover: #000000;
+  --color-accent-hover: #8f4f10;  /* hover on orange buttons */
   --color-link: #006dff;          /* links and the logo blue: 4.5:1 on white */
   --color-focus: #006dff;         /* keyboard focus outline */
 

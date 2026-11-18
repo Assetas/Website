@@ -1,0 +1,17 @@
+{#- Theme preview, part 1 (preview builds only): load the chosen candidate theme's stylesheet
+    before the page renders. ?theme=<id> picks a theme and remembers it in this browser;
+    ?theme=original goes back to the current design. -#}
+<script>
+  (function () {
+    var themes = {{ site.themes | dump | safe }}.map(function (t) { return t.id; });
+    var t = null;
+    try {
+      var q = new URLSearchParams(location.search).get("theme");
+      if (q !== null) localStorage.setItem("assetas-theme", q);
+      t = localStorage.getItem("assetas-theme");
+    } catch (e) {}
+    if (themes.indexOf(t) === -1) return;
+    document.documentElement.setAttribute("data-theme", t);
+    document.write('<link rel="stylesheet" href="{{ "/static/css/themes/" | url }}' + t + '.css">');
+  })();
+</script>

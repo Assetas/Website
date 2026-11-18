@@ -1,0 +1,67 @@
+/* Shared by all five candidate themes (imported at the top of each theme file).
+   Inter as the primary font, a compact sticky header, tighter display type, and motion
+   that respects prefers-reduced-motion. Each theme then sets its own palette and treatments. */
+
+:root {
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+html { scroll-padding-top: 6rem; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-optical-sizing: auto; letter-spacing: -0.006em; }
+
+/* Display type: Inter wants tighter tracking as it gets bigger */
+h1, h2, h3, h4, .h4, .h3-size { letter-spacing: -0.025em; }
+h1 { letter-spacing: -0.045em; line-height: 1.02; }
+h2 { letter-spacing: -0.035em; line-height: 1.08; }
+.lead { line-height: 1.55; }
+.stat { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.045em; font-feature-settings: "tnum"; }
+.eyebrow, .card-kicker { letter-spacing: 0.08em; }
+/* Inter numerals run wider than the old serif: keep three-up stat rows inside their cells
+   (gradient-filled numerals vanish where they overflow) */
+.quote-card .stat { font-size: clamp(1.75rem, 2.6vw, 2.4rem); }
+.stats > div, .stat-cards li, .hero-stats li { min-width: 0; }
+
+/* Compact sticky header */
+.site-header { position: sticky; top: 0; }
+.header-inner { min-height: 4.5rem; }
+.logo img { width: 140px; }
+@media (min-width: 64rem) {
+  .header-inner { min-height: 5rem; padding-bottom: 0; }
+  .logo img { width: 160px; }
+  .site-nav { padding-left: 6%; }
+  .nav-list { gap: var(--space-4); }
+}
+.site-nav a { font-weight: 500; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { text-decoration: none; }
+.subnav { padding: var(--space-1); }
+@media (min-width: 64rem) {
+  .subnav { min-width: 11rem; text-align: left; box-shadow: 0 16px 40px rgb(0 0 0 / 0.18); }
+  .subnav li { padding: 0; }
+  .subnav a { display: block; padding: 0.45rem 0.75rem; border-radius: calc(var(--radius) * 0.6); }
+}
+
+/* Closing band: center the paragraph block, not just its lines */
+.cta-band .lead { margin-inline: auto; }
+
+/* Main panel: themes decide their own page shape */
+main { border-radius: 0; }
+
+/* Buttons and cards get a little motion */
+.button { font-weight: 600; transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.2s var(--ease); }
+.card, .plan, .stat-cards li, .feature, .panel, .tile img { transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease), background-color 0.25s var(--ease); }
+.arrow-link { font-weight: 600; }
+
+/* Customer logos in one tone so the strip reads as a single row */
+.logo-strip img { filter: grayscale(1); opacity: 0.7; transition: opacity 0.2s var(--ease), filter 0.2s var(--ease); }
+.logo-strip img:hover { filter: none; opacity: 1; }
+.logo-strip-title { font-size: var(--text-small); letter-spacing: 0.12em; font-weight: 600; }
+
+/* Videos and hero images sit in a softer frame */
+.media { border-radius: var(--radius-lg); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .button:hover, .card:hover, .plan:hover { transform: none !important; }
+}
