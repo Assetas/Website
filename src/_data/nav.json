@@ -17,6 +17,20 @@
       ]
     },
     {
+      "label": "Programs",
+      "url": "/programs",
+      "intro": {
+        "eyebrow": "Programs",
+        "title": "Compliance programs with a clock on them",
+        "text": "Survey rounds, repair deadlines, and the evidence behind them, on the same record as your assets.",
+        "more": "All programs"
+      },
+      "children": [
+        { "label": "LDAR", "url": "/ldar", "image": "/static/img/menu/ldar.webp", "blurb": "Survey rounds, repair clocks, and Delay of Repair on one record" },
+        { "label": "SPCC", "url": "/spcc", "image": "/static/img/menu/spcc.webp", "blurb": "Berm pass/fail, containment sizing, and PE-ready plans" }
+      ]
+    },
+    {
       "label": "Platform",
       "url": "/platform",
       "intro": {
@@ -34,8 +48,6 @@
         { "label": "AI", "url": "/ai", "icon": "ai-node.svg", "blurb": "Models that run on governed, traceable history" },
         { "label": "Reporting", "url": "/reporting", "icon": "aggregate.svg", "blurb": "Audit-ready reports from asset and field data" },
         { "label": "Workflows", "url": "/workflows", "icon": "workflows.svg", "blurb": "Route work orders and escalate overdue items" },
-        { "label": "LDAR", "url": "/ldar", "icon": "pollution.svg", "blurb": "Leak detection and repair, end to end" },
-        { "label": "SPCC", "url": "/spcc", "icon": "lost-product.svg", "blurb": "Spill plans, inspections, and evidence together" },
         { "label": "Security", "url": "/security", "icon": "risk-controls.svg", "blurb": "Zero-Trust on Azure, mapped to NIST 800-171" },
         { "label": "Trek", "url": "/trek", "icon": "capture.svg", "blurb": "Assetas in your pocket for field crews" }
       ]

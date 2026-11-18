@@ -141,7 +141,7 @@ a { color: inherit; }
   .site-header:not(.has-ink) .is-current > .nav-top { box-shadow: inset 0 -3px 0 var(--color-amber); }
   .nav-ink { display: block; position: absolute; left: 0; bottom: 0; z-index: 2; width: 0; height: 3px; border-radius: 3px 3px 0 0; background: var(--color-amber); opacity: 0; pointer-events: none; transition: transform 0.4s var(--ease), width 0.4s var(--ease), opacity 0.25s; }
   .nav-actions { display: flex; align-items: center; gap: var(--space-4); }
-  .nav-actions .button { padding: 0.7rem 1.4rem; border-color: var(--color-amber); background: var(--color-amber); color: var(--color-text); }
+  .nav-actions .button { padding: 0.7rem 1.4rem; white-space: nowrap; border-color: var(--color-amber); background: var(--color-amber); color: var(--color-text); }
   .nav-actions .button:hover { border-color: var(--color-amber-hover); background: var(--color-amber-hover); }
 
   .nav-panel { position: absolute; left: 0; right: 0; top: 100%; background: var(--color-bg); box-shadow: var(--shadow-menu); visibility: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 0.45s var(--ease), visibility 0s linear 0.45s; }
@@ -173,6 +173,11 @@ a { color: inherit; }
   .panel-grid--photos a:hover .panel-photo img { transform: scale(1.06); }
 }
 @media (min-width: 64rem) and (max-width: 79.99rem) {
+  .logo img { width: 140px; }
+  .site-nav { gap: var(--space-3); padding-left: 2%; }
+  .nav-list { gap: 0; }
+  .nav-top { padding: 0 0.75rem; }
+  .nav-actions { gap: var(--space-3); }
   .panel-inner { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--space-3); }
   .panel-grid:not(.panel-grid--photos) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

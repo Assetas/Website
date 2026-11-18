@@ -287,6 +287,13 @@ Build order:
   - The "Learn more" links already had `visually-hidden` suffixes, so they stay.
   - `npm run check` passes (25 pages, 180 internal URLs).
 
+**Step 10, Programs menu and overview page (2026-11-18).**
+- **Menu:** a new "Programs" item sits between Industry and Platform and holds LDAR and SPCC, moved out of Platform (which now lists 10 pages). Security stays under Platform, although the live site's inventory grouped it with the programs. Programs gets its own panel with an intro card and a photo card per program; on `/programs`, `/ldar` and `/spcc` the amber bar rests under it.
+- **New overview page `/programs`** (`src/programs.njk`): hero, a card for each program linking to `/ldar` and `/spcc`, the loop both share (rounds on a schedule, capture in Trek, findings become owned work, proof from the live record), the client stats band from `/ldar`, and the default closing band. Every fact and stat on it comes from the `/ldar` and `/spcc` pages; nothing new is claimed.
+- **Images:** 2:1 card crops in `static/img/programs/` and menu thumbnails in `static/img/menu/`, both cut from the existing LDAR and SPCC photos.
+- **Header spacing:** with five top-level items, the header tightens between 1024 and 1280px (smaller logo, less padding) so "Book a demo" stays on one line.
+- **To review:** the new copy (the Programs intro and one-liners in `nav.json`, and the page text).
+
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 
 1. **Design system:** consolidate fonts (drop the licensed Wix fonts), set a type scale, a spacing scale, a color palette with contrast checks, and button and link states. Write it down in `src/static/css/tokens.css` (done).
