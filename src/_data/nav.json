@@ -6,14 +6,14 @@
       "intro": {
         "eyebrow": "Industries",
         "title": "Built for the regulations you answer to",
-        "text": "Asset and compliance management for oil & gas, municipalities, defense and infrastructure.",
+        "text": "Asset and compliance management for oil & gas, municipalities, defense, and infrastructure.",
         "more": "All industries"
       },
       "children": [
-        { "label": "Oil & Gas", "url": "/oilandgas", "image": "/static/img/menu/oil-and-gas.webp", "blurb": "Wells, tanks and pipelines, tracked to PHMSA and EPA rules" },
-        { "label": "Municipality", "url": "/municipality", "image": "/static/img/menu/municipalities.webp", "blurb": "Infrastructure and capital projects in one system of truth" },
-        { "label": "Defense", "url": "/defense", "image": "/static/img/menu/defense.webp", "blurb": "Custody, condition and location on every asset" },
-        { "label": "Infrastructure", "url": "/infrastructure", "image": "/static/img/menu/infrastructure.webp", "blurb": "Uptime across distributed sites from one platform" }
+        { "label": "Oil & Gas", "url": "/oilandgas", "image": "/static/img/menu/oil-and-gas.webp", "blurb": "Wells, tanks, and pipelines, tracked to PHMSA and EPA rules" },
+        { "label": "Municipality", "url": "/municipality", "image": "/static/img/menu/municipalities.webp", "blurb": "Infrastructure and capital projects in one source of truth" },
+        { "label": "Defense", "url": "/defense", "image": "/static/img/menu/defense.webp", "blurb": "Custody, condition, and location on every asset" },
+        { "label": "Infrastructure", "url": "/infrastructure", "image": "/static/img/menu/infrastructure.webp", "blurb": "One asset model across sites, fleets, and networks" }
       ]
     },
     {
@@ -22,12 +22,12 @@
       "intro": {
         "eyebrow": "Platform",
         "title": "One platform from the field to the boardroom",
-        "text": "Assets, inspections, telemetry and compliance on one data model.",
+        "text": "Assets, inspections, telemetry, and compliance on one data model.",
         "more": "Platform overview"
       },
       "children": [
         { "label": "Assets", "url": "/assets", "icon": "assets.svg", "blurb": "Every asset in one searchable registry" },
-        { "label": "Smart Forms", "url": "/forms", "icon": "forms.svg", "blurb": "Offline forms with photos, GPS and signatures" },
+        { "label": "Smart Forms", "url": "/forms", "icon": "forms.svg", "blurb": "Offline forms with photos, GPS, and signatures" },
         { "label": "Compliance", "url": "/compliance", "icon": "compliance.svg", "blurb": "Permits and findings tracked against the rules" },
         { "label": "Telemetry", "url": "/telemetry", "icon": "sensor-feeds.svg", "blurb": "Sensor feeds with anomaly detection" },
         { "label": "Emissions", "url": "/platform/emissions", "icon": "regulatory-emissions.svg", "blurb": "GHG inventory and permit limits from field records" },
@@ -35,7 +35,7 @@
         { "label": "Reporting", "url": "/reporting", "icon": "aggregate.svg", "blurb": "Audit-ready reports from asset and field data" },
         { "label": "Workflows", "url": "/workflows", "icon": "workflows.svg", "blurb": "Route work orders and escalate overdue items" },
         { "label": "LDAR", "url": "/ldar", "icon": "pollution.svg", "blurb": "Leak detection and repair, end to end" },
-        { "label": "SPCC", "url": "/spcc", "icon": "lost-product.svg", "blurb": "Spill plans, inspections and evidence together" },
+        { "label": "SPCC", "url": "/spcc", "icon": "lost-product.svg", "blurb": "Spill plans, inspections, and evidence together" },
         { "label": "Security", "url": "/security", "icon": "risk-controls.svg", "blurb": "Zero-Trust on Azure, mapped to NIST 800-171" },
         { "label": "Trek", "url": "/trek", "icon": "capture.svg", "blurb": "Assetas in your pocket for field crews" }
       ]
@@ -43,7 +43,7 @@
     { "label": "Pricing", "url": "/pricing" },
     { "label": "Contact", "url": "/contact" }
   ],
-  "footerTagline": "Where Operational Technology meets compliance — one platform connecting the field to the boardroom.",
+  "footerTagline": "Where operational technology meets compliance — one platform connecting the field to the boardroom.",
   "footer": [
     {
       "heading": "Industries",

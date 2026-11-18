@@ -276,6 +276,17 @@ Build order:
 - **New tokens:** `--color-overlay` (page dim), `--filter-white` (white icons), `--ease-spring` (icon hover). Animations switch off with "reduce motion".
 - **To review:** the one-liners are drafts written from each page's meta description.
 
+**Step 9, voice and tone (written down 2026-11-18).**
+- The site's voice, copy patterns and writing rules are now in `CLAUDE.md` ("Voice and tone"). They're taken from the current pages, and all new copy follows them.
+- **Existing copy brought in line (same day):**
+  - `/pricing` buttons are now in sentence case ("Start now", "Talk to sales", "Talk to enterprise sales").
+  - Spaced en dashes are now em dashes on `/platform`, `/ai`, `/ldar` and `/municipality`. `/privacy` is left as is because it's legal text.
+  - The Home description no longer ends in a call to action (154 characters).
+  - The ↗ is gone from the two Home buttons that link to pages on this site.
+  - The `nav.json` one-liners and intros now use Oxford commas, the Infrastructure blurb is more specific, and the footer tagline is in sentence case.
+  - The "Learn more" links already had `visually-hidden` suffixes, so they stay.
+  - `npm run check` passes (25 pages, 180 internal URLs).
+
 Work through this **one page group at a time** on branches, with a PR for each. Each PR gets a preview (a PR-preview action, or a staging branch).
 
 1. **Design system:** consolidate fonts (drop the licensed Wix fonts), set a type scale, a spacing scale, a color palette with contrast checks, and button and link states. Write it down in `src/static/css/tokens.css` (done).
