@@ -1,0 +1,28 @@
+{#- Footer decoration, behind the footer content. The telemetry trace runs across the top; the alpha mark
+    (from img/brand/alpha-light.svg, flipped upright) is drawn over construction lines, behind the links in
+    the lower-right corner. static/js/menu.js plays both once when the footer scrolls
+    into view; without it, or with reduced motion, they show finished. Styles: "Footer" in main.css. -#}
+<svg class="footer-trace" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="footer-trace-fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-opacity="0.1"/>
+      <stop offset="0.7" stop-opacity="0.6"/>
+      <stop offset="1" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <path stroke="url(#footer-trace-fade)" d="M0 40 L60 40 L70 37 L80 41 L140 40 L150 36 L158 42 L166 40 L300 40 L310 34 L318 44 L326 40 L470 40 L480 38 L488 41 L600 40 L606 30 L612 46 L620 8 L628 54 L636 36 L642 42 L650 40 L780 40 L790 36 L798 42 L806 40 L900 40 L910 37 L918 41 L1000 40"/>
+</svg>
+<svg class="footer-mark" viewBox="1590 -41 520 520" aria-hidden="true" focusable="false">
+  <g class="footer-mark-guides">
+    <path pathLength="1" d="M1636 219 a214 214 0 1 0 428 0 a214 214 0 1 0 -428 0"/>
+    <path pathLength="1" d="M1560 219 H2140"/>
+    <path pathLength="1" d="M1850 -71 V509"/>
+    <path pathLength="1" d="M1637 6 H2063 V433 H1637 Z"/>
+  </g>
+  <g transform="matrix(1 0 0 -1 0 460)">
+    <path class="footer-mark-swirl" pathLength="1" transform="translate(2043.96 40.1094)" d="m 0,0 c 3.747,-5.087 -0.111,-12.2 -6.271,-11.048 -30.242,6.199 -56.105,28.255 -68.239,59.451 0,0 -30.094,87.35 -57.106,165.639 -22.598,58.14 -82.042,88.66 -138.222,72.168 -48.98,-14.346 -82.747,-60.564 -85.567,-113.101 -1.855,-34.773 9.871,-68.831 32.58,-93.946 v 32.468 c 0,4.371 3.302,7.908 7.346,7.908 h 25.604 c 4.045,0 7.384,-3.537 7.384,-7.908 V 4.848 c 0,-5.762 -4.564,-10.054 -9.87,-8.147 -71.282,25.554 -118.035,99.033 -113.916,179.706 4.192,81.786 59.63,150.14 134.658,165.996 75.14,15.896 150.504,-24.639 183.491,-98.716 0,0 42.302,-122.717 74.139,-215.035 C -10.13,17.406 -7.088,9.617 0,0"/>
+    <path class="footer-mark-bar" pathLength="1" transform="translate(1825.0693 202.4883)" d="m 0,0 v -167.268 c 0,-4.331 -3.303,-7.868 -7.347,-7.868 H -32.95 c -4.045,0 -7.385,3.537 -7.385,7.868 V 0 c 0,4.332 3.34,7.908 7.385,7.908 H -7.347 C -3.303,7.908 0,4.332 0,0"/>
+    <path class="footer-mark-stem" pathLength="1" transform="translate(1938.7627 110.291)" d="m 0,0 c 1.484,-4.014 1.113,-9.657 -1.483,-13.075 -19.593,-27.381 -45.642,-47.45 -74.621,-58.856 -7.792,-3.099 -14.287,3.378 -14.287,11.724 v 218.651 c 0,4.332 3.303,7.909 7.384,7.909 h 25.567 c 4.082,0 7.384,-3.577 7.384,-7.909 V 9.021 c 10.464,11.604 18.887,25.434 24.602,40.932 0.705,3.935 6.679,4.809 8.2,0.199 z"/>
+    <path class="footer-mark-pointer" pathLength="1" transform="translate(2062.8467 335.8574)" d="m 0,0 c 1.187,-6.637 -4.564,-12.319 -10.649,-10.055 l -25.01,9.3 -28.053,-81.349 c -1.409,-5.086 -8.126,-5.325 -9.722,-0.119 l -18.33,53.093 c -2.338,6.835 -2.857,12.717 -0.593,19.672 l 9.202,26.427 -27.237,10.134 c -5.936,2.106 -7.569,10.452 -2.745,14.903 l 79.704,73.718 c 4.602,4.689 12.431,2.185 13.656,-4.69 C -13.173,74.036 -6.604,37.038 0,0"/>
+  </g>
+</svg>

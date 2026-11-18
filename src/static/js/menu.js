@@ -1,4 +1,4 @@
-// Header menu: the only page script besides analytics.
+// Header menu and footer effects: the only page script besides analytics.
 // Desktop: the Industry and Platform panels open on hover or keyboard focus in CSS alone; this adds
 // the amber bar that slides under the item you point at (and rests under the current section).
 // Phones and tablets: opens and closes the drawer and its expandable sections.
@@ -77,4 +77,19 @@ if (header && nav && toggle) {
   document.fonts.ready.then(() => inkTo(rest));
   header.classList.add("has-ink");
   inkTo(rest);
+}
+
+// Footer: the telemetry trace runs and the alpha mark draws itself once, when the footer scrolls into
+// view (CSS: "Footer" in main.css). Without this, or with reduced motion, it shows finished.
+const footer = document.querySelector(".site-footer");
+
+if (footer && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  footer.classList.add("is-armed");
+  const watch = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.intersectionRatio > 0.25)) {
+      footer.classList.add("is-in");
+      watch.disconnect();
+    }
+  }, { threshold: 0.3 });
+  watch.observe(footer);
 }

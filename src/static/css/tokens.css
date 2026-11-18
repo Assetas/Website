@@ -45,6 +45,14 @@
   --color-on-fill-tint: rgb(255 255 255 / 0.08); /* chips and tags on navy, tiles on blue */
   --color-grid: rgb(255 255 255 / 0.09);         /* drafting grid, major lines */
   --color-grid-fine: rgb(255 255 255 / 0.05);    /* drafting grid, minor lines */
+
+  /* Footer drawing (decorative, no contrast requirement): the alpha mark drawn on navy, the telemetry trace */
+  --color-sketch-line: rgb(255 255 255 / 0.28);       /* finished outline of the mark's white strokes */
+  --color-sketch-fill: rgb(255 255 255 / 0.04);       /* ...and their fill */
+  --color-sketch-fill-blue: rgb(0 109 255 / 0.18);    /* fill of the blue strokes (outlined in --color-brand) */
+  --color-sketch-guide: rgb(255 255 255 / 0.1);       /* construction lines at rest */
+  --color-sketch-guide-live: rgb(255 255 255 / 0.35); /* construction lines while they draw */
+  --color-amber-glow: rgb(255 194 26 / 0.55);         /* glow around the telemetry trace */
   --color-scrim: rgb(0 0 0 / 0.55);              /* behind captions on photos */
   --color-overlay: rgb(2 27 78 / 0.45);          /* dims the page behind the open menu */
 
