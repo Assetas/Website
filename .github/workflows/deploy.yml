@@ -24,11 +24,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # Preview build (pathPrefix /Website/, noindex). At cutover, set SITE_ENV: production here.
+      # Preview build (pathPrefix /Website/, noindex). To go live on www.assetas.com, set SITE_ENV: production here.
       - run: npm run build
       # Block the deploy on broken internal links/assets or sideways scrolling on phones.
       # The dev server serves _site with the same extensionless URLs as Pages.
-      # At cutover the path prefix goes away: change --base to http://localhost:8080/.
+      # On www.assetas.com the path prefix goes away: change --base to http://localhost:8080/.
       - run: npx playwright install --with-deps --only-shell chromium
       - name: Check links and mobile layout
         run: |

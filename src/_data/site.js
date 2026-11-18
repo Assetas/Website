@@ -1,15 +1,15 @@
-// Site-wide settings. Build with SITE_ENV=production at cutover to switch to the real domain.
+// Site-wide settings. Build with SITE_ENV=production for www.assetas.com.
 const production = process.env.SITE_ENV === "production";
 
 export default {
   name: "Assetas",
   production,
-  // The preview lives at https://assetas.github.io/Website/ until cutover.
+  // The preview lives at https://assetas.github.io/Website/.
   url: production ? "https://www.assetas.com/" : "https://assetas.github.io/Website/",
   pathPrefix: production ? "/" : "/Website/",
-  // Keep the preview out of search engines so it can't compete with the live site.
+  // Keep the preview out of search engines so it can't compete with www.assetas.com.
   noindex: !production,
-  // The live site's GA4 property is G-HJYFX0NXR6. The preview should get its own property;
+  // G-HJYFX0NXR6 is the www.assetas.com GA4 property. The preview should get its own property;
   // leave it empty to turn analytics off.
   gaId: production ? "G-HJYFX0NXR6" : "",
   appUrl: "https://app.assetas.com/",

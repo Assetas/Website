@@ -13,8 +13,7 @@ export default function (eleventyConfig) {
     new URL(String(path).replace(/^\//, ""), site.url).href
   );
 
-  // "/contact.html" -> "/contact". GitHub Pages serves extensionless URLs from .html files,
-  // matching the URLs Wix uses today.
+  // "/contact.html" -> "/contact". GitHub Pages serves extensionless URLs from .html files.
   eleventyConfig.addFilter("cleanUrl", (url) =>
     String(url).replace(/index\.html$/, "").replace(/\.html$/, "")
   );

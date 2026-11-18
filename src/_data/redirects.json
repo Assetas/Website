@@ -1,4 +1,4 @@
 [
-  { "from": "/platform/about", "to": "/about", "note": "About page moved out of Platform (Phase 4, step 2)" },
-  { "from": "/inquiry-services-page", "to": "/contact", "note": "Empty Wix booking page retired (Phase 4, step 2)" }
+  { "from": "/platform/about", "to": "/about", "note": "About page moved out of Platform" },
+  { "from": "/inquiry-services-page", "to": "/contact", "note": "Retired booking page" }
 ]

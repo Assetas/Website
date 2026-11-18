@@ -2,15 +2,12 @@
   "name": "assetas-website",
   "version": "0.1.0",
   "private": true,
-  "description": "Static rebuild of www.assetas.com for GitHub Pages",
+  "description": "www.assetas.com, built with Eleventy for GitHub Pages",
   "type": "module",
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
     "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\"",
-    "capture": "node tools/capture.mjs",
-    "download-media": "node tools/download-media.mjs",
-    "compare": "node tools/compare.mjs",
     "check": "node tools/check.mjs"
   },
   "engines": {

@@ -1,8 +1,8 @@
-// Copy a captured original from reference/ into the site, resized and compressed for the web.
+// Copy an original image, video or file into the site, resized and compressed for the web.
 //
 //   node tools/import-media.mjs <source> <dest> [--width 1600] [--quality 80]
 //
-// <source>  a file name in reference/media/{images,videos,files}/ (or a path to an SVG from reference/pages/*/svgs/)
+// <source>  path to the original file
 // <dest>    path under src/static/ without an extension, e.g. img/home/hero-card
 //
 // Images  -> src/static/<dest>.webp  (resized to --width, never upscaled; transparency kept)
@@ -24,16 +24,8 @@ const positional = args.filter((a, i) => !a.startsWith("--") && !args[i - 1]?.st
 const [source, dest] = positional;
 if (!source || !dest) throw new Error("usage: node tools/import-media.mjs <source> <dest> [--width 1600] [--quality 80] [--audio]");
 
-async function findSource(name) {
-  if (await fs.stat(name).then(() => true, () => false)) return name;
-  for (const kind of ["images", "videos", "files"]) {
-    const p = path.join("reference/media", kind, name);
-    if (await fs.stat(p).then(() => true, () => false)) return p;
-  }
-  throw new Error(`not found in reference/media: ${name}`);
-}
-
-const src = await findSource(source);
+const src = source;
+if (!(await fs.stat(src).then(() => true, () => false))) throw new Error(`not found: ${src}`);
 const ext = path.extname(src).toLowerCase();
 const base = path.join("src/static", dest);
 await fs.mkdir(path.dirname(base), { recursive: true });
