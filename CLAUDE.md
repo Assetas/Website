@@ -22,7 +22,7 @@ There are no unit tests. `npm run check` is the gate: CI (`.github/workflows/dep
 
 ## Architecture
 
-- **Preview vs production** is driven entirely by `SITE_ENV` in `src/_data/site.js` (URL, `pathPrefix`, `noindex`, `gaId`). It also holds `formAction` (FormSubmit → sales@assetas.com) and `trekRelease` (Trek zips live on a GitHub Release, too large for the repo).
+- **Preview vs production** is driven entirely by `SITE_ENV` in `src/_data/site.js` (URL, `pathPrefix`, `noindex`, `gaId`). It also holds `formAction` and `formAccessKey` (Web3Forms; the key is public by design) and `trekRelease` (Trek zips live on a GitHub Release, too large for the repo).
 - **Links:** always write root-relative URLs (`/contact`, `/static/...`). `HtmlBasePlugin` in `eleventy.config.js` adds the `/Website/` prefix in HTML attributes — but not inside `<script>`, where you must use the `url` filter (see `src/redirects.njk`).
 - **Pages:** one `src/*.njk` (or `src/platform/*.njk`) per page, each with an explicit `permalink: /slug.html` to keep the live Wix URLs; GitHub Pages serves them extensionless. The `cleanUrl` filter strips `.html` for canonicals/sitemap. Front matter: `layout: layouts/base.njk`, `title`, `description`, optional `canonicalPath`, `ogImage`, `sitemap: false`, and `status` (`replica` or `phase4`, informational only).
 - **Shell:** `src/_includes/layouts/base.njk` (meta, OG/Twitter tags, Organization JSON-LD on home, GA) + `partials/` (header, footer, CTA band, pricing table). Menus and footer links come from `src/_data/nav.json`.

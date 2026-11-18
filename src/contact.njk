@@ -21,12 +21,15 @@ status: replica
     <h2 class="contact-title">How can we help?</h2>
 
     <form class="contact-form panel"{% if site.formAction %} action="{{ site.formAction }}" method="post"{% endif %}>
-      {#- FormSubmit settings (https://formsubmit.co): email subject, where to go after sending,
-          a readable table layout, and a hidden honeypot field that bots fill in and people don't. -#}
-      <input type="hidden" name="_subject" value="New inquiry from the Assetas website">
-      <input type="hidden" name="_next" value="{{ '/contact-thanks' | absoluteUrl }}">
-      <input type="hidden" name="_template" value="table">
-      <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+      {#- Web3Forms settings (https://docs.web3forms.com): access key, email subject and sender name,
+          where to go after sending (the free plan only redirects within the site's own domain), and
+          a hidden honeypot checkbox that bots tick and people don't. The visitor's "email" field
+          becomes the reply-to address. -#}
+      <input type="hidden" name="access_key" value="{{ site.formAccessKey }}">
+      <input type="hidden" name="subject" value="New inquiry from the Assetas website">
+      <input type="hidden" name="from_name" value="Assetas website">
+      <input type="hidden" name="redirect" value="{{ '/contact-thanks' | absoluteUrl }}">
+      <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
       <fieldset class="field field--full">
         <legend>How can we help? <span aria-hidden="true">*</span></legend>
         <div class="choices">

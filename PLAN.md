@@ -113,14 +113,14 @@ Wix may change or go away later, so we save a complete reference copy first.
 - Batch D: /trek, /trek-app-downloads, /platform/about, /privacy, /terms, /inquiry-services-page.
 - **All 26 pages are rebuilt.** Static files total 42 MB, including 10 videos.
 
-**Contact form (decided 2026-11-17):** FormSubmit, delivering to sales@assetas.com (`site.formAction`).
-- Submissions go to `https://formsubmit.co/sales@assetas.com`, then the visitor lands on `/contact-thanks`.
-- Each field has a readable name, so the email reads "Company or organization: …", "Industry: Defense: Yes", and so on.
-- There's a hidden `_honey` spam trap and FormSubmit's own captcha step.
-- Email is now required, so sales can reply. It was optional on the live site.
-- Tested locally with the request intercepted: empty forms are blocked and every field posts correctly.
-- **2026-11-17:** I sent a test submission from the preview, labeled "TEST - new website preview (please ignore)". FormSubmit replied "This form needs Activation" and emailed an 'Activate Form' link to sales@assetas.com. **Waiting on someone with that inbox to click it,** then send one more test to confirm delivery.
-- **To activate:** the first real submission makes FormSubmit send a one-time activation email to sales@assetas.com. Someone with access to that inbox must click it, or later submissions are held. FormSubmit then offers a random alias that can replace the plain address in `site.formAction`, so the address isn't visible in the page source.
+**Contact form (switched to Web3Forms 2026-11-18):** submissions post to `https://api.web3forms.com/submit` (`site.formAction`) with the access key in `site.formAccessKey`. Web3Forms emails them to the address the key was created for, then the visitor lands on `/contact-thanks`.
+- Why the switch: FormSubmit (chosen 2026-11-17) held submissions until someone clicked an activation email in the sales@assetas.com inbox, and it showed its own captcha page. Web3Forms has no activation step and a free tier of about 250 submissions a month.
+- The access key is public by design: it can only send to its one address. Locking it to our domain is a paid feature.
+- Each field has a readable name, so the email reads "Company or organization: …", "Industry: Defense: Yes", and so on. The visitor's `email` field becomes the reply-to address.
+- Spam: a hidden `botcheck` honeypot checkbox. Web3Forms offers free hCaptcha if spam gets through (turn it on in the Web3Forms dashboard, then add its widget and script to the form).
+- The free plan only redirects within the site's own domain, which `/contact-thanks` is on both the preview and production.
+- Email is required, so sales can reply. It was optional on the live site.
+- **To confirm:** send one test from the preview and check it arrives in the inbox the key belongs to (it should be sales@assetas.com).
 
 **Done:** The Trek downloads are published as the GitHub Release [trek-v4.0.2.0](https://github.com/Assetas/Website/releases/tag/trek-v4.0.2.0) (published 2026-11-17). All three links on `/trek-app-downloads` return 200, and the file sizes match the originals. For a new Trek version, publish a new release and update `site.trekRelease` in `src/_data/site.js`.
 
@@ -327,5 +327,5 @@ Decided (2026-11-17):
 
 Decided later:
 
-5. ~~**Form backend**~~ Decided: FormSubmit, delivering to sales@assetas.com.
+5. ~~**Form backend**~~ Decided: Web3Forms (switched from FormSubmit on 2026-11-18).
 6. ~~**Trek downloads**~~ Decided: GitHub Releases on this repo (release `trek-v4.0.2.0`).

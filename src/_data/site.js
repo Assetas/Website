@@ -15,11 +15,12 @@ export default {
   appUrl: "https://app.assetas.com/",
   statusUrl: "https://app.assetas.com/SystemHealth",
   year: new Date().getFullYear(),
-  // Where the contact form posts. FormSubmit emails each submission to sales@assetas.com.
-  // The first submission sends FormSubmit's one-time activation email to that address; after
-  // activating, FormSubmit offers a random alias you can use here instead of the plain address.
-  // Set to "" to disable the form (it then shows a notice and a disabled Submit button).
-  formAction: "https://formsubmit.co/sales@assetas.com",
+  // Where the contact form posts: Web3Forms (https://web3forms.com) emails each submission to the
+  // address the access key was created for. The key is meant to be public; it only lets people
+  // send to that one address. Set formAction to "" to disable the form (it then shows a notice
+  // and a disabled Submit button).
+  formAction: "https://api.web3forms.com/submit",
+  formAccessKey: "c82ea54f-e7bf-4034-9d9c-912587998e52",
   // Trek app packages are published as a GitHub Release (they're too big for the repo).
   trekRelease: "https://github.com/Assetas/Website/releases/download/trek-v4.0.2.0",
 };
