@@ -14,7 +14,8 @@
   --color-body: #33466b;          /* Steel: body copy. 9.4:1 on white, 8.5:1 on ice */
   --color-muted: #4e5f80;         /* secondary text: 6.4:1 on white, 5.8:1 on ice */
   --color-bg: #ffffff;            /* page */
-  --color-surface: #edf4ff;       /* Ice: alternate sections, panels, icon circles */
+  --color-surface: #edf4ff;       /* Ice: panels, icon circles, small surfaces */
+  --color-section-alt: #f4f5f7;   /* Light gray: alternate page sections. Graphite text 15.5:1, muted 6.1:1, small blue text 5.8:1 */
   --color-border: #d3e2f8;        /* dividers and card outlines (decorative) */
   --color-border-input: #7389b0;  /* form field outlines: 3.5:1 on white, 3.2:1 on ice */
   --color-rule: rgb(2 27 78 / 0.3); /* strong table rules */
@@ -55,6 +56,13 @@
   --color-amber-glow: rgb(255 194 26 / 0.55);         /* glow around the telemetry trace */
   --color-scrim: rgb(0 0 0 / 0.55);              /* behind captions on photos */
   --color-overlay: rgb(2 27 78 / 0.45);          /* dims the page behind the open menu */
+
+  /* Poster hero (/ldar): navy scrim over the photograph, left to right, with a blue glow behind the copy.
+     White text over the deep and mid stops stays above 4.5:1. */
+  --color-scrim-deep: rgb(2 27 78 / 0.93);
+  --color-scrim-mid: rgb(2 27 78 / 0.85);
+  --color-scrim-edge: rgb(2 27 78 / 0.55);
+  --color-poster-glow: rgb(0 109 255 / 0.72);
 
   /* Actions */
   --color-button: #006dff;        /* primary buttons on white: white text 4.5:1 */
