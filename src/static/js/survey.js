@@ -1,6 +1,6 @@
 /* Survey map: a diagram of one facility record branching to pads, equipment and components, drawn
    on <canvas class="survey-canvas"> inside .survey-map. Loaded only on pages with `survey: true` (currently
-   /ldar). Pulses run from the record out to components; amber dots are leak findings and flare when a pulse
+   /ldar). Pulses run from the record out to components; amber dots are leak findings that flare, with a "WO" (work order) tag, when a pulse
    reaches them. Colors come from the --color-survey-* tokens. It pauses offscreen and in a background tab,
    has a pause button (WCAG 2.2.2: motion over 5 s needs one) and draws a single still frame when the visitor
    prefers reduced motion. */
@@ -103,7 +103,22 @@
     }
   }
 
-  var pulses = [], nextPulse = 0, PULSE_TIME = 1.5, TAIL = 70;
+  var pulses = [], nextPulse = 0, PULSE_TIME = 1.5, TAIL = 70, WO_TIME = 1.8;
+
+  // A "WO" tag that rises above a leak finding when a pulse reaches it: the finding becomes a work order
+  function workOrder(l, since) {
+    var a = Math.min(1, since / 0.15) * Math.min(1, (WO_TIME - since) / 0.5);
+    var rise = 4 * Math.min(1, since / 0.3), tw = 24, th = 15, x = l.x - tw / 2, y = l.y - 14 - th - rise;
+    ctx.fillStyle = rgba(RING, a);
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(x, y, tw, th, 3); else ctx.rect(x, y, tw, th);
+    ctx.fill();
+    ctx.fillStyle = rgba(LEAK, a);
+    ctx.font = "700 9px " + FONT;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("WO", l.x, y + th / 2 + 0.5);
+  }
 
   function draw(t, moving) {
     resize();
@@ -188,6 +203,7 @@
         ctx.strokeStyle = rgba(RING, 1);
         ctx.lineWidth = 1.5;
         ctx.beginPath(); ctx.arc(l.x, l.y, 4.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        if (since >= 0 && since < WO_TIME) workOrder(l, since);
       } else {
         ctx.fillStyle = flare > 0.05 ? rgba(PULSE, 0.6 + 0.4 * flare) : rgba(INK, 0.6);
         ctx.beginPath(); ctx.arc(l.x, l.y, 3 + flare * 2, 0, Math.PI * 2); ctx.fill();
