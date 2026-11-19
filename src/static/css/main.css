@@ -908,7 +908,8 @@ main { background: var(--color-bg); overflow: hidden; }
 .headline-run { font-size: var(--text-run); line-height: 1.12; letter-spacing: -0.02em; font-weight: 700; text-wrap: pretty; max-width: 52rem; }
 .headline-run span { color: var(--color-muted); font-weight: 600; }
 .section-head--run { max-width: 52rem; }
-.hero .headline-run { font-size: var(--text-run-hero); line-height: 1.08; max-width: 40rem; margin-bottom: var(--space-4); }
+.hero .headline-run { font-size: var(--text-run-hero); line-height: 1.05; letter-spacing: -0.03em; max-width: 40rem; margin-bottom: var(--space-4); }
+.hero .headline-run:last-child { margin-bottom: 0; }
 .hero .headline-run em { font-style: normal; color: var(--color-amber-light); }
 .hero .headline-run span { color: var(--color-on-dark); }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }

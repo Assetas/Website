@@ -108,7 +108,7 @@
   --text-small: 0.95rem;
   --text-label: 0.8rem;           /* eyebrows and small uppercase labels */
   --text-run: clamp(1.6rem, 2.2vw + 0.8rem, 2.75rem);      /* headline runs: a bold statement that continues in a softer color (/ldar section heads) */
-  --text-run-hero: clamp(1.75rem, 1.6vw + 1rem, 2.75rem); /* ...and in the hero */
+  --text-run-hero: clamp(2.25rem, 2.8vw + 1rem, 4rem); /* ...and in the hero */
   --text-mock: 0.72rem;           /* labels inside product placeholders */
   --text-stat-row: clamp(2.5rem, 3vw + 1.25rem, 3.75rem); /* numbers in a divided stat row */
 
