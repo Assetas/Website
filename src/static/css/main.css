@@ -922,13 +922,22 @@ main { background: var(--color-bg); overflow: hidden; }
   .hero-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .hero--poster.hero--product .hero-copy { max-width: none; }
 }
-.hero-mocks { position: relative; }
-@media (min-width: 40rem) { .hero-mocks { padding: 0 0 calc(var(--space-5) + var(--space-4)) var(--space-5); } }  /* room for the phone below the window's lower-left corner */
+/* Product shots: a record card (styled like the /assets hero image) with open space on its left, where
+   the Trek phone stands, 30% taller than the card and centered on it. The phone keeps its right edge a
+   quarter of the way across the card and runs past the card's left edge; on phones, where that would
+   leave the screen, the card steps in instead. Percentages of the width keep it in proportion
+   (card height 0.512 of its width, phone height 2.047 of its own). */
+.hero-shots { position: relative; padding: 5.1% 0; }
+.hero-shot-record { display: block; width: 100%; height: auto; background: var(--color-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-float); }
+.hero-shot-phone { position: absolute; left: -5%; top: 0; width: 30%; height: auto; border-radius: 16% / 7.8%; box-shadow: var(--shadow-float); }
+@media (max-width: 40rem) {
+  .hero-shots { padding: 6.4% 0 6.4% 5%; }
+  .hero-shot-phone { left: 0; }
+}
 
 /* Product placeholders: drawn stand-ins for screenshots, each tagged "Placeholder" until the real
    screen replaces it. Skeleton lines take their width from --w. */
 .mock { position: relative; background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; font-size: var(--text-mock); }
-.mock--window { box-shadow: var(--shadow-float); }
 .mock-bar { display: flex; align-items: center; gap: var(--space-1); padding: 0.6rem var(--space-2); background: var(--color-section-alt); border-bottom: 1px solid var(--color-border); font-weight: 600; color: var(--color-muted); }
 .mock-dots { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--color-border-input); box-shadow: 0.8rem 0 var(--color-border-input), 1.6rem 0 var(--color-border-input); margin-right: 1.8rem; }
 .mock-tag { margin-left: auto; padding: 0.15rem 0.55rem; border-radius: var(--radius-pill); background: var(--color-amber); color: var(--color-text); font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -965,13 +974,7 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-bars span { flex: 1; height: var(--h); border-radius: 0.3rem 0.3rem 0 0; background: var(--color-accent); opacity: 0.85; }
 .mock-bars span:nth-child(4) { background: var(--color-amber); opacity: 1; }
 .mock-table { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: var(--space-2); align-items: center; padding-top: var(--space-3); }
-.mock-button { display: block; width: 100%; height: 1.6rem; border-radius: var(--radius-pill); background: var(--color-accent); margin-top: var(--space-1); }
 
-.mock--phone { display: none; }
-@media (min-width: 40rem) {
-  .mock--phone { display: block; position: absolute; left: 0; bottom: 0; width: 11.5rem; border-radius: var(--radius-lg); border: 6px solid var(--color-dark); box-shadow: var(--shadow-float); }
-}
-.mock-notch { width: 35%; height: 0.9rem; margin: 0 auto; border-radius: 0 0 var(--radius) var(--radius); background: var(--color-dark); }
 
 /* Bento grid (/ldar): cards of different widths, each led by a product placeholder */
 .bento { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
