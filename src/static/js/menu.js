@@ -1,5 +1,5 @@
 // Header menu and footer effects: the only page script besides analytics.
-// Desktop: the Industry and Platform panels open on hover or keyboard focus in CSS alone; this adds
+// Desktop: the Industry, Programs and Platform panels open on hover or keyboard focus in CSS alone; this adds
 // the amber bar that slides under the item you point at (and rests under the current section).
 // Phones and tablets: opens and closes the drawer and its expandable sections.
 const header = document.querySelector(".site-header");

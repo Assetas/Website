@@ -1,116 +1,135 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+The www.assetas.com marketing site: Eleventy v3 + Nunjucks on GitHub Pages, from the public repo `Assetas/Website`. Until it goes live on the domain, the preview is https://assetas.github.io/Website/.
 
-## What this is
+**Open items** (end of file) is the backlog: check it before starting, add anything you leave unresolved, and remove items once done. Git history is the change log.
 
-The www.assetas.com website, built with Eleventy v3 + Nunjucks and deployed to GitHub Pages from the public repo `Assetas/Website`. Until it goes live on the domain, the preview is at https://assetas.github.io/Website/. The **Open items** section at the end of this file is the backlog: check it before starting new work, add anything left unresolved, and strike items when they're done. Git history is the change log.
+## Repo rules
 
-The repo is public: never commit drafts, internal notes or secrets. Changes go straight to `main` (no PRs, apart from Dependabot's); the `v1-replica` tag is the fallback. A tag ruleset stops the `v1-replica`, `v1-beta` and `trek-v*` tags from being moved or deleted. The repo only allows GitHub-owned Actions (`actions/*`, `github/*`), so a third-party action in a workflow will fail until it's allowed in Settings → Actions. Several people push to `main`, so run `git pull --rebase` before starting work and again before pushing. Never force-push.
+- The repo is public. Never commit drafts, internal notes or secrets.
+- Commit straight to `main`; only Dependabot opens PRs. Others push too, so `git pull --rebase` before starting and again before pushing. Never force-push (a ruleset blocks it anyway).
+- Tags: `v1-replica` (replica of the old site) is the fallback; `v1-beta` is the Blueprint beta pre-release; `trek-v*` hold Trek releases. A ruleset stops them being moved or deleted.
+- Workflows can only use GitHub-owned Actions (`actions/*`, `github/*`); anything else fails until allowed in Settings → Actions.
 
 ## Commands
 
+Node 20+ (CI uses 22).
+
 ```bash
-npm run dev      # eleventy --serve → http://localhost:8080/Website/
-npm run build    # preview build into _site/ (/Website/ prefix, noindex, no GA)
-SITE_ENV=production npm run build   # www.assetas.com, indexable, live GA4
-npm run check    # needs dev server running; broken internal links/assets + horizontal overflow at 390px
-node tools/audit.mjs [--base URL]   # headings/titles/descriptions/images per page + external link check
+npm run dev       # http://localhost:8080/Website/
+npm run build     # preview build into _site/: /Website/ prefix, noindex, no GA
+SITE_ENV=production npm run build   # www.assetas.com: no prefix, indexable, GA4 on
+npm run check     # the gate; needs a running server
+node tools/audit.mjs [--base URL]   # titles, descriptions, headings, alt text, external links
+node tools/import-media.mjs <source> <dest> [--width 1600] [--quality 80] [--audio]
 ```
 
-There are no unit tests. `npm run check` is the gate: CI (`.github/workflows/deploy.yml`) builds, serves `_site`, runs it against `http://localhost:8080/Website/`, and blocks the deploy on failure. Pull requests into `main` (Dependabot's included) run the same build and check but never deploy, so wait for a green check before merging one. Both `check` and `audit` crawl pages from `sitemap.xml`, so pages excluded from the sitemap aren't checked; the one exception is the 404 page, which `check` loads at `/spc` (expecting a 404 status and at least one suggestion).
+- **`check`** finds broken internal links and assets, pages wider than 390px, and a broken 404 page (loads `/spc`, expects a 404 and at least one suggestion). No unit tests; this is the gate. CI (`.github/workflows/deploy.yml`) builds and checks every push to `main` and blocks the deploy on failure; PRs into `main` get the same run without deploying, so wait for green before merging.
+- **Ports:** `check` and `audit` default to `http://localhost:8080/Website/`. The `site` server in `.claude/launch.json` runs on 8090: use `npm run check -- --base http://localhost:8090/Website/`.
+- Both crawl `sitemap.xml`, so `sitemap: false` pages (except 404) go unchecked.
+- **`import-media`** writes to `src/static/<dest>`: images → resized WebP; videos → H.264 mp4 (max 1280 wide, muted unless `--audio`) + jpg poster, via `ffmpeg` on PATH; anything else copied as is.
 
 ## Architecture
 
-- **Preview vs production** is driven entirely by `SITE_ENV` in `src/_data/site.js` (URL, `pathPrefix`, `noindex`, `gaId`). It also holds `formAction` and `formAccessKey` (Web3Forms; the key is public by design) and `trekRelease` (Trek zips live on a GitHub Release, too large for the repo).
-- **Links:** always write root-relative URLs (`/contact`, `/static/...`). `HtmlBasePlugin` in `eleventy.config.js` adds the `/Website/` prefix in HTML attributes — but not inside `<script>`, where you must use the `url` filter (see `src/redirects.njk`).
-- **Pages:** one `src/*.njk` (or `src/platform/*.njk`) per page, each with an explicit `permalink: /slug.html`; GitHub Pages serves them extensionless (`/contact`). Keep existing URLs stable; if a page moves, add a redirect. `/platform` is built twice (`platform.html` and `platform/index.html`) because the `platform/` folder also holds `emissions`. The `cleanUrl` filter strips `.html` for canonicals/sitemap. Front matter: `layout: layouts/base.njk`, `title`, `description`, optional `canonicalPath`, `ogImage`, and `sitemap: false`.
-- **Shell:** `src/_includes/layouts/base.njk` (meta, OG/Twitter tags, Organization JSON-LD on home, GA) + `partials/` (header, footer, CTA band, pricing table). Menus and footer links come from `src/_data/nav.json`.
-- **Header menu ("Mega panel"):** on desktop, Industry, Programs and Platform open a full-width panel on hover/focus in pure CSS; under 64rem the nav becomes a drawer. The panel content is in `nav.json` too: `intro` on each menu, and `blurb` plus `icon` (a file in `static/img/icons/`) or `image` on each child. `static/js/menu.js` runs the drawer, its accordions and the amber bar that follows the hovered item, plus the footer trigger below; it's the only page script besides analytics and the 404 page's inline script.
-- **Footer:** navy, with a telemetry trace across the top and a large alpha mark drawn over construction lines, behind the links and bleeding off the lower-right corner (inline SVG in `partials/footer-art.njk`; colors are the `--color-sketch-*` tokens). When the footer scrolls into view, `menu.js` plays it once: the trace runs, an amber pen traces the mark, it inks in and dims to half strength, the columns rise and the headings get their amber ticks (about 4 s). Without the script, or with reduced motion, the footer shows the finished drawing. Nothing loops: anything that moves for more than 5 s would need a pause control (WCAG 2.2.2).
-- **Contact form:** posts to Web3Forms (`site.formAction`), which emails the inbox the access key was created for (it should be sales@assetas.com) and sends the visitor to `/contact-thanks` (the free plan only redirects within the site's own domain). Each field has a readable `name` so the email reads well; the visitor's `email` (required) becomes the reply-to. Spam control is the hidden `botcheck` honeypot; Web3Forms' free hCaptcha is the next step if spam gets through. Set `formAction` to `""` to disable the form (it then shows a notice and a disabled Submit button).
-- **Trek downloads:** the zips are on the GitHub Release `trek-v4.0.2.0` (Trek_x64.zip is over git's 100 MB limit). For a new Trek version, publish a new release and update `site.trekRelease`.
-- **404 page:** `src/404.njk`, which GitHub Pages serves at whatever URL was missing. The hero ends in a sensor trace that spikes and drops out ("PT-404 · No signal", CSS only, plays once). An inline script reads a page index (the `pageIndex` filter in `eleventy.config.js`: sitemap pages with their `nav.json` label, title and description) and forwards near misses to the real page: wrong case (Pages URLs are case-sensitive), a trailing slash, `.htm`, or dashes and underscores in the slug, plus the `redirects.json` entries in any case. Otherwise it fills a "WO-404" work-order ticket with the requested path and lists up to three closest pages, followed by a directory of the `nav.json` menus. Without the script the ticket and directory still work.
-- **Redirects:** GitHub Pages can't do server redirects. Add `{ from, to, note }` to `src/_data/redirects.json`; `src/redirects.njk` paginates it into meta-refresh + JS forwarding pages (keeps `#hash`, canonical to target, noindex).
-- **Styling:** `src/static/css/tokens.css` defines every color/font/size/spacing token (with contrast notes); `main.css` must use only those tokens. The `/design-system` page (not in nav or sitemap) is the visual reference. The look is "Blueprint": brand blue `#006dff` is a surface (header, every `.hero`, the closing `.cta-band`) with a drafting grid, pages are white with ice (`#edf4ff`) sections, and navy `#021b4e` carries dark bands and the footer. Color rules: small blue text uses `#0058d6`; safety amber `#ffc21a` is the main action on blue and the accent on navy, never text on white; big numbers on blue use `#ffd352`. Inter is the only font. The header and footer use `img/brand/assetas-logo-white.png`.
-- **Videos:** every `<video>` uses `autoplay muted loop playsinline controls` plus a `poster` and `width="1280" height="720"` (no `preload="none"`, which delays playback). Keep `controls` so visitors can pause or unmute. Import new videos with `tools/import-media.mjs` to get the mp4 + jpg poster; videos are 1280×720 (16:9).
-- **Video size and placement:** all videos are the same size and centered horizontally. Wrap each one, alone, in `<div class="media media--video">` inside the section's `.container`: it caps the width at `--video-width` (55rem / 880px, set in `tokens.css`), centers it with `margin-inline: auto`, locks a 16:9 frame and adds the rounded, shadowed frame. Don't add per-video width, alignment or size classes; to change the size of every video, change `--video-width`.
-- **Static files:** `src/static/` is passed through to `/static/` (not `/assets/`, which is a page URL).
+- **Preview vs production:** `SITE_ENV` drives `src/_data/site.js` (`url`, `pathPrefix`, `noindex`, `gaId`), which also holds `formAction`, `formAccessKey` (Web3Forms; public by design) and `trekRelease`.
+- **Links:** write root-relative URLs (`/contact`, `/static/...`). `HtmlBasePlugin` adds `/Website/` in HTML attributes but not inside `<script>`; there, use the `url` filter (see `src/redirects.njk`).
+- **Pages:** one `src/*.njk` (or `src/platform/*.njk`) each, with an explicit `permalink: /slug.html`; Pages serves it extensionless (`/contact`). Keep URLs stable; if a page moves, add a redirect. `/platform` is built as both `platform.html` and `platform/index.html` because the `platform/` folder (for `emissions`) makes it ambiguous which Pages serves. `cleanUrl` strips `.html` for canonicals and the sitemap.
+- **Front matter:** `layout: layouts/base.njk`, `title`, `description`, `permalink`. Optional: `canonicalPath`, `ogImage`, `sitemap: false`, `cta: { heading, text, button, url }`.
+- **Shell:** `layouts/base.njk` (meta, OG/Twitter, Organization JSON-LD on home, GA) + `_includes/partials/`. Menus and footer, social and legal links come from `src/_data/nav.json`.
+- **Header:** from 64rem up, Industry, Programs and Platform open a full-width panel on hover/focus in pure CSS; below that, a drawer. `nav.json` holds the panel content: `intro` per menu; `blurb` plus `icon` (in `static/img/icons/`) or `image` per child.
+- **Scripts:** `static/js/menu.js` (drawer, accordions, amber bar under the hovered item, footer animation) is the only page script besides GA, the 404 page's inline script and the redirect pages.
+- **Footer:** inline SVG in `partials/footer-art.njk` (`--color-sketch-*` tokens) that `menu.js` plays once on scroll-in; without JS or with reduced motion it shows finished. Nothing loops: motion over 5 s needs a pause control (WCAG 2.2.2).
+- **Contact form:** posts to Web3Forms, which emails the access key's inbox (should be sales@assetas.com) and sends the visitor to `/contact-thanks` (free plan: same-domain redirects only). Each field's `name` is its label in the email, so keep names readable. `email` is required and becomes the reply-to. Spam control: the hidden `botcheck` honeypot; Web3Forms' free hCaptcha is next. `formAction: ""` disables the form.
+- **Trek downloads:** zips live on the GitHub Release `trek-v4.0.2.0` (Trek_x64.zip exceeds git's 100 MB limit). New version: publish a new release and update `site.trekRelease`.
+- **404 page:** `src/404.njk`, served at any missing URL. Its inline script uses the `pageIndex` filter (`eleventy.config.js`) and `redirects.json` to forward near misses (wrong case, since Pages URLs are case-sensitive; trailing slash; `.htm`; dashes or underscores), else lists up to three closest pages. Works without JS.
+- **Redirects:** no server redirects on Pages. Add `{ from, to, note }` to `src/_data/redirects.json`; `src/redirects.njk` makes each a meta-refresh + JS forwarding page (keeps `#hash`, canonical to target, noindex).
+- **Static files:** `src/static/` publishes to `/static/` (not `/assets/`, which is a page).
+
+## Design rules
+
+- **Tokens:** `src/static/css/tokens.css` defines every color, font, size and spacing value, with contrast notes. `main.css` uses only tokens, with no raw colors, font sizes or spacing; add a token if the scale lacks one. `/design-system` (not in nav or sitemap) is the visual reference.
+- **Blueprint look:** brand blue (`--color-brand`, #006dff) is a surface with a drafting grid: the header, every `.hero`, the closing `.cta-band`. Pages are white with ice sections (`--color-surface`, #edf4ff); navy (`--color-dark`, #021b4e) carries dark bands and the footer. Inter is the only font. Header and footer use `img/brand/assetas-logo-white.png`.
+- **Color:** small blue text is `--color-accent-text` (#0058d6). Amber (`--color-amber`, #ffc21a) is the main action on blue and the accent on navy, never text on white. Big numbers on blue: `--color-amber-light` (#ffd352).
+- **Closing band:** every page ends with `partials/cta-band.njk`, with its defaults or a sharper industry line via `cta:`.
+- **Components:** change layout per component in `main.css`, not per page, so the whole site improves together.
+- **Videos:** `<video autoplay muted loop playsinline controls poster="…" width="1280" height="720">`. Keep `controls` (visitors pause or unmute); no `preload="none"` (delays playback). Wrap each one, alone, in `<div class="media media--video">` inside the section's `.container`, which sets the shared width (`--video-width`), centering and rounded 16:9 frame. No per-video size or alignment classes; to resize all videos, change `--video-width`. Import new videos with `import-media.mjs`.
 
 ## Voice and tone
 
-All new or rewritten copy (page text, headings, buttons, `nav.json` intros and blurbs, titles, meta descriptions, alt text) uses this voice. It's taken from the current pages; `index.njk`, `platform.njk`, `spcc.njk` and `about.njk` are the best examples.
+Applies to all new or rewritten copy: page text, headings, buttons, `nav.json` intros and blurbs, titles, meta descriptions, alt text. Best examples: `index.njk`, `platform.njk`, `spcc.njk`, `about.njk`.
 
-**Reader:** operations, maintenance and EHS/compliance leads at oil & gas operators, municipalities and utilities, defense installations and infrastructure owners. They know their regulations, so don't explain the basics.
+**Reader:** operations, maintenance and EHS/compliance leads at oil & gas operators, municipalities and utilities, defense installations and infrastructure owners. They know their regulations; don't explain the basics.
 
-**Voice: an operator who has been through an audit.** Confident, plain, specific and a little dry. It should sound like someone who has done the field and compliance work, not like a software marketer.
-- Be concrete. Name the real thing (berm, wellhead, work order, PE stamp, 40 CFR 98 subpart W, PHMSA, NPDES, DoDI 4151.22) instead of "solutions", "seamless" or "assets of all kinds".
-- Write short declarative sentences. Fragments are fine for rhythm ("One data model. Full audit trail.").
-- Describe the reader's problem in their own terms first, then what Assetas does about it ("Reports rebuilt by hand in every emissions cycle").
-- Back every claim with a sourced number, a named regulation or a named customer. Don't use hype words (best-in-class, cutting-edge, revolutionary, unlock, empower, leverage, game-changer) or exclamation marks.
-- Use "you/your" for the reader ("your crews") and "we" for Assetas ("We speak O&G"). Customers are "clients".
-- Present AI as a tool that works on the record: say what each model does and what data it reads, with no magic.
+**Voice:** an operator who has been through an audit. Confident, plain, specific, a little dry; not a software marketer.
+- Name the real thing (berm, wellhead, work order, PE stamp, 40 CFR 98 subpart W, PHMSA, NPDES, DoDI 4151.22), not "solutions", "seamless" or "assets of all kinds".
+- Short declarative sentences; fragments are fine ("One data model. Full audit trail.").
+- The reader's problem in their terms first, then what Assetas does ("Reports rebuilt by hand in every emissions cycle").
+- Back every claim with a sourced number, a named regulation or a named client. No hype words (best-in-class, cutting-edge, revolutionary, unlock, empower, leverage, game-changer), no exclamation marks.
+- "You/your" for the reader ("your crews"), "we" for Assetas ("We speak O&G"). Customers are "clients".
+- AI is a tool that works on the record: say what each model does and what data it reads. No magic.
+- Reuse, don't invent slogans: *Where X meets Y*; one record / one data model / one source of truth; capture once, report from the same record; from the field to the filing; audit-ready by default, not rebuilt when the auditor calls; offline, timestamped, geotagged field capture.
 
-**Recurring ideas.** Reuse these and don't invent new slogans: *Where X meets Y*; one record / one data model / one source of truth; capture once, report from the same record; from the field to the filing; audit-ready by default, not rebuilt when the auditor calls; offline, timestamped, geotagged field capture.
+| Element | Pattern |
+|---|---|
+| H1 | "Where X meets Y." X operational, Y accountability, both concrete ("Where the wellhead meets the regulator.") |
+| H2 | Short sentence-case statement with a period ("Three workflows, one record.") |
+| H3, card title | Sentence-case noun phrase, no period |
+| Eyebrow | 2–4 words, sentence case ("How it works"); platform pages use `Platform/<Name>` |
+| Lead | 1–2 sentences, ≤ ~35 words: what it does and for whom |
+| Card text | 1–2 sentences, ≤ ~30 words |
+| Buttons | Sentence case. Main: "Book a demo" → `/contact`. Second: "See the platform" or a specific "See how it works". Links to documents or other sites end in ↗ |
+| Links | Say where they go ("Explore oil & gas"). A kept "Learn more" gets a `visually-hidden` suffix naming the target |
+| Title | "<What it is> \| Assetas", under 60 characters |
+| Description | 120–160 characters naming the record types or regulations; no call to action |
+| Alt text | What the image shows in its operational context, no "image of". Decorative icons: `alt=""` |
 
-**Copy patterns:**
-- **H1:** "Where X meets Y." with a period. X is the operational side and Y is the accountability side, both concrete ("Where the wellhead meets the regulator.").
-- **H2:** a short statement in sentence case with a period ("Three workflows, one record."). **H3 and card titles:** sentence-case noun phrases with no period.
-- **Eyebrow:** 2–4 words in sentence case ("The challenge", "How it works", "Connects to"). Platform pages use `Platform/<Name>`.
-- **Lead:** one or two sentences (about 35 words at most) saying what it does and for whom. **Card text:** one or two sentences, up to about 30 words.
-- **Buttons:** sentence case ("Talk to sales", not "Talk to Sales"). The main action is "Book a demo" → `/contact`. The second is "See the platform" or a specific "See how it works". Links to documents or other sites end in ↗.
-- **Links:** say where they go ("Explore oil & gas"). If you keep "Learn more", add a `visually-hidden` suffix naming the target.
-- **Closing band:** the `partials/cta-band.njk` defaults ("See where your operations meet your obligations." / "Thirty minutes. …"), unless the page has a sharper industry-specific line set through `cta:`.
-- **Titles:** "<What it is> | Assetas", under 60 characters. **Descriptions:** 120–160 characters that name the record types or regulations, with no call to action.
-- **Alt text:** what the image shows in its operational context, without "image of". Decorative icons get `alt=""`.
+**Mechanics:** American English, Oxford comma. Spaced em dash ( — ) for asides, not an en dash. "&" in titles, nav labels and headings ("Oil & Gas"); "and" in sentences. Numerals for stats ("92%"). Write regulations and agencies as they write themselves (EPA, PHMSA, SPCC, LDAR, Title V); don't expand acronyms the sector uses daily. Capitalize product and module names: Assetas, Trek, Unified Asset Intelligence, Smart Forms & Tasks, Workflow Automation, Compliance & Emissions.
 
-**Mechanics:** American English with the Oxford comma. Use a spaced em dash ( — ) for asides, not an en dash. Use "&" in titles, nav labels and headings ("Oil & Gas", "Smart Forms & Tasks") and "and" in sentences. Use numerals for stats ("92%"). Write regulations and agencies the way they write themselves (EPA, PHMSA, SPCC, LDAR, Title V), and don't expand acronyms the sector uses every day. Product and module names are capitalized: Assetas, Trek, Unified Asset Intelligence, Smart Forms & Tasks, Workflow Automation, Compliance & Emissions.
-
-**Never invent** customers, stats, quotes, certifications or regulatory claims. Put a placeholder in the page and add it to **Open items** below. Don't reword existing page copy while working on something else; copy rewrites are separate tasks.
-
-## Tools (`tools/`)
-
-- `check.mjs` (`npm run check`) and `audit.mjs` — see Commands. Both use Playwright.
-- `node tools/import-media.mjs <source> <dest> [--width 1600] [--quality 80] [--audio]` — copy an original into `src/static/<dest>`: images → resized WebP, videos → H.264 mp4 (max 1280 wide, no audio unless `--audio`) + jpg poster, anything else copied as is.
+**Never invent** customers, stats, quotes, certifications or regulatory claims: put a placeholder in the page and add it to Open items. Don't reword existing copy while working on something else; copy rewrites are separate tasks.
 
 ## GitHub Pages limits
 
-The limits are the same on every plan. On the free plan, the repo has to stay public. As of November 2026 the built site and `.git` were each about 45 MB. To measure current usage, use the `github-pages-usage` skill (`bash .claude/skills/github-pages-usage/usage.sh`).
-- **Hard limits:** the published site can be at most 1 GB. The source repo should stay under 1 GB. Git warns on files over 50 MB and rejects files over 100 MB, so large downloads go on a GitHub Release, as Trek does (up to 2 GB per file, and release downloads don't count toward Pages bandwidth). A deploy fails after 10 minutes.
-- **Soft limits:** 100 GB of bandwidth a month, and GitHub may rate-limit with `429` responses during big traffic spikes. Videos use the most bandwidth, so keep them compressed with `import-media.mjs`. GitHub doesn't report Pages bandwidth, so watch GA4 traffic instead. The 10 builds an hour limit doesn't apply to our Actions workflow.
-- **Usage policy:** a company marketing site is fine. The site can't be used for e-commerce or SaaS, or to collect passwords or payments. Forms post to Web3Forms, not to Pages.
-- **No server features:** no server-side redirects (use `redirects.json`), custom headers, access control, or server code. Each site gets one custom domain, and the apex redirects to `www`.
+Same on every plan; the free plan needs a public repo. As of November 2026 the built site and `.git` were each about 45 MB. Measure current usage with the `github-pages-usage` skill.
+- **Hard:** published site ≤ 1 GB; source repo should stay under 1 GB; git warns over 50 MB and rejects files over 100 MB, so large downloads go on a GitHub Release like Trek (2 GB per file, outside Pages bandwidth); a deploy fails after 10 minutes. The 10-builds-an-hour limit doesn't apply to our Actions workflow.
+- **Soft:** 100 GB bandwidth a month; GitHub may return `429` in big spikes. Videos use most of it, so compress them with `import-media.mjs`. GitHub doesn't report bandwidth; watch GA4.
+- **Usage policy:** a marketing site is fine; no e-commerce, SaaS, or collecting passwords or payments. Forms post to Web3Forms.
+- **No server features:** no server redirects (use `redirects.json`), custom headers, access control or server code. One custom domain; the apex redirects to `www`.
 
 ## Going live on www.assetas.com
 
-Nothing changes in DNS until we decide to go live. When we do:
+Nothing changes in DNS until we decide to go live. Then:
 1. Verify `assetas.com` in the GitHub org settings (Pages → verified domains) to prevent domain takeover.
-2. Set the repo's custom domain to `www.assetas.com` (this commits a `CNAME` file). In `deploy.yml`, set `SITE_ENV: production` and change the check's `--base` to `http://localhost:8080/`. Production turns off `noindex` and turns on GA4 `G-HJYFX0NXR6`.
-3. DNS is at GoDaddy: point `www` (CNAME) to `assetas.github.io` and the apex `@` A records to GitHub's four Pages IPs (plus AAAA for IPv6). Lower the TTLs a day ahead. **Email is Microsoft 365: leave MX, SPF, DKIM, autodiscover and the other TXT records alone.**
+2. Set the repo's custom domain to `www.assetas.com` (commits a `CNAME` file). In `deploy.yml`, set `SITE_ENV: production` in the `build` job's `env`, not just the build step: the check step's `eleventy --serve` rebuilds `_site`, and that rebuild is what gets uploaded. Change both `http://localhost:8080/Website/` URLs in the check step to `http://localhost:8080/`. Production drops `noindex` and turns on GA4 `G-HJYFX0NXR6`.
+3. DNS is at GoDaddy: `www` CNAME → `assetas.github.io`; apex `@` A records → GitHub's four Pages IPs (plus AAAA). Lower TTLs a day ahead. **Email is Microsoft 365: leave MX, SPF, DKIM, autodiscover and other TXT records alone.**
 4. Turn on "Enforce HTTPS" once the certificate is issued (up to about an hour).
-5. Submit the sitemap in Google Search Console and watch for 404s for two weeks.
-6. Keep the current host for about 30 days as a fallback, and make sure no forms or email still depend on it before cancelling.
+5. Submit the sitemap in Google Search Console; watch for 404s for two weeks.
+6. Keep the current host about 30 days as a fallback; confirm no forms or email still depend on it before cancelling.
 
-`robots.txt` is ignored by crawlers on the preview because it isn't at the domain root; the page-level `noindex` is what keeps the preview out of search results.
+The preview's `robots.txt` isn't at a domain root, so crawlers ignore it; the page-level `noindex` keeps the preview out of search.
 
 ## Open items
 
 **Waiting on input:**
-- `/defense` Air Force stats: the page pairs 92% with check-in time and 80% with lost-tool search (the Home page pairing). Confirm with whoever owns the numbers.
-- Real documents for "Download brief" (`/defense`, now → `/contact`) and "Read the full story" (`/oilandgas`, now → the Smart Forms case study PDF). "Book a demo" and "Talk to our engineer" on `/telemetry`, `/reporting` and `/ai` both go to `/contact`.
+- `/defense` Air Force stats: 92% is paired with check-in time and 80% with lost-tool search (the Home pairing). Confirm with whoever owns the numbers.
+- Real documents for "Download brief" (`/defense`, now → `/contact`) and "Read the full story" (`/oilandgas`, now → the Smart Forms case study PDF).
+- A destination for "Talk to our engineer" (`/ai`, `/ldar`, `/reporting`, `/spcc`, `/telemetry`): it goes to `/contact`, like the "Book a demo" beside it.
 - Legal review of `/privacy` (dated July 24, 2017; keep its wording until then).
-- Contact form: send one test from the preview and confirm it arrives at sales@assetas.com.
-- `/pricing` compare table: the tier values on these rows are suggestions that need confirming with whoever owns pricing — Bulk-import existing records, Score criticality & lifecycle, Track permit limits & deviations, Submit electronic reports, Run LDAR programs, Keep SPCC plans current, Audit log retention, Export logs to your SIEM, Require multi-factor sign-in, Get security documentation. Their tooltips reuse claims from `/assets`, `/compliance`, `/platform/emissions`, `/ldar`, `/spcc` and `/security`.
-- Preview analytics: `site.gaId` is empty on the preview. Create a separate GA4 property if visitor data is wanted before going live.
+- Contact form: send one test from the preview and confirm it reaches sales@assetas.com.
+- `/pricing` compare table: confirm the tier values with whoever owns pricing on Bulk-import existing records, Score criticality & lifecycle, Track permit limits & deviations, Submit electronic reports, Run LDAR programs, Keep SPCC plans current, Audit log retention, Export logs to your SIEM, Require multi-factor sign-in, Get security documentation. Their tooltips reuse claims from `/assets`, `/compliance`, `/platform/emissions`, `/ldar`, `/spcc`, `/security`.
+- Preview analytics: `site.gaId` is empty on the preview; create a separate GA4 property if visitor data is wanted before going live.
 
-**Copy to review:** the `nav.json` intros and one-liners, and the `/programs` page text.
+**Copy to review:**
+- `nav.json` intros and blurbs; `/programs` page text.
+- Off-voice: H1 and description on `/telemetry` (ends "with us!") and `/reporting`; calls to action in the `/reporting` and `/trek` descriptions.
+- Titles over 60 characters (`/industry`, `/ldar`, `/spcc`) or not in "<What it is> | Assetas" form (`/about`, `/pricing`, `/trek`).
 
 **Backlog:**
+- Closing bands: 8 pages end with a white `.section.closing`, 6 hand-write a two-button blue band, and `/municipality` uses a navy `cta-band--dark`. Move them all to `partials/cta-band.njk` (it needs a second-button option first), and remove its `cta.accent` flag and `cta-band--accent` class, which no longer change anything.
+- Tokens: replace the ~65 raw spacing values and the raw font sizes in `main.css` with tokens.
 - Lighthouse pass after the Blueprint redesign (accessibility was 100 on every page before it).
 - Performance: responsive images with `srcset` (`@11ty/eleventy-img`), preloaded fonts, no layout shift. Target 95+ in every Lighthouse category.
 - Accessibility: captions or transcripts for any video with narration.
 - SEO: SoftwareApplication structured data (Organization is done).
-- Pricing is reachable only from the header; add contextual links where they fit.
-- Layout changes go per component, so the whole site improves together.
+- Pricing is linked only from the header and footer; add contextual links where they fit.
 
-**Decided, don't reopen without asking:** Industry, Programs and Platform stay as the menu groups; `/oilandgas`, `/ldar` and `/spcc` stay separate pages; the Pricing page has no FAQ; Security stays under Platform.
+**Decided, don't reopen without asking:** Industry, Programs and Platform stay the menu groups; `/oilandgas`, `/ldar` and `/spcc` stay separate pages; Pricing has no FAQ; Security stays under Platform.
