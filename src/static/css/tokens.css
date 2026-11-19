@@ -64,6 +64,17 @@
   --color-scrim-edge: rgb(2 27 78 / 0.55);
   --color-poster-glow: rgb(0 109 255 / 0.72);
 
+  /* Survey map (/ldar, static/js/survey.js): one facility record branching to pads, equipment and
+     components, on a gray glow centered on the record. Brand blue only on the record and the pulses.
+     Decorative only. Line, ink, pulse, leak and ring are hex: the script reads them as #rrggbb. */
+  --color-survey-line: #4e5f80;   /* routes (drawn at reduced opacity) */
+  --color-survey-ink: #021b4e;    /* junctions, component dots, labels: navy, 13:1+ on the gray */
+  --color-survey-pulse: #006dff;  /* the record node and the pulses running out from it */
+  --color-survey-leak: #ffc21a;   /* components with a leak finding */
+  --color-survey-ring: #021b4e;   /* ring around leak dots */
+  --color-survey-center: #d5dbe5; /* gray at the record */
+  --color-survey-edge: #ffffff;   /* ...fading to white at the edges */
+
   /* Actions */
   --color-button: #006dff;        /* primary buttons on white: white text 4.5:1 */
   --color-button-text: #ffffff;
@@ -96,6 +107,10 @@
   --text-body: clamp(1rem, 0.3vw + 0.95rem, 1.125rem);
   --text-small: 0.95rem;
   --text-label: 0.8rem;           /* eyebrows and small uppercase labels */
+  --text-run: clamp(1.6rem, 2.2vw + 0.8rem, 2.75rem);      /* headline runs: a bold statement that continues in a softer color (/ldar section heads) */
+  --text-run-hero: clamp(1.75rem, 1.6vw + 1rem, 2.75rem); /* ...and in the hero */
+  --text-mock: 0.72rem;           /* labels inside product placeholders */
+  --text-stat-row: clamp(2.5rem, 3vw + 1.25rem, 3.75rem); /* numbers in a divided stat row */
 
   /* Spacing */
   --space-1: 0.5rem;

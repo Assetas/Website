@@ -903,6 +903,201 @@ main { background: var(--color-bg); overflow: hidden; }
 .note-ref { margin-top: var(--space-3); font-size: var(--text-small); color: var(--color-muted); max-width: 46rem; }
 .note-ref::before { content: "\25A0\00a0"; color: var(--color-amber); }
 
+/* Headline run (/ldar): one text block per heading. The statement is bold; the explanation continues
+   in the same paragraph at the same size in a softer color, instead of a separate lead under it. */
+.headline-run { font-size: var(--text-run); line-height: 1.12; letter-spacing: -0.02em; font-weight: 700; text-wrap: pretty; max-width: 52rem; }
+.headline-run span { color: var(--color-muted); font-weight: 600; }
+.section-head--run { max-width: 52rem; }
+.hero .headline-run { font-size: var(--text-run-hero); line-height: 1.08; max-width: 40rem; margin-bottom: var(--space-4); }
+.hero .headline-run em { font-style: normal; color: var(--color-amber-light); }
+.hero .headline-run span { color: var(--color-on-dark); }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+
+/* Product hero (/ldar): the poster hero with copy on the left and product placeholders on the right */
+.hero--poster.hero--product { min-height: 0; padding-block: var(--space-5); grid-template-rows: none; }
+.hero--product > .container { grid-row: auto; }
+.hero-split { display: grid; gap: var(--space-5); align-items: center; }
+@media (min-width: 64rem) {
+  .hero-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .hero--poster.hero--product .hero-copy { max-width: none; }
+}
+.hero-mocks { position: relative; }
+@media (min-width: 40rem) { .hero-mocks { padding: 0 0 calc(var(--space-5) + var(--space-4)) var(--space-5); } }  /* room for the phone below the window's lower-left corner */
+
+/* Product placeholders: drawn stand-ins for screenshots, each tagged "Placeholder" until the real
+   screen replaces it. Skeleton lines take their width from --w. */
+.mock { position: relative; background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; font-size: var(--text-mock); }
+.mock--window { box-shadow: var(--shadow-float); }
+.mock-bar { display: flex; align-items: center; gap: var(--space-1); padding: 0.6rem var(--space-2); background: var(--color-section-alt); border-bottom: 1px solid var(--color-border); font-weight: 600; color: var(--color-muted); }
+.mock-dots { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--color-border-input); box-shadow: 0.8rem 0 var(--color-border-input), 1.6rem 0 var(--color-border-input); margin-right: 1.8rem; }
+.mock-tag { margin-left: auto; padding: 0.15rem 0.55rem; border-radius: var(--radius-pill); background: var(--color-amber); color: var(--color-text); font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.mock--panel .mock-tag { position: absolute; top: var(--space-1); right: var(--space-1); }
+.mock-body { padding: var(--space-2); }
+.mock-body--split { display: grid; gap: var(--space-3); align-items: start; }
+@media (min-width: 40rem) { .mock-body--split { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); } }
+.mock-stack { display: grid; gap: var(--space-1); justify-items: start; }
+.mock-line { display: block; width: var(--w, 100%); height: 0.5rem; border-radius: var(--radius-pill); background: var(--color-border); }
+.mock-line--strong { height: 0.7rem; background: var(--color-border-input); }
+.mock-fields { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.7rem var(--space-2); align-items: center; width: 100%; margin-top: var(--space-1); color: var(--color-muted); }
+.mock-chip { display: inline-block; padding: 0.15rem 0.6rem; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-accent-text); font-weight: 600; white-space: nowrap; justify-self: start; }
+.mock-chip--amber { background: var(--color-amber); color: var(--color-text); }
+.mock-timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.mock-timeline li { position: relative; padding-left: var(--space-3); color: var(--color-muted); font-weight: 600; }
+.mock-timeline li::before { content: ""; position: absolute; left: 0; top: 0.1em; width: 0.8rem; height: 0.8rem; border-radius: 50%; border: 2px solid var(--color-border-input); background: var(--color-bg); }
+.mock-timeline li:not(:last-child)::after { content: ""; position: absolute; left: calc(0.4rem - 1px); top: 1.1rem; height: calc(100% + var(--space-2) - 1.1rem); width: 2px; background: var(--color-border); }
+.mock-timeline .is-done { color: var(--color-text); }
+.mock-timeline .is-done::before { background: var(--color-accent); border-color: var(--color-accent); }
+.mock-timeline .is-now { color: var(--color-text); }
+.mock-timeline .is-now::before { background: var(--color-amber); border-color: var(--color-amber); }
+.mock-photo { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius); background: linear-gradient(135deg, var(--color-surface), var(--color-border)); }
+.mock-photo--pin { position: relative; }
+.mock-photo--pin::after { content: ""; position: absolute; left: 50%; top: 45%; width: 1rem; height: 1rem; border-radius: 50% 50% 50% 0; transform: translate(-50%, -50%) rotate(-45deg); background: var(--color-accent); }
+.mock-track { display: block; width: 100%; height: 0.5rem; border-radius: var(--radius-pill); background: var(--color-border); overflow: hidden; }
+.mock-track span { display: block; width: var(--w); height: 100%; background: var(--color-amber); }
+.mock-tree { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.mock-tree li { padding: 0.35rem var(--space-1); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); font-weight: 600; color: var(--color-muted); }
+.mock-tree li:nth-child(2) { margin-left: var(--space-2); }
+.mock-tree li:nth-child(3) { margin-left: var(--space-4); }
+.mock-tree li:nth-child(4) { margin-left: calc(var(--space-4) + var(--space-2)); }
+.mock-tree .is-now { border-color: var(--color-accent); color: var(--color-accent-text); }
+.mock-bars { display: flex; align-items: flex-end; gap: var(--space-1); height: 7rem; padding-top: var(--space-3); border-bottom: 1px solid var(--color-border-input); }
+.mock-bars span { flex: 1; height: var(--h); border-radius: 0.3rem 0.3rem 0 0; background: var(--color-accent); opacity: 0.85; }
+.mock-bars span:nth-child(4) { background: var(--color-amber); opacity: 1; }
+.mock-table { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: var(--space-2); align-items: center; padding-top: var(--space-3); }
+.mock-button { display: block; width: 100%; height: 1.6rem; border-radius: var(--radius-pill); background: var(--color-accent); margin-top: var(--space-1); }
+
+.mock--phone { display: none; }
+@media (min-width: 40rem) {
+  .mock--phone { display: block; position: absolute; left: 0; bottom: 0; width: 11.5rem; border-radius: var(--radius-lg); border: 6px solid var(--color-dark); box-shadow: var(--shadow-float); }
+}
+.mock-notch { width: 35%; height: 0.9rem; margin: 0 auto; border-radius: 0 0 var(--radius) var(--radius); background: var(--color-dark); }
+
+/* Bento grid (/ldar): cards of different widths, each led by a product placeholder */
+.bento { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+@media (min-width: 48rem) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bento-card--full { grid-column: 1 / -1; }
+}
+@media (min-width: 64rem) {
+  .bento { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bento-card--wide { grid-column: span 2; }
+}
+.bento-card { min-width: 0; display: flex; flex-direction: column; padding: var(--space-3); border-radius: var(--radius-lg); background: var(--color-surface); }
+.bento-card .mock--panel { flex: 1; min-height: 11rem; padding: var(--space-4) var(--space-3) var(--space-3); margin-bottom: var(--space-3); display: grid; align-content: center; box-shadow: var(--shadow-soft); }
+.bento-card h3 { margin-bottom: var(--space-1); }
+
+/* Feature runs (/ldar): each point is one paragraph, a bold title running into a softer explanation,
+   under a short amber tick. --stack puts them in one column. */
+.feature-runs { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4) var(--space-3); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.feature-runs--stack { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+.feature-runs li { min-width: 0; line-height: 1.5; }
+.feature-runs li::before { content: ""; display: block; width: var(--space-3); height: 3px; margin-bottom: var(--space-2); border-radius: var(--radius-pill); background: var(--color-amber); }
+.feature-runs h3, .feature-runs p { display: inline; font-size: var(--text-body); line-height: inherit; }
+.feature-runs h3 { font-family: var(--font-body); font-weight: 600; color: var(--color-text); }
+.feature-runs h3::after { content: ". "; white-space: pre; }  /* the markup has no space between </h3> and <p> */
+.feature-runs p { color: var(--color-muted); }
+.section--dark .feature-runs h3 { color: var(--color-on-fill); }
+.section--dark .feature-runs p { color: var(--color-on-dark); }
+.section--dark .headline-run span { color: var(--color-on-dark-muted); }
+.section--dark .marker-note { color: var(--color-on-dark); }
+
+/* Stat row (/ldar): big numbers side by side, split by thin rules instead of boxed cards.
+   --stack lists them down a column with rules between. */
+.stat-row { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: grid; gap: var(--space-4) var(--space-3); grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.stat-row li { min-width: 0; padding-left: var(--space-3); border-left: 1px solid var(--color-border-input); }
+.stat-row p { margin: 0; }
+.stat-row .stat { font-size: var(--text-stat-row); margin-bottom: var(--space-1); }
+.stat-row p:not(.stat):not(.stat-source) { color: var(--color-text); max-width: 22rem; }
+.stat-row .stat-source { margin-top: var(--space-1); font-size: var(--text-small); color: var(--color-muted); }
+.stat-row--stack { grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; }
+.stat-row--stack li { padding: var(--space-3) 0; border-left: 0; border-top: 1px solid var(--color-border); }
+.stat-row--stack li:first-child { padding-top: 0; border-top: 0; }
+
+/* Infrastructure split (/ldar, navy section): feature runs beside a hub diagram on the drafting grid */
+.infra-split { display: grid; gap: var(--space-5); align-items: center; }
+@media (min-width: 56rem) { .infra-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
+.hub {
+  padding: var(--space-4) var(--space-3); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-lg);
+  background-color: var(--color-on-fill-tint);
+  background-image: linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid) 1px, transparent 1px), linear-gradient(var(--color-grid-fine) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-fine) 1px, transparent 1px);
+  background-size: var(--grid-major) var(--grid-major), var(--grid-major) var(--grid-major), var(--grid-minor) var(--grid-minor), var(--grid-minor) var(--grid-minor);
+}
+/* Each program drops a line to a shared bus; the bus drops one line to the record */
+.hub-programs { position: relative; list-style: none; margin: 0 0 var(--space-5); padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-1); }
+.hub-programs li { position: relative; padding: var(--space-1); border-radius: var(--radius); background: var(--color-brand); color: var(--color-on-fill); font-size: var(--text-label); font-weight: 700; text-align: center; text-wrap: balance; }
+.hub-programs li::after { content: ""; position: absolute; left: calc(50% - 1px); top: 100%; width: 2px; height: var(--space-4); background: var(--color-amber); }
+.hub-programs::after { content: ""; position: absolute; left: calc(100% / 6); right: calc(100% / 6); top: calc(100% + var(--space-4)); height: 2px; background: var(--color-amber); }
+.hub-record { position: relative; display: grid; gap: 0.2rem; max-width: 22rem; margin-inline: auto; padding: var(--space-2) var(--space-3); border-radius: var(--radius); background: var(--color-bg); text-align: center; box-shadow: var(--shadow-float); }
+.hub-record::before { content: ""; position: absolute; left: calc(50% - 1px); bottom: 100%; width: 2px; height: calc(var(--space-5) - var(--space-4)); background: var(--color-amber); }
+.hub-record-name { font-weight: 700; color: var(--color-text); }
+.hub-record-fields { font-size: var(--text-label); color: var(--color-muted); }
+
+/* Story panel (/ldar): a client quote on a navy card beside the numbers it stands behind */
+.story { display: grid; gap: var(--space-4); }
+@media (min-width: 56rem) { .story { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; } }
+.story-quote { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-4); min-height: 100%; padding: var(--space-5) var(--space-4) var(--space-4); border-radius: var(--radius-lg); background: radial-gradient(40rem 25rem at 100% 0%, var(--color-brand-glow), transparent 70%), var(--color-band); box-shadow: var(--shadow-raised); }
+.story-quote blockquote { margin: 0; font-family: var(--font-display); font-size: var(--text-h3); font-weight: 650; line-height: 1.2; letter-spacing: -0.025em; color: var(--color-on-fill); text-wrap: pretty; }
+.story-quote figcaption { font-size: var(--text-small); color: var(--color-on-dark); }
+.story-quote figcaption::before { content: ""; display: block; width: var(--space-3); height: 3px; margin-bottom: var(--space-2); border-radius: var(--radius-pill); background: var(--color-amber); }
+
+/* Survey map (static/js/survey.js): a stat row above a diagram of one facility record branching
+   to pads, equipment and components. Pulses run out to components; amber dots are leak findings.
+   Without JS the gray glow shows empty. */
+.survey-panel { margin-bottom: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg); }
+.survey-panel .stat-row { margin: 0; padding: var(--space-4) var(--space-3); }
+.survey-map {
+  position: relative; height: clamp(16rem, 34vw, 28rem); border-top: 1px solid var(--color-border);
+  background: radial-gradient(ellipse 75% 130% at 50% calc(100% - 30px), var(--color-survey-center), var(--color-survey-edge) 72%);
+}
+.survey-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.survey-toggle {
+  position: absolute; top: var(--space-2); right: var(--space-2); width: 2.5rem; height: 2.5rem; padding: 0;
+  display: grid; place-items: center; cursor: pointer; color: var(--color-text);
+  border: 1px solid var(--color-border); border-radius: var(--radius-pill); background: var(--color-bg);
+  transition: border-color 0.2s var(--ease);
+}
+.survey-toggle:hover { border-color: var(--color-border-input); }
+.survey-toggle:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.survey-toggle svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+/* Step switcher (/ldar "How it works", static/js/stepper.js): the steps listed beside one blue stage that
+   shows the active step's screen. Each title becomes a button; the blue rule marks the open step. Without JS
+   every step and every screen shows, stacked. */
+.stepper { display: grid; gap: var(--space-4); margin-top: var(--space-4); }
+@media (min-width: 64rem) { .stepper { grid-template-columns: minmax(0, 0.618fr) minmax(0, 1fr); align-items: center; } }
+.stepper-list { list-style: none; margin: 0; padding: 0; }
+.stepper-item { position: relative; padding: var(--space-2) 0 var(--space-2) var(--space-3); border-left: 2px solid var(--color-border); }
+.stepper-item::before {
+  content: ""; position: absolute; left: -2px; top: 0; width: 2px; height: 100%; background: var(--color-accent);
+  transform: scaleY(0); transform-origin: top; transition: transform 0.45s var(--ease);
+}
+.stepper:not(.is-live) .stepper-item::before, .stepper-item.is-active::before { transform: scaleY(1); }
+.stepper-title { margin: 0; font-size: var(--text-h4); color: var(--color-text); transition: color 0.2s var(--ease); }
+.stepper-kicker { display: block; margin-bottom: var(--space-1); font-size: var(--text-small); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-text); }
+.stepper-tab { display: block; width: 100%; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.stepper-tab:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; border-radius: var(--radius); }
+.stepper.is-live .stepper-item:not(.is-active) .stepper-title { color: var(--color-muted); }
+.stepper.is-live .stepper-item:not(.is-active) .stepper-title:hover { color: var(--color-text); }
+.stepper-body { padding-top: var(--space-1); }
+.stepper-body p { margin: 0; }
+.stepper-stage {
+  display: grid; gap: var(--space-4); padding: var(--space-4) var(--space-3); border-radius: var(--radius-lg); overflow: hidden;
+  background-color: var(--color-brand);
+  background-image: linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid) 1px, transparent 1px), linear-gradient(var(--color-grid-fine) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-fine) 1px, transparent 1px);
+  background-size: var(--grid-major) var(--grid-major), var(--grid-major) var(--grid-major), var(--grid-minor) var(--grid-minor), var(--grid-minor) var(--grid-minor);
+}
+@media (min-width: 40rem) { .stepper-stage { padding: var(--space-5) var(--space-4); } }
+.stepper-media { margin: 0; display: grid; place-items: center; }
+.stepper-media img { width: 100%; border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-float); }
+.stepper-media--phone img { width: auto; max-height: min(26rem, 80vw); border-radius: var(--radius-lg); }
+.stepper.is-live .stepper-stage { gap: 0; }
+.stepper.is-live .stepper-media {
+  grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(var(--space-2)) scale(0.98);
+  transition: opacity 0.4s var(--ease), transform 0.6s var(--ease), visibility 0s 0.4s;
+}
+.stepper:not(.is-ready) .stepper-media, .stepper:not(.is-ready) .stepper-item::before { transition: none !important; }  /* none on first paint */
+.stepper.is-live .stepper-media.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.4s var(--ease), transform 0.6s var(--ease), visibility 0s; }
+
 /* Motion: respect the visitor's setting */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
