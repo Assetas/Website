@@ -18,7 +18,7 @@ body {
   line-height: 1.4;
   letter-spacing: -0.006em;
   color: var(--color-body);
-  background: var(--color-brand);
+  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-optical-sizing: auto;
@@ -913,7 +913,7 @@ main { background: var(--color-bg); overflow: hidden; }
 .contact-direct dd { margin: 0; }
 
 /* Closing call-to-action band: back to the blue block (navy with --dark) */
-.cta-band { position: relative; isolation: isolate; overflow: hidden; text-align: center; padding-block: var(--space-5); color: var(--color-on-fill); background: radial-gradient(50rem 24rem at 100% 100%, var(--color-brand-shade), transparent 70%), var(--color-brand); }
+.cta-band { position: relative; isolation: isolate; overflow: hidden; text-align: center; padding-block: var(--space-5); color: var(--color-on-fill); background: radial-gradient(50rem 24rem at 100% 100%, var(--color-brand-shade), transparent 70%), var(--color-brand-muted); }
 .cta-band::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background-image: linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid) 1px, transparent 1px), linear-gradient(var(--color-grid-fine) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-fine) 1px, transparent 1px);
@@ -1078,19 +1078,24 @@ main { background: var(--color-bg); overflow: hidden; }
   .hero-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .hero--poster.hero--product .hero-copy { max-width: none; }
 }
-/* Product shots: a record card (styled like the /assets hero image) with open space on its left, where
-   the Trek phone stands, 30% taller than the card and centered on it. The phone keeps its right edge a
-   quarter of the way across the card and runs past the card's left edge; on phones, where that would
-   leave the screen, the card steps in instead. Percentages of the width keep it in proportion
-   (card height 0.512 of its width, phone height 2.047 of its own). On phones only the Trek phone shows,
-   centered. The phone image has transparent corners, so its shadow is a filter that follows the frame. */
-.hero-shots { position: relative; padding: 5.1% 0; }
+/* Product shots: a record card (styled like the /assets hero image) with the Trek phone standing over its
+   left side, 38% of the width and about 1.5 times the card's height; the padding centers the card on the
+   phone. Side by side (64rem and up) the phone reaches past the card's left edge into the gap beside the
+   copy; stacked, it stays inside the screen. Percentages keep it in proportion (card height 0.512 of its
+   width, phone height 2.047 of its own). On phones only the Trek phone shows, centered. The phone image
+   has transparent corners, so its shadow is a filter that follows the frame. */
+.hero-shots { position: relative; padding: 13.3% 0; }  /* (phone 0.778 of the width - card 0.512) / 2 */
 .hero-shot-record { display: block; width: 100%; height: auto; background: var(--color-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-float); }
-.hero-shot-phone { position: absolute; left: -5%; top: 0; width: 30%; height: auto; filter: var(--shadow-cutout); }
+.hero-shot-phone { position: absolute; left: 0; top: 0; width: 38%; height: auto; filter: var(--shadow-cutout); }
+@media (min-width: 64rem) { .hero-shot-phone { left: -13%; } }  /* side by side, the phone reaches into the space beside the copy */
+@media (min-width: 40.01rem) and (max-width: 63.99rem) {  /* stacked: the card steps right so the phone leaves its labels clear */
+  .hero-shots { padding: 18% 0; }  /* (0.778 - 0.8 x 0.512) / 2 */
+  .hero-shot-record { width: 80%; margin-left: auto; }
+}
 @media (max-width: 40rem) {
   .hero-shots { padding: 0; }
   .hero-shot-record { display: none; }
-  .hero-shot-phone { position: static; display: block; width: min(60%, 15rem); margin-inline: auto; }
+  .hero-shot-phone { position: static; display: block; width: min(72%, 18rem); margin-inline: auto; }
 }
 
 /* Spacious rhythm (front matter pageClass: page--spacious; on trial on /ldar before it goes site-wide):

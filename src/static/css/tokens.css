@@ -23,6 +23,7 @@
   /* Brand blue */
   --color-brand: #006dff;         /* Electric blue: header, hero, closing band, buttons. White text 4.5:1 */
   --color-brand-deep: #0062e6;    /* bottom of the hero gradient. White text 5.4:1 */
+  --color-brand-muted: #34609f;   /* steel blue: the closing band, quieter than the hero. White text 6.3:1 */
   --color-brand-shade: rgb(2 27 78 / 0.18); /* navy shading on blue blocks (only ever darkens, so text contrast only rises) */
   --color-brand-glow: rgb(0 109 255 / 0.45); /* blue glow on navy panels */
   --color-accent: #006dff;        /* big numerals, rules and markers on white: 4.5:1, 4.1:1 on ice */
