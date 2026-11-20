@@ -94,6 +94,24 @@ if (footer && "IntersectionObserver" in window && !window.matchMedia("(prefers-r
   watch.observe(footer);
 }
 
+// Play once: an element with data-play-once is held at its first frame (.is-armed) and plays when it scrolls
+// into view (.is-in); its CSS decides what moves. Without this, or with reduced motion, it shows finished.
+const playOnce = document.querySelectorAll("[data-play-once]");
+
+if (playOnce.length && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const watch = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-in");
+      watch.unobserve(entry.target);
+    });
+  }, { threshold: 0.35 });
+  playOnce.forEach((el) => {
+    el.classList.add("is-armed");
+    watch.observe(el);
+  });
+}
+
 // Stats: numbers count up from zero once, when they scroll into view. The final figure stays in the HTML,
 // so without JS, with reduced motion, or for screen readers (they read a hidden copy) it shows as written.
 // Counts plain figures of 10 or more with an optional $ or + in front and %, +, k or x after ("92%",
