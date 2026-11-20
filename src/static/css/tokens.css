@@ -75,6 +75,14 @@
   --color-survey-center: #d5dbe5; /* gray at the record */
   --color-survey-edge: #ffffff;   /* ...fading to white at the edges */
 
+  /* Rule status pills (/ldar-rule-map): text on its own tint */
+  --color-status-ok: #1d6b35;     /* in force: 5.7:1 on its tint */
+  --color-status-ok-bg: #e5f3e9;
+  --color-status-warn: #7a5000;   /* changing or partly delayed: 6.4:1 on its tint */
+  --color-status-warn-bg: #fff3d1;
+  --color-status-off: #4e5f80;    /* not in effect yet: 5.6:1 on its tint */
+  --color-status-off-bg: #eceff3;
+
   /* Actions */
   --color-button: #006dff;        /* primary buttons on white: white text 4.5:1 */
   --color-button-text: #ffffff;
@@ -92,6 +100,8 @@
   --shadow-float: 0 40px 80px -30px rgb(2 27 78 / 0.6);
   --shadow-menu: 0 20px 50px rgb(2 27 78 / 0.3);
   --shadow-hover: 0 20px 40px -24px rgb(0 109 255 / 0.6);
+  /* A filter, not a box-shadow: follows the alpha edge of a cut-out image such as a phone frame */
+  --shadow-cutout: drop-shadow(0 24px 28px rgb(2 27 78 / 0.45)) drop-shadow(0 4px 8px rgb(2 27 78 / 0.25));
 
   /* Fonts: Inter for everything (variable, with optical sizes) */
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -107,6 +117,7 @@
   --text-body: clamp(1rem, 0.3vw + 0.95rem, 1.125rem);
   --text-small: 0.95rem;
   --text-label: 0.8rem;           /* eyebrows and small uppercase labels */
+  --text-note: 0.85rem;           /* source notes under a section (.note-ref) */
   --text-run: clamp(1.6rem, 2.2vw + 0.8rem, 2.75rem);      /* headline runs: a bold statement that continues in a softer color (/ldar section heads) */
   --text-run-hero: clamp(2.25rem, 2.8vw + 1rem, 4rem); /* ...and in the hero */
   --text-mock: 0.72rem;           /* labels inside product placeholders */
@@ -118,6 +129,11 @@
   --space-3: 1.5rem;
   --space-4: 2.5rem;
   --space-5: 5rem;
+  /* Fluid section rhythm, on trial on /ldar (main.page--spacious): 375px → 1600px wide */
+  --space-section: clamp(4rem, 3rem + 5vw, 8rem);       /* 64 → 128px: a section's top and bottom */
+  --space-section-lg: clamp(5rem, 3rem + 7vw, 10rem);   /* 80 → 160px: hero, dark band, closing band */
+  --space-band: clamp(3rem, 2rem + 3vw, 5rem);          /* 48 → 80px: a thin band such as the logo strip */
+  --space-head: clamp(2.5rem, 1.5rem + 3vw, 4rem);      /* 40 → 64px: section head to its content */
 
   /* Layout */
   --container: 86rem;

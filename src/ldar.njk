@@ -5,6 +5,7 @@ description: "Documented surveys shorten the leak duration Subpart W assigns to 
 permalink: /ldar.html
 survey: true
 stepper: true
+pageClass: page--spacious
 ---
 <section class="hero hero--poster hero--product">
   <div class="hero-bg" aria-hidden="true">
@@ -12,7 +13,7 @@ stepper: true
   </div>
   <div class="container hero-split">
     <div class="hero-copy">
-      <h1 class="headline-run">Dispatch the surveys. <em>Shorten the repair time.</em> Log the fugitive emissions.</h1>
+      <h1 class="headline-run">Dispatch offline surveys. <em>Shorten the repair time.</em> Log the fugitive emissions.</h1>
     </div>
     <div class="hero-shots">
       <img class="hero-shot-record" src="/static/img/ldar/hero-leak-record.webp" width="1640" height="840" alt="Leak finding LF-2187 on a connector at Tank battery 3, Pad B, Wattenberg Field: detected in an OGI survey on July 21, screened at 1,240 ppm by Method 21, fitting tightened July 23 and remonitored at 180 ppm. The trail runs from finding to work order WO-5521 to repair, with subpart W reporting next. Survey status: 2,418 components surveyed, 14 leaks found, 3 repairs open.">
@@ -53,18 +54,15 @@ stepper: true
 <section class="section">
   <div class="container">
     <div class="section-head section-head--run">
-      <h2 class="headline-run">Every leak costs you three ways. <span>A leak is a compliance finding, lost gas, and reported methane. Near your crews, it is also a hazard.</span></h2>
+      <h2 class="headline-run">Every leak costs you three ways. <span>A leak is a process safety issue, lost gas, and a compliance finding.</span></h2>
     </div>
     <div class="survey-panel">
       <ul class="stat-row">
-        <li><p class="stat">&lt;2%</p><p>of well sites produced most well-site methane in 11 of 15 aerial surveys. Find the big leaks first.</p><p class="stat-source">— Sherwin et al., Nature, 2024</p></li>
-        <li><p class="stat">30%+</p><p>of fossil methane cuts pay for themselves at 2025 gas prices, and more in oil and gas.</p><p class="stat-source">— IEA Global Methane Tracker, 2026</p></li>
-        <li><p class="stat">28x</p><p>Methane's GWP under the GHG Reporting Program. Every open day counts 28 times over.</p><p class="stat-source">— 40 CFR 98, Table A-1</p></li>
+        <li><p class="stat">25+</p><p>federal standards require a formal Method 21 LDAR program at gas plants, terminals, and refineries. NSPS OOOOa and OOOOb added well sites and compressor stations.</p><p class="stat-source">— EPA, See <a href="/ldar-rule-map">LDAR rule map</a>, 2026</p></li>
+        <li><p class="stat">$1,500</p><p>per ton of excess methane for large emitters under the Waste Emissions Charge. Set in statute from 2026 on, but not enforced: Congress delayed it to 2034, and it could still be implemented.</p><p class="stat-source">— Clean Air Act §136(c); One Big Beautiful Bill Act, 2025</p></li>        <li><p class="stat">28x</p><p>Methane's GWP under the GHG Reporting Program. Every open day counts 28 times over.</p><p class="stat-source">— 40 CFR 98, Table A-1</p></li>
       </ul>
       <div class="survey-map"><canvas class="survey-canvas" aria-hidden="true"></canvas></div>
-    </div>
-    <p class="marker-note">An LDAR program is only as good as the proof that it ran.</p>
-  </div>
+    </div>  </div>
 </section>
 
 <section class="section">
@@ -74,9 +72,21 @@ stepper: true
     </div>
     <ul class="bento">
       <li class="bento-card bento-card--wide">
-        <div class="mock mock--panel" aria-hidden="true">
-          <span class="mock-tag">Placeholder</span>
-          <div class="mock-body mock-body--split"><div class="mock-fields"><span>Leak ID</span><span class="mock-line" style="--w:50%"></span><span>Reading</span><span class="mock-line" style="--w:35%"></span><span>Timestamp</span><span class="mock-line" style="--w:65%"></span><span>Geotag</span><span class="mock-line" style="--w:55%"></span></div><span class="mock-photo mock-photo--pin"></span></div>
+        <div class="mock mock--panel">
+          <div class="mock-body mock-body--split">
+            <dl class="mock-fields mock-fields--filled">
+              <dt>Well pad</dt><dd>CC 609-33</dd>
+              <dt>Route</dt><dd>Route 3 (North)</dd>
+              <dt>Inspector</dt><dd>Glover, Mike</dd>
+              <dt>GPS</dt><dd>39.533247, -108.022802</dd>
+              <dt>Thief hatches closed, Enardos seated?</dt><dd>No</dd>
+              <dt>Finding</dt><dd><span class="mock-chip mock-chip--amber">Enardo stuck open</span></dd>
+            </dl>
+            <div class="mock-shot-frame">
+              <img class="mock-shot" src="/static/img/ldar/tank-battery-enardo-finding.webp" width="900" height="1324" loading="lazy" alt="Tank battery on a gravel pad, with the Enardo vent on top of one tank circled: the inspection found it stuck open. Photo taken 2026-10-13 at 10:40 AM.">
+              <span class="mock-stamp" aria-hidden="true">2026-10-13 10:40 AM</span>
+            </div>
+          </div>
         </div>
         <h3 class="h4">Captured at the component</h3>
         <p>Leak ID, readings, and photos, online or offline, with timestamp and geotag.</p>
