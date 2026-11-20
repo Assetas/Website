@@ -1184,6 +1184,22 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-trend-bars { align-items: end; border-bottom: 1px solid var(--color-border); }
 .mock-trend-bars span { height: var(--h); border-radius: 0.2rem 0.2rem 0 0; background: var(--color-accent); }
 .mock-trend-bars .is-now { background: var(--color-amber); }
+/* With data-play-once (menu.js) the months fill in one at a time on scroll-in: each bar grows from zero in
+   amber, then settles to blue as the next one starts; the current month stays amber. About 4 s, plays once,
+   so no pause control; without JS or with reduced motion the chart shows finished. */
+.mock-trend-bars.is-armed span { clip-path: inset(100% 0 0 0); }
+/* Each bar rises (a clip from the top, so the rounded corners hold), then, once full, dips faint and comes
+   back blue: the color switches while it is faint, so it never shows a muddy in-between. Ends by 5 s. */
+.mock-trend-bars.is-armed.is-in span { animation: trend-grow 0.8s cubic-bezier(0.45, 0, 0.2, 1) both, trend-settle 0.5s ease-in-out both; animation-delay: calc(0.2s + var(--i) * 0.39s), calc(1s + var(--i) * 0.39s); }
+.mock-trend-bars.is-armed.is-in .is-now { animation-name: trend-grow, none; }
+.mock-trend-bars.is-armed.is-in .is-next { animation: none; }
+@keyframes trend-grow { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes trend-settle {
+  0% { background: var(--color-amber); opacity: 1; }
+  48% { background: var(--color-amber); opacity: 0.2; }
+  52% { background: var(--color-accent); opacity: 0.2; }
+  100% { background: var(--color-accent); opacity: 1; }
+}
 .mock-months { margin-top: -0.3rem; color: var(--color-muted); font-weight: 600; text-align: center; }
 
 
