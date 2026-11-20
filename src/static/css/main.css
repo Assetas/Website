@@ -1079,6 +1079,42 @@ main { background: var(--color-bg); overflow: hidden; }
 .feature-runs p { color: var(--color-muted); }
 .section--dark .feature-runs h3 { color: var(--color-on-fill); }
 .section--dark .feature-runs p { color: var(--color-on-dark); }
+
+/* Top-bar cards (after Stripe's enterprise page): white cards under a brand-blue bar, on a six-column grid.
+   --wide spans four columns with room for a diagram; --fill is a solid brand-blue card for a rule or a
+   quote; plain cards span three. One column on narrow screens. */
+.top-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.top-card { min-width: 0; padding: var(--space-4) var(--space-4) var(--space-4); border-top: var(--space-1) solid var(--color-brand); border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-soft); }
+.top-card h3 { font-size: var(--text-h4); margin-bottom: var(--space-1); }
+.top-card p { margin: 0; color: var(--color-muted); max-width: 34rem; }
+.top-card--wide { display: grid; gap: var(--space-4); align-items: center; }
+.top-card--fill { display: grid; align-content: center; gap: var(--space-2); background: var(--color-brand); color: var(--color-on-fill); }
+.top-card--fill p { color: var(--color-on-fill); }
+.top-card .top-card-cite { font-size: var(--text-h3); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+@media (min-width: 48rem) {
+  .top-card--wide { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+}
+@media (min-width: 64rem) {
+  .top-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .top-card { grid-column: span 3; }
+  .top-card--wide { grid-column: span 4; }
+  .top-card--fill { grid-column: span 2; }
+}
+
+/* Leak clock: how long subpart W counts a found leak as open, one bar per survey cadence over a calendar
+   year. Amber is the time counted as open; navy ticks are surveys. */
+.leak-clock { margin: 0; display: grid; gap: var(--space-2); }
+.leak-clock figcaption { font-size: var(--text-label); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); }
+.top-card .leak-clock-label { margin-bottom: var(--space-1); font-size: var(--text-small); }
+.leak-clock-label b { color: var(--color-text); font-weight: 600; }
+.leak-clock-track { position: relative; display: block; height: 0.75rem; border-radius: var(--radius-pill); background: var(--color-surface); }
+.leak-clock-fill { position: absolute; top: 0; bottom: 0; left: var(--from); right: calc(100% - var(--to)); border-radius: var(--radius-pill); background: var(--color-amber); }
+.leak-clock-track i { position: absolute; top: 50%; left: var(--at); width: 2px; height: 1.25rem; border-radius: 1px; background: var(--color-text); transform: translate(-50%, -50%); }
+.leak-clock-axis { display: flex; justify-content: space-between; font-size: var(--text-label); color: var(--color-muted); }
+.top-card .leak-clock-key { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font-size: var(--text-label); }
+.leak-clock-key span { display: inline-flex; align-items: center; gap: 0.4em; }
+.leak-clock-key-open::before { content: ""; width: 1.25em; height: 0.6em; border-radius: var(--radius-pill); background: var(--color-amber); }
+.leak-clock-key-survey::before { content: ""; width: 2px; height: 1em; border-radius: 1px; background: var(--color-text); }
 .section--dark .headline-run span { color: var(--color-on-dark-muted); }
 .section--dark .marker-note { color: var(--color-on-dark); }
 

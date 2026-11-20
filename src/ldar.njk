@@ -42,12 +42,39 @@ pageClass: page--spacious
     <div class="section-head section-head--run">
       <h2 class="headline-run">Your last survey sets the clock on the next leak. <span>Subpart W counts a leak as open since the last survey, or all year if you surveyed once.</span></h2>
     </div>
-    <ul class="feature-runs">
-      <li><h3>Shorter assumed duration</h3><p>More documented surveys, shorter windows.</p></li>
-      <li><h3>Consistent inventory inputs</h3><p>Closures write the fugitive emission record as the work happens.</p></li>
-      <li><h3>Proof on the same record</h3><p>Repair, retest, and verification sit with the finding.</p></li>
+    <ul class="top-cards">
+      <li class="top-card top-card--wide">
+        <div>
+          <h3>Shorter assumed duration</h3>
+          <p>More documented surveys, shorter windows.</p>
+        </div>
+        <figure class="leak-clock">
+          <figcaption>How long a found leak counts as open</figcaption>
+          <div>
+            <p class="leak-clock-label"><b>Surveyed once</b> — all year</p>
+            <span class="leak-clock-track"><span class="leak-clock-fill" style="--from:0%;--to:100%"></span></span>
+          </div>
+          <div>
+            <p class="leak-clock-label"><b>Surveyed quarterly</b> — since the last survey</p>
+            <span class="leak-clock-track"><span class="leak-clock-fill" style="--from:50%;--to:75%"></span><i style="--at:0%"></i><i style="--at:25%"></i><i style="--at:50%"></i><i style="--at:75%"></i></span>
+          </div>
+          <div class="leak-clock-axis" aria-hidden="true"><span>Jan</span><span>Apr</span><span>Jul</span><span>Oct</span><span>Dec</span></div>
+          <p class="leak-clock-key"><span class="leak-clock-key-open">Counted as open</span><span class="leak-clock-key-survey">Survey</span></p>
+        </figure>
+      </li>
+      <li class="top-card top-card--fill">
+        <p class="top-card-cite">40 CFR 98.233(q)</p>
+        <p>Equation W-30. Survey frequency and repair timelines come from NSPS OOOOB and state programs.</p>
+      </li>
+      <li class="top-card">
+        <h3>Consistent inventory inputs</h3>
+        <p>Closures write the fugitive emission record as the work happens.</p>
+      </li>
+      <li class="top-card">
+        <h3>Proof on the same record</h3>
+        <p>Repair, retest, and verification sit with the finding.</p>
+      </li>
     </ul>
-    <p class="note-ref">40 CFR 98.233(q), Equation W-30. Survey frequency and repair timelines come from NSPS OOOOB and state programs.</p>
   </div>
 </section>
 
