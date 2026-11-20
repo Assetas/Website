@@ -990,13 +990,11 @@ main { background: var(--color-bg); overflow: hidden; }
 .page--spacious .section-head { margin-bottom: var(--space-head); }
 .page--spacious .section-head--flush { margin-bottom: 0; }
 
-/* Product placeholders: drawn stand-ins for screenshots, each tagged "Placeholder" until the real
+/* Product mocks: drawn stand-ins for screenshots until the real
    screen replaces it. Skeleton lines take their width from --w. */
 .mock { position: relative; background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; font-size: var(--text-mock); }
 .mock-bar { display: flex; align-items: center; gap: var(--space-1); padding: 0.6rem var(--space-2); background: var(--color-section-alt); border-bottom: 1px solid var(--color-border); font-weight: 600; color: var(--color-muted); }
 .mock-dots { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--color-border-input); box-shadow: 0.8rem 0 var(--color-border-input), 1.6rem 0 var(--color-border-input); margin-right: 1.8rem; }
-.mock-tag { margin-left: auto; padding: 0.15rem 0.55rem; border-radius: var(--radius-pill); background: var(--color-amber); color: var(--color-text); font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-.mock--panel .mock-tag { position: absolute; top: var(--space-1); right: var(--space-1); }
 .mock-body { padding: var(--space-2); }
 .mock-body--split { display: grid; gap: var(--space-3); align-items: start; }
 @media (min-width: 40rem) { .mock-body--split { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); } }
@@ -1034,6 +1032,10 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-rules b { font-weight: 700; }
 .mock-rules .is-match { border-color: var(--color-accent); background: var(--color-surface); color: var(--color-text); }
 .mock-rules .is-match b { color: var(--color-accent-text); }
+/* Every step gets the chip's height, so the gaps match and the dots and chip line up with the label. */
+.mock-timeline--due li { display: flex; align-items: center; min-height: 2.1em; }
+.mock-timeline--due li::before { top: 50%; transform: translateY(-50%); }
+.mock-timeline--due li:not(:last-child)::after { top: calc(50% + 0.5rem); height: calc(100% + var(--space-2) - 1rem); }
 .mock-timeline--due li span { margin-left: var(--space-1); font-weight: 500; color: var(--color-muted); }
 .mock-timeline--due li span.mock-chip { color: var(--color-text); font-weight: 600; }
 .mock-photo { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius); background: linear-gradient(135deg, var(--color-surface), var(--color-border)); }
