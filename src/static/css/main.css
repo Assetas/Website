@@ -996,6 +996,19 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-timeline .is-done::before { background: var(--color-accent); border-color: var(--color-accent); }
 .mock-timeline .is-now { color: var(--color-text); }
 .mock-timeline .is-now::before { background: var(--color-amber); border-color: var(--color-amber); }
+/* A filled-in record (label and value pairs) beside a field photo, cropped square on the finding */
+.mock-fields--filled { margin: 0; gap: var(--space-1) var(--space-2); align-items: baseline; font-size: var(--text-label); }
+.mock-fields--filled dt { max-width: 10rem; color: var(--color-muted); }
+.mock-fields--filled dd { margin: 0; min-width: 0; color: var(--color-text); font-weight: 600; font-variant-numeric: tabular-nums; }
+.mock-fields--filled .mock-chip { white-space: normal; }
+@media (max-width: 40rem) {
+  .mock-fields--filled { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .mock-fields--filled dt { max-width: none; }
+  .mock-fields--filled dd + dt { margin-top: var(--space-1); }
+}
+.mock-shot { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 62% 18%; border-radius: var(--radius); }
+.mock-shot-frame { position: relative; }
+.mock-stamp { position: absolute; left: var(--space-1); bottom: var(--space-1); padding: 0.15em var(--space-1); border-radius: var(--radius-pill); background: var(--color-scrim); color: var(--color-on-fill); font-size: var(--text-mock); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .mock-photo { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius); background: linear-gradient(135deg, var(--color-surface), var(--color-border)); }
 .mock-photo--pin { position: relative; }
 .mock-photo--pin::after { content: ""; position: absolute; left: 50%; top: 45%; width: 1rem; height: 1rem; border-radius: 50% 50% 50% 0; transform: translate(-50%, -50%) rotate(-45deg); background: var(--color-accent); }
