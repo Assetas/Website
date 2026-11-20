@@ -93,3 +93,57 @@ if (footer && "IntersectionObserver" in window && !window.matchMedia("(prefers-r
   }, { threshold: 0.3 });
   watch.observe(footer);
 }
+
+// Stats: numbers count up from zero once, when they scroll into view. The final figure stays in the HTML,
+// so without JS, with reduced motion, or for screen readers (they read a hidden copy) it shows as written.
+// Counts plain figures of 10 or more with an optional $ or + in front and %, +, k or x after ("92%",
+// "34,632", "+86", "$1,500", "25+"); anything else ("24/7", "≤ 4 hrs", "$1.8B+") is left alone, as are
+// prices and any stat marked data-count="off".
+const stats = [...document.querySelectorAll(".stat")].filter((el) => !el.closest(".price, [data-count='off']"));
+
+if (stats.length && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const pattern = /^([$+]?)(\d{1,3}(?:,\d{3})*|\d+)(%|\+|k|x)?$/;
+  const counters = new Map();
+
+  stats.forEach((el) => {
+    const text = el.textContent.trim();
+    const match = text.match(pattern);
+    if (!match || el.children.length) return;
+    const [, before, digits, after = ""] = match;
+    const value = Number(digits.replace(/,/g, ""));
+    if (value < 10) return;
+    const grouped = digits.includes(",");
+    const shown = document.createElement("span");
+    shown.setAttribute("aria-hidden", "true");
+    const spoken = document.createElement("span");
+    spoken.className = "visually-hidden";
+    spoken.textContent = text;
+    el.replaceChildren(shown, spoken);
+    // Hold the final width while counting, so nothing beside the number shifts
+    shown.style.display = "inline-block";
+    shown.textContent = text;
+    shown.style.minWidth = `${shown.getBoundingClientRect().width / parseFloat(getComputedStyle(shown).fontSize)}em`;
+    const format = (n) => before + (grouped ? n.toLocaleString("en-US") : String(n)) + after;
+    shown.textContent = format(0);
+    counters.set(el, { shown, value, format });
+  });
+
+  const count = ({ shown, value, format }) => {
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / 1600);
+      shown.textContent = format(Math.round(value * (1 - Math.pow(1 - t, 3))));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const watch = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      watch.unobserve(entry.target);
+      count(counters.get(entry.target));
+    });
+  }, { threshold: 0.6 });
+  counters.forEach((_, el) => watch.observe(el));
+}
