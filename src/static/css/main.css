@@ -1167,7 +1167,24 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-bars { display: flex; align-items: flex-end; gap: var(--space-1); height: 7rem; padding-top: var(--space-3); border-bottom: 1px solid var(--color-border-input); }
 .mock-bars span { flex: 1; height: var(--h); border-radius: 0.3rem 0.3rem 0 0; background: var(--color-accent); opacity: 0.85; }
 .mock-bars span:nth-child(4) { background: var(--color-amber); opacity: 1; }
-.mock-table { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: var(--space-2); align-items: center; padding-top: var(--space-3); }
+/* Export card: the reports the record fills (left) beside the monthly totals it tracks (right) */
+.mock-export { display: grid; gap: var(--space-3); }
+@media (min-width: 48rem) { .mock-export { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); } }
+.mock-reports { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.mock-reports li { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.7fr) 10em; gap: 0.2rem var(--space-2); align-items: center; padding: 0.4rem var(--space-1); border: 1px solid var(--color-border); border-radius: var(--radius); color: var(--color-muted); font-weight: 500; }
+.mock-reports b { color: var(--color-text); font-weight: 700; }
+.mock-reports .mock-chip { justify-self: end; }
+@media (max-width: 40rem) {
+  .mock-reports li { grid-template-columns: minmax(0, 1fr) auto; }
+  .mock-reports b { grid-column: 1 / -1; }
+}
+.mock-trend { display: grid; grid-template-rows: auto minmax(8rem, 1fr) auto; gap: var(--space-1); }
+.mock-trend .mock-label { margin: 0; }
+.mock-trend-bars, .mock-months { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0.3rem; width: 100%; }
+.mock-trend-bars { align-items: end; border-bottom: 1px solid var(--color-border); }
+.mock-trend-bars span { height: var(--h); border-radius: 0.2rem 0.2rem 0 0; background: var(--color-accent); }
+.mock-trend-bars .is-now { background: var(--color-amber); }
+.mock-months { margin-top: -0.3rem; color: var(--color-muted); font-weight: 600; text-align: center; }
 
 
 /* Bento grid (/ldar): cards of different widths, each led by a product placeholder */
