@@ -37,6 +37,23 @@ permalink: /spcc.html
       <h2>A berm that can't hold the tank is three problems at once.</h2>
       <p>Secondary containment is where a tank problem stays a maintenance item instead of becoming a release. Undersized or degraded berms expose you on every front — and the failure mode is quiet until the day it isn't.</p>
     </div>
+    <figure class="berm-check" data-play-once>
+      <svg viewBox="0 0 480 210" role="img" aria-labelledby="berm-check-title">
+        <title id="berm-check-title">The largest tank drains into its secondary containment. The berm holds the full volume with freeboard to spare, so the check passes.</title>
+        <rect class="berm-check-pool" x="54" y="126" width="372" height="70"/>
+        <line class="berm-check-ground" x1="0" y1="196" x2="480" y2="196"/>
+        <polygon class="berm-check-wall" points="30,196 58,196 52,90 40,90"/>
+        <polygon class="berm-check-wall" points="422,196 450,196 440,90 428,90"/>
+        <rect class="berm-check-tank" x="200" y="46" width="80" height="150" rx="5"/>
+        <rect class="berm-check-oil" x="205" y="54" width="70" height="138" rx="2"/>
+        <line class="berm-check-req" x1="16" y1="108" x2="464" y2="108"/>
+      </svg>
+      <figcaption>
+        <span class="berm-check-key berm-check-key--req">Largest tank plus freeboard</span>
+        <span class="berm-check-key berm-check-key--oil">Tank contents</span>
+        <span class="berm-check-result">Pass · the berm holds it</span>
+      </figcaption>
+    </figure>
     <div class="grid">
       <div><img class="line-icon" src="/static/img/icons/risk-controls.svg" width="40" height="40" alt=""><h3 class="h4">Risk controls</h3><p>Ineffective routine inspections and containment risk could mean oil on the ground and in the water — and remediation, reporting, and reputational cost that dwarfs the price of two more inches of berm.</p></div>
       <div><img class="line-icon" src="/static/img/icons/operational-insurance.svg" width="40" height="40" alt=""><h3 class="h4">Operational &amp; insurance</h3><p>Auditors, insurers, and buyers all ask the same question: can you prove your containment works? A current, exportable evidence packet answers in minutes instead of weeks of scramble.</p></div>
@@ -83,7 +100,26 @@ permalink: /spcc.html
         <li><strong>Publish on demand:</strong> PE-ready site descriptions and calc sheets, exportable in your company template.</li>
       </ul>
     </div>
-    <img class="cover-image" src="/static/img/spcc/berm-inspection.webp" width="671" height="756" alt="" loading="lazy">
+    <div class="plan-stage" data-play-once>
+      <div class="plan-sheet">
+        <p class="plan-sheet-kicker">SPCC Plan</p>
+        <p class="plan-sheet-title">Secondary containment calc sheet</p>
+        <dl>
+          <div><dt>Berm dimensions</dt><dd>Captured in Trek</dd></div>
+          <div><dt>Required capacity</dt><dd>Largest tank plus freeboard</dd></div>
+          <div><dt>Current capacity</dt><dd>Calculated from the record</dd></div>
+          <div><dt>Result</dt><dd>Pass</dd></div>
+        </dl>
+        <span class="plan-sheet-line"></span><span class="plan-sheet-line"></span><span class="plan-sheet-line"></span>
+        <svg class="pe-stamp" viewBox="0 0 100 100" aria-hidden="true">
+          <defs><path id="pe-stamp-ring" d="M50,50 m-34,0 a34,34 0 1,1 68,0 a34,34 0 1,1 -68,0"/></defs>
+          <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/>
+          <circle cx="50" cy="50" r="24" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text font-size="9" font-weight="800" fill="currentColor"><textPath href="#pe-stamp-ring" textLength="210">PROFESSIONAL ENGINEER · PE ·</textPath></text>
+          <text x="50" y="56" text-anchor="middle" font-size="17" font-weight="800" fill="currentColor">PE</text>
+        </svg>
+      </div>
+    </div>
   </div>
 </section>
 
