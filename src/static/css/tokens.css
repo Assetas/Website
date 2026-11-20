@@ -74,6 +74,7 @@
   --color-survey-ring: #021b4e;   /* ring around leak dots */
   --color-survey-center: #d5dbe5; /* gray at the record */
   --color-survey-edge: #ffffff;   /* ...fading to white at the edges */
+  --card-glow: radial-gradient(ellipse 90% 110% at 50% 100%, var(--color-section-alt), var(--color-bg) 80%); /* drawing area in outlined cards: the survey glow, lighter */
 
   /* Rule status pills (/ldar-rule-map): text on its own tint */
   --color-status-ok: #1d6b35;     /* in force: 5.7:1 on its tint */

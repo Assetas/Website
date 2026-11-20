@@ -1213,9 +1213,21 @@ main { background: var(--color-bg); overflow: hidden; }
   .bento { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .bento-card--wide { grid-column: span 2; }
 }
-.bento-card { min-width: 0; display: flex; flex-direction: column; padding: var(--space-3); border-radius: var(--radius-lg); background: var(--color-section-alt); }
-.bento-card .mock--panel { flex: 1; min-height: 11rem; padding: var(--space-4) var(--space-3) var(--space-3); margin-bottom: var(--space-3); display: grid; align-content: center; box-shadow: var(--shadow-soft); }
+/* Outlined like .survey-panel: a white card with a hairline border; the drawing fills the top edge to edge on
+   the same soft gray glow as the survey diagram, split from the text by one rule. No nested boxes or shadows. */
+.bento-card { min-width: 0; display: flex; flex-direction: column; padding: var(--space-3); overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg); }
+.bento-card .mock--panel { flex: 1; min-height: 11rem; padding: var(--space-4) var(--space-3) var(--space-3); margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3); display: grid; align-content: center; border: 0; border-bottom: 1px solid var(--color-border); border-radius: 0; background: var(--card-glow); }
 .bento-card h3 { margin-bottom: var(--space-1); }
+/* Split card: text beside a real screenshot on the glow, split by one rule (below on narrow screens). */
+.bento-card--split { display: grid; padding: 0; }
+.bento-card-text { padding: var(--space-3); align-self: center; }
+.bento-card-text p { margin: 0; }
+.bento-card-shot { display: block; width: 100%; height: auto; border-top: 1px solid var(--color-border); padding: var(--space-3); }  /* plain white: the screenshot has its own white canvas */
+@media (min-width: 48rem) {
+  .bento-card--split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); }
+  .bento-card-text { padding: var(--space-4); }
+  .bento-card-shot { border-top: 0; border-left: 1px solid var(--color-border); padding: var(--space-4); }
+}
 
 /* Feature runs (/ldar): each point is one paragraph, a bold title running into a softer explanation,
    under a short amber tick. --stack puts them in one column. */
@@ -1230,15 +1242,15 @@ main { background: var(--color-bg); overflow: hidden; }
 .section--dark .feature-runs h3 { color: var(--color-on-fill); }
 .section--dark .feature-runs p { color: var(--color-on-dark); }
 
-/* Top cards: the bento card look (light gray, large radius, no border) on a six-column grid. --wide spans
-   four columns and puts its diagram in a white .top-card-panel above the text, like a bento mock; --fill is
+/* Top cards: the bento card look (white, hairline outline, diagram on a glow above one rule) on a six-column
+   grid. --wide spans four columns and puts its diagram in a .top-card-panel above the text, like a bento mock; --fill is
    a solid brand-blue card for a rule or a quote; plain cards span three. One column on narrow screens. */
 .top-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
-.top-card { min-width: 0; display: flex; flex-direction: column; padding: var(--space-3); border-radius: var(--radius-lg); background: var(--color-section-alt); }
+.top-card { min-width: 0; display: flex; flex-direction: column; padding: var(--space-3); overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg); }
 .top-card h3 { font-size: var(--text-h4); margin-bottom: var(--space-1); }
 .top-card p { margin: 0; color: var(--color-muted); max-width: 34rem; }
-.top-card-panel { flex: 1; display: grid; align-content: center; margin-bottom: var(--space-3); padding: var(--space-4) var(--space-3) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-soft); }
-.top-card--fill { justify-content: center; gap: var(--space-2); padding: var(--space-4) var(--space-3); background: var(--color-brand); color: var(--color-on-fill); }
+.top-card-panel { flex: 1; display: grid; align-content: center; margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3); padding: var(--space-4) var(--space-3) var(--space-3); border-bottom: 1px solid var(--color-border); background: var(--card-glow); }
+.top-card--fill { justify-content: center; gap: var(--space-2); padding: var(--space-4) var(--space-3); border-color: var(--color-brand); background: var(--color-brand); color: var(--color-on-fill); }
 .top-card--fill p { color: var(--color-on-fill); }
 .top-card .top-card-cite { font-size: var(--text-h3); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
 @media (min-width: 64rem) {
@@ -1277,32 +1289,20 @@ main { background: var(--color-bg); overflow: hidden; }
 .stat-row--stack li { padding: var(--space-3) 0; border-left: 0; border-top: 1px solid var(--color-border); }
 .stat-row--stack li:first-child { padding-top: 0; border-top: 0; }
 
-/* Infrastructure split (/ldar, navy section): feature runs beside a hub diagram on the drafting grid */
-.infra-split { display: grid; gap: var(--space-5); align-items: center; }
-@media (min-width: 56rem) { .infra-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
-.hub {
-  padding: var(--space-4) var(--space-3); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-lg);
-  background-color: var(--color-on-fill-tint);
-  background-image: linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid) 1px, transparent 1px), linear-gradient(var(--color-grid-fine) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-fine) 1px, transparent 1px);
-  background-size: var(--grid-major) var(--grid-major), var(--grid-major) var(--grid-major), var(--grid-minor) var(--grid-minor), var(--grid-minor) var(--grid-minor);
-}
-/* Each program drops a line to a shared bus; the bus drops one line to the record */
-.hub-programs { position: relative; list-style: none; margin: 0 0 var(--space-5); padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-1); }
-.hub-programs li { position: relative; padding: var(--space-1); border-radius: var(--radius); background: var(--color-brand); color: var(--color-on-fill); font-size: var(--text-label); font-weight: 700; text-align: center; text-wrap: balance; }
-.hub-programs li::after { content: ""; position: absolute; left: calc(50% - 1px); top: 100%; width: 2px; height: var(--space-4); background: var(--color-amber); }
-.hub-programs::after { content: ""; position: absolute; left: calc(100% / 6); right: calc(100% / 6); top: calc(100% + var(--space-4)); height: 2px; background: var(--color-amber); }
-.hub-record { position: relative; display: grid; gap: 0.2rem; max-width: 22rem; margin-inline: auto; padding: var(--space-2) var(--space-3); border-radius: var(--radius); background: var(--color-bg); text-align: center; box-shadow: var(--shadow-float); }
-.hub-record::before { content: ""; position: absolute; left: calc(50% - 1px); bottom: 100%; width: 2px; height: calc(var(--space-5) - var(--space-4)); background: var(--color-amber); }
-.hub-record-name { font-weight: 700; color: var(--color-text); }
-.hub-record-fields { font-size: var(--text-label); color: var(--color-muted); }
-
 /* Story panel (/ldar): a client quote on a navy card beside the numbers it stands behind */
 .story { display: grid; gap: var(--space-4); }
 @media (min-width: 56rem) { .story { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; } }
-.story-quote { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-4); min-height: 100%; padding: var(--space-5) var(--space-4) var(--space-4); border-radius: var(--radius-lg); background: radial-gradient(40rem 25rem at 100% 0%, var(--color-brand-glow), transparent 70%), var(--color-band); box-shadow: var(--shadow-raised); }
-.story-quote blockquote { margin: 0; font-family: var(--font-display); font-size: var(--text-h3); font-weight: 650; line-height: 1.2; letter-spacing: -0.025em; color: var(--color-on-fill); text-wrap: pretty; }
+/* Centered pull quote: a big amber quote mark over the text, the attribution under it, and two Assetas alpha
+   marks washed into the navy (decorative pseudo-elements, white at low opacity, partly off the card). */
+.story-quote { position: relative; isolation: isolate; overflow: hidden; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-3); min-height: 100%; padding: var(--space-5) var(--space-4); border-radius: var(--radius-lg); background: radial-gradient(40rem 25rem at 100% 0%, var(--color-brand-glow), transparent 70%), var(--color-band); box-shadow: var(--shadow-raised); text-align: center; }
+.story-quote::before, .story-quote::after { content: ""; position: absolute; z-index: -1; aspect-ratio: 1; background: url("../img/brand/alpha-dark.svg") center / contain no-repeat; filter: brightness(0) invert(1); opacity: 0.06; pointer-events: none; }
+.story-quote::before { width: 60%; left: -18%; bottom: -22%; }
+.story-quote::after { width: 34%; right: -8%; top: 8%; }
+.story-quote blockquote { margin: 0; max-width: 30rem; font-family: var(--font-display); font-size: var(--text-h3); font-weight: 650; line-height: 1.2; letter-spacing: -0.025em; color: var(--color-on-fill); text-wrap: balance; }
+/* The quote mark is a drawn "66" shape (masked, so it takes the amber token), not Inter's slanted glyph. */
+.story-quote blockquote::before { content: ""; display: block; width: 4.5rem; aspect-ratio: 31 / 22; margin: 0 auto var(--space-3); background: var(--color-amber); -webkit-mask: var(--quote-mark) center / contain no-repeat; mask: var(--quote-mark) center / contain no-repeat; --quote-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31 22'%3E%3Cpath d='M0 15C0 7 5 1.5 12.5 0l.5 1.6C9 2.8 6.6 5.3 6.2 8.05A7 7 0 1 1 0 15zM17 15c0-8 5-13.5 12.5-15l.5 1.6c-4 1.2-6.4 3.7-6.8 6.45A7 7 0 1 1 17 15z'/%3E%3C/svg%3E"); }
 .story-quote figcaption { font-size: var(--text-small); color: var(--color-on-dark); }
-.story-quote figcaption::before { content: ""; display: block; width: var(--space-3); height: 3px; margin-bottom: var(--space-2); border-radius: var(--radius-pill); background: var(--color-amber); }
+.story-quote figcaption::before { content: "\2014\00a0"; }
 
 /* Survey map (static/js/survey.js): a stat row above a diagram of one facility record branching
    to pads, equipment and components. Pulses run out to components; amber dots are leak findings.
