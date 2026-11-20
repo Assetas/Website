@@ -1170,8 +1170,8 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-tree li:nth-child(4) { margin-left: calc(var(--space-4) + var(--space-2)); }
 .mock-tree .is-now { border-color: var(--color-accent); color: var(--color-accent-text); }
 .mock-bars { display: flex; align-items: flex-end; gap: var(--space-1); height: 7rem; padding-top: var(--space-3); border-bottom: 1px solid var(--color-border-input); }
-.mock-bars span { flex: 1; height: var(--h); border-radius: 0.3rem 0.3rem 0 0; background: var(--color-accent); opacity: 0.85; }
-.mock-bars span:nth-child(4) { background: var(--color-amber); opacity: 1; }
+.mock-bars span { flex: 1; height: var(--h); border-radius: 0.3rem 0.3rem 0 0; background: var(--color-chart); opacity: 0.85; }
+.mock-bars span:nth-child(4) { background: var(--color-chart-highlight); opacity: 1; }
 /* Export card: the reports the record fills (left) beside the monthly totals it tracks (right) */
 .mock-export { display: grid; gap: var(--space-3); }
 @media (min-width: 48rem) { .mock-export { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); } }
@@ -1187,8 +1187,8 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-trend .mock-label { margin: 0; }
 .mock-trend-bars, .mock-months { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0.3rem; width: 100%; }
 .mock-trend-bars { align-items: end; border-bottom: 1px solid var(--color-border); }
-.mock-trend-bars span { height: var(--h); border-radius: 0.2rem 0.2rem 0 0; background: var(--color-accent); }
-.mock-trend-bars .is-now { background: var(--color-amber); }
+.mock-trend-bars span { height: var(--h); border-radius: 0.2rem 0.2rem 0 0; background: var(--color-chart); }
+.mock-trend-bars .is-now { background: var(--color-chart-highlight); }
 /* With data-play-once (menu.js) the months fill in one at a time on scroll-in: each bar grows from zero in
    amber, then settles to blue as the next one starts; the current month stays amber. About 4 s, plays once,
    so no pause control; without JS or with reduced motion the chart shows finished. */
@@ -1200,10 +1200,10 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-trend-bars.is-armed.is-in .is-next { animation: none; }
 @keyframes trend-grow { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes trend-settle {
-  0% { background: var(--color-amber); opacity: 1; }
-  48% { background: var(--color-amber); opacity: 0.2; }
-  52% { background: var(--color-accent); opacity: 0.2; }
-  100% { background: var(--color-accent); opacity: 1; }
+  0% { background: var(--color-chart-highlight); opacity: 1; }
+  48% { background: var(--color-chart-highlight); opacity: 0.2; }
+  52% { background: var(--color-chart); opacity: 0.2; }
+  100% { background: var(--color-chart); opacity: 1; }
 }
 .mock-months { margin-top: -0.3rem; color: var(--color-muted); font-weight: 600; text-align: center; }
 

@@ -35,6 +35,8 @@
   --color-amber: #ffc21a;         /* navy text on amber 10.2:1; amber on navy 10.2:1 */
   --color-amber-hover: #ffd352;
   --color-amber-light: #ffd352;   /* big numerals on brand blue: 3.2:1 (large text only) */
+  --color-chart: #b3b8bf;         /* light gray bars in drawn charts (decorative) */
+  --color-chart-highlight: #5c9fff; /* light blue for the highlighted bar, darker and bluer than the gray: 2.7:1 on white (decorative) */
 
   /* Navy bands and footer */
   --color-dark: #021b4e;          /* statement band, footer */
