@@ -753,6 +753,24 @@ main { background: var(--color-bg); overflow: hidden; }
   .assetas-compare .tip { top: auto; bottom: -10px; transform: none; }
   .assetas-compare .tip::before { top: auto; bottom: 13px; transform: none; }
 }
+/* compare.js: hovering or focusing a row tints it and marks the tier where it starts (cell + column head);
+   check marks draw in, left to right, as each row scrolls into view. Without JS nothing is hidden. */
+.assetas-compare tbody td, .assetas-compare thead th { transition: background-color 0.2s var(--ease), box-shadow 0.2s var(--ease), color 0.2s var(--ease); }
+.assetas-compare tbody tr:not(.group):is(:hover, :focus-within) td { background: var(--color-section-alt); }
+.assetas-compare tr[data-tier="2"]:is(:hover, :focus-within) td:nth-child(2),
+.assetas-compare tr[data-tier="3"]:is(:hover, :focus-within) td:nth-child(3),
+.assetas-compare tr[data-tier="4"]:is(:hover, :focus-within) td:nth-child(4) { background: var(--color-surface); }
+.assetas-compare table[data-tier="2"] thead th:nth-child(2),
+.assetas-compare table[data-tier="3"] thead th:nth-child(3),
+.assetas-compare table[data-tier="4"] thead th:nth-child(4) { color: var(--color-accent-text); box-shadow: inset 0 -3px var(--color-accent); }
+.assetas-compare .yes { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .assetas-compare.is-armed tr:not(.is-drawn) .yes { clip-path: inset(-0.25em 100% -0.25em 0); }
+  .assetas-compare.is-armed tr.is-drawn .yes { animation: compare-check 0.45s var(--ease) both; animation-delay: var(--row-delay, 0ms); }
+  .assetas-compare.is-armed tr.is-drawn td:nth-child(3) .yes { animation-delay: calc(var(--row-delay, 0ms) + 90ms); }
+  .assetas-compare.is-armed tr.is-drawn td:nth-child(4) .yes { animation-delay: calc(var(--row-delay, 0ms) + 180ms); }
+}
+@keyframes compare-check { from { clip-path: inset(-0.25em 100% -0.25em 0); } to { clip-path: inset(-0.25em 0 -0.25em 0); } }
 
 /* Contact page */
 .contact-stack { max-width: 66rem; }
