@@ -363,6 +363,22 @@ main { background: var(--color-bg); overflow: hidden; }
 .plan-stage.is-armed.is-in .plan-sheet { animation: plan-jolt 0.3s 0.9s; }
 @keyframes plan-jolt { 35% { transform: translateY(3px) scale(0.995); } }
 
+/* Shadow board (/defense, "FMC when it matters"): each tool snaps back into its outline, then the board reads
+   all checked in. data-play-once plays it once on scroll-in; at rest every tool is in place. */
+.shadow-board { margin: var(--space-4) auto 0; max-width: 46rem; }
+.shadow-board svg { display: block; width: 100%; height: auto; }
+.shadow-board-panel { fill: var(--color-section-alt); }
+.shadow-board-peg { fill: var(--color-border-input); opacity: 0.35; }
+.shadow-board-slot { fill: var(--color-brand-shade); }
+.shadow-board-tool { fill: var(--color-text); transform-box: fill-box; }
+.shadow-board-grip { fill: var(--color-amber); }
+.shadow-board figcaption { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); margin-top: var(--space-1); font-size: var(--text-small); color: var(--color-muted); }
+.shadow-board-status { padding: 0.3rem 0.8rem; border-radius: var(--radius-pill); background: var(--color-status-ok-bg); color: var(--color-status-ok); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.shadow-board.is-armed .shadow-board-tool { opacity: 0; transform: translateY(-70px) rotate(-6deg); }
+.shadow-board.is-armed .shadow-board-status { opacity: 0; }
+.shadow-board.is-armed.is-in .shadow-board-tool { opacity: 1; transform: none; transition: opacity 0.2s, transform 0.6s var(--ease-spring); transition-delay: calc(0.2s + var(--i) * 220ms); }
+.shadow-board.is-armed.is-in .shadow-board-status { opacity: 1; transition: opacity 0.4s 1.8s; }
+
 /* Media frame (video, screenshots) */
 .media { border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface); box-shadow: var(--shadow-raised); }
 .media--video { max-width: var(--video-width); margin-inline: auto; aspect-ratio: 16 / 9; }
