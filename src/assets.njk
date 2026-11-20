@@ -3,16 +3,36 @@ layout: layouts/base.njk
 title: "Asset Registry Software: One Record Per Asset | Assetas"
 description: "Every asset in one searchable registry — nameplate data, maintenance history, telemetry, and inspections, each mapped to the requirements it must satisfy."
 permalink: /assets.html
+pageClass: page--spacious
 ---
 <section class="hero">
-  <div class="container split">
-    <div>
+  <div class="container hero-split">
+    <div class="hero-copy">
       <p class="eyebrow">Platform<span class="sep">/</span>Asset intelligence</p>
       <h1>Where every asset meets its record.</h1>
       <p class="lead">Every asset your organization owns — tracked, scored, and audit-ready from day one, not reconstructed when the auditor calls.</p>
+      <div class="button-row">
+        <a class="button" href="/contact">Book a demo</a>
+        <a class="button button--outline" href="/platform">See the platform</a>
+      </div>
     </div>
     <div class="hero-visual">
       <img src="/static/img/assets/hero-asset-record.webp" width="639" height="520" alt="Asset record CMP-4412 for Compressor Station 12 in Wattenberg Field: 18,420 run hours, telemetry at 742 psi and 168°F, last LDAR survey with no leak, quarterly OGI due Oct 15, an integrity inspection mapped to PHMSA 49 CFR 192 and emissions readings mapped to NSPS OOOOb. Field status: 1,284 assets monitored, 98.6% of requirements met, 14 open findings.">
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <div class="logo-strip logo-strip--optical">
+      <p class="logo-strip-title">Trusted by leading operators</p>
+      <ul>
+        <li><img style="--logo-scale:1.09" src="/static/img/logos/chevron.svg" width="82" height="91" alt="Chevron"></li>
+        <li><img style="--logo-scale:1.00" src="/static/img/logos/el-dorado-county.webp" width="94" height="94" alt="El Dorado County, California"></li>
+        <li><img style="--logo-scale:0.91" src="/static/img/logos/utah-gas-corp.webp" width="174" height="94" alt="Utah Gas Corp"></li>
+        <li><img style="--logo-scale:1.15" src="/static/img/logos/us-air-force.svg" width="116" height="91" alt="U.S. Air Force"></li>
+        <li><img style="--logo-scale:0.97" src="/static/img/logos/validus-energy.webp" width="231" height="94" alt="Validus Energy"></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -27,26 +47,29 @@ permalink: /assets.html
   </div>
 </section>
 
-<section class="section section--surface">
+<section class="section">
   <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">What asset intelligence does</p>
-      <h2>A record that stays current, not a spreadsheet that goes stale.</h2>
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">A record that stays current, not a spreadsheet that goes stale.</h2>
     </div>
-    <div class="split">
+    <div class="split split--top">
       <div>
         <p>Most asset registries are static — untouched since commissioning. Asset Intelligence keeps the record current: every inspection and work order touchpoint updates the asset profile.</p>
         <p>That profile includes asset hierarchy, condition and performance history, criticality scoring, location, photos, and a live compliance status. It's the layer every other Assetas module reads from and writes to.</p>
       </div>
       <div>
-        <p class="capability-kicker">Aligned to global standards; adaptable to your needs.</p>
-        <ul class="tags tags--white">
-          <li>ISO 55000 • Asset Management</li>
-          <li>ISO 14224 • Maintenance and Reliability</li>
-          <li>API 653 • Storage Tanks</li>
-          <li>ISO 50001 • Energy Management</li>
-          <li>PHMSA 49 CFR 192/195 • Pipelines</li>
-        </ul>
+        <div class="top-card">
+          <div class="top-card-panel">
+            <ul class="tags tags--white">
+              <li>ISO 55000 • Asset Management</li>
+              <li>ISO 14224 • Maintenance and Reliability</li>
+              <li>API 653 • Storage Tanks</li>
+              <li>ISO 50001 • Energy Management</li>
+              <li>PHMSA 49 CFR 192/195 • Pipelines</li>
+            </ul>
+          </div>
+          <p>Aligned to global standards; adaptable to your needs.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -54,31 +77,26 @@ permalink: /assets.html
 
 <section class="section">
   <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">How it works</p>
-      <h2>Three systems, one record.</h2>
-      <p>Registry, condition, and criticality data feed the same asset profile — so nothing has to be reconciled by hand later.</p>
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Three systems, one record. <span>Registry, condition, and criticality data feed the same asset profile — so nothing has to be reconciled by hand later.</span></h2>
     </div>
-    <div class="grid">
-      <div class="card card--surface">
-        <p class="card-kicker">01 — Registry</p>
-        <img class="card-media" src="/static/img/assets/registry.webp" width="386" height="193" alt="" loading="lazy">
+    <ul class="bento">
+      <li class="bento-card">
+        <img class="bento-card-media" src="/static/img/assets/registry.webp" width="386" height="193" alt="" loading="lazy">
         <h3 class="h4">Asset registry &amp; hierarchy</h3>
         <p>Every asset gets a structured record: type, location, parent/child relationships, ownership, spec data. Bulk-import from existing CMMS or ERP, or build it directly.</p>
-      </div>
-      <div class="card card--surface">
-        <p class="card-kicker">02 — Condition</p>
-        <img class="card-media" src="/static/img/assets/condition.webp" width="386" height="193" alt="" loading="lazy">
+      </li>
+      <li class="bento-card">
+        <img class="bento-card-media" src="/static/img/assets/condition.webp" width="386" height="193" alt="" loading="lazy">
         <h3 class="h4">Condition &amp; performance tracking</h3>
         <p>Condition scores update from inspection results, sensor data, and maintenance history. Trend views show degradation per asset, class, or site.</p>
-      </div>
-      <div class="card card--surface">
-        <p class="card-kicker">03 — Criticality</p>
-        <img class="card-media" src="/static/img/assets/criticality.webp" width="386" height="193" alt="" loading="lazy">
+      </li>
+      <li class="bento-card">
+        <img class="bento-card-media" src="/static/img/assets/criticality.webp" width="386" height="193" alt="" loading="lazy">
         <h3 class="h4">Criticality &amp; lifecycle scoring</h3>
         <p>Assets are scored by safety, operational, and regulatory impact — feeding inspection frequency and workflow priority automatically.</p>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -90,47 +108,47 @@ permalink: /assets.html
 </section>
 
 <section class="section">
-  <div class="container quote-split">
-    <img src="/static/img/assets/solar-panel-installation.webp" width="503" height="589" alt="Technician connecting solar panel cables" loading="lazy">
-    <figure class="quote-card">
-      <blockquote>Assetas allows us to see the status of every system in real time — whether it’s running, offline, or needs maintenance.</blockquote>
-      <figcaption><cite>George Greene IV, PE</cite>CEO, Water Mission</figcaption>
-      <div class="stats">
-        <div><p class="stat">2,700</p><p>projects</p></div>
-        <div><p class="stat">57</p><p>countries</p></div>
-        <div><p class="stat">34,632</p><p>maintainable assets</p></div>
-      </div>
-    </figure>
-  </div>
-</section>
-
-<section class="section section--surface">
   <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Connects to</p>
-      <h2>One record, feeding every module.</h2>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <div class="icon-tile"><img src="/static/img/icons/forms.svg" width="32" height="32" alt=""></div>
-        <h3 class="h4">Feeds Smart Inspections</h3>
-        <p>Every inspection reads and writes back to the same asset record — no duplicate data entry.</p>
-      </div>
-      <div class="card">
-        <div class="icon-tile"><img src="/static/img/icons/compliance.svg" width="32" height="32" alt=""></div>
-        <h3 class="h4">Powers Compliance &amp; Emissions</h3>
-        <p>Compliance status is queried live from asset condition and history, not assembled at reporting time.</p>
-      </div>
-      <div class="card">
-        <div class="icon-tile"><img src="/static/img/icons/assets.svg" width="32" height="32" alt=""></div>
-        <h3 class="h4">Structures data for AI &amp; Modeling</h3>
-        <p>Clean, structured asset data is a prerequisite for predictive maintenance, anomaly detection, and digital twin capability.</p>
-      </div>
+    <div class="story">
+      <figure class="story-quote">
+        <blockquote>“Assetas allows us to see the status of every system in real time — whether it’s running, offline, or needs maintenance.”</blockquote>
+        <figcaption>George Greene IV, PE, CEO, Water Mission</figcaption>
+      </figure>
+      <ul class="stat-row stat-row--stack" data-count="off">
+        <li><p class="stat">2,700</p><p>projects</p></li>
+        <li><p class="stat">57</p><p>countries</p></li>
+        <li><p class="stat">34,632</p><p>maintainable assets</p></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">One record, feeding every module.</h2>
+    </div>
+    <ul class="bento">
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/forms.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Feeds Smart Inspections</h3>
+        <p>Every inspection reads and writes back to the same asset record — no duplicate data entry.</p>
+      </li>
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/compliance.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Powers Compliance &amp; Emissions</h3>
+        <p>Compliance status is queried live from asset condition and history, not assembled at reporting time.</p>
+      </li>
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/assets.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Structures data for AI &amp; Modeling</h3>
+        <p>Clean, structured asset data is a prerequisite for predictive maintenance, anomaly detection, and digital twin capability.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--flush-top">
   <div class="container">
     <div class="media media--video">
       <video autoplay muted loop playsinline controls poster="/static/video/contact-management.jpg" width="1280" height="720">
@@ -140,12 +158,12 @@ permalink: /assets.html
   </div>
 </section>
 
-<section class="section closing">
+<section class="cta-band">
   <div class="container">
     <h2>See your assets, structured.</h2>
     <div class="button-row">
       <a class="button" href="/contact">Book a demo</a>
-      <a class="button button--outline" href="/platform">See the platform</a>
+      <a class="button button--ghost" href="/platform">See the platform</a>
     </div>
   </div>
 </section>

@@ -1098,7 +1098,7 @@ main { background: var(--color-bg); overflow: hidden; }
   .hero-shot-phone { position: static; display: block; width: min(72%, 18rem); margin-inline: auto; }
 }
 
-/* Spacious rhythm (front matter pageClass: page--spacious; on trial on /ldar before it goes site-wide):
+/* Spacious rhythm (front matter pageClass: page--spacious; on trial on /ldar and /assets before it goes site-wide):
    fluid section padding that grows to 128px on wide screens, 160px for the hero, dark band and closing
    band, a thinner band for the logo strip, and more room under each section head. */
 .page--spacious .section { padding-block: var(--space-section); }
@@ -1223,6 +1223,7 @@ main { background: var(--color-bg); overflow: hidden; }
 .bento-card { min-width: 0; display: flex; flex-direction: column; padding: var(--space-3); overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg); }
 .bento-card .mock--panel { flex: 1; min-height: 11rem; padding: var(--space-4) var(--space-3) var(--space-3); margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3); display: grid; align-content: center; border: 0; border-bottom: 1px solid var(--color-border); border-radius: 0; background: var(--card-glow); }
 .bento-card h3 { margin-bottom: var(--space-1); }
+.bento-card-media { display: block; width: calc(100% + 2 * var(--space-3)); max-width: none; height: auto; margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3); border-bottom: 1px solid var(--color-border); }  /* a full-bleed illustration with its own gray canvas, in place of a .mock--panel (/assets) */
 /* Split card: text beside a real screenshot on the glow, split by one rule (below on narrow screens). */
 .bento-card--split { display: grid; padding: 0; }
 .bento-card-text { padding: var(--space-3); align-self: center; }
