@@ -1098,6 +1098,21 @@ main { background: var(--color-bg); overflow: hidden; }
   .hero-shot-phone { position: static; display: block; width: min(72%, 18rem); margin-inline: auto; }
 }
 
+/* Light hero (/assets): white, no drafting grid, dark text. The headline run sits beside a product
+   screenshot (50/50 from 64rem, stacked below) that fades into the page over its last third, right and bottom. */
+.hero.hero--light { background: var(--color-bg); color: var(--color-text); }
+.hero.hero--light::before { content: none; }
+.hero--light h1, .hero--light .headline-run { color: var(--color-text); }
+.hero--light .headline-run { font-size: var(--text-run); line-height: 1.12; letter-spacing: -0.02em; max-width: 52rem; }  /* the section-head run size: statement in navy, the rest in muted */
+.hero--light .headline-run span { color: var(--color-muted); }
+.hero-screen img {
+  display: block; width: 100%; height: auto; border-radius: var(--radius-lg) 0 0 0;
+  -webkit-mask-image: linear-gradient(90deg, #000 67%, rgb(0 0 0 / 0.75) 80%, rgb(0 0 0 / 0.3) 92%, transparent), linear-gradient(180deg, #000 67%, rgb(0 0 0 / 0.75) 80%, rgb(0 0 0 / 0.3) 92%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, #000 67%, rgb(0 0 0 / 0.75) 80%, rgb(0 0 0 / 0.3) 92%, transparent), linear-gradient(180deg, #000 67%, rgb(0 0 0 / 0.75) 80%, rgb(0 0 0 / 0.3) 92%, transparent);
+  mask-composite: intersect;
+}
+
 /* Spacious rhythm (front matter pageClass: page--spacious; on trial on /ldar and /assets before it goes site-wide):
    fluid section padding that grows to 128px on wide screens, 160px for the hero, dark band and closing
    band, a thinner band for the logo strip, and more room under each section head. */
@@ -1316,6 +1331,36 @@ main { background: var(--color-bg); overflow: hidden; }
    Without JS the gray glow shows empty. */
 .survey-panel { margin-bottom: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg); }
 .survey-panel .stat-row { margin: 0; padding: var(--space-4) var(--space-3); }
+
+/* Tour (/assets): a product tour video beside its chapter list, in one outlined panel like .survey-panel.
+   The video sits on the card glow; the chapters (time, topic, title) are buttons once tour.js runs, and
+   the playing chapter gets an ice fill, its detail line, and a thin bar that fills as the chapter plays; the
+   others show time and topic only, so the list stays about as tall as the video. Without JS every chapter
+   shows in full. The video keeps its .media--video frame; inside a tour it fills the stage
+   instead of taking --video-width. Side by side from 64rem; below that the chapters run under the video,
+   in two columns on tablets. */
+.tour { display: grid; border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg); }
+.tour-stage { display: grid; align-content: center; padding: var(--space-3); border-bottom: 1px solid var(--color-border); background: var(--card-glow); }
+.tour .media--video { max-width: none; margin: 0; border: 1px solid var(--color-border); box-shadow: none; }
+.tour-chapters { list-style: none; margin: 0; padding: var(--space-2); display: grid; align-content: center; gap: 0; }
+.tour-chapters li { position: relative; }
+.tour-step { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); column-gap: var(--space-2); width: 100%; padding: 0.45rem var(--space-2) 0.6rem; border: 0; border-radius: var(--radius); background: none; color: inherit; font: inherit; line-height: 1.25; text-align: left; }
+button.tour-step { cursor: pointer; transition: background 0.2s var(--ease); }
+button.tour-step:hover { background: var(--color-section-alt); }
+.tour-time { grid-row: span 2; padding-top: 0.15rem; font-size: var(--text-small); font-feature-settings: "tnum"; color: var(--color-muted); }
+.tour-topic { font-size: var(--text-small); font-weight: 600; color: var(--color-text); }
+.tour-title { margin-top: 0.1rem; font-size: var(--text-small); color: var(--color-muted); }
+.tour.is-live .tour-chapters li:not(.is-active) .tour-title { display: none; }  /* live, only the playing chapter shows its detail line */
+.tour-chapters .is-active > .tour-step { background: var(--color-surface); }
+.tour-chapters .is-active > .tour-step :is(.tour-time, .tour-topic) { color: var(--color-accent-text); font-weight: 600; }
+.tour-chapters .is-active::after { content: ""; position: absolute; left: calc(var(--space-2) * 2 + 2.75rem); right: var(--space-2); bottom: 0.25rem; height: 2px; border-radius: var(--radius-pill); background: linear-gradient(var(--color-accent), var(--color-accent)) 0 0 / var(--p, 0%) 100% no-repeat, var(--color-border); }
+@media (min-width: 40rem) and (max-width: 63.99rem) {
+  .tour-chapters { grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; }
+}
+@media (min-width: 64rem) {
+  .tour { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); }
+  .tour-stage { padding: var(--space-4); border-bottom: 0; border-right: 1px solid var(--color-border); }
+}
 .survey-map {
   position: relative; height: clamp(16rem, 34vw, 28rem); border-top: 1px solid var(--color-border);
   background: radial-gradient(ellipse 75% 130% at 50% calc(100% - 30px), var(--color-survey-center), var(--color-survey-edge) 72%);
