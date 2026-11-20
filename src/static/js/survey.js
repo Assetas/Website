@@ -28,11 +28,11 @@
   // The same diagram on every visit: a small seeded generator instead of Math.random
   function rand() { seed = seed * 16807 % 2147483647; return (seed - 1) / 2147483646; }
 
-  // Facility record > pads > equipment > components; fewer branches on narrow screens
+  // Root (labeled Assetas Dispatch) > pads > equipment > components; fewer branches on narrow screens
   function build(narrow) {
     seed = 11;
     leaves = [];
-    root = { label: "Facility record", kids: [] };
+    root = { label: "Assetas Dispatch", kids: [] };
     var pads = narrow ? 2 : 4, k = 0;
     for (var p = 0; p < pads; p++) {
       var pad = { label: "Pad " + "ABCD".charAt(p), kids: [] };

@@ -94,7 +94,13 @@ pageClass: page--spacious
       <li class="bento-card">
         <div class="mock mock--panel" aria-hidden="true">
           <span class="mock-tag">Placeholder</span>
-          <ol class="mock-timeline"><li class="is-done">Found</li><li class="is-done">Repaired</li><li class="is-done">Retest</li><li class="is-now">Verified</li></ol>
+          <p class="mock-label">Rule applied: facility type + state</p>
+          <ul class="mock-rules">
+            <li>Well site · Utah <b>R307-509</b></li>
+            <li class="is-match">Compressor station · Colorado <b>Reg 7 + OOOOb</b></li>
+            <li>Gas plant · Federal <b>NSPS OOOOb</b></li>
+          </ul>
+          <ol class="mock-timeline mock-timeline--due"><li class="is-done">Found <span>Oct 13</span></li><li class="is-done">Repaired <span>Oct 15</span></li><li class="is-now">Retest <span class="mock-chip mock-chip--amber">Due in 4 days</span></li><li>Verified <span>Closes the finding</span></li></ol>
         </div>
         <h3 class="h4">Linked to the follow-up chain</h3>
         <p>Repair, retest, and verification on the same asset, with every attempt kept.</p>

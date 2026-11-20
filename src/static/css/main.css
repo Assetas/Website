@@ -1027,6 +1027,15 @@ main { background: var(--color-bg); overflow: hidden; }
 .mock-shot { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 62% 18%; border-radius: var(--radius); }
 .mock-shot-frame { position: relative; }
 .mock-stamp { position: absolute; left: var(--space-1); bottom: var(--space-1); padding: 0.15em var(--space-1); border-radius: var(--radius-pill); background: var(--color-scrim); color: var(--color-on-fill); font-size: var(--text-mock); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Rule matching above a due-date timeline: the facility type and state pick the rule that sets each clock */
+.mock-label { margin: 0 0 var(--space-1); font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); }
+.mock-rules { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: grid; gap: var(--space-1); }
+.mock-rules li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.2rem var(--space-1); padding: 0.4rem var(--space-1); border: 1px solid var(--color-border); border-radius: var(--radius); color: var(--color-muted); font-weight: 500; }
+.mock-rules b { font-weight: 700; }
+.mock-rules .is-match { border-color: var(--color-accent); background: var(--color-surface); color: var(--color-text); }
+.mock-rules .is-match b { color: var(--color-accent-text); }
+.mock-timeline--due li span { margin-left: var(--space-1); font-weight: 500; color: var(--color-muted); }
+.mock-timeline--due li span.mock-chip { color: var(--color-text); font-weight: 600; }
 .mock-photo { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius); background: linear-gradient(135deg, var(--color-surface), var(--color-border)); }
 .mock-photo--pin { position: relative; }
 .mock-photo--pin::after { content: ""; position: absolute; left: 50%; top: 45%; width: 1rem; height: 1rem; border-radius: 50% 50% 50% 0; transform: translate(-50%, -50%) rotate(-45deg); background: var(--color-accent); }
