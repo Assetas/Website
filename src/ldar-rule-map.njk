@@ -1,0 +1,297 @@
+---
+layout: layouts/base.njk
+title: "Federal & State LDAR Rule Map | Assetas"
+description: "Federal and state LDAR rules by segment: NSPS OOOOa, OOOOb, KKK, GGGa, NESHAP CC and R, BLM 3179, PHMSA Part 192, Colorado Reg 7, CARB, and 20.2.50 NMAC."
+permalink: /ldar-rule-map.html
+sitemap: false
+cta:
+  heading: "Capture once, report to every rule that reaches you."
+  text: "Thirty minutes. Your sites, the rules that apply to them, and your survey records."
+---
+{#- Hidden reference page: not in the navigation or sitemap; linked from the /ldar stat row. Static content as of
+    November 19, 2026: edit the rows, counts and dates here by hand, and recheck every status when you do. -#}
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">LDAR rule map</p>
+    <h1>Where the leak survey meets the rulebook.</h1>
+    <p class="lead">The federal and state LDAR rules that reach upstream, midstream, and downstream sites, and where each one stands as of November 19, 2026.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Rules by segment.</h2>
+      <p class="lead">Federal rules in force or being revised, and the states on this map that write their own. Many other states adopt the federal rules by reference.</p>
+    </div>
+    <ul class="stat-row">
+      <li><p class="stat">3</p><p>federal LDAR rules reach upstream well sites, tank batteries, and centralized production. 7 states add their own.</p></li>
+      <li><p class="stat">7</p><p>federal LDAR rules reach midstream gathering, gas plants, transmission, storage, and terminals. 7 states add their own.</p></li>
+      <li><p class="stat">4</p><p>federal LDAR rules reach downstream refineries and petrochemical plants. 2 states add their own.</p></li>
+    </ul>
+    <p class="note-ref">Subpart W (40 CFR 98.233(q)) turns leak survey results into reported emissions. EPA proposed in September 2025 to suspend it until reporting year 2034; reporting year 2025 reports are due March 10, 2027.</p>
+  </div>
+</section>
+
+<section class="section section--surface" id="federal">
+  <div class="container">
+    <div class="section-head">
+      <h2>Federal rules.</h2>
+      <p class="lead">EPA's 2007 LDAR guide counted 25 federal standards that require a formal Method 21 program, most of them for chemical plants. These are the ones that reach oil &amp; gas, plus the methane, BLM, and PHMSA rules written since.</p>
+    </div>
+    <div class="rule-table">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Rule</th>
+            <th scope="col" class="rule-seg">Upstream</th>
+            <th scope="col" class="rule-seg">Midstream</th>
+            <th scope="col" class="rule-seg">Downstream</th>
+            <th scope="col">What it requires</th>
+            <th scope="col">Status</th>
+            <th scope="col">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rule-name"><strong>NSPS OOOOa</strong><code>40 CFR 60.5397a</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">OGI or Method 21 surveys and repair deadlines at well sites and compressor stations built or modified Sept 18, 2015 – Dec 6, 2022, plus gas plant equipment leaks.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span><p class="rule-note">An October 2026 proposal would drop the Super Emitter program across OOOO through OOOOc.</p></td>
+            <td class="rule-src"><a href="https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-60/subpart-OOOOa" target="_blank" rel="noopener">eCFR ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>NSPS OOOOb</strong><code>40 CFR 60.5397b</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Fugitive monitoring at every well site, centralized production facility, and compressor station built or modified after Dec 6, 2022: quarterly OGI at well sites with major equipment, monthly AVO at compressor stations.</td>
+            <td class="rule-state"><span class="rule-status rule-status--warn">In force, changes proposed</span><p class="rule-note">The October 29, 2026 proposal would move marginal well sites (15 boe a day or less) to quarterly AVO. Some deadlines moved to Jan 22, 2027.</p></td>
+            <td class="rule-src"><a href="https://www.epa.gov/system/files/documents/2023-12/summary-of-key-requirements-table.pdf" target="_blank" rel="noopener">EPA requirements table ↗</a><a href="https://www.federalregister.gov/documents/2026/10/29/2026-22082/additional-reconsideration-standards-of-performance-for-new-reconstructed-and-modified-sources-and" target="_blank" rel="noopener">2026 proposal ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>EG OOOOc</strong><code>40 CFR 60, subpart OOOOc</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">The same fugitive program for sites built on or before Dec 6, 2022, applied through state plans.</td>
+            <td class="rule-state"><span class="rule-status rule-status--off">Waiting on state plans</span><p class="rule-note">State plans are due Jan 22, 2027, extended from Mar 9, 2026.</p></td>
+            <td class="rule-src"><a href="https://www.epa.gov/system/files/documents/2025-11/fact-sheet_o-g_final-ifr_20251124.pdf" target="_blank" rel="noopener">EPA fact sheet, Nov 2025 ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>NSPS OOOO</strong><code>40 CFR 60.5400</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Equipment-leak LDAR at onshore gas processing plants built or modified Aug 23, 2011 – Sept 18, 2015, using VVa procedures. No well-site fugitive program.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-60/subpart-OOOO" target="_blank" rel="noopener">eCFR ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>NSPS KKK</strong><code>40 CFR 60.630</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Equipment-leak LDAR at onshore gas processing plants built or modified Jan 20, 1984 – Aug 23, 2011, using VV procedures and Method 21.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://19january2021snapshot.epa.gov/sites/static/files/2014-02/documents/ldarguide.pdf" target="_blank" rel="noopener">EPA LDAR guide, App. A ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>NESHAP HH</strong><code>40 CFR 63.769</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Equipment-leak standards at gas processing plants that are major sources of HAP.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-63/subpart-HH" target="_blank" rel="noopener">eCFR ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>NESHAP R</strong><code>40 CFR 63.424</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-what">Equipment leaks at bulk gasoline terminals and pipeline breakout stations. The 2024 amendments added semiannual OGI or Method 21 monitoring.</td>
+            <td class="rule-state"><span class="rule-status rule-status--warn">In force, under review</span><p class="rule-note">EPA opened a reconsideration of the gasoline distribution rules in 2026.</p></td>
+            <td class="rule-src"><a href="https://www.federalregister.gov/documents/2024/05/08/2024-04629/national-emission-standards-for-hazardous-air-pollutants-gasoline-distribution-technology-reviews" target="_blank" rel="noopener">2024 final rule ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>NSPS GGG and GGGa</strong><code>40 CFR 60.590, 60.590a</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-what">Refinery equipment-leak LDAR: GGG for units built Jan 4, 1983 – Nov 7, 2006 (VV procedures), GGGa after that (VVa).</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://19january2021snapshot.epa.gov/sites/static/files/2014-02/documents/ldarguide.pdf" target="_blank" rel="noopener">EPA LDAR guide, App. A ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>NESHAP CC</strong><code>40 CFR 63.648</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-what">The refinery MACT equipment-leak program for components in HAP service.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://19january2021snapshot.epa.gov/sites/static/files/2014-02/documents/ldarguide.pdf" target="_blank" rel="noopener">EPA LDAR guide, App. A ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>NESHAP H (HON) and NSPS VV, VVa, VVb</strong><code>40 CFR 63 H; 60 VV, VVa, VVb</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-what">Equipment-leak LDAR at petrochemical and chemical units. VVb covers units built after Apr 25, 2023.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-60/subpart-VVb" target="_blank" rel="noopener">eCFR, VVb ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>BLM Waste Prevention rule</strong><code>43 CFR 3179.100–102</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">An LDAR program, repairs, and records on federal and tribal oil and gas leases.</td>
+            <td class="rule-state"><span class="rule-status rule-status--warn">Partly delayed</span><p class="rule-note">Repairs (3179.101) and records (3179.102) apply now. BLM is not enforcing the statewide program filing until Dec 10, 2026, and a June 24, 2026 proposal would replace subpart 3179.</p></td>
+            <td class="rule-src"><a href="https://www.blm.gov/about/laws-and-regulations/2024-waste-prevention-rule" target="_blank" rel="noopener">BLM ↗</a><a href="https://www.federalregister.gov/documents/2026/06/24/2026-12738/royalty-for-oil-and-gas-lost-from-onshore-federal-and-indian-leases" target="_blank" rel="noopener">2026 proposal ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>PHMSA leakage surveys</strong><code>49 CFR 192.706, 192.723</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Periodic leakage surveys on gas transmission and distribution pipelines.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-D/part-192" target="_blank" rel="noopener">eCFR, Part 192 ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>PHMSA Gas Pipeline LDAR rule</strong><code>PIPES Act of 2020, §113</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Advanced leak detection programs, leak grading, and repair deadlines for gas pipelines, gathering lines, and facilities.</td>
+            <td class="rule-state"><span class="rule-status rule-status--off">Not in effect</span><p class="rule-note">Issued Jan 17, 2025, then withdrawn before Federal Register publication. S. 2508 and H.R. 4818 would put it in effect; neither has passed.</p></td>
+            <td class="rule-src"><a href="https://www.govinfo.gov/content/pkg/BILLS-119s2508is/pdf/BILLS-119s2508is.pdf" target="_blank" rel="noopener">S. 2508 ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>GHGRP subpart W</strong><code>40 CFR 98.233(q)</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Reporting, not LDAR: leak survey results set reported equipment-leak emissions (Equation W-30). The longer since the last survey, the longer a leak counts as open.</td>
+            <td class="rule-state"><span class="rule-status rule-status--warn">In force, suspension proposed</span><p class="rule-note">A September 2025 proposal would suspend reporting until reporting year 2034. Reporting year 2025 reports are due Mar 10, 2027.</p></td>
+            <td class="rule-src"><a href="https://www.govinfo.gov/content/pkg/FR-2026-02-27/html/2026-03995.htm" target="_blank" rel="noopener">Feb 2026 rule ↗</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="state">
+  <div class="container">
+    <div class="section-head">
+      <h2>State rules.</h2>
+      <p class="lead">States that set their own LDAR requirements on top of the federal rules.</p>
+    </div>
+    <div class="rule-table">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">State</th>
+            <th scope="col" class="rule-seg">Upstream</th>
+            <th scope="col" class="rule-seg">Midstream</th>
+            <th scope="col" class="rule-seg">Downstream</th>
+            <th scope="col">What it requires</th>
+            <th scope="col">Status</th>
+            <th scope="col">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rule-name"><strong>Colorado</strong><code>Regulation 7, Part D (5 CCR 1001-9)</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">LDAR at well production facilities and compressor stations since 2014. Frequency depends on emissions and on distance to occupied areas or disproportionately impacted communities.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span><p class="rule-note">Revisions adopted in early 2026.</p></td>
+            <td class="rule-src"><a href="https://www.iea.org/policies/8857-colorado-regulation-no-7-control-of-ozone-precursors-and-control-of-hydrocarbons-via-oil-and-gas-emissions" target="_blank" rel="noopener">IEA summary ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>California</strong><code>CARB, 17 CCR 95665–95677</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Quarterly Method 21 LDAR at production, processing, transmission, and storage facilities.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://methane-1.itrcweb.org/3-regulations/" target="_blank" rel="noopener">ITRC regulation table ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>California air districts</strong><code>SCAQMD Rule 1173; BAAQMD Regulation 8, Rule 18</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-what">Component leak rules for refineries and other petroleum facilities in the South Coast and Bay Area districts.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://www.aqmd.gov/home/rules-compliance/rules/scaqmd-rule-book" target="_blank" rel="noopener">SCAQMD rule book ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>New Mexico</strong><code>20.2.50 NMAC (2022)</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">LDAR at well sites, tank batteries, gathering and boosting stations, gas plants, and transmission compressor stations, at a frequency set by each facility's VOC potential to emit.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://stateline.org/2024/01/12/federal-rule-forces-oil-states-to-cut-planet-warming-methane-emissions/" target="_blank" rel="noopener">Stateline ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>Pennsylvania</strong><code>25 Pa. Code §§129.121–129.140</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Instrument-based LDAR for existing unconventional and conventional oil and gas sources under the 2022 RACT rules; general permits GP-5 and GP-5A for new sources.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span><p class="rule-note">The conventional rule is carried out under a March 2025 settlement.</p></td>
+            <td class="rule-src"><a href="https://www.pa.gov/agencies/dep/programs-and-services/air/control-of-voc-emissions-from-oil-and-natural-gas-sources" target="_blank" rel="noopener">PA DEP ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>Texas</strong><code>30 TAC Chapter 115</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-what">Fugitive control at refineries, gas and gasoline processing, and petrochemical plants in ozone nonattainment counties (Subchapter D, Division 3), and at well sites in nonattainment areas (Subchapter B, Division 7). Permit LDAR programs apply elsewhere.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://www.tceq.texas.gov/airquality/stationary-rules/voc/fugitives" target="_blank" rel="noopener">TCEQ ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>Utah</strong><code>R307-509</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Well-site LDAR, extended to components under an Approval Order from Dec 1, 2023, with three years of records.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://www.law.cornell.edu/regulations/utah/environmental-quality/title-R307/rule-R307-509" target="_blank" rel="noopener">Utah Admin. Code ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>Wyoming</strong><code>WAQSR Chapter 8, §6</code></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">An LDAR protocol for Upper Green River Basin production facilities and compressor stations, existing as of Jan 1, 2014, that emit more than 4 tons of VOC a year.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://www.law.cornell.edu/regulations/wyoming/020-8-Wyo-Code-R-SS-8-6" target="_blank" rel="noopener">Wyo. Code R. 020-8 §6 ↗</a></td>
+          </tr>
+          <tr>
+            <td class="rule-name"><strong>Maryland</strong><code>COMAR 26.11.41</code></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-seg"><span class="rule-dot is-on" aria-hidden="true"></span><span class="visually-hidden">Yes</span></td>
+            <td class="rule-seg"><span class="rule-dot" aria-hidden="true"></span><span class="visually-hidden">No</span></td>
+            <td class="rule-what">Methane monitoring plans and quarterly AVO inspections at compressor stations, underground storage, and LNG facilities, with survey summaries posted publicly.</td>
+            <td class="rule-state"><span class="rule-status rule-status--ok">In force</span></td>
+            <td class="rule-src"><a href="https://mde.maryland.gov/programs/Regulations/air/Documents/TSD_NG_Methane.pdf" target="_blank" rel="noopener">MDE technical support document ↗</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">Not on this map yet: Ohio, West Virginia, North Dakota, Oklahoma, and Louisiana, and refinery rules in New Jersey, Illinois, and Delaware.</p>
+    <p class="compare-note">A reference, not legal advice. Check the rule text and your permits for each site.</p>
+  </div>
+</section>
+
+{% include "partials/cta-band.njk" %}

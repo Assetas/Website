@@ -724,6 +724,30 @@ main { background: var(--color-bg); overflow: hidden; }
 .assetas-compare .fn-ref a:hover { text-decoration: underline; }
 .compare-note { margin-top: var(--space-3); font-size: var(--text-small); color: var(--color-body); }
 .compare-note + .compare-note { margin-top: var(--space-1); }
+
+/* Rule table (/ldar-rule-map): one row per rule, a dot per segment it reaches, a status pill and sources.
+   Scrolls sideways inside its frame on narrow screens. */
+.rule-table { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg); }
+.rule-table table { width: 100%; min-width: 60rem; border-collapse: collapse; font-size: var(--text-small); line-height: 1.5; }
+.rule-table th, .rule-table td { text-align: left; vertical-align: top; padding: var(--space-2); border-bottom: 1px solid var(--color-border); }
+.rule-table tbody tr:last-child td { border-bottom: 0; }
+.rule-table thead th { background: var(--color-surface); color: var(--color-text); font-size: var(--text-label); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+.rule-table .rule-seg { text-align: center; }
+.rule-name { min-width: 11rem; }
+.rule-name strong { display: block; color: var(--color-text); font-weight: 600; }
+.rule-name code { font-size: var(--text-label); color: var(--color-muted); }
+.rule-what { min-width: 18rem; color: var(--color-body); }
+.rule-state { min-width: 13rem; }
+.rule-dot { display: inline-block; width: 0.8rem; height: 0.8rem; border: 2px solid var(--color-border-input); border-radius: 50%; }
+.rule-dot.is-on { border-color: var(--color-accent); background: var(--color-accent); }
+.rule-status { display: inline-block; padding: 0.15em var(--space-1); border-radius: var(--radius-pill); font-size: var(--text-label); font-weight: 600; white-space: nowrap; }
+.rule-status--ok { color: var(--color-status-ok); background: var(--color-status-ok-bg); }
+.rule-status--warn { color: var(--color-status-warn); background: var(--color-status-warn-bg); }
+.rule-status--off { color: var(--color-status-off); background: var(--color-status-off-bg); }
+.rule-note { margin: var(--space-1) 0 0; font-size: var(--text-label); color: var(--color-muted); }
+.rule-src { min-width: 8rem; font-size: var(--text-label); }
+.rule-src a { display: block; color: var(--color-link); }
+.rule-src a + a { margin-top: var(--space-1); }
 /* Narrow screens keep the horizontal scroll; tooltips open upward so they can't add a vertical one. */
 @media (max-width: 47.99rem) {
   .assetas-compare .tip { top: auto; bottom: -10px; transform: none; }
@@ -900,8 +924,7 @@ main { background: var(--color-bg); overflow: hidden; }
 .hero .text-action, .cta-band .text-action, .dark-band .text-action { color: var(--color-on-fill); }
 
 /* Source note under a section, led by an amber marker */
-.note-ref { margin-top: var(--space-3); font-size: var(--text-small); color: var(--color-muted); max-width: 46rem; }
-.note-ref::before { content: "\25A0\00a0"; color: var(--color-amber); }
+.note-ref { margin-top: var(--space-4); font-size: var(--text-note); color: var(--color-muted); max-width: 46rem; }
 
 /* Headline run (/ldar): one text block per heading. The statement is bold; the explanation continues
    in the same paragraph at the same size in a softer color, instead of a separate lead under it. */
@@ -926,14 +949,28 @@ main { background: var(--color-bg); overflow: hidden; }
    the Trek phone stands, 30% taller than the card and centered on it. The phone keeps its right edge a
    quarter of the way across the card and runs past the card's left edge; on phones, where that would
    leave the screen, the card steps in instead. Percentages of the width keep it in proportion
-   (card height 0.512 of its width, phone height 2.047 of its own). */
+   (card height 0.512 of its width, phone height 2.047 of its own). On phones only the Trek phone shows,
+   centered. The phone image has transparent corners, so its shadow is a filter that follows the frame. */
 .hero-shots { position: relative; padding: 5.1% 0; }
 .hero-shot-record { display: block; width: 100%; height: auto; background: var(--color-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-float); }
-.hero-shot-phone { position: absolute; left: -5%; top: 0; width: 30%; height: auto; border-radius: 16% / 7.8%; box-shadow: var(--shadow-float); }
+.hero-shot-phone { position: absolute; left: -5%; top: 0; width: 30%; height: auto; filter: var(--shadow-cutout); }
 @media (max-width: 40rem) {
-  .hero-shots { padding: 6.4% 0 6.4% 5%; }
-  .hero-shot-phone { left: 0; }
+  .hero-shots { padding: 0; }
+  .hero-shot-record { display: none; }
+  .hero-shot-phone { position: static; display: block; width: min(60%, 15rem); margin-inline: auto; }
 }
+
+/* Spacious rhythm (front matter pageClass: page--spacious; on trial on /ldar before it goes site-wide):
+   fluid section padding that grows to 128px on wide screens, 160px for the hero, dark band and closing
+   band, a thinner band for the logo strip, and more room under each section head. */
+.page--spacious .section { padding-block: var(--space-section); }
+.page--spacious .section--flush-top { padding-top: 0; }
+.page--spacious .section--dark,
+.page--spacious .cta-band,
+.page--spacious .hero--poster.hero--product { padding-block: var(--space-section-lg); }
+.page--spacious .hero + .section--flush-top { padding-block: var(--space-band); }
+.page--spacious .section-head { margin-bottom: var(--space-head); }
+.page--spacious .section-head--flush { margin-bottom: 0; }
 
 /* Product placeholders: drawn stand-ins for screenshots, each tagged "Placeholder" until the real
    screen replaces it. Skeleton lines take their width from --w. */
@@ -992,7 +1029,7 @@ main { background: var(--color-bg); overflow: hidden; }
 
 /* Feature runs (/ldar): each point is one paragraph, a bold title running into a softer explanation,
    under a short amber tick. --stack puts them in one column. */
-.feature-runs { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4) var(--space-3); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.feature-runs { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4) calc(var(--space-3) * 2); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
 .feature-runs--stack { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
 .feature-runs li { min-width: 0; line-height: 1.5; }
 .feature-runs li::before { content: ""; display: block; width: var(--space-3); height: 3px; margin-bottom: var(--space-2); border-radius: var(--radius-pill); background: var(--color-amber); }
