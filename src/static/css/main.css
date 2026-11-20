@@ -251,7 +251,11 @@ main { background: var(--color-bg); overflow: hidden; }
 .hero .eyebrow::before { content: none; }
 /* Tick used as a separator inside an eyebrow, matching the leading tick's shape */
 .eyebrow .tick { display: inline-block; width: 0.9em; height: 0.3em; margin-inline: 0.55em; border-radius: 2px; background: var(--color-amber); vertical-align: 0.2em; }
-.hero h1 u { text-decoration-color: var(--color-amber); text-decoration-thickness: 0.09em; text-underline-offset: 0.1em; }
+/* Amber underline in a hero headline (the home page's "meets"): a background band, not text-decoration, so it
+   can draw left to right once on load. With reduced motion it is simply there. */
+.hero h1 u { text-decoration: none; background: linear-gradient(var(--color-amber), var(--color-amber)) no-repeat 0 calc(100% - 0.05em) / 100% 0.09em; }
+@media (prefers-reduced-motion: no-preference) { .hero h1 u { animation: underline-draw 0.75s 0.35s var(--ease) both; } }
+@keyframes underline-draw { from { background-size: 0 0.09em; } }
 .hero .button--outline { background: transparent; color: var(--color-on-fill); border-color: var(--color-on-fill); }
 .hero .button--outline:hover { background: var(--color-on-fill); color: var(--color-text); }
 .hero .aside-note { border-left-color: var(--color-amber); }
