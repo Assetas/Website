@@ -34,7 +34,20 @@ jobs:
       # Block the deploy on broken internal links/assets or sideways scrolling on phones.
       # The dev server serves _site with the same extensionless URLs as Pages.
       # On www.assetas.com the path prefix goes away: change both localhost URLs below to http://localhost:8080/.
-      - run: npx playwright install --with-deps --only-shell chromium
+      # Chromium for the check. The browser download is cached per Playwright version; the system libraries
+      # come from apt on every run. Separate steps so the run log times each part.
+      - id: playwright
+        run: echo "version=$(node -p "require('playwright/package.json').version")" >> "$GITHUB_OUTPUT"
+      - id: playwright-cache
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
+      - name: Download Chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --only-shell chromium
+      - name: Install Chromium system libraries
+        run: npx playwright install-deps chromium-headless-shell
       - name: Check links and mobile layout
         run: |
           npx @11ty/eleventy --serve --port 8080 > serve.log 2>&1 &
