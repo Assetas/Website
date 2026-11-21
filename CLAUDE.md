@@ -94,7 +94,7 @@ Applies to all new or rewritten copy: page text, headings, buttons, `nav.json` i
 
 ## GitHub Pages limits
 
-Same on every plan; the free plan needs a public repo. As of November 2026 the built site and `.git` were each about 45 MB. Measure current usage with the `github-pages-usage` skill.
+Same on every plan; the free plan needs a public repo. As of November 20, 2026 the built site was about 43 MB (videos about 37 MB of it) and the repo on GitHub about 41 MB. Measure current usage with the `github-pages-usage` skill.
 - **Hard:** published site ≤ 1 GB; source repo should stay under 1 GB; git warns over 50 MB and rejects files over 100 MB, so large downloads go on a GitHub Release like Trek (2 GB per file, outside Pages bandwidth); a deploy fails after 10 minutes. The 10-builds-an-hour limit doesn't apply to our Actions workflow.
 - **Soft:** 100 GB bandwidth a month; GitHub may return `429` in big spikes. Videos use most of it, so compress them with `import-media.mjs`. GitHub doesn't report bandwidth; watch GA4.
 - **Usage policy:** a marketing site is fine; no e-commerce, SaaS, or collecting passwords or payments. Forms post to Web3Forms.
