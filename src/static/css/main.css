@@ -250,6 +250,11 @@ main { background: var(--color-bg); overflow: hidden; }
 .hero .eyebrow { color: var(--color-on-fill); }
 .hero .eyebrow::before { content: none; }
 /* Tick used as a separator inside an eyebrow, matching the leading tick's shape */
+/* Keyword line opening an H1 ("Asset management software"): the eyebrow look on its own line, so the H1
+   carries the search phrase and the slogan after it reads as before. Beats the headline-run span colors. */
+h1 > .eyebrow { display: block; line-height: 1.4; }
+.hero .headline-run > .eyebrow { font-weight: 700; color: var(--color-on-fill); }
+.hero--light .eyebrow, .hero--light .headline-run > .eyebrow { color: var(--color-accent-text); }
 .eyebrow .tick { display: inline-block; width: 0.9em; height: 0.3em; margin-inline: 0.55em; border-radius: 2px; background: var(--color-amber); vertical-align: 0.2em; }
 /* Amber underline in a hero headline (the home page's "meets"): a background band, not text-decoration, so it
    can draw left to right once on load. With reduced motion it is simply there. */
