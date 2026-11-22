@@ -10,6 +10,7 @@ pagination:
   alias: output
 outputs: ["/assets.html", "/assets/index.html"]
 permalink: "{{ output }}"
+rail: true
 canonicalPath: /assets
 pageClass: page--spacious
 tour: true
@@ -480,70 +481,97 @@ tour: true
 <section class="section" id="three-jobs">
   <div class="container">
     <div class="section-head section-head--run">
-      <h2 class="headline-run">Follow the record deeper. <span>The same asset record carries your sensor data, your environmental obligations, and your book value.</span></h2>
+      <h2 class="headline-run">Follow the record deeper. <span>The same asset record carries your sensor data, your environmental obligations, and your engineering information.</span></h2>
     </div>
-    <ul class="bento">
-      <li class="bento-card">
-        <div class="mock mock--panel" aria-hidden="true">
-          <p class="mock-label">Primary generator · fuel use</p>
-          <dl class="mock-fields mock-fields--filled">
-            <dt>Aug 1</dt><dd>9.66 mcf/month</dd>
-            <dt>Expected</dt><dd>303.96</dd>
-            <dt>Check</dt><dd><span class="mock-chip mock-chip--amber">Outside the normal range</span></dd>
-          </dl>
-        </div>
-        <h3 class="h4">Asset telemetry</h3>
-        <p>SCADA, IIoT, and production accounting readings, stored on the asset and checked against an expected range.</p>
-        <a class="text-action" href="/assets/telemetry">See asset telemetry</a>
-      </li>
-      <li class="bento-card">
-        <div class="mock mock--panel" aria-hidden="true">
-          <p class="mock-label">Attribute to obligation</p>
-          <ul class="mock-rules">
-            <li>Diesel tank <b>300 bbl, single-wall</b></li>
-            <li class="is-match">SPCC <b>40 CFR 112</b></li>
-            <li>Operating permit <b>Emission inventory</b></li>
-          </ul>
-        </div>
-        <h3 class="h4">Compliance</h3>
-        <p>Assets are the source points for air, water, and waste compliance. Their records decide which rules apply.</p>
-        <a class="text-action" href="/assets/compliance">See asset compliance</a>
-      </li>
-      <li class="bento-card">
-        <div class="mock mock--panel" aria-hidden="true">
-          <p class="mock-label">Performance over service life</p>
-          <svg class="wf-chart" viewBox="0 0 300 134" aria-hidden="true" focusable="false">
-            <rect class="wf-band" x="4" y="18.0" width="292" height="80.0" rx="3"/>
-            <line class="wf-min" x1="4" y1="98.0" x2="296" y2="98.0"/>
-            <line class="wf-base" x1="4" y1="130" x2="296" y2="130"/>
-            <rect class="wf-bar wf-start" x="10" y="18.0" width="18" height="112.0" rx="2"/>
-            <line class="wf-link" x1="28" y1="18.0" x2="36" y2="18.0"/>
-            <rect class="wf-bar" x="36" y="18.0" width="18" height="12.8" rx="2"/>
-            <line class="wf-link" x1="54" y1="30.8" x2="62" y2="30.8"/>
-            <rect class="wf-bar" x="62" y="30.8" width="18" height="9.6" rx="2"/>
-            <line class="wf-link" x1="80" y1="40.4" x2="88" y2="40.4"/>
-            <rect class="wf-bar" x="88" y="40.4" width="18" height="16.0" rx="2"/>
-            <line class="wf-link" x1="106" y1="56.4" x2="114" y2="56.4"/>
-            <rect class="wf-bar" x="114" y="56.4" width="18" height="11.2" rx="2"/>
-            <line class="wf-link" x1="132" y1="67.6" x2="140" y2="67.6"/>
-            <rect class="wf-bar" x="140" y="67.6" width="18" height="19.2" rx="2"/>
-            <line class="wf-link" x1="158" y1="86.8" x2="166" y2="86.8"/>
-            <rect class="wf-bar wf-fail" x="166" y="86.8" width="18" height="14.4" rx="2"/>
-            <rect class="wf-bar wf-replace" x="192" y="18.0" width="18" height="112.0" rx="2"/>
-            <line class="wf-link" x1="210" y1="18.0" x2="218" y2="18.0"/>
-            <rect class="wf-bar" x="218" y="18.0" width="18" height="8.0" rx="2"/>
-            <line class="wf-link" x1="236" y1="26.0" x2="244" y2="26.0"/>
-            <rect class="wf-bar" x="244" y="26.0" width="18" height="11.2" rx="2"/>
-            <line class="wf-link" x1="262" y1="37.2" x2="270" y2="37.2"/>
-            <rect class="wf-bar" x="270" y="37.2" width="18" height="11.2" rx="2"/>
-          </svg>
-          <p class="wf-legend"><span class="wf-key wf-key--band">Performance envelope</span><span class="wf-key wf-key--fail">Below minimum</span><span class="wf-key wf-key--replace">Replaced</span></p>
-        </div>
-        <h3 class="h4">Operational excellence</h3>
-        <p>Performance, reliability, and service life. One record follows each asset from commissioning to retirement.</p>
-        <a class="text-action" href="/assets/operations">See book value &amp; utilization</a>
-      </li>
-    </ul>
+    <div class="rail rail--story" role="group" aria-label="What the asset record holds">
+      <div class="rail-controls">
+        <button class="rail-btn" type="button" data-rail="prev" aria-label="Scroll cards left">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+        </button>
+        <button class="rail-btn" type="button" data-rail="next" aria-label="Scroll cards right">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="rail-track" tabindex="0">
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--dark">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/assets.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset attributes</h3>
+          </div>
+          <p>Ready-made attributes for each equipment type, from tank orientation to maximum allowed working pressure. Add your own per class.</p>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--brand">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/sensor-feeds.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset telemetry</h3>
+          </div>
+          <p>SCADA, IIoT, and production accounting readings, stored on the asset with unit, time zone, and timestamp.</p>
+          <a class="text-action" href="/assets/telemetry">See asset telemetry</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--ice">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/workflows.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset association</h3>
+          </div>
+          <p>Parent and child links build the hierarchy. Associations tie the rest, from a tank to the battery it serves.</p>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--dark">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/capture.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset location</h3>
+          </div>
+          <p>Where the asset is now and everywhere it has been, so a moved compressor brings its history with it.</p>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--brand">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/field-documentation.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset documentation</h3>
+          </div>
+          <p>Manuals, drawings, permits, and photos filed on the asset, not in a shared drive nobody searches.</p>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--ice">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/forms.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset forms</h3>
+          </div>
+          <p>Inspections, audits, and checklists completed on the asset. Each one stays on the record: who did it, when, and what they found.</p>
+          <a class="text-action" href="/forms">See Smart Forms</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--dark">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/compliance.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset compliance</h3>
+          </div>
+          <p>Assets are the source points for air, water, and waste compliance. Their records decide which rules apply.</p>
+          <a class="text-action" href="/assets/compliance">See asset compliance</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--brand">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/aggregate.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset depreciation</h3>
+          </div>
+          <p>Method, in-service date, purchase price, salvage value, and useful life. The schedule runs for the asset's life.</p>
+          <a class="text-action" href="/assets/operations">See asset lifecycle</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--ice">
+            <span class="rail-card-tag">Placeholder</span>
+            <img class="rail-card-icon" src="/static/img/icons/ai-node.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset anomaly detection</h3>
+          </div>
+          <p>Each new reading is checked against its neighbors. Outliers are flagged on the asset; the original value stays.</p>
+          <a class="text-action" href="/assets/telemetry">See anomaly detection</a>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -986,7 +986,7 @@ main { background: var(--color-bg); overflow: hidden; }
 .footer-columns ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
 .footer-columns a, .footer-legal a { padding-bottom: 3px; background: linear-gradient(var(--color-amber), var(--color-amber)) no-repeat 0 100% / 0% 2px; transition: background-size 0.35s var(--ease); }
 .footer-columns a:is(:hover, :focus-visible), .footer-legal a:is(:hover, :focus-visible) { background-size: 100% 2px; }
-.footer-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--color-on-fill-line); }
+.footer-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--color-on-fill-line); font-size: var(--text-note); }
 .footer-legal p { margin: 0; }
 .footer-legal ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-4); }
 .footer-legal a { color: var(--color-on-dark); }
@@ -1067,7 +1067,7 @@ main { background: var(--color-bg); overflow: hidden; }
 .hero--poster h1 span { display: block; color: var(--color-amber-light); }
 .hero--poster .lead { font-size: clamp(1.1rem, 1vw + 0.9rem, 1.4rem); max-width: 40rem; }
 
-/* Card rail: one scrolling row with arrows below, where a grid would wrap to a second row.
+/* Card rail: one scrolling row with arrows above, where a grid would wrap to a second row.
    Scrolls natively without JavaScript; static/js/rail.js adds the arrows. */
 .rail-track {
   display: grid; grid-auto-flow: column; grid-auto-columns: minmax(16rem, 21rem);
@@ -1077,7 +1077,7 @@ main { background: var(--color-bg); overflow: hidden; }
 }
 .rail-track::-webkit-scrollbar { display: none; }
 .rail-track > * { scroll-snap-align: start; height: 100%; }
-.rail-controls { display: flex; justify-content: flex-end; gap: var(--space-1); margin-top: var(--space-1); }
+.rail-controls { display: flex; justify-content: flex-end; gap: var(--space-1); margin-bottom: var(--space-2); }
 .rail-btn {
   width: 2.75rem; height: 2.75rem; padding: 0; border-radius: var(--radius-pill);
   border: 1.5px solid var(--color-border); background: var(--color-bg); color: var(--color-text);
@@ -1087,6 +1087,36 @@ main { background: var(--color-bg); overflow: hidden; }
 .rail-btn:hover:not(:disabled) { background: var(--color-surface); border-color: var(--color-brand); }
 .rail-btn:disabled { opacity: 0.32; cursor: default; }
 .rail-btn svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Story rail (/assets "Follow the record deeper"): Stripe-style tall media cards, arrows above. Each card is a
+   placeholder tile (navy with amber and blue glows, brand blue with the drafting grid, or ice) holding a white icon
+   and the topic name in its lower left, then a short description and an optional link. Swap each tile for a real
+   screenshot as they come in. */
+.rail--story .rail-track { grid-auto-columns: clamp(15rem, 27%, 22rem); }
+.rail-card { display: grid; grid-template-rows: auto auto 1fr; align-content: start; gap: var(--space-2); }
+.rail-card > p { margin: 0; }
+.rail-card > .text-action { align-self: end; }
+.rail-card-media {
+  position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 4 / 5; margin-bottom: var(--space-1);
+  display: grid; place-items: center; border-radius: var(--radius-lg); color: var(--color-on-fill);
+}
+.rail-card-media--dark {
+  background: radial-gradient(14rem 12rem at 0% 0%, color-mix(in srgb, var(--color-amber) 30%, transparent), transparent 70%),
+              radial-gradient(18rem 16rem at 100% 100%, color-mix(in srgb, var(--color-brand) 60%, transparent), transparent 70%),
+              var(--color-dark-deep);
+}
+.rail-card-media--brand { background: radial-gradient(24rem 18rem at 0% 100%, var(--color-brand-shade), transparent 70%), linear-gradient(180deg, var(--color-brand) 0%, var(--color-brand-deep) 100%); }
+.rail-card-media--brand::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background-image: linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid) 1px, transparent 1px), linear-gradient(var(--color-grid-fine) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-fine) 1px, transparent 1px);
+  background-size: var(--grid-major) var(--grid-major), var(--grid-major) var(--grid-major), var(--grid-minor) var(--grid-minor), var(--grid-minor) var(--grid-minor);
+}
+.rail-card-media--ice { background: radial-gradient(18rem 16rem at 100% 100%, var(--color-section-alt), transparent 70%), var(--color-surface); color: var(--color-dark); border: 1px solid var(--color-border); }
+.rail-card-icon { width: 30%; height: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+.rail-card-media--ice .rail-card-icon { filter: var(--filter-brand); opacity: 1; }
+.rail-card-title { position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-3); margin: 0; font-size: var(--text-h4); line-height: 1.15; letter-spacing: -0.02em; color: inherit; }
+.rail-card-tag { position: absolute; top: var(--space-2); right: var(--space-2); padding: 0.2rem 0.6rem; border-radius: var(--radius-pill); font-size: var(--text-mock); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: var(--color-on-fill-tint); border: 1px solid var(--color-on-fill-line); }
+.rail-card-media--ice .rail-card-tag { background: var(--color-bg); border-color: var(--color-border); color: var(--color-muted); }
 
 /* Second action in a pair: text with a chevron drawn from borders, underlined on hover */
 .text-action { display: inline-flex; align-items: center; gap: 0.5em; min-width: 0; color: var(--color-link); font-weight: 600; text-decoration: none; padding-block: 0.4rem; }
@@ -1485,23 +1515,6 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .mock-skeleton-head span { min-width: 0; }
 .mock-skeleton-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) auto; gap: var(--space-1); padding: 0 var(--space-1) 0.4rem; font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted); }
 
-/* Performance waterfall (/assets "Follow the record deeper" card): one asset's performance stepping down through its
-   service life inside the performance envelope, the step that falls below the minimum in amber, then a replacement
-   resetting it to full. Drawn, not data. */
-.wf-chart { display: block; width: 100%; height: auto; }
-.wf-chart .wf-band { fill: var(--color-surface); }
-.wf-chart .wf-min { stroke: var(--color-border-input); stroke-width: 1; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
-.wf-chart .wf-base { stroke: var(--color-border-input); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.wf-chart .wf-bar { fill: var(--color-chart); }
-.wf-chart .wf-start { fill: var(--color-chart-highlight); }
-.wf-chart .wf-fail { fill: var(--color-amber); }
-.wf-chart .wf-replace { fill: var(--color-brand); }
-.wf-chart .wf-link { stroke: var(--color-border-input); stroke-width: 1; stroke-dasharray: 2 2; vector-effect: non-scaling-stroke; }
-.wf-legend { display: flex; flex-wrap: wrap; gap: 0.3rem var(--space-2); margin: var(--space-1) 0 0; font-size: var(--text-mock); font-weight: 600; color: var(--color-muted); }
-.wf-key::before { content: ""; display: inline-block; width: 0.7em; height: 0.7em; margin-right: 0.35em; border-radius: 2px; vertical-align: -0.05em; }
-.wf-key--band::before { background: var(--color-surface); border: 1px solid var(--color-border-input); }
-.wf-key--fail::before { background: var(--color-amber); }
-.wf-key--replace::before { background: var(--color-brand); }
 .range-chart { margin: 0; }
 .range-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
 .range-chart .range-line { fill: none; stroke: var(--color-chart-highlight); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
