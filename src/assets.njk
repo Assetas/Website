@@ -492,8 +492,8 @@ tour: true
             <dt>Check</dt><dd><span class="mock-chip mock-chip--amber">Outside the normal range</span></dd>
           </dl>
         </div>
-        <h3 class="h4">Telemetry on the asset</h3>
-        <p>SCADA, IIoT, and production accounting readings stored on the asset they describe, then checked against an expected range.</p>
+        <h3 class="h4">Asset telemetry</h3>
+        <p>SCADA, IIoT, and production accounting readings, stored on the asset and checked against an expected range.</p>
         <a class="text-action" href="/assets/telemetry">See asset telemetry</a>
       </li>
       <li class="bento-card">
@@ -502,54 +502,48 @@ tour: true
           <ul class="mock-rules">
             <li>Diesel tank <b>300 bbl, single-wall</b></li>
             <li class="is-match">SPCC <b>40 CFR 112</b></li>
-            <li>Berm inspection <b>Compliance schedule</b></li>
+            <li>Operating permit <b>Emission inventory</b></li>
           </ul>
         </div>
-        <h3 class="h4">Compliance &amp; emissions</h3>
-        <p>Capacity, fuel use, and component counts on the record decide which rules apply, what work they create, and which reports they feed.</p>
+        <h3 class="h4">Compliance</h3>
+        <p>Assets are the source points for air, water, and waste compliance. Their records decide which rules apply.</p>
         <a class="text-action" href="/assets/compliance">See asset compliance</a>
       </li>
       <li class="bento-card">
         <div class="mock mock--panel" aria-hidden="true">
-          <p class="mock-label">Book value, year end</p>
-          <div class="mock-bars mock-bars--book"><span class="is-now" style="--h:92%"></span><span style="--h:74%"></span><span style="--h:60%"></span><span style="--h:49%"></span><span style="--h:39%"></span><span style="--h:32%"></span><span style="--h:26%"></span><span style="--h:21%"></span><span style="--h:17%"></span><span style="--h:14%"></span><span style="--h:11%"></span></div>
-          <p class="mock-axis"><span>2026</span><span>2046</span></p>
+          <p class="mock-label">Performance over service life</p>
+          <svg class="wf-chart" viewBox="0 0 300 134" aria-hidden="true" focusable="false">
+            <rect class="wf-band" x="4" y="18.0" width="292" height="80.0" rx="3"/>
+            <line class="wf-min" x1="4" y1="98.0" x2="296" y2="98.0"/>
+            <line class="wf-base" x1="4" y1="130" x2="296" y2="130"/>
+            <rect class="wf-bar wf-start" x="10" y="18.0" width="18" height="112.0" rx="2"/>
+            <line class="wf-link" x1="28" y1="18.0" x2="36" y2="18.0"/>
+            <rect class="wf-bar" x="36" y="18.0" width="18" height="12.8" rx="2"/>
+            <line class="wf-link" x1="54" y1="30.8" x2="62" y2="30.8"/>
+            <rect class="wf-bar" x="62" y="30.8" width="18" height="9.6" rx="2"/>
+            <line class="wf-link" x1="80" y1="40.4" x2="88" y2="40.4"/>
+            <rect class="wf-bar" x="88" y="40.4" width="18" height="16.0" rx="2"/>
+            <line class="wf-link" x1="106" y1="56.4" x2="114" y2="56.4"/>
+            <rect class="wf-bar" x="114" y="56.4" width="18" height="11.2" rx="2"/>
+            <line class="wf-link" x1="132" y1="67.6" x2="140" y2="67.6"/>
+            <rect class="wf-bar" x="140" y="67.6" width="18" height="19.2" rx="2"/>
+            <line class="wf-link" x1="158" y1="86.8" x2="166" y2="86.8"/>
+            <rect class="wf-bar wf-fail" x="166" y="86.8" width="18" height="14.4" rx="2"/>
+            <rect class="wf-bar wf-replace" x="192" y="18.0" width="18" height="112.0" rx="2"/>
+            <line class="wf-link" x1="210" y1="18.0" x2="218" y2="18.0"/>
+            <rect class="wf-bar" x="218" y="18.0" width="18" height="8.0" rx="2"/>
+            <line class="wf-link" x1="236" y1="26.0" x2="244" y2="26.0"/>
+            <rect class="wf-bar" x="244" y="26.0" width="18" height="11.2" rx="2"/>
+            <line class="wf-link" x1="262" y1="37.2" x2="270" y2="37.2"/>
+            <rect class="wf-bar" x="270" y="37.2" width="18" height="11.2" rx="2"/>
+          </svg>
+          <p class="wf-legend"><span class="wf-key wf-key--band">Performance envelope</span><span class="wf-key wf-key--fail">Below minimum</span><span class="wf-key wf-key--replace">Replaced</span></p>
         </div>
         <h3 class="h4">Operational excellence</h3>
-        <p>Book value, runtime, and condition on one record: find what you pay for and don't run, and give your models clean data.</p>
+        <p>Performance, reliability, and service life. One record follows each asset from commissioning to retirement.</p>
         <a class="text-action" href="/assets/operations">See book value &amp; utilization</a>
       </li>
     </ul>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="section-head section-head--run">
-      <h2>What engineers ask about the record.</h2>
-    </div>
-    <div class="faq">
-      <details>
-        <summary>Can we start from our current CMMS or ERP?</summary>
-        <div><p>Yes. Bulk-import existing records, or build the register directly. Attributes come pre-configured for each equipment type, so you add, remove, or customize instead of starting blank.</p></div>
-      </details>
-      <details>
-        <summary>Which standards is the data model aligned to?</summary>
-        <div><p>ISO 55000, ISO 14224, API 653, ISO 50001, and PHMSA 49 CFR 192/195. Aligned to, not certified against.</p></div>
-      </details>
-      <details>
-        <summary>How do assets relate to each other?</summary>
-        <div><p>Parent and child links build the hierarchy, from site down to component. Associations link assets outside it, such as a diesel tank and the primary generator it sits beside.</p></div>
-      </details>
-      <details>
-        <summary>Do field crews need signal?</summary>
-        <div><p>No. Trek captures inspections offline, timestamped and geotagged, and writes them to the record when the device reconnects.</p></div>
-      </details>
-      <details>
-        <summary>Can we see who changed a record?</summary>
-        <div><p>Yes. The audit log keeps who entered what, and what changed since.</p></div>
-      </details>
-    </div>
   </div>
 </section>
 

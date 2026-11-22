@@ -1485,6 +1485,23 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .mock-skeleton-head span { min-width: 0; }
 .mock-skeleton-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) auto; gap: var(--space-1); padding: 0 var(--space-1) 0.4rem; font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted); }
 
+/* Performance waterfall (/assets "Follow the record deeper" card): one asset's performance stepping down through its
+   service life inside the performance envelope, the step that falls below the minimum in amber, then a replacement
+   resetting it to full. Drawn, not data. */
+.wf-chart { display: block; width: 100%; height: auto; }
+.wf-chart .wf-band { fill: var(--color-surface); }
+.wf-chart .wf-min { stroke: var(--color-border-input); stroke-width: 1; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.wf-chart .wf-base { stroke: var(--color-border-input); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.wf-chart .wf-bar { fill: var(--color-chart); }
+.wf-chart .wf-start { fill: var(--color-chart-highlight); }
+.wf-chart .wf-fail { fill: var(--color-amber); }
+.wf-chart .wf-replace { fill: var(--color-brand); }
+.wf-chart .wf-link { stroke: var(--color-border-input); stroke-width: 1; stroke-dasharray: 2 2; vector-effect: non-scaling-stroke; }
+.wf-legend { display: flex; flex-wrap: wrap; gap: 0.3rem var(--space-2); margin: var(--space-1) 0 0; font-size: var(--text-mock); font-weight: 600; color: var(--color-muted); }
+.wf-key::before { content: ""; display: inline-block; width: 0.7em; height: 0.7em; margin-right: 0.35em; border-radius: 2px; vertical-align: -0.05em; }
+.wf-key--band::before { background: var(--color-surface); border: 1px solid var(--color-border-input); }
+.wf-key--fail::before { background: var(--color-amber); }
+.wf-key--replace::before { background: var(--color-brand); }
 .range-chart { margin: 0; }
 .range-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
 .range-chart .range-line { fill: none; stroke: var(--color-chart-highlight); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
