@@ -40,6 +40,7 @@
 
   /* Navy bands and footer */
   --color-dark: #021b4e;          /* statement band, footer */
+  --color-dark-deep: #010d29;     /* deeper navy for the quote card field, under its glows. White text 18:1 */
   --color-band: #021b4e;          /* dark bands and panels (stats, dark CTA, dark-band, tooltips) */
   --color-on-dark: #b5c6e6;       /* body text on navy: 9.6:1 */
   --color-on-dark-muted: #8fa3c8; /* secondary text on navy: 6.5:1 */

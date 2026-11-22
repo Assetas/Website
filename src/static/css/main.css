@@ -545,6 +545,7 @@ main { background: var(--color-bg); overflow: hidden; }
 .panel--dark { background: radial-gradient(40rem 18rem at 100% 0%, var(--color-brand-glow), transparent 70%), var(--color-band); color: var(--color-on-dark); }
 .panel--dark h3 { color: var(--color-on-fill); }
 .tags--on-dark li { background: var(--color-on-fill-tint); border-color: var(--color-on-fill-line); color: var(--color-on-fill); }
+.tags li.is-regulation { background: var(--color-section-alt); }  /* regulations, set apart from the standards beside them (/assets) */
 .tags li.is-accent-fill { background: var(--color-amber); border-color: var(--color-amber); color: var(--color-text); }
 .marker-note--accent { color: var(--color-accent-text); }
 .marker-note--plain::before { content: none; }
@@ -763,6 +764,44 @@ main { background: var(--color-bg); overflow: hidden; }
 .statement p { margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: var(--text-h2); line-height: 1.2; color: var(--color-on-fill); }
 .statement p + p { color: var(--color-on-dark-muted); }
 .statement em { font-style: normal; color: var(--color-amber); }
+/* Fan statement (/assets): a light band filled by 160 lines, brand blue at the hub fading through light gray, fanning out of a hub just below its bottom
+   edge and running past the frame (.statement-rays, inline SVG, sliced to fill), over a faint amber glow. With
+   data-play-once the lines sweep out once from the vertical to the sides and the text rises in. Then, with
+   data-loop, a 10 s cycle repeats: an amber wave leaves the hub, sparks run out to 39 dots that flash amber and
+   settle blue, the other dots twinkle from the center outward, and every dot fades 1.5 s after it appears.
+   menu.js adds a pause button (WCAG 2.2.2) and pauses it offscreen. Without JS or with reduced motion it is still. */
+.statement.statement--fan { position: relative; overflow: hidden; isolation: isolate; padding-block: calc(var(--space-section-lg) * 2.4) calc(var(--space-section-lg) * 0.95);  /* text about two-thirds down */
+  background: radial-gradient(ellipse 45% 55% at 50% 108%, color-mix(in srgb, var(--color-amber) 16%, transparent), transparent 80%),
+              radial-gradient(ellipse 110% 140% at 50% 108%, color-mix(in srgb, var(--color-surface) 60%, var(--color-bg)) 40%, var(--color-bg) 100%); }
+.statement.statement--fan .container { position: relative; z-index: 1; }
+.statement.statement--fan p, .statement.statement--fan p + p, .statement.statement--fan em { font-size: var(--text-h2); line-height: 1.2; color: var(--color-text); }  /* dark blue (navy) */
+.statement-rays { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.5; }  /* kept subtle */
+.statement-rays .ray-stop-center { stop-color: var(--color-brand); }
+.statement-rays .ray-stop-mid { stop-color: var(--color-chart); }
+.statement-rays .ray-stop-edge { stop-color: var(--color-chart); stop-opacity: 0.2; }
+.statement-rays .ray { fill: none; stroke: url(#ray-ink); stroke-dasharray: 1; stroke-dashoffset: 0; vector-effect: non-scaling-stroke; }
+.statement-rays .ray--faint { stroke-width: 0.7; opacity: 0.5; }
+.statement-rays .ray--mid { stroke-width: 1; opacity: 0.75; }
+.statement-rays .ray--strong { stroke-width: 1.4; opacity: 1; }
+.statement-rays .ray-dot { fill: var(--color-brand); transform-box: fill-box; transform-origin: center; }
+.statement-rays .ray-spark { fill: none; stroke: var(--color-amber); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 0.05 2; stroke-dashoffset: 0.05; opacity: 0; vector-effect: non-scaling-stroke; }
+.statement-rays .ray-wave { fill: none; stroke: var(--color-amber); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; vector-effect: non-scaling-stroke; }
+.statement.is-armed p { opacity: 0; transform: translateY(0.35em); }
+.statement.is-armed .ray { stroke-dashoffset: 1; }
+.statement.is-armed .ray-dot { opacity: 0; }
+.statement.is-armed.is-in p { opacity: 1; transform: none; transition: opacity 1.2s var(--ease) 0.5s, transform 1.2s var(--ease) 0.5s; }
+.statement.is-armed.is-in p + p { transition-delay: 1.8s; }
+.statement.is-armed.is-in .ray { stroke-dashoffset: 0; transition: stroke-dashoffset 3s var(--ease) calc(var(--d) * 1.6s); }
+.statement.is-armed.is-in .ray-wave { animation: ray-wave 10s var(--ease) 0.2s infinite backwards; }
+.statement.is-armed.is-in .ray-spark { animation: ray-spark 10s linear calc(4s + var(--k) * 256ms) infinite backwards; }
+.statement.is-armed.is-in .ray-dot { animation: ray-blink 10s var(--ease) calc(4s + var(--d) * 10s) infinite backwards; }
+.statement.is-armed.is-in .ray-dot--lit { animation: ray-blink-lit 10s var(--ease) calc(6.1s + var(--k) * 256ms) infinite backwards; }
+.statement.is-paused .statement-rays *, .statement.is-offscreen .statement-rays * { animation-play-state: paused !important; }  /* beats each element's animation shorthand */
+.statement .loop-toggle { top: auto; bottom: var(--space-2); z-index: 2; }
+@keyframes ray-wave { 0% { opacity: 0.8; transform: scale(0.2); } 30% { opacity: 0; transform: scale(6); } 100% { opacity: 0; transform: scale(6); } }
+@keyframes ray-spark { 0% { opacity: 0; stroke-dashoffset: 0.05; } 2% { opacity: 1; } 20% { opacity: 1; } 22% { opacity: 0; stroke-dashoffset: -0.95; } 100% { opacity: 0; stroke-dashoffset: -0.95; } }
+@keyframes ray-blink { 0% { opacity: 0; transform: scale(0.4); } 4% { opacity: 1; transform: none; } 19% { opacity: 1; } 25% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes ray-blink-lit { 0% { opacity: 0; transform: scale(0); fill: var(--color-amber); } 3% { opacity: 1; transform: scale(2.2); fill: var(--color-amber); } 7% { transform: none; fill: var(--color-brand); } 22% { opacity: 1; fill: var(--color-brand); } 28% { opacity: 0; } 100% { opacity: 0; } }
 
 /* Photo next to a quote card with stats */
 .quote-split { display: grid; gap: var(--space-4); align-items: center; }
@@ -1304,7 +1343,8 @@ main { background: var(--color-bg); overflow: hidden; }
 .stat-row { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: grid; gap: var(--space-4) var(--space-3); grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
 .stat-row li { min-width: 0; padding-left: var(--space-3); border-left: 1px solid var(--color-border-input); }
 .stat-row p { margin: 0; }
-.stat-row .stat { font-size: var(--text-stat-row); margin-bottom: var(--space-1); }
+.stat-row .stat { font-size: var(--text-stat-row); margin-bottom: var(--space-1); letter-spacing: -0.015em; }  /* looser than the big .stat: at this size -0.045em made longer figures (34,632) read condensed */
+.story .stat-row .stat { color: var(--color-muted); }  /* numbers beside a quote card in the headline-run gray, not brand blue */
 .stat-row p:not(.stat):not(.stat-source) { color: var(--color-text); max-width: 22rem; }
 .stat-row .stat-source { margin-top: var(--space-1); font-size: var(--text-small); color: var(--color-muted); }
 .stat-row--stack { grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; }
@@ -1314,15 +1354,22 @@ main { background: var(--color-bg); overflow: hidden; }
 /* Story panel (/ldar): a client quote on a navy card beside the numbers it stands behind */
 .story { display: grid; gap: var(--space-4); }
 @media (min-width: 56rem) { .story { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; } }
-/* Centered pull quote: a big amber quote mark over the text, the attribution under it, and two Assetas alpha
-   marks washed into the navy (decorative pseudo-elements, white at low opacity, partly off the card). */
-.story-quote { position: relative; isolation: isolate; overflow: hidden; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-3); min-height: 100%; padding: var(--space-5) var(--space-4); border-radius: var(--radius-lg); background: radial-gradient(40rem 25rem at 100% 0%, var(--color-brand-glow), transparent 70%), var(--color-band); box-shadow: var(--shadow-raised); text-align: center; }
-.story-quote::before, .story-quote::after { content: ""; position: absolute; z-index: -1; aspect-ratio: 1; background: url("../img/brand/alpha-dark.svg") center / contain no-repeat; filter: brightness(0) invert(1); opacity: 0.06; pointer-events: none; }
+/* Quote card: a deep navy field with soft amber and blue glows and the faint alpha marks, holding a glass panel
+   (thin light outline, translucent fill, blur) with the quote set left under a small amber quote mark, an <em>
+   phrase in amber, and a dots-and-rule mark in its lower corner. */
+.story-quote { position: relative; isolation: isolate; overflow: hidden; margin: 0; display: grid; align-content: center; min-height: 100%; padding: var(--space-4) var(--space-3); border-radius: var(--radius-lg); box-shadow: var(--shadow-raised);
+  background: radial-gradient(16rem 13rem at 2% 2%, color-mix(in srgb, var(--color-amber) 62%, transparent), color-mix(in srgb, var(--color-amber) 14%, transparent) 45%, transparent 75%),
+              radial-gradient(30rem 24rem at 96% 100%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
+              var(--color-dark-deep); }
+.story-quote::before, .story-quote::after { content: ""; position: absolute; z-index: -1; aspect-ratio: 1; background: url("../img/brand/alpha-dark.svg") center / contain no-repeat; filter: brightness(0) invert(1); opacity: 0.07; pointer-events: none; }
 .story-quote::before { width: 60%; left: -18%; bottom: -22%; }
 .story-quote::after { width: 34%; right: -8%; top: 8%; }
-.story-quote blockquote { margin: 0; max-width: 30rem; font-family: var(--font-display); font-size: var(--text-h3); font-weight: 650; line-height: 1.2; letter-spacing: -0.025em; color: var(--color-on-fill); text-wrap: balance; }
-/* The quote mark is a drawn "66" shape (masked, so it takes the amber token), not Inter's slanted glyph. */
-.story-quote blockquote::before { content: ""; display: block; width: 4.5rem; aspect-ratio: 31 / 22; margin: 0 auto var(--space-3); background: var(--color-amber); -webkit-mask: var(--quote-mark) center / contain no-repeat; mask: var(--quote-mark) center / contain no-repeat; --quote-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31 22'%3E%3Cpath d='M0 15C0 7 5 1.5 12.5 0l.5 1.6C9 2.8 6.6 5.3 6.2 8.05A7 7 0 1 1 0 15zM17 15c0-8 5-13.5 12.5-15l.5 1.6c-4 1.2-6.4 3.7-6.8 6.45A7 7 0 1 1 17 15z'/%3E%3C/svg%3E"); }
+.story-glass { position: relative; display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-4) calc(var(--space-4) + var(--space-2)); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-lg); background: var(--color-on-fill-tint); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); text-align: left; }
+.story-glass::after { content: ""; position: absolute; right: var(--space-3); bottom: var(--space-3); width: 5.5rem; height: 0.6rem; background: var(--color-on-fill-line); -webkit-mask: var(--glass-mark) center / contain no-repeat; mask: var(--glass-mark) center / contain no-repeat;
+  --glass-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 10'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.5'%3E%3Ccircle cx='5' cy='5' r='3.5'/%3E%3Ccircle cx='15' cy='5' r='3.5'/%3E%3Ccircle cx='25' cy='5' r='3.5'/%3E%3Cpath d='M38 5h50'/%3E%3C/g%3E%3C/svg%3E"); }
+.story-quote blockquote { margin: 0; max-width: 30rem; font-family: var(--font-display); font-size: var(--text-h3); font-weight: 500; line-height: 1.22; letter-spacing: -0.02em; color: var(--color-on-fill); text-wrap: pretty; }
+.story-quote blockquote::before { content: ""; display: block; width: 2.5rem; aspect-ratio: 31 / 22; margin: 0 0 var(--space-2); background: var(--color-amber); -webkit-mask: var(--quote-mark) center / contain no-repeat; mask: var(--quote-mark) center / contain no-repeat; --quote-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31 22'%3E%3Cpath d='M0 15C0 7 5 1.5 12.5 0l.5 1.6C9 2.8 6.6 5.3 6.2 8.05A7 7 0 1 1 0 15zM17 15c0-8 5-13.5 12.5-15l.5 1.6c-4 1.2-6.4 3.7-6.8 6.45A7 7 0 1 1 17 15z'/%3E%3C/svg%3E"); }
+.story-quote blockquote em { font-style: normal; font-weight: 700; color: var(--color-amber); }
 .story-quote figcaption { font-size: var(--text-small); color: var(--color-on-dark); }
 .story-quote figcaption::before { content: "\2014\00a0"; }
 
