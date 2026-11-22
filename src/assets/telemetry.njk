@@ -1,0 +1,175 @@
+---
+layout: layouts/base.njk
+title: "Asset Telemetry & Anomaly Detection | Assetas"
+description: "SCADA, IIoT, and production accounting readings stored on the asset record with unit, time zone, and quality flags, then checked against an expected range."
+permalink: /assets/telemetry.html
+sitemap: false
+pageClass: page--spacious
+cta:
+  heading: "See your readings on your assets."
+  text: "Thirty minutes. Your tags, your field data systems, and one reading checked against its range."
+---
+{#- Hidden child of /assets: not in the navigation or sitemap; linked from the /assets "One record, three jobs" cards.
+    The primary generator's tags and its August fuel-use reading come from the demo record in
+    telemetry-and-anomaly-detection.mp4. -#}
+<section class="hero hero--light">
+  <div class="container hero-split">
+    <div class="hero-copy">
+      <p class="eyebrow"><a href="/assets">Assets</a><span class="sep">/</span>Telemetry</p>
+      <h1 class="headline-run">Where the sensor tag meets the asset. <span>Readings from SCADA, IIoT sensors, and production accounting land on the record they describe, beside its work orders and inspections.</span></h1>
+    </div>
+    <div class="hero-panel">
+      <div class="mock" role="img" aria-label="Telemetry tags on the primary generator's record: fuel use in mcf a month and runtime in hours a month, both in Mountain Standard Time, fed from SCADA, IIoT sensors, production accounting, and spreadsheets.">
+        <div class="mock-bar"><span class="mock-dots"></span>Primary generator · Telemetry tags</div>
+        <div class="mock-body">
+          <ul class="mock-sources"><li>SCADA</li><li>IIoT sensors</li><li>Production accounting</li><li>Spreadsheets</li></ul>
+          <ul class="mock-reports">
+            <li><b>PGEN.FuelUse.MCF.Monthly</b><span>Fuel use</span><span class="mock-chip">mcf/month</span></li>
+            <li><b>PGEN.Runtime.Hours.Monthly</b><span>Runtime</span><span class="mock-chip">hr/month</span></li>
+          </ul>
+          <dl class="mock-fields mock-fields--filled">
+            <dt>Time zone</dt><dd>Mountain Standard Time</dd>
+            <dt>Anomaly check</dt><dd>Univariate · window 7 · threshold 3</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Every reading belongs to an asset. <span>Bound to its tag, its unit, and its time zone, so a number never loses what it measured.</span></h2>
+    </div>
+    <ul class="feature-runs">
+      <li><h3>Pulled in on a schedule</h3><p>From SCADA, production accounting, IIoT sensors, or any external system. Imports and hand entry cover the rest.</p></li>
+      <li><h3>Stored with its context</h3><p>Asset, sensor tag, unit of measure, time zone, and timestamp on every reading.</p></li>
+      <li><h3>Corrected without erasing</h3><p>Mark a reading estimated or invalid, or override it. The original value stays on the record.</p></li>
+      <li><h3>Open to your tools</h3><p>Readings, flags, and expected ranges in reports, on dashboards, and through the REST API.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">One bad month, caught. <span>The primary generator logged about 300 mcf of fuel a month. In August the record said 9.66.</span></h2>
+    </div>
+    <ul class="top-cards">
+      <li class="top-card top-card--wide">
+        <div class="top-card-panel">
+          <figure class="range-chart">
+            <svg viewBox="0 0 300 120" aria-hidden="true" focusable="false">
+              <line class="range-base" x1="10" y1="110" x2="290" y2="110"/>
+              <rect class="range-band" x="140" y="13.6" width="20" height="14" rx="2"/>
+              <line class="range-expected" x1="136" y1="20.6" x2="164" y2="20.6"/>
+              <polyline class="range-line" points="30,21.8 90,19.4 150,107.2 210,21.8 270,19.4"/>
+              <circle class="range-point" cx="30" cy="21.8" r="3.5"/>
+              <circle class="range-point" cx="90" cy="19.4" r="3.5"/>
+              <circle class="range-point" cx="210" cy="21.8" r="3.5"/>
+              <circle class="range-point" cx="270" cy="19.4" r="3.5"/>
+              <circle class="range-flag" cx="150" cy="107.2" r="6"/>
+              <text class="range-note" x="150" y="6" text-anchor="middle">Expected range</text>
+              <text class="range-note range-note--flag" x="160" y="104">9.66, flagged</text>
+            </svg>
+            <div class="range-months" aria-hidden="true"><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span></div>
+            <figcaption><span>Fuel use, mcf a month: 299.86, 308.05, <b>9.66</b>, 299.86, 308.05</span><span>August range <b>280.09–327.82</b>, expected <b>303.96</b></span></figcaption>
+          </figure>
+        </div>
+        <h3>Checked against its neighbors</h3>
+        <p>Each new reading is compared with the readings around it. August fell outside the normal range and was flagged.</p>
+      </li>
+      <li class="top-card top-card--fill">
+        <p class="top-card-cite">Window 7, threshold 3</p>
+        <p>The settings on this check. Pick the reading, the date range, and how sensitive each check runs.</p>
+      </li>
+      <li class="top-card">
+        <h3>The flag sits on the asset</h3>
+        <p>Not in a separate alarm list. The next step is a work order in the same system.</p>
+      </li>
+      <li class="top-card">
+        <h3>The original stays</h3>
+        <p>Confirm it, mark it invalid, or override it. The 9.66 stays in the history either way.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Anomaly detection in production. <span>Numbers from client and benchmark data, as published on our AI page.</span></h2>
+    </div>
+    <ul class="stat-row" data-count="off">
+      <li><p class="stat">2,488</p><p>flow-meter anomalies detected automatically</p><p class="stat-source">— Steam Cogen Facility, California</p></li>
+      <li><p class="stat">2.9x</p><p>improvement in precision, recall, and F1 from Assetas-tuned anomaly detection</p><p class="stat-source">— Benchmark Study</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">What the readings feed. <span>The same tag serves the emissions inventory, the utilization report, and the condition score.</span></h2>
+    </div>
+    <ul class="bento">
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/regulatory-emissions.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Emissions, as data arrives</h3>
+        <p>Fuel use and run hours feed calculation groups for the GHG inventory and the state inventory.</p>
+        <a class="text-action" href="/assets/compliance">See asset compliance</a>
+      </li>
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/aggregate.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Runtime beside book value</h3>
+        <p>Run hours on the same record as the depreciation schedule show what you pay for and don't run.</p>
+        <a class="text-action" href="/assets/operations">See book value &amp; utilization</a>
+      </li>
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/sensor-feeds.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Condition from the field and the sensor</h3>
+        <p>Condition scores update from inspection results, sensor data, and maintenance history.</p>
+        <a class="text-action" href="/telemetry">See the telemetry module</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--flush-top">
+  <div class="container">
+    <div class="media media--video">
+      <video autoplay muted loop playsinline controls poster="/static/video/telemetry-and-anomaly-detection.jpg" width="1280" height="720">
+        <source src="/static/video/telemetry-and-anomaly-detection.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2>What engineers ask about telemetry.</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Which systems can feed it?</summary>
+        <div><p>SCADA, production accounting, IIoT sensors, spreadsheets, or any external system, by scheduled pull or import. Readings can also be entered by hand.</p></div>
+      </details>
+      <details>
+        <summary>What does the anomaly check actually do?</summary>
+        <div><p>It is univariate: each new reading is compared with its recent neighbors to calculate an expected value with an upper and lower limit. Anything outside is flagged. You set the window and the threshold.</p></div>
+      </details>
+      <details>
+        <summary>Does a flagged reading get deleted?</summary>
+        <div><p>No. Mark it estimated or invalid, or override it. The original value stays on the record.</p></div>
+      </details>
+      <details>
+        <summary>Can our analysts pull the data?</summary>
+        <div><p>Yes. Readings, flags, and expected ranges are available in reports, on dashboards, and through the REST API.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta-band.njk" %}

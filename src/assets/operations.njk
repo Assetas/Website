@@ -1,0 +1,160 @@
+---
+layout: layouts/base.njk
+title: "Asset Book Value, Utilization & Data | Assetas"
+description: "Depreciation schedules, runtime, and condition on each asset record: find assets carrying book value but not running, and give your models clean data."
+permalink: /assets/operations.html
+sitemap: false
+pageClass: page--spacious
+cta:
+  heading: "See what your assets are worth, and what they do."
+  text: "Thirty minutes. Your register, your depreciation terms, and the runtime behind them."
+---
+{#- Hidden child of /assets: not in the navigation or sitemap; linked from the /assets "One record, three jobs" cards.
+    The depreciation terms come from the demo record in managing-assets.mp4 (declining balance, $18,000, $2,000
+    salvage, 20 years, factor 2, full-month); the bars and year-end values are its schedule, computed from those
+    terms and checked against the chart in the video. The utilization panel is a drawn placeholder. -#}
+<section class="hero hero--light">
+  <div class="container hero-split">
+    <div class="hero-copy">
+      <p class="eyebrow"><a href="/assets">Assets</a><span class="sep">/</span>Operational excellence</p>
+      <h1 class="headline-run">Where the asset meets the balance sheet. <span>Book value, runtime, and condition on the same record, so finance, operations, and your models start from one set of numbers.</span></h1>
+    </div>
+    <div class="hero-panel">
+      <div class="mock" role="img" aria-label="Depreciation on an asset record: declining balance, in service March 9, 2026, purchase price $18,000, salvage value $2,000, useful life 20 years, factor 2.000, full-month convention. Book value falls from $16,500 at the end of 2026 to the $2,000 salvage value by 2046.">
+        <div class="mock-bar"><span class="mock-dots"></span>Depreciation</div>
+        <div class="mock-body">
+          <dl class="mock-fields mock-fields--filled">
+            <dt>Method</dt><dd>Declining balance</dd>
+            <dt>In service</dt><dd>2026-03-09</dd>
+            <dt>Purchase price</dt><dd>$18,000</dd>
+            <dt>Salvage value</dt><dd>$2,000</dd>
+            <dt>Useful life</dt><dd>20 years · factor 2.000</dd>
+            <dt>Convention</dt><dd>Full-month</dd>
+          </dl>
+          <div>
+            <p class="mock-label">Book value, year end</p>
+            <div class="mock-bars mock-bars--book"><span class="is-now" style="--h:92%"></span><span style="--h:74%"></span><span style="--h:60%"></span><span style="--h:49%"></span><span style="--h:39%"></span><span style="--h:32%"></span><span style="--h:26%"></span><span style="--h:21%"></span><span style="--h:17%"></span><span style="--h:14%"></span><span style="--h:11%"></span></div>
+            <p class="mock-axis"><span>2026</span><span>2036</span><span>2046</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Book value lives on the asset. <span>Enter the depreciation terms once. The schedule runs for the asset's useful life.</span></h2>
+    </div>
+    <ul class="feature-runs">
+      <li><h3>Every term on the record</h3><p>Method, in-service date, purchase price, salvage value, useful life, factor, and convention.</p></li>
+      <li><h3>A schedule you can read</h3><p>Book value, depreciation expense, and accumulated depreciation by year, as a chart or a table. Print it or export it.</p></li>
+      <li><h3>Cost beside condition</h3><p>The same record carries the work orders, inspections, and readings, so a repair-or-replace call starts from both.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Find what you pay for and don't run. <span>Runtime from telemetry beside book value from the record. An idle unit carrying value shows up in the same report as the ones that run.</span></h2>
+    </div>
+    <ul class="top-cards">
+      <li class="top-card top-card--wide">
+        <div class="top-card-panel">
+          <div class="mock" aria-hidden="true">
+            <div class="mock-body">
+              <div class="mock-skeleton-head"><span>Asset</span><span>Run hours</span><span>Book value</span><span>Status</span></div>
+              <div class="mock-skeleton-row"><span class="mock-line mock-line--strong" style="--w:80%"></span><span class="mock-line" style="--w:70%"></span><span class="mock-line" style="--w:55%"></span><span class="mock-chip">Active</span></div>
+              <div class="mock-skeleton-row is-match"><span class="mock-line mock-line--strong" style="--w:65%"></span><span class="mock-line" style="--w:8%"></span><span class="mock-line" style="--w:75%"></span><span class="mock-chip mock-chip--amber">Idle</span></div>
+              <div class="mock-skeleton-row"><span class="mock-line mock-line--strong" style="--w:72%"></span><span class="mock-line" style="--w:60%"></span><span class="mock-line" style="--w:40%"></span><span class="mock-chip">Active</span></div>
+            </div>
+          </div>
+        </div>
+        <h3>Runtime and value, side by side</h3>
+        <p>Filter by class, site, or status, and the units carrying value without the hours show up.</p>
+      </li>
+      <li class="top-card top-card--fill">
+        <p class="top-card-cite">hr/month</p>
+        <p>Runtime is a reading on the asset, like fuel use, from SCADA or entered by hand.</p>
+      </li>
+      <li class="top-card">
+        <h3>Redeploy before you buy</h3>
+        <p>Search the register for an idle unit of the same class before a purchase request goes out.</p>
+      </li>
+      <li class="top-card">
+        <h3>Retire with the history</h3>
+        <p>Status, location, and every work order stay on the record, so a sale or a retirement starts from facts.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Clean data first, models second. <span>Process models, analysis, and AI are only as good as the record under them. This one is structured before anyone asks.</span></h2>
+    </div>
+    <ul class="feature-runs">
+      <li><h3>Attributes ready-made per equipment type</h3><p>Tank orientation to maximum allowed working pressure. You add, remove, or customize; you don't design the schema first.</p></li>
+      <li><h3>Relationships on the record</h3><p>Parent and child links for the hierarchy, associations for the rest. You don't rebuild them in a spreadsheet for every study.</p></li>
+      <li><h3>Readings with their context</h3><p>Unit, time zone, quality flag, and the original value under any override. You don't clean the same history twice.</p></li>
+      <li><h3>Lineage kept</h3><p>Each calculated figure keeps the readings, method, and factor version behind it.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">What the record is ready for. <span>Each use reads the same asset data. Nothing is exported, cleaned, and re-imported first.</span></h2>
+    </div>
+    <ul class="bento">
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/calculate.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Process modeling</h3>
+        <p>Attributes, readings, and runtime as model inputs. Emission calculation groups already run on them as data arrives.</p>
+      </li>
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/aggregate.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">Analysis</h3>
+        <p>Reports and dashboards by asset, class, or site, and readings through the REST API for your own tools.</p>
+      </li>
+      <li class="bento-card">
+        <div class="icon-tile icon-tile--outlined"><img src="/static/img/icons/ai-node.svg" width="32" height="32" alt=""></div>
+        <h3 class="h4">AI on the record</h3>
+        <p>Anomaly detection reads each tag's readings and flags the outliers. The assistant works on your records and shows what it read.</p>
+        <a class="text-action" href="/ai">See AI in Assetas</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2>What operations and finance ask about the record.</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Which depreciation terms does a record hold?</summary>
+        <div><p>Method, in-service date, purchase price, salvage value, useful life, depreciation factor, convention, and dollar rounding. The schedule shows book value, expense, and accumulated depreciation by year.</p></div>
+      </details>
+      <details>
+        <summary>Where does runtime come from?</summary>
+        <div><p>A runtime tag on the asset, in hours a month, pulled from SCADA or another field data system, imported, or entered by hand.</p></div>
+      </details>
+      <details>
+        <summary>Which standards is the data model aligned to?</summary>
+        <div><p>ISO 55000 for asset management and ISO 14224 for maintenance and reliability data, among others. Aligned to, not certified against.</p></div>
+      </details>
+      <details>
+        <summary>What does the AI read?</summary>
+        <div><p>Anomaly detection reads the readings of the tags you pick and compares each with its recent neighbors. The assistant reads your records and shows its sources.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta-band.njk" %}
