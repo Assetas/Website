@@ -1070,6 +1070,7 @@ main { background: var(--color-bg); overflow: hidden; }
 /* Card rail: one scrolling row with arrows above, where a grid would wrap to a second row.
    Scrolls natively without JavaScript; static/js/rail.js adds the arrows. */
 .rail-track {
+  position: relative;  /* contains absolutely placed children (the stat count-up's hidden copy), which would otherwise widen the page */
   display: grid; grid-auto-flow: column; grid-auto-columns: minmax(16rem, 21rem);
   gap: var(--space-3); overflow-x: auto; overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory; padding: 3px 3px var(--space-2); margin-inline: -3px;
@@ -1203,7 +1204,8 @@ main { background: var(--color-bg); overflow: hidden; }
 .text-action::after { content: ""; width: 0.42em; height: 0.42em; border-right: 2px solid currentColor; border-top: 2px solid currentColor; transform: rotate(45deg); transition: transform 0.2s var(--ease); }
 .text-action:hover { text-decoration: underline; text-underline-offset: 0.22em; text-decoration-thickness: 0.08em; }
 .text-action:hover::after { transform: rotate(45deg) translate(0.1em, -0.1em); }
-.hero .text-action, .cta-band .text-action, .dark-band .text-action { color: var(--color-on-fill); }
+.text-action--doc::after { content: none; }  /* a document or another site: the link text ends in ↗ instead */
+.hero .text-action, .cta-band .text-action, .dark-band .text-action, .section--dark .text-action { color: var(--color-on-fill); }
 
 /* Source note under a section, led by an amber marker */
 .note-ref { margin-top: var(--space-4); font-size: var(--text-note); color: var(--color-muted); max-width: 46rem; }
@@ -1398,6 +1400,10 @@ main { background: var(--color-bg); overflow: hidden; }
   .bento-card-text { padding: var(--space-4); }
   .bento-card-shot { border-top: 0; border-left: 1px solid var(--color-border); padding: var(--space-4); }
 }
+/* Photo cards (home industries): --photo crops each photo to one shape so a row of cards lines up; --4 keeps
+   four cards in one row from 64rem. */
+.bento-card-media--photo { aspect-ratio: 3 / 2; object-fit: cover; }
+@media (min-width: 64rem) { .bento--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 /* Feature runs (/ldar): each point is one paragraph, a bold title running into a softer explanation,
    under a short amber tick. --stack puts them in one column. */
@@ -1405,9 +1411,9 @@ main { background: var(--color-bg); overflow: hidden; }
 .feature-runs--stack { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
 .feature-runs li { min-width: 0; line-height: 1.5; }
 .feature-runs li::before { content: ""; display: block; width: var(--space-3); height: 3px; margin-bottom: var(--space-2); border-radius: var(--radius-pill); background: var(--color-amber); }
-.feature-runs h3, .feature-runs p { display: inline; font-size: var(--text-body); line-height: inherit; }
-.feature-runs h3 { font-family: var(--font-body); font-weight: 600; color: var(--color-text); }
-.feature-runs h3::after { content: ". "; white-space: pre; }  /* the markup has no space between </h3> and <p> */
+.feature-runs :is(h3, h4), .feature-runs p { display: inline; margin: 0; font-size: var(--text-body); line-height: inherit; }
+.feature-runs :is(h3, h4) { font-family: var(--font-body); font-weight: 600; color: var(--color-text); }
+.feature-runs :is(h3, h4)::after { content: ". "; white-space: pre; }  /* the markup has no space between </h3> and <p> */
 .feature-runs p { color: var(--color-muted); }
 .section--dark .feature-runs h3 { color: var(--color-on-fill); }
 .section--dark .feature-runs p { color: var(--color-on-dark); }
@@ -1533,9 +1539,10 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .survey-toggle:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
 .survey-toggle svg { width: 1rem; height: 1rem; fill: currentColor; }
 
-/* Step switcher (/ldar "How it works", static/js/stepper.js): the steps listed beside one blue stage that
-   shows the active step's screen. Each title becomes a button; the blue rule marks the open step. Without JS
-   every step and every screen shows, stacked. */
+/* Step switcher (home "Follow one finding", static/js/stepper.js): the steps listed beside one stage, outlined
+   like .survey-panel (white, hairline border, the --card-glow drawing area), that shows the active step's
+   screen. Each title becomes a button; the blue rule marks the open step. Without JS every step and every
+   screen shows, stacked. */
 .stepper { display: grid; gap: var(--space-4); margin-top: var(--space-4); }
 @media (min-width: 64rem) { .stepper { grid-template-columns: minmax(0, 0.618fr) minmax(0, 1fr); align-items: center; } }
 .stepper-list { list-style: none; margin: 0; padding: 0; }
@@ -1554,10 +1561,8 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .stepper-body { padding-top: var(--space-1); }
 .stepper-body p { margin: 0; }
 .stepper-stage {
-  display: grid; gap: var(--space-4); padding: var(--space-4) var(--space-3); border-radius: var(--radius-lg); overflow: hidden;
-  background-color: var(--color-brand);
-  background-image: linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid) 1px, transparent 1px), linear-gradient(var(--color-grid-fine) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-fine) 1px, transparent 1px);
-  background-size: var(--grid-major) var(--grid-major), var(--grid-major) var(--grid-major), var(--grid-minor) var(--grid-minor), var(--grid-minor) var(--grid-minor);
+  display: grid; gap: var(--space-4); padding: var(--space-4) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--card-glow);
 }
 @media (min-width: 40rem) { .stepper-stage { padding: var(--space-5) var(--space-4); } }
 .stepper-media { margin: 0; display: grid; place-items: center; }
@@ -1570,6 +1575,30 @@ button.tour-step:hover { background: var(--color-section-alt); }
 }
 .stepper:not(.is-ready) .stepper-media, .stepper:not(.is-ready) .stepper-item::before { transition: none !important; }  /* none on first paint */
 .stepper.is-live .stepper-media.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.4s var(--ease), transform 0.6s var(--ease), visibility 0s; }
+.stepper-media img { max-width: 34rem; height: auto; }
+
+/* Chapters (home "Capture / Act / Report", after Zapier's Build / Run / Govern): each chapter is its text
+   (kicker naming the modules, title, lead, stacked feature runs, links) beside one product screen on an
+   outlined glow panel; from 64rem the screen alternates sides. */
+.chapters { display: grid; gap: var(--space-section); }
+.chapter { display: grid; gap: var(--space-4); align-items: center; }
+@media (min-width: 64rem) {
+  .chapter { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: var(--space-5); }
+  .chapter:nth-child(even) .chapter-media { order: -1; }
+}
+.chapter-kicker { margin: 0 0 var(--space-1); font-size: var(--text-small); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-text); }
+.chapter-title { margin-bottom: var(--space-2); font-size: var(--text-h3); }
+.chapter-lead { margin-bottom: var(--space-3); color: var(--color-muted); }
+.chapter-links { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); margin: var(--space-3) 0 0; }
+.chapter-media { display: grid; place-items: center; min-height: 22rem; padding: var(--space-4) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--card-glow); }
+.chapter-media img { display: block; width: 100%; max-width: 34rem; height: auto; }
+.chapter-media--phone img { width: auto; max-height: 30rem; }
+.chapter-media .chapter-screen { max-width: none; border: 1px solid var(--color-border); border-radius: var(--radius); }
+
+/* Story carousel (home): one .story per slide in a .rail, arrows above. */
+.rail--stories .rail-track { grid-auto-columns: 100%; padding-bottom: var(--space-4); }
+.rail--stories .story-glass { -webkit-backdrop-filter: none; backdrop-filter: none; }  /* inside the scrolling track, Chromium's blur painted over the quote text at phone widths */
+.story .text-action { margin-top: var(--space-2); }
 
 /* Asset child pages (/assets/telemetry, /assets/compliance, /assets/operations): a breadcrumb eyebrow, a record
    panel beside the light hero, the attribute-to-obligation .chain, a reading checked against its range

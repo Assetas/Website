@@ -3,13 +3,19 @@ layout: layouts/base.njk
 title: "Assetas | Asset Management, Inspections & Compliance"
 description: "Asset management, digital inspections, and regulatory compliance on one data model, from field capture to the filed report, with a complete audit trail."
 permalink: /index.html
+pageClass: page--spacious
+rail: true
+stepper: true
+cta:
+  second:
+    button: "See the platform"
+    url: "/platform"
 ---
 <section class="hero">
-  <div class="container split split--wide-left">
-    <div>
-      <p class="eyebrow">The OT + Compliance Platform</p>
-      <h1>Where operational technology <u>meets</u> regulatory compliance.</h1>
-      <p class="lead">One platform for Operational Excellence — asset management, smart inspection, workflow automation, and regulatory compliance.</p>
+  <div class="container hero-split">
+    <div class="hero-copy">
+      <h1 class="headline-run">Where operational technology <u>meets</u> regulatory compliance.</h1>
+      <p class="lead">Capture once in the field and report from the same record — assets, inspections, work orders, and emissions on one data model.</p>
       <div class="button-row">
         <a class="button" href="/contact#contact">Book a demo</a>
         <a class="button button--outline" href="#the-platform">See the platform</a>
@@ -22,174 +28,250 @@ permalink: /index.html
   </div>
 </section>
 
-<section class="section section--flush-top">
+<section class="section">
   <div class="container">
-    <div class="media media--video">
-      <video autoplay muted loop playsinline controls poster="/static/video/platform-features.jpg" width="1280" height="720">
-        <source src="/static/video/platform-features.mp4" type="video/mp4">
-      </video>
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Proven where the work happens. <span>Reported by clients in defense, oil and gas, and water.</span></h2>
     </div>
-  </div>
-</section>
-
-<section class="section section--flush-top">
-  <div class="container">
-    <div class="logo-strip">
+    <ul class="stat-row">
+      <li><p class="stat">92%</p><p>reduction in tool check-in transaction time</p><p class="stat-source">— 437th Maintenance Squadron, US Air Force</p></li>
+      <li><p class="stat">32%</p><p>less time completing &amp; submitting inspections</p><p class="stat-source">— Laramie Energy</p></li>
+      <li><p class="stat">34,632</p><p>maintainable assets across 57 countries</p><p class="stat-source">— Water Mission</p></li>
+    </ul>
+    <div class="logo-strip logo-strip--optical">
       <p class="logo-strip-title">Trusted by leading operators</p>
       <ul>
-        <li><img src="/static/img/logos/chevron.svg" width="82" height="91" alt="Chevron"></li>
-        <li><img src="/static/img/logos/el-dorado-county.webp" width="94" height="94" alt="El Dorado County, California"></li>
-        <li><img src="/static/img/logos/utah-gas-corp.webp" width="174" height="94" alt="Utah Gas Corp"></li>
-        <li><img src="/static/img/logos/us-air-force.svg" width="116" height="91" alt="U.S. Air Force"></li>
-        <li><img src="/static/img/logos/validus-energy.webp" width="231" height="94" alt="Validus Energy"></li>
+        <li><img style="--logo-scale:1.09" src="/static/img/logos/chevron.svg" width="82" height="91" alt="Chevron"></li>
+        <li><img style="--logo-scale:1.00" src="/static/img/logos/el-dorado-county.webp" width="94" height="94" alt="El Dorado County, California"></li>
+        <li><img style="--logo-scale:0.91" src="/static/img/logos/utah-gas-corp.webp" width="174" height="94" alt="Utah Gas Corp"></li>
+        <li><img style="--logo-scale:1.15" src="/static/img/logos/us-air-force.svg" width="116" height="91" alt="U.S. Air Force"></li>
+        <li><img style="--logo-scale:0.97" src="/static/img/logos/validus-energy.webp" width="231" height="94" alt="Validus Energy"></li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<section class="section section--surface">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">The challenge</p>
-      <h2>Siloed software creates blind spots.</h2>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <h3 class="h4">Disconnected field data</h3>
-        <p>Readings, inspections, and work orders scattered across tools that were never built to talk to each other.</p>
-      </div>
-      <div class="card">
-        <h3 class="h4">Manual compliance tracking</h3>
-        <p>Reports rebuilt by hand in every emissions and audit cycle from spreadsheets and manual data threads.</p>
-      </div>
-      <div class="card">
-        <h3 class="h4">No single source of truth</h3>
-        <p>No single system shows what happened, when, and against which requirement.</p>
-      </div>
     </div>
   </div>
 </section>
 
 <section class="section" id="the-platform">
   <div class="container">
-    <div class="section-head">
-      <img class="badge-icon" src="/static/img/icons/platform-badge.webp" width="68" height="68" alt="">
-      <p class="eyebrow">The platform</p>
-      <h2>One data model,<br> from the field to the filing.</h2>
-      <p class="lead">Every sensor reading, inspection, work order, and emission point lands in one data model — mapped to the requirement it satisfies.</p>
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Capture in the field. Act on the record. Report from the same record. <span>Four modules on one data model, from the field to the filing.</span></h2>
     </div>
-    <div class="features">
-      <div class="feature">
-        <div class="icon-tile"><img src="/static/img/icons/assets.svg" width="32" height="32" alt=""></div>
-        <h3 class="h4">Unified Asset Intelligence</h3>
-        <p>A live registry of every asset — condition, custody, and history in one record. One data model. Full audit trail. Ready for AI.</p>
-        <a class="arrow-link" href="/assets">Learn more<span class="visually-hidden"> about Unified Asset Intelligence</span></a>
-      </div>
-      <div class="feature">
-        <div class="icon-tile"><img src="/static/img/icons/forms.svg" width="32" height="32" alt=""></div>
-        <h3 class="h4">Smart Forms &amp; Tasks</h3>
-        <p>Timestamped, geotagged, and fully digital field capture that works offline and syncs when you're back in range.</p>
-        <a class="arrow-link" href="/forms">Learn more<span class="visually-hidden"> about Smart Forms &amp; Tasks</span></a>
-      </div>
-      <div class="feature">
-        <div class="icon-tile"><img src="/static/img/icons/workflows.svg" width="32" height="32" alt=""></div>
-        <h3 class="h4">Workflow Automation</h3>
-        <p>Configurable work orders and inspections with routing that moves findings to resolution without the email chase. Integrations with IIoT, telemetry, and external systems. No re-keying.</p>
-        <a class="arrow-link" href="/workflows">Learn more<span class="visually-hidden"> about Workflow Automation</span></a>
-      </div>
-      <div class="feature">
-        <div class="icon-tile"><img src="/static/img/icons/compliance.svg" width="32" height="32" alt=""></div>
-        <h3 class="h4">Compliance &amp; Emissions</h3>
-        <p>Every asset mapped to the regulatory and environmental requirements, emission profile, and compliance documentation — tied to permits, 40 CFR, PHMSA, and state regulations.</p>
-        <a class="arrow-link" href="/compliance">Learn more<span class="visually-hidden"> about Compliance &amp; Emissions</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--tight-bottom">
-  <div class="container">
-    <div class="section-head section-head--flush">
-      <img class="badge-icon" src="/static/img/icons/operations-badge.webp" width="68" height="68" alt="">
-      <h2>Purpose-built for the most demanding operations.</h2>
-      <p>We speak your language, from OEE to planned maintenance to 40 CFR 98.</p>
-    </div>
-  </div>
-</section>
-
-<div class="tiles">
-  <div class="tile">
-    <img src="/static/img/industries/oil-and-gas.webp" width="800" height="536" alt="Oil rig structure" loading="lazy">
-    <div class="tile-body">
-      <h3 class="h4">Oil &amp; Gas</h3>
-      <p>Upstream to downstream asset visibility, field digitalization, and regulatory compliance automation.</p>
-      <a class="arrow-link" href="/oilandgas">Explore oil &amp; gas</a>
-    </div>
-  </div>
-  <div class="tile">
-    <img src="/static/img/industries/municipalities.webp" width="800" height="532" alt="Fire truck equipment compartments" loading="lazy">
-    <div class="tile-body">
-      <h3 class="h4">Municipalities</h3>
-      <p>Water, wastewater, and facility management with budget transparency for cities and utilities.</p>
-      <a class="arrow-link" href="/municipality">Explore municipalities</a>
-    </div>
-  </div>
-  <div class="tile">
-    <img src="/static/img/industries/defense.webp" width="800" height="522" alt="Military vehicle on patrol" loading="lazy">
-    <div class="tile-body">
-      <h3 class="h4">Defense</h3>
-      <p>Full chain-of-custody on every asset, maintained to mission-critical standards across maintenance and logistics.</p>
-      <a class="arrow-link" href="/defense">Explore defense</a>
-    </div>
-  </div>
-  <div class="tile">
-    <img src="/static/img/industries/infrastructure.webp" width="800" height="599" alt="Electrical substation equipment" loading="lazy">
-    <div class="tile-body">
-      <h3 class="h4">Infrastructure</h3>
-      <p>One asset model across every distributed site, fleet, and linear network for uptime and compliance.</p>
-      <a class="arrow-link" href="/infrastructure">Explore infrastructure</a>
-    </div>
-  </div>
-</div>
-
-<section class="testimonial">
-  <div class="testimonial-bg">
-    <img src="/static/img/home/air-force-tool-tracking.webp" width="1920" height="1440" alt="" loading="lazy">
-  </div>
-  <div class="container">
-    <figure class="testimonial-card">
-      <h3>437th Maintenance Squadron</h3>
-      <p class="eyebrow">US Air Force</p>
-      <blockquote>"The Assetas program is undeniably superior to our current program in every way. The ability to work online/offline is a must."</blockquote>
-      <div class="stats">
-        <div>
-          <p class="stat">92%</p>
-          <p>reduction in tool check-in transaction time</p>
+    <div class="chapters">
+      <article class="chapter">
+        <div class="chapter-text">
+          <p class="chapter-kicker">Capture · Smart Forms &amp; Tasks, Trek</p>
+          <h3 class="chapter-title">Field capture, online or offline</h3>
+          <p class="chapter-lead">Timestamped, geotagged, and fully digital field capture that works offline and syncs when you're back in range.</p>
+          <ul class="feature-runs feature-runs--stack">
+            <li><h4>Forms that follow the answer</h4><p>A field appears only when it applies, like a leak rate after a Yes.</p></li>
+            <li><h4>Filled from the registry</h4><p>Component and asset details come from the record, not retyped.</p></li>
+            <li><h4>Dispatched by rule and site</h4><p>Rounds and tasks routed to the role that owns them.</p></li>
+          </ul>
+          <p class="chapter-links"><a class="text-action" href="/forms">See Smart Forms &amp; Tasks</a><a class="text-action" href="/trek">See Trek</a></p>
         </div>
-        <div>
-          <p class="stat">80%</p>
-          <p>reduction in lost tool search time</p>
+        <div class="chapter-media chapter-media--phone">
+          <img src="/static/img/platform/mobile-capture-phone.webp" width="352" height="661" loading="lazy" alt="Phone showing an offline inspection round on Pipeline Segment 7 (PHMSA 192.739 valve inspection) with 4 records queued: no leakage observed, 742 psi within spec, a geotagged photo, and a Sign &amp; queue button.">
         </div>
-      </div>
-      <a class="button button--outline" href="/defense#air-force-testimonial">Read the full story</a>
-    </figure>
+      </article>
+      <article class="chapter">
+        <div class="chapter-text">
+          <p class="chapter-kicker">Act · Unified Asset Intelligence, Workflow Automation</p>
+          <h3 class="chapter-title">Work that moves on the record</h3>
+          <p class="chapter-lead">A live registry of every asset — condition, custody, and history in one record — with routing that moves findings to resolution without the email chase.</p>
+          <ul class="feature-runs feature-runs--stack">
+            <li><h4>Routed and escalated</h4><p>Findings go to the right role by location and escalate before the SLA breaks.</p></li>
+            <li><h4>Telemetry on the asset</h4><p>SCADA, IIoT, and production readings, stored on the asset.</p></li>
+            <li><h4>Outliers flagged</h4><p>An anomaly model checks each reading against its neighbors and flags the outliers for review.</p></li>
+          </ul>
+          <p class="chapter-links"><a class="text-action" href="/assets">See Unified Asset Intelligence</a><a class="text-action" href="/workflows">See Workflow Automation</a></p>
+        </div>
+        <div class="chapter-media">
+          <img class="chapter-screen" src="/static/img/assets/hero-asset-record-screen.webp" width="1440" height="893" loading="lazy" alt="Assetas asset record for Orcutt AGC-ENG224, an active Caterpillar CAT-3508 engine at Orcutt Hill Compressor Station: AIRS ID 123/9187/009, serial number 23701131, in service since 2006-01-15, with a photo of the engine and its QR code.">
+        </div>
+      </article>
+      <article class="chapter">
+        <div class="chapter-text">
+          <p class="chapter-kicker">Report · Compliance &amp; Emissions</p>
+          <h3 class="chapter-title">Reports from the same record</h3>
+          <p class="chapter-lead">Every asset mapped to the requirements it must satisfy — permits, 40 CFR, PHMSA, and state regulations.</p>
+          <ul class="feature-runs feature-runs--stack">
+            <li><h4>Calculated as data arrives</h4><p>Fuel use and run hours feed calculation groups for the GHG and state inventories.</p></li>
+            <li><h4>Exported in agency formats</h4><p>Subpart W to e-GGRT and state inventories, from tracked data rather than a rebuild before the deadline.</p></li>
+            <li><h4>Answers that show their sources</h4><p>The assistant works on your records and the regulatory text, and shows what it read.</p></li>
+          </ul>
+          <p class="chapter-links"><a class="text-action" href="/compliance">See Compliance &amp; Emissions</a><a class="text-action" href="/platform/emissions">See emissions reporting</a></p>
+        </div>
+        <div class="chapter-media">
+          <img src="/static/img/compliance/electronic-submissions.webp" width="543" height="460" loading="lazy" alt="Electronic submissions this reporting period, on track across 4 destinations and 3 formats: EPA eGGRT Subpart W submitted as XML to the agency schema, Texas state emission inventory in draft and due Mar 31, FERC Form 2 via eTariff scheduled for the Q3 filing window, and a structured agency data feed delivered as a JSON payload.">
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Preparing for what comes next</p>
-      <h2>Where today's operational data meets tomorrow's AI.</h2>
-      <p>AI-driven operations need a foundation: structured, governed, traceable data. Assetas builds that record as a byproduct of the work your teams already do — so when you're ready for AI, your data already is. This isn't speculative; it's the foundation AI needs.</p>
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Follow one finding through the record. <span>A leak at Skid A-114, from the inspection form to the rule it satisfies.</span></h2>
     </div>
-    <ol class="steps">
-      <li><span>Field capture at the source</span> <small>photos · timestamped · geotagged</small></li>
-      <li><span>One unified data model</span> <small>assets · telemetry · inspections</small></li>
-      <li><span>Traceable &amp; immutable records</span> <small>work orders · emissions · reports</small></li>
-      <li class="is-highlight"><span>AI-driven operations</span> <small>what you're building toward</small></li>
-    </ol>
-    <p class="after-list"><a class="button button--outline" href="/ai">Preparing operational data for AI</a></p>
+    <div class="stepper">
+      <ol class="stepper-list">
+        <li class="stepper-item">
+          <h3 class="stepper-title"><span class="stepper-kicker">01 · Found</span> Leak logged at the relief valve</h3>
+          <div class="stepper-body"><p>Started offline at 9:42 AM. The leak-rate field appears only after a Yes.</p></div>
+        </li>
+        <li class="stepper-item">
+          <h3 class="stepper-title"><span class="stepper-kicker">02 · Routed</span> Escalated, then dispatched</h3>
+          <div class="stepper-body"><p>Above threshold, so it goes to the supervisor and a work order queues behind it.</p></div>
+        </li>
+        <li class="stepper-item">
+          <h3 class="stepper-title"><span class="stepper-kicker">03 · Recorded</span> On the skid's one record</h3>
+          <div class="stepper-body"><p>Telemetry, inspections, work orders, and the asset itself in one record. No re-keying.</p></div>
+        </li>
+        <li class="stepper-item">
+          <h3 class="stepper-title"><span class="stepper-kicker">04 · Mapped</span> Tied to the rule it satisfies</h3>
+          <div class="stepper-body"><p>The Method 21 survey maps to NSPS OOOOb, with the citation on the record.</p></div>
+        </li>
+      </ol>
+      <div class="stepper-stage">
+        <figure class="stepper-media"><img src="/static/img/forms/hero-form-in-progress.webp" width="639" height="407" loading="lazy" alt="Leak inspection form FORM-2281 in progress for Skid A-114, relief valve RV-22, started offline at 9:42 AM: leak observed yes, estimated leak rate 42 SCFH, component auto-filled from the registry. The leak-rate field appeared automatically after answering Yes."></figure>
+        <figure class="stepper-media"><img src="/static/img/forms/dispatch-workflow.webp" width="531" height="266" loading="lazy" alt="Workflow for FORM-2281: form submitted offline at 9:47 AM (done), escalated to supervisor because the leak rate is above threshold (in progress), work order dispatched (queued, waiting on escalation)."></figure>
+        <figure class="stepper-media"><img src="/static/img/platform/one-data-model.webp" width="611" height="556" loading="lazy" alt="One data model: Skid A-114 at Cedar Ridge Plant. Telemetry, inspections, work orders, and assets feed one unified record, mapped to Title V, current, last synced 4 minutes ago. Capture once, prove anywhere: no re-keying. Requirement mapping: 100% of records."></figure>
+        <figure class="stepper-media"><img src="/static/img/compliance/hero-requirement-mapping.webp" width="569" height="406" loading="lazy" alt="Requirement mapping: an LDAR Method 21 survey on Skid A-114 maps to the NSPS OOOOb methane rule, a berm inspection at Dry Creek Pad maps to SPCC 40 CFR 112 spill prevention, and a Title V annual report auto-drafted from readings maps to the EPA Title V operating permit. Every field record links to the exact citation it satisfies."></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Connects to what's already running. <span>Historians, RTUs, edge gateways, and your EAM feed the same record.</span></h2>
+    </div>
+    <ul class="bento">
+      <li class="bento-card bento-card--full bento-card--split">
+        <div class="bento-card-text">
+          <h3 class="h4">Live streams and two-way sync</h3>
+          <p>OPC-UA, Modbus TCP, and MQTT stream in; a REST API keeps EAM work orders in sync. Bulk-import existing records from your CMMS or ERP.</p>
+          <a class="text-action" href="/platform">See the platform</a>
+        </div>
+        <img class="bento-card-shot" src="/static/img/platform/integrations-panel.webp" width="563" height="391" loading="lazy" alt="Integrations, live streams: OPC-UA from a compressor station historian (1,240 tags), Modbus TCP from a metering skid RTU cluster (streaming), MQTT from remote site edge gateways (18 sites), and a bi-directional REST API for EAM work order sync.">
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Clients on the record. <span>Defense, oil and gas, and water operators, in their own words.</span></h2>
+    </div>
+    <div class="rail rail--stories" role="group" aria-label="Client stories">
+      <div class="rail-controls">
+        <button class="rail-btn" type="button" data-rail="prev" aria-label="Previous story">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+        </button>
+        <button class="rail-btn" type="button" data-rail="next" aria-label="Next story">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="rail-track" tabindex="0">
+        <article class="story">
+          <figure class="story-quote">
+            <div class="story-glass">
+              <blockquote>“The Assetas program is undeniably superior to our current program in every way. The ability to work <em>online/offline</em> is a must.”</blockquote>
+              <figcaption>MXS Section Supervisor, 437th MXS, US Air Force</figcaption>
+            </div>
+          </figure>
+          <div>
+            <ul class="stat-row stat-row--stack" data-count="off">
+              <li><p class="stat">92%</p><p>reduction in tool check-in transaction time</p></li>
+              <li><p class="stat">80%</p><p>reduction in lost tool search time</p></li>
+            </ul>
+            <a class="text-action" href="/defense#air-force-testimonial">Read the Air Force story</a>
+          </div>
+        </article>
+        <article class="story">
+          <figure class="story-quote">
+            <div class="story-glass">
+              <blockquote>“Switching to Assetas has been a game-changer for us. The platform is tailored perfectly to <em>our unique needs</em>.”</blockquote>
+              <figcaption>Laramie Energy, Colorado</figcaption>
+            </div>
+          </figure>
+          <div>
+            <ul class="stat-row stat-row--stack" data-count="off">
+              <li><p class="stat">32%</p><p>less time completing &amp; submitting inspections</p></li>
+            </ul>
+            <a class="text-action text-action--doc" href="/static/files/smart-forms-case-study.pdf">Read the case study ↗</a>
+          </div>
+        </article>
+        <article class="story">
+          <figure class="story-quote">
+            <div class="story-glass">
+              <blockquote>“Assetas allows us to see the status of every system <em>in real time</em> — whether it’s running, offline, or needs maintenance.”</blockquote>
+              <figcaption>George Greene IV, PE, CEO, Water Mission</figcaption>
+            </div>
+          </figure>
+          <div>
+            <ul class="stat-row stat-row--stack" data-count="off">
+              <li><p class="stat">2,700</p><p>projects</p></li>
+              <li><p class="stat">57</p><p>countries</p></li>
+              <li><p class="stat">34,632</p><p>maintainable assets</p></li>
+            </ul>
+            <a class="text-action" href="/assets">See the asset registry</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Purpose-built for the most demanding operations. <span>We speak your language, from OEE to planned maintenance to 40 CFR 98.</span></h2>
+    </div>
+    <ul class="bento bento--4">
+      <li class="bento-card">
+        <img class="bento-card-media bento-card-media--photo" src="/static/img/industries/oil-and-gas.webp" width="800" height="536" alt="Oil rig structure" loading="lazy">
+        <h3 class="h4">Oil &amp; Gas</h3>
+        <p>Upstream to downstream asset visibility, field digitalization, and regulatory compliance automation.</p>
+        <a class="text-action" href="/oilandgas">Explore oil &amp; gas</a>
+      </li>
+      <li class="bento-card">
+        <img class="bento-card-media bento-card-media--photo" src="/static/img/industries/municipalities.webp" width="800" height="532" alt="Fire truck equipment compartments" loading="lazy">
+        <h3 class="h4">Municipalities</h3>
+        <p>Water, wastewater, and facility management with budget transparency for cities and utilities.</p>
+        <a class="text-action" href="/municipality">Explore municipalities</a>
+      </li>
+      <li class="bento-card">
+        <img class="bento-card-media bento-card-media--photo" src="/static/img/industries/defense.webp" width="800" height="522" alt="Military vehicle on patrol" loading="lazy">
+        <h3 class="h4">Defense</h3>
+        <p>Full chain-of-custody on every asset, maintained to mission-critical standards across maintenance and logistics.</p>
+        <a class="text-action" href="/defense">Explore defense</a>
+      </li>
+      <li class="bento-card">
+        <img class="bento-card-media bento-card-media--photo" src="/static/img/industries/infrastructure.webp" width="800" height="599" alt="Electrical substation equipment" loading="lazy">
+        <h3 class="h4">Infrastructure</h3>
+        <p>One asset model across every distributed site, fleet, and linear network for uptime and compliance.</p>
+        <a class="text-action" href="/infrastructure">Explore infrastructure</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Security built into the record. <span>Hosted on Microsoft Azure, with the controls your IT and security reviewers ask about.</span></h2>
+    </div>
+    <ul class="feature-runs">
+      <li><h3>Least privilege, enforced</h3><p>Entra ID single sign-on with conditional access and MFA on privileged roles; roles reach down to record and field level.</p></li>
+      <li><h3>Encrypted everywhere</h3><p>TLS 1.2+ in transit, AES-256 at rest, and keys in hardware-backed vaults.</p></li>
+      <li><h3>Immutable logs</h3><p>Every create, edit, sync, and sign-off logged with the user, timestamp, and prior value, exportable to your SIEM.</p></li>
+      <li><h3>Regional redundancy</h3><p>Active-active replication across paired Azure regions, with a recovery point objective of 15 minutes or less.</p></li>
+    </ul>
+    <p class="chapter-links"><a class="text-action" href="/security">See security</a></p>
   </div>
 </section>
 

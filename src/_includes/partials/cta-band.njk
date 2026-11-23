@@ -1,9 +1,17 @@
 {#- Closing call to action used at the bottom of most pages.
-    Override with front matter:  cta: { heading, text, button, url, accent: true } -#}
+    Override with front matter:  cta: { heading, text, button, url, accent: true, second: { button, url } }
+    `second` adds an outline button beside the main one (home: "See the platform"). -#}
 <section class="cta-band{% if cta.accent %} cta-band--accent{% endif %}">
   <div class="container">
     <h2>{{ cta.heading or "See where your operations meet your obligations." }}</h2>
     <p class="lead">{{ cta.text or "Thirty minutes. Your industry, your regulatory context, and your questions." }}</p>
+    {%- if cta.second %}
+    <div class="button-row">
+      <a class="button{% if not cta.accent %} button--accent{% endif %}" href="{{ cta.url or '/contact' }}">{{ cta.button or "Book a demo" }}</a>
+      <a class="button button--ghost" href="{{ cta.second.url }}">{{ cta.second.button }}</a>
+    </div>
+    {%- else %}
     <a class="button{% if not cta.accent %} button--accent{% endif %}" href="{{ cta.url or '/contact' }}">{{ cta.button or "Book a demo" }}</a>
+    {%- endif %}
   </div>
 </section>
