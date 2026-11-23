@@ -73,14 +73,14 @@ tour: true
 <section class="section">
   <div class="container">
     <div class="section-head section-head--run">
-      <h2 class="headline-run">A record that stays current, not a spreadsheet that goes stale. <span>Most registries sit untouched since commissioning. Operational excellence starts with three checks you can run on any asset.</span></h2>
+      <h2 class="headline-run">A single asset registry that stays current and benefits all. <span>Operational excellence starts with three checks.</span></h2>
     </div>
     <div class="split split--top">
       <div>
         <ul class="feature-runs feature-runs--stack">
           <li><h3>The whole company keeps it current</h3><p>Crowdsourced from every crew, planner, and permit holder: each inspection, work order, and environmental permit writes back to the asset record.</p></li>
           <li><h3>The record matches the field</h3><p>Type, current location, parent/child/flow associations, and spec data, with user-defined attributes for each equipment type.</p></li>
-          <li><h3>Compliance starts at the asset</h3><p>Every emission source is an asset with an immutable change log. Your environmental team's permits and inspections improve the record operations runs on.</p></li>
+          <li><h3>The record holds up to an audit</h3><p>An immutable change log shows who changed what, and when. Emission sources are assets too, so environmental permits and inspections improve the same record.</p></li>
         </ul>
       </div>
       <div>
@@ -116,16 +116,19 @@ tour: true
         <img class="bento-card-media" src="/static/img/assets/condition.webp" width="386" height="193" alt="" loading="lazy">
         <h3 class="h4">Asset tracking &amp; O&amp;M</h3>
         <p>Location, condition, and criticality on every asset. Condition scores update from inspections, sensor data, and maintenance history, and set inspection frequency and work priority.</p>
+        <a class="text-action" href="/workflows">See Workflow Automation</a>
       </li>
       <li class="bento-card">
         <img class="bento-card-media" src="/static/img/assets/registry.webp" width="386" height="193" alt="" loading="lazy">
         <h3 class="h4">Facility engineering</h3>
-        <p>Hierarchy, parent/child/flow associations, spec data, and documents in one structured record. Bulk-import from your CMMS or ERP, or build it directly.</p>
+        <p>Hierarchy, spec data, drawings, and documents in one structured record. Bulk-import from your CMMS or ERP, or build it directly.</p>
+        <a class="text-action" href="/assets/operations">See the data foundation</a>
       </li>
       <li class="bento-card">
         <img class="bento-card-media" src="/static/img/assets/criticality.webp" width="386" height="193" alt="" loading="lazy">
         <h3 class="h4">Emissions</h3>
-        <p>Every emission source is an asset. Fuel use and run hours feed calculation groups for the GHG and state inventories as data arrives.</p>
+        <p>Fuel use and run hours feed calculation groups for the GHG and state inventories as data arrives.</p>
+        <a class="text-action" href="/platform/emissions">See emissions reporting</a>
       </li>
     </ul>
   </div>
@@ -478,7 +481,7 @@ tour: true
   </div>
 </section>
 
-<section class="section" id="three-jobs">
+<section class="section" id="record-deeper">
   <div class="container">
     <div class="section-head section-head--run">
       <h2 class="headline-run">Follow the record deeper. <span>The same asset record carries your sensor data, your environmental obligations, and your engineering information.</span></h2>
@@ -494,89 +497,87 @@ tour: true
       </div>
       <div class="rail-track" tabindex="0">
         <article class="rail-card">
-          <div class="rail-card-media rail-card-media--dark">
-            <span class="rail-card-tag">Placeholder</span>
-            <img class="rail-card-icon" src="/static/img/icons/assets.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Asset attributes</h3>
-          </div>
-          <p>Ready-made attributes for each equipment type, from tank orientation to maximum allowed working pressure. Add your own per class.</p>
-        </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--brand">
-            <span class="rail-card-tag">Placeholder</span>
+          <div class="rail-card-media rail-card-media--telemetry">
             <img class="rail-card-icon" src="/static/img/icons/sensor-feeds.svg" width="64" height="64" alt="">
             <h3 class="rail-card-title">Asset telemetry</h3>
           </div>
-          <p>SCADA, IIoT, and production accounting readings, stored on the asset with unit, time zone, and timestamp.</p>
+          <p>SCADA, IIoT, and production readings, stored on the asset.</p>
           <a class="text-action" href="/assets/telemetry">See asset telemetry</a>
         </article>
         <article class="rail-card">
-          <div class="rail-card-media rail-card-media--ice">
-            <span class="rail-card-tag">Placeholder</span>
-            <img class="rail-card-icon" src="/static/img/icons/workflows.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Asset association</h3>
-          </div>
-          <p>Parent and child links build the hierarchy. Associations tie the rest, from a tank to the battery it serves.</p>
-        </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--dark">
-            <span class="rail-card-tag">Placeholder</span>
-            <img class="rail-card-icon" src="/static/img/icons/capture.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Asset location</h3>
-          </div>
-          <p>Where the asset is now and everywhere it has been, so a moved compressor brings its history with it.</p>
-        </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--brand">
-            <span class="rail-card-tag">Placeholder</span>
-            <img class="rail-card-icon" src="/static/img/icons/field-documentation.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Asset documentation</h3>
-          </div>
-          <p>Manuals, drawings, permits, and photos filed on the asset, not in a shared drive nobody searches.</p>
-        </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--ice">
-            <span class="rail-card-tag">Placeholder</span>
-            <img class="rail-card-icon" src="/static/img/icons/forms.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Asset forms</h3>
-          </div>
-          <p>Inspections, audits, and checklists completed on the asset. Each one stays on the record: who did it, when, and what they found.</p>
-          <a class="text-action" href="/forms">See Smart Forms</a>
-        </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--dark">
-            <span class="rail-card-tag">Placeholder</span>
+          <div class="rail-card-media rail-card-media--compliance">
             <img class="rail-card-icon" src="/static/img/icons/compliance.svg" width="64" height="64" alt="">
             <h3 class="rail-card-title">Asset compliance</h3>
           </div>
-          <p>Assets are the source points for air, water, and waste compliance. Their records decide which rules apply.</p>
+          <p>The record decides which air, water, and waste rules apply.</p>
           <a class="text-action" href="/assets/compliance">See asset compliance</a>
         </article>
         <article class="rail-card">
-          <div class="rail-card-media rail-card-media--brand">
-            <span class="rail-card-tag">Placeholder</span>
+          <div class="rail-card-media rail-card-media--depreciation">
             <img class="rail-card-icon" src="/static/img/icons/aggregate.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Asset depreciation</h3>
+            <h3 class="rail-card-title">Asset value &amp; utilization</h3>
           </div>
-          <p>Method, in-service date, purchase price, salvage value, and useful life. The schedule runs for the asset's life.</p>
-          <a class="text-action" href="/assets/operations">See asset lifecycle</a>
+          <p>Book value beside run hours, so units you pay for and don't run show up.</p>
+          <a class="text-action" href="/assets/operations">See operational excellence</a>
         </article>
         <article class="rail-card">
-          <div class="rail-card-media rail-card-media--ice">
-            <span class="rail-card-tag">Placeholder</span>
+          <div class="rail-card-media rail-card-media--attributes">
+            <img class="rail-card-icon" src="/static/img/icons/assets.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset attributes</h3>
+          </div>
+          <p>Ready-made attributes per equipment type. Add your own per class.</p>
+          <a class="text-action" href="/assets/operations">See the data foundation</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--location">
+            <img class="rail-card-icon" src="/static/img/icons/location.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset location</h3>
+          </div>
+          <p>Where the asset is now and everywhere it has been.</p>
+          <a class="text-action" href="/trek">See Trek field capture</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--association">
+            <img class="rail-card-icon" src="/static/img/icons/workflows.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset association</h3>
+          </div>
+          <p>Parent, child, and associated assets in one hierarchy.</p>
+          <a class="text-action" href="/assets/operations">See asset relationships</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--documentation">
+            <img class="rail-card-icon" src="/static/img/icons/field-documentation.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset documentation</h3>
+          </div>
+          <p>Manuals, drawings, permits, and photos, filed on the asset.</p>
+          <a class="text-action" href="/compliance">See Compliance &amp; Emissions</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--forms">
+            <img class="rail-card-icon" src="/static/img/icons/forms.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Asset forms</h3>
+          </div>
+          <p>Inspections, audits, and checklists, kept on the record.</p>
+          <a class="text-action" href="/forms">See Smart Forms</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--anomaly">
             <img class="rail-card-icon" src="/static/img/icons/ai-node.svg" width="64" height="64" alt="">
             <h3 class="rail-card-title">Asset anomaly detection</h3>
           </div>
-          <p>Each new reading is checked against its neighbors. Outliers are flagged on the asset; the original value stays.</p>
-          <a class="text-action" href="/assets/telemetry">See anomaly detection</a>
+          <p>Each reading checked against its neighbors. Outliers flagged.</p>
+          <a class="text-action" href="/telemetry">See anomaly detection</a>
         </article>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section--flush-top">
+<section class="section">
   <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Contacts on the record too. <span>Every contact and piece of correspondence sits on the asset it concerns, beside its documents.</span></h2>
+    </div>
     <div class="media media--video">
       <video autoplay muted loop playsinline controls poster="/static/video/contact-management.jpg" width="1280" height="720">
         <source src="/static/video/contact-management.mp4" type="video/mp4">

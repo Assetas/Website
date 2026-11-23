@@ -1088,35 +1088,115 @@ main { background: var(--color-bg); overflow: hidden; }
 .rail-btn:disabled { opacity: 0.32; cursor: default; }
 .rail-btn svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Story rail (/assets "Follow the record deeper"): Stripe-style tall media cards, arrows above. Each card is a
-   placeholder tile (navy with amber and blue glows, brand blue with the drafting grid, or ice) holding a white icon
-   and the topic name in its lower left, then a short description and an optional link. Swap each tile for a real
-   screenshot as they come in. */
+/* Story rail (/assets "Follow the record deeper"): Stripe-style tall art cards, arrows above. Each tile is drawn in
+   CSS: a deep field in the brand colors, a pattern layer (::before) that hints at the topic, film grain (::after),
+   and the Platform menu icon in white with a soft glow; the name sits in the lower left. Then a short line and a link. */
 .rail--story .rail-track { grid-auto-columns: clamp(15rem, 27%, 22rem); }
-.rail-card { display: grid; grid-template-rows: auto auto 1fr; align-content: start; gap: var(--space-2); }
+.rail-card { display: grid; grid-template-rows: auto auto 1fr; align-content: start; gap: var(--space-1); }
 .rail-card > p { margin: 0; }
-.rail-card > .text-action { align-self: end; }
+.rail-card > .text-action { align-self: end; padding-top: var(--space-1); }
 .rail-card-media {
+  --glow: var(--color-amber);
   position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 4 / 5; margin-bottom: var(--space-1);
-  display: grid; place-items: center; border-radius: var(--radius-lg); color: var(--color-on-fill);
+  display: grid; place-items: center; border-radius: var(--radius-lg); color: var(--color-on-fill); background: var(--color-dark-deep);
 }
-.rail-card-media--dark {
-  background: radial-gradient(14rem 12rem at 0% 0%, color-mix(in srgb, var(--color-amber) 30%, transparent), transparent 70%),
-              radial-gradient(18rem 16rem at 100% 100%, color-mix(in srgb, var(--color-brand) 60%, transparent), transparent 70%),
+.rail-card-media::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.rail-card-media::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.22; mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.rail-card-icon {
+  position: relative; z-index: 2; width: 38%; height: auto; margin-bottom: 12%;
+  filter: brightness(0) invert(1) drop-shadow(0 0 0.6rem var(--glow)) drop-shadow(0 0 2.4rem var(--glow));
+}
+.rail-card-title {
+  position: absolute; z-index: 2; left: var(--space-3); right: var(--space-3); bottom: var(--space-3); margin: 0;
+  font-size: var(--text-lead); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: inherit;
+}
+
+/* Attributes: stacked blooms, amber over blue, on navy. */
+.rail-card-media--attributes {
+  background: radial-gradient(55% 40% at 50% 40%, color-mix(in srgb, var(--color-amber) 45%, transparent), transparent 70%),
+              radial-gradient(70% 50% at 20% 85%, color-mix(in srgb, var(--color-brand) 70%, transparent), transparent 70%),
+              linear-gradient(180deg, var(--color-dark-deep), var(--color-dark));
+}
+/* Telemetry: brand blue with scan lines and a bright band through the middle, like a trace on a scope. */
+.rail-card-media--telemetry {
+  --glow: var(--color-amber-light);
+  background: radial-gradient(90% 22% at 50% 40%, color-mix(in srgb, var(--color-chart-highlight) 55%, transparent), transparent 70%),
+              radial-gradient(80% 60% at 0% 100%, var(--color-brand-shade), transparent 70%),
+              linear-gradient(180deg, var(--color-brand), var(--color-brand-deep));
+}
+.rail-card-media--telemetry::before { background: repeating-linear-gradient(180deg, var(--color-on-fill-tint) 0 1px, transparent 1px 7px); }
+/* Association: a lattice of dots, bright at a blue center and fading out, like a network around one node. */
+.rail-card-media--association {
+  --glow: var(--color-chart-highlight);
+  background: radial-gradient(50% 40% at 50% 40%, color-mix(in srgb, var(--color-brand) 60%, transparent), transparent 75%), var(--color-dark-deep);
+}
+.rail-card-media--association::before {
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-on-fill) 45%, transparent) 1.2px, transparent 1.8px) 0 0 / 20px 20px;
+  -webkit-mask-image: radial-gradient(60% 50% at 50% 40%, #000, transparent); mask-image: radial-gradient(60% 50% at 50% 40%, #000, transparent);
+}
+/* Location: contour lines around the pin, on steel blue going to navy. */
+.rail-card-media--location {
+  background: radial-gradient(35% 28% at 50% 40%, color-mix(in srgb, var(--color-amber) 40%, transparent), transparent 70%),
+              linear-gradient(160deg, var(--color-brand-muted), var(--color-dark) 85%);
+}
+.rail-card-media--location::before {
+  background: repeating-radial-gradient(ellipse 120% 90% at 50% 40%, transparent 0 15px, var(--color-on-fill-line) 15px 16px);
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 90%); mask-image: linear-gradient(180deg, #000 55%, transparent 90%);
+}
+/* Documentation: light blue to brand blue with fine diagonal ruling, like stacked sheets. */
+.rail-card-media--documentation {
+  --glow: var(--color-brand-deep);
+  background: linear-gradient(165deg, var(--color-chart-highlight) 0%, var(--color-brand) 55%, var(--color-brand-deep) 100%);
+}
+.rail-card-media--documentation::before {
+  background: repeating-linear-gradient(135deg, var(--color-on-fill-tint) 0 2px, transparent 2px 16px);
+  -webkit-mask-image: linear-gradient(180deg, #000, transparent 80%); mask-image: linear-gradient(180deg, #000, transparent 80%);
+}
+/* Forms: steel blue with a checklist grid fading from the top. */
+.rail-card-media--forms {
+  --glow: var(--color-amber-light);
+  background: radial-gradient(60% 40% at 50% 40%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
+              linear-gradient(180deg, var(--color-brand-muted), var(--color-dark));
+}
+.rail-card-media--forms::before {
+  background: linear-gradient(var(--color-on-fill-line) 1px, transparent 1px) 0 0 / 100% 28px,
+              linear-gradient(90deg, var(--color-on-fill-line) 1px, transparent 1px) 0 0 / 28px 100%;
+  -webkit-mask-image: radial-gradient(70% 55% at 50% 40%, #000 20%, transparent); mask-image: radial-gradient(70% 55% at 50% 40%, #000 20%, transparent);
+}
+/* Compliance: rays rising from an amber glow below the card, on navy. */
+.rail-card-media--compliance {
+  background: radial-gradient(80% 45% at 50% 105%, color-mix(in srgb, var(--color-amber) 55%, transparent), transparent 70%),
+              radial-gradient(60% 40% at 50% 40%, color-mix(in srgb, var(--color-brand) 35%, transparent), transparent 70%),
               var(--color-dark-deep);
 }
-.rail-card-media--brand { background: radial-gradient(24rem 18rem at 0% 100%, var(--color-brand-shade), transparent 70%), linear-gradient(180deg, var(--color-brand) 0%, var(--color-brand-deep) 100%); }
-.rail-card-media--brand::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background-image: linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid) 1px, transparent 1px), linear-gradient(var(--color-grid-fine) 1px, transparent 1px), linear-gradient(90deg, var(--color-grid-fine) 1px, transparent 1px);
-  background-size: var(--grid-major) var(--grid-major), var(--grid-major) var(--grid-major), var(--grid-minor) var(--grid-minor), var(--grid-minor) var(--grid-minor);
+.rail-card-media--compliance::before {
+  background: repeating-conic-gradient(from 0deg at 50% 110%, var(--color-on-fill-tint) 0deg 1.5deg, transparent 1.5deg 7deg);
+  -webkit-mask-image: linear-gradient(0deg, #000 20%, transparent 85%); mask-image: linear-gradient(0deg, #000 20%, transparent 85%);
 }
-.rail-card-media--ice { background: radial-gradient(18rem 16rem at 100% 100%, var(--color-section-alt), transparent 70%), var(--color-surface); color: var(--color-dark); border: 1px solid var(--color-border); }
-.rail-card-icon { width: 30%; height: auto; filter: brightness(0) invert(1); opacity: 0.9; }
-.rail-card-media--ice .rail-card-icon { filter: var(--filter-brand); opacity: 1; }
-.rail-card-title { position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-3); margin: 0; font-size: var(--text-h4); line-height: 1.15; letter-spacing: -0.02em; color: inherit; }
-.rail-card-tag { position: absolute; top: var(--space-2); right: var(--space-2); padding: 0.2rem 0.6rem; border-radius: var(--radius-pill); font-size: var(--text-mock); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: var(--color-on-fill-tint); border: 1px solid var(--color-on-fill-line); }
-.rail-card-media--ice .rail-card-tag { background: var(--color-bg); border-color: var(--color-border); color: var(--color-muted); }
+/* Depreciation: bars stepping down from left to right, a declining balance, on blue going to navy. */
+.rail-card-media--depreciation {
+  --glow: var(--color-amber-light);
+  background: radial-gradient(70% 50% at 100% 0%, color-mix(in srgb, var(--color-chart-highlight) 40%, transparent), transparent 70%),
+              linear-gradient(180deg, var(--color-brand), var(--color-dark) 95%);
+}
+.rail-card-media--depreciation::before {
+  background: repeating-linear-gradient(90deg, var(--color-on-fill-tint) 0 22px, transparent 22px 30px);
+  -webkit-mask-image: linear-gradient(to top right, #000 50%, transparent 50%); mask-image: linear-gradient(to top right, #000 50%, transparent 50%);
+}
+/* Anomaly detection: a quiet field of points with one in amber, off to the side. */
+.rail-card-media--anomaly {
+  background: radial-gradient(18% 14% at 74% 22%, color-mix(in srgb, var(--color-amber) 75%, transparent), transparent 70%),
+              radial-gradient(70% 50% at 30% 80%, color-mix(in srgb, var(--color-brand) 45%, transparent), transparent 70%),
+              linear-gradient(180deg, var(--color-dark), var(--color-dark-deep));
+}
+.rail-card-media--anomaly::before {
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-on-fill) 30%, transparent) 1px, transparent 1.6px) 0 0 / 26px 18px,
+              radial-gradient(circle, color-mix(in srgb, var(--color-on-fill) 20%, transparent) 1px, transparent 1.6px) 13px 9px / 26px 18px;
+  -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent 85%); mask-image: linear-gradient(180deg, #000 40%, transparent 85%);
+}
 
 /* Second action in a pair: text with a chevron drawn from borders, underlined on hover */
 .text-action { display: inline-flex; align-items: center; gap: 0.5em; min-width: 0; color: var(--color-link); font-weight: 600; text-decoration: none; padding-block: 0.4rem; }
@@ -1168,17 +1248,17 @@ main { background: var(--color-bg); overflow: hidden; }
 }
 
 /* Light hero (/assets): white, no drafting grid, dark text. The headline run sits beside a product
-   screenshot (50/50 from 64rem, stacked below) that fades into the page over its last third, right and bottom. */
+   screenshot (50/50 from 64rem, stacked below) that fades into the page over its last fifth, right and bottom. */
 .hero.hero--light { background: var(--color-bg); color: var(--color-text); }
 .hero.hero--light::before { content: none; }
 .hero--light h1, .hero--light .headline-run { color: var(--color-text); }
 .hero--light .headline-run { font-size: var(--text-run); line-height: 1.12; letter-spacing: -0.02em; max-width: 52rem; }  /* the section-head run size: statement in navy, the rest in muted */
 .hero--light .headline-run span { color: var(--color-muted); }
 .hero-screen img {
-  display: block; width: 100%; height: auto; border-radius: var(--radius-lg) 0 0 0;
-  -webkit-mask-image: linear-gradient(90deg, #000 67%, rgb(0 0 0 / 0.75) 80%, rgb(0 0 0 / 0.3) 92%, transparent), linear-gradient(180deg, #000 67%, rgb(0 0 0 / 0.75) 80%, rgb(0 0 0 / 0.3) 92%, transparent);
+  display: block; width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: var(--radius) 0 0 0;
+  -webkit-mask-image: linear-gradient(90deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent), linear-gradient(180deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(90deg, #000 67%, rgb(0 0 0 / 0.75) 80%, rgb(0 0 0 / 0.3) 92%, transparent), linear-gradient(180deg, #000 67%, rgb(0 0 0 / 0.75) 80%, rgb(0 0 0 / 0.3) 92%, transparent);
+  mask-image: linear-gradient(90deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent), linear-gradient(180deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent);
   mask-composite: intersect;
 }
 
