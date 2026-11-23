@@ -139,6 +139,7 @@
   --space-section-lg: clamp(5rem, 3rem + 7vw, 10rem);   /* 80 → 160px: hero, dark band, closing band */
   --space-band: clamp(3rem, 2rem + 3vw, 5rem);          /* 48 → 80px: a thin band such as the logo strip */
   --space-head: clamp(2.5rem, 1.5rem + 3vw, 4rem);      /* 40 → 64px: section head to its content */
+  --space-overlap: clamp(3.5rem, 2rem + 5vw, 7rem);     /* 56 → 112px: how far the home flow panel rises into the hero */
 
   /* Layout */
   --container: 86rem;

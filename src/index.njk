@@ -6,24 +6,74 @@ permalink: /index.html
 pageClass: page--spacious
 rail: true
 stepper: true
+flow: true
 cta:
   second:
     button: "See the platform"
     url: "/platform"
 ---
-<section class="hero">
-  <div class="container hero-split">
-    <div class="hero-copy">
-      <h1 class="headline-run">Where operational technology <u>meets</u> regulatory compliance.</h1>
-      <p class="lead">Capture once in the field and report from the same record — assets, inspections, work orders, and emissions on one data model.</p>
-      <div class="button-row">
-        <a class="button" href="/contact#contact">Book a demo</a>
-        <a class="button button--outline" href="#the-platform">See the platform</a>
+<section class="hero hero--run">
+  <div class="container">
+    {#- The original home headline and lead as one run. What operational technology "meets" turns once through the
+        platform's other parts (asset management, smart inspection, workflow automation) and lands on "regulatory
+        compliance." The passing phrases are CSS content on aria-hidden spans, so the heading's text is the
+        sentence as written. -#}
+    <h1 class="headline-run">Where operational technology <i class="hero-meets">meets</i> <em class="hero-rotate-words"><span aria-hidden="true" data-word="asset management." style="--i:0"></span><span aria-hidden="true" data-word="smart inspection." style="--i:1"></span><span aria-hidden="true" data-word="workflow automation." style="--i:2"></span><span class="is-last" style="--i:3">regulatory compliance.</span></em> <span>One platform for Operational Excellence.</span></h1>
+    <ul class="hero-industries">
+      <li><a href="/oilandgas">Oil &amp; Gas</a></li>
+      <li><a href="/municipality">Municipalities</a></li>
+      <li><a href="/defense">Defense</a></li>
+      <li><a href="/infrastructure">Infrastructure</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="flow-section">
+  <div class="container">
+    <div class="flow" data-loop role="group" aria-label="Walk-through: one leak finding from the field to the filing">
+      <div class="flow-backdrop" aria-hidden="true">
+        <img src="/static/img/ldar/pressure-gauges.webp" width="1200" height="798" alt="">
       </div>
-      <p class="inline-list">Oil &amp; Gas &nbsp;•&nbsp; Municipalities &nbsp;•&nbsp; Defense &nbsp;•&nbsp; Infrastructure</p>
-    </div>
-    <div class="hero-visual">
-      <img src="/static/img/home/hero-card.webp" width="485" height="463" alt="Assetas inspection record PMP-204, Separator inlet: captured offline at 09:14 MDT, geotagged, condition Pass, mapped to 40 CFR 98 Subpart W with an intact audit trail.">
+      <ol class="flow-track">
+        <li class="flow-card" data-at="1" data-leave="8">
+          <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Trek · FORM-2281</p>
+          <p class="flow-title">Skid A-114 · Relief valve RV-22</p>
+          <p class="flow-meta">Started 9:42 AM <span class="flow-swap"><span class="mock-chip mock-chip--amber" data-off="7">Offline</span><span class="mock-chip" data-at="7">Synced</span></span></p>
+          <dl class="flow-rows">
+            <div data-at="2"><dt>Leak observed?</dt><dd>Yes</dd></div>
+            <div data-at="3"><dt>Estimated leak rate</dt><dd>42 SCFH</dd></div>
+            <div data-at="4"><dt>Component</dt><dd>From the registry</dd></div>
+          </dl>
+          <p class="flow-button" data-at="4"><span class="flow-swap"><span data-off="6">Submit</span><span data-at="6">Submitted</span></span></p>
+          <span class="flow-cursor" data-at="5" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
+        </li>
+        <li class="flow-card" data-at="8" data-leave="12">
+          <span class="flow-link" data-at="8" aria-hidden="true"></span>
+          <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Workflow · FORM-2281</p>
+          <p class="flow-title">Routed by rule</p>
+          <ul class="flow-steps">
+            <li data-at="9"><span>Form submitted<small>9:47 AM, synced from offline</small></span><span class="mock-chip">Done</span></li>
+            <li data-at="10"><span>Escalated to supervisor<small>Leak rate above threshold</small></span><span class="mock-chip">Done</span></li>
+            <li data-at="11"><span>Work order dispatched<small>Repair, then retest</small></span><span class="mock-chip mock-chip--amber">Open</span></li>
+          </ul>
+        </li>
+        <li class="flow-card" data-at="12" data-leave="15">
+          <span class="flow-link" data-at="12" aria-hidden="true"></span>
+          <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Record · Skid A-114</p>
+          <p class="flow-title">Mapped to the rule</p>
+          <ul class="flow-map">
+            <li data-at="13"><span>Method 21 survey</span><b>NSPS OOOOb</b></li>
+            <li data-at="14"><span>Open days</span><b>Subpart W</b></li>
+          </ul>
+        </li>
+        <li class="flow-card" data-at="15">
+          <span class="flow-link" data-at="15" aria-hidden="true"></span>
+          <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Reports · Ready to file</p>
+          <p class="flow-title">GHGRP subpart W</p>
+          <p class="flow-meta">e-GGRT <span class="mock-chip" data-at="16">Ready to export</span></p>
+          <p class="flow-stamp" data-at="16">Audit trail intact</p>
+        </li>
+      </ol>
     </div>
   </div>
 </section>

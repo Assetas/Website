@@ -1649,6 +1649,127 @@ button.tour-step:hover { background: var(--color-section-alt); }
 }
 .bento-card .text-action { margin-top: auto; padding-top: var(--space-2); }
 
+/* Headline-run hero (home): no image or buttons, the H1 is a headline run (statement, then a softer span) on the
+   blue grid, in the original home wording. What operational technology meets (the run's amber-light <em>, large
+   text only) turns once through asset management, smart inspection and workflow automation, landing on
+   "regulatory compliance." (3.4 s in all, so no pause control). The phrases stack in one inline grid cell,
+   left-aligned and free to wrap; the softer span is its own line, so nothing follows them and no gap shows. The passing
+   phrases are CSS content on aria-hidden spans, so the heading's text (for search and screen readers) is the
+   sentence as written. Reduced motion shows the last phrase. The bottom padding leaves room for the .flow panel,
+   which rises in by --space-overlap. */
+.hero.hero--run {
+  padding-block: var(--space-5) calc(var(--space-5) + var(--space-overlap));
+  /* Irregular field: navy under the type for contrast (white 16.5:1, the soft line 9.6:1, amber well over AA),
+     with blue pools of different sizes pushed to the edges and one low amber warmth, all under the drafting grid. */
+  background-color: var(--color-dark);
+  background-image:
+    radial-gradient(30rem 20rem at 6% -8%, color-mix(in srgb, var(--color-brand-deep) 70%, transparent), transparent 70%),
+    radial-gradient(52rem 34rem at 96% 6%, var(--color-brand), transparent 66%),
+    radial-gradient(22rem 30rem at 70% 62%, color-mix(in srgb, var(--color-brand-deep) 55%, transparent), transparent 72%),
+    radial-gradient(44rem 22rem at -6% 104%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
+    radial-gradient(26rem 14rem at 84% 102%, color-mix(in srgb, var(--color-amber) 30%, transparent), transparent 72%),
+    radial-gradient(36rem 26rem at 30% 40%, var(--color-dark-deep), transparent 75%);
+}
+.hero--run .headline-run { max-width: 58rem; margin-bottom: 0; }
+.hero--run .headline-run > span { display: block; }  /* the softer line under the statement, as the original lead sat */
+.hero--run .hero-meets { font-style: italic; color: var(--color-amber); padding-right: 0.04em; }  /* Inter's true italic (loaded in base.njk) */
+.hero .headline-run .hero-rotate-words { display: inline-grid; justify-items: start; vertical-align: top; color: var(--color-on-fill); }
+.hero .headline-run .hero-rotate-words > span { grid-area: 1 / 1; color: inherit; font-weight: inherit; opacity: 0; animation: hero-word 0.86s var(--ease) calc(var(--i) * 0.86s) backwards; }
+.hero .headline-run .hero-rotate-words > .is-last { opacity: 1; animation-name: hero-word-last; }
+.hero-rotate-words > [data-word]::before { content: attr(data-word); }
+@keyframes hero-word {
+  0% { opacity: 0; transform: translateY(0.35em); filter: blur(8px); }
+  24%, 74% { opacity: 1; transform: none; filter: none; }
+  100% { opacity: 0; transform: translateY(-0.35em); filter: blur(8px); }
+}
+@keyframes hero-word-last { 0% { opacity: 0; transform: translateY(0.35em); filter: blur(8px); } 100% { opacity: 1; transform: none; filter: none; } }
+.hero-industries { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.hero .hero-industries a {
+  display: inline-block; padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill);
+  font-size: var(--text-small); font-weight: 600; text-decoration: none; color: var(--color-on-fill);
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.hero .hero-industries a:hover, .hero .hero-industries a:focus-visible { background: var(--color-on-fill-tint); border-color: var(--color-on-fill); }
+
+/* Flow walk-through (home, under the hero; static/js/flow.js), after Zapier's product film under its hero: a wide
+   panel over a blurred field photo washed in the quote card's amber and blue glows, where one leak finding
+   (Skid A-114, the demo data of the /forms, /workflows and /compliance panels) moves through four cards: the
+   Trek form (a cursor submits it), the workflow, the rule mapping and the filing, joined by amber links that
+   draw in. Without JS or with reduced motion every card shows finished. It loops, so it carries data-loop and
+   the pause button sits in its lower right. */
+.flow-section { position: relative; z-index: 1; margin-top: calc(-1 * var(--space-overlap)); }
+.flow { position: relative; isolation: isolate; overflow: hidden; display: grid; align-items: center; min-height: 30rem; padding: var(--space-5) var(--space-2); border-radius: var(--radius-lg); background: var(--color-dark-deep); box-shadow: var(--shadow-float); }
+@media (min-width: 40rem) { .flow { padding-inline: var(--space-4); } }
+.flow-backdrop { position: absolute; inset: 0; z-index: -1; }
+.flow-backdrop img { width: 100%; height: 100%; object-fit: cover; filter: blur(22px); transform: scale(1.15); opacity: 0.6; }
+.flow-backdrop::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(42rem 28rem at 0% 0%, color-mix(in srgb, var(--color-amber) 50%, transparent), transparent 70%),
+              radial-gradient(52rem 34rem at 100% 100%, color-mix(in srgb, var(--color-brand) 75%, transparent), transparent 70%),
+              linear-gradient(160deg, color-mix(in srgb, var(--color-dark) 50%, transparent), color-mix(in srgb, var(--color-brand-deep) 35%, transparent));
+}
+.flow-track { list-style: none; margin: 0 auto; padding: 0; width: 100%; max-width: 24rem; display: grid; gap: var(--space-4); transition: opacity 0.4s var(--ease); }
+@media (min-width: 64rem) { .flow-track { max-width: none; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: center; } }
+.flow-card { position: relative; padding: var(--space-2); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); box-shadow: var(--shadow-raised); text-align: left; }
+.flow-card p { margin: 0; }
+.flow-card .flow-app { display: flex; align-items: center; gap: var(--space-1); margin-bottom: var(--space-1); font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); }
+.flow-dots { width: 1.7em; height: 0.5em; flex: none; background: radial-gradient(circle, var(--color-border) 42%, transparent 48%) 0 0 / 0.6em 0.5em repeat-x; }
+.flow-card .flow-title { font-size: var(--text-body); font-weight: 800; line-height: 1.25; }
+.flow-card .flow-meta { display: flex; justify-content: space-between; align-items: center; gap: var(--space-1); margin-top: var(--space-1); font-size: var(--text-note); color: var(--color-muted); }
+.flow .mock-chip { font-size: var(--text-mock); }
+.flow-swap { display: inline-grid; justify-items: end; }
+.flow-swap > * { grid-area: 1 / 1; }
+.flow-rows { margin: var(--space-2) 0 0; }
+.flow-rows > div, .flow-steps li, .flow-map li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-1); padding-block: var(--space-1); border-top: 1px solid var(--color-border); font-size: var(--text-note); }
+.flow-rows dt { color: var(--color-muted); }
+.flow-rows dd { margin: 0; font-weight: 700; text-align: right; }
+.flow-card .flow-button { margin-top: var(--space-2); padding: var(--space-1); border-radius: var(--radius-pill); background: var(--color-brand); color: var(--color-on-fill); text-align: center; font-size: var(--text-note); font-weight: 700; }
+.flow-button .flow-swap { justify-items: center; }
+.flow-steps, .flow-map { list-style: none; margin: var(--space-2) 0 0; padding: 0; }
+.flow-steps li > span:first-child { font-weight: 600; }
+.flow-steps small { display: block; font-size: var(--text-mock); font-weight: 400; color: var(--color-muted); }
+.flow-map span { color: var(--color-muted); }
+.flow-map span::after { content: " \2192"; color: var(--color-accent-text); }
+.flow-map b { padding: 0.15rem 0.6rem; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-accent-text); font-size: var(--text-mock); white-space: nowrap; }
+.flow-card .flow-stamp { display: inline-block; margin-top: var(--space-2); padding: 0.2rem 0.6rem; border: 2px solid var(--color-accent-text); border-radius: var(--radius); color: var(--color-accent-text); font-size: var(--text-mock); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.flow-stamp::before { content: "\2713\00a0"; }
+/* Links: amber, drawn from the card before; down the gap when stacked, across it from 64rem. */
+.flow-link { position: absolute; z-index: -1; left: 50%; top: calc(-1 * var(--space-4)); width: 2px; height: var(--space-4); background: var(--color-amber); transform-origin: top; }
+@media (min-width: 64rem) { .flow-link { left: calc(-1 * var(--space-4)); top: 50%; width: var(--space-4); height: 2px; transform-origin: left; } }
+.flow-cursor { display: none; position: absolute; right: 24%; bottom: var(--space-1); width: 1.5rem; height: 1.5rem; pointer-events: none; }
+.flow-cursor svg { width: 100%; height: 100%; fill: var(--color-text); stroke: var(--color-bg); stroke-width: 1.5; stroke-linejoin: round; }
+/* Timeline states: flow.js adds .is-live, then .is-on / .is-off per step */
+.flow:not(.is-live) [data-off] { visibility: hidden; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) { .flow:not(.is-live) .flow-track { opacity: 0; } }  /* no flash of the finished cards before flow.js starts */
+.flow.is-ready [data-at]:not(.flow-cursor) { transition: opacity 0.45s var(--ease), transform 0.55s var(--ease); }
+.flow.is-live [data-at]:not(.is-on):not(.flow-cursor):not(.flow-link) { opacity: 0; transform: translateY(var(--space-1)); }
+.flow.is-ready [data-off] { transition: opacity 0.3s var(--ease); }
+.flow.is-live [data-off].is-off { opacity: 0; }
+.flow.is-live .flow-link:not(.is-on) { transform: scaleY(0); }
+@media (min-width: 64rem) { .flow.is-live .flow-link:not(.is-on) { transform: scaleX(0); } }
+.flow.is-live .flow-cursor { display: block; opacity: 0; }
+.flow.is-live .flow-cursor.is-on { animation: flow-cursor 1.6s var(--ease) forwards; }
+@keyframes flow-cursor {
+  0% { opacity: 0; transform: translate(var(--space-5), var(--space-4)); }
+  15% { opacity: 1; }
+  60% { transform: translate(0, 0); }
+  68% { transform: scale(0.8); }
+  76% { transform: scale(1); }
+  88% { opacity: 1; }
+  100% { opacity: 0; transform: none; }
+}
+/* Narrow screens: the cards play one at a time in one spot (a scene swap, like Zapier's film) instead of a tall
+   column; each leaves (.is-left) as the next arrives. The links have nothing to join there, so they stay hidden. */
+@media (max-width: 63.99rem) {
+  .flow { min-height: 0; padding-block: var(--space-4); }
+  .flow.is-live .flow-track > .flow-card { grid-area: 1 / 1; align-self: center; }
+  .flow.is-live .flow-card.is-left { opacity: 0; transform: translateY(calc(-1 * var(--space-1))); pointer-events: none; }
+  .flow.is-live .flow-link { display: none; }
+}
+.flow.is-resetting .flow-track { opacity: 0; }
+.flow .loop-toggle { top: auto; bottom: var(--space-2); z-index: 2; }
+.flow.is-paused *, .flow.is-offscreen * { animation-play-state: paused !important; }
+
 /* Motion: respect the visitor's setting */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
