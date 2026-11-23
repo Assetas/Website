@@ -1692,14 +1692,14 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .hero .hero-industries a:hover, .hero .hero-industries a:focus-visible { background: var(--color-on-fill-tint); border-color: var(--color-on-fill); }
 
 /* Flow walk-through (home, under the hero; static/js/flow.js), after Zapier's product film under its hero: a wide
-   panel over a blurred field photo washed in the quote card's amber and blue glows, where one leak finding
-   (Skid A-114, the demo data of the /forms, /workflows and /compliance panels) moves through four cards: the
-   Trek form (a cursor submits it), the workflow, the rule mapping and the filing, joined by amber links that
-   draw in. Without JS or with reduced motion every card shows finished. It loops, so it carries data-loop and
-   the pause button sits in its lower right. */
+   panel over a blurred field photo washed in the quote card's amber and blue glows, playing five scenes in one
+   spot: Trek capture offline, the asset record, an anomaly flag, routing, and reporting. Chapter buttons along
+   the bottom mark the playing scene and jump to any of them; the pause button sits lower right (data-loop).
+   Scenes lay out in a row from 48rem and a column below. Without JS or with reduced motion only the .is-poster
+   scene (the asset record) shows, finished, and the chapters are hidden. */
 .flow-section { position: relative; z-index: 1; margin-top: calc(-1 * var(--space-overlap)); }
-.flow { position: relative; isolation: isolate; overflow: hidden; display: grid; align-items: center; min-height: 30rem; padding: var(--space-5) var(--space-2); border-radius: var(--radius-lg); background: var(--color-dark-deep); box-shadow: var(--shadow-float); }
-@media (min-width: 40rem) { .flow { padding-inline: var(--space-4); } }
+.flow { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-2) var(--space-3); border-radius: var(--radius-lg); background: var(--color-dark-deep); box-shadow: var(--shadow-float); }
+@media (min-width: 40rem) { .flow { padding: var(--space-5) var(--space-4) var(--space-3); } }
 .flow-backdrop { position: absolute; inset: 0; z-index: -1; }
 .flow-backdrop img { width: 100%; height: 100%; object-fit: cover; filter: blur(22px); transform: scale(1.15); opacity: 0.6; }
 .flow-backdrop::after {
@@ -1708,11 +1708,18 @@ button.tour-step:hover { background: var(--color-section-alt); }
               radial-gradient(52rem 34rem at 100% 100%, color-mix(in srgb, var(--color-brand) 75%, transparent), transparent 70%),
               linear-gradient(160deg, color-mix(in srgb, var(--color-dark) 50%, transparent), color-mix(in srgb, var(--color-brand-deep) 35%, transparent));
 }
-.flow-track { list-style: none; margin: 0 auto; padding: 0; width: 100%; max-width: 24rem; display: grid; gap: var(--space-4); transition: opacity 0.4s var(--ease); }
-@media (min-width: 64rem) { .flow-track { max-width: none; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: center; } }
-.flow-card { position: relative; padding: var(--space-2); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); box-shadow: var(--shadow-raised); text-align: left; }
-.flow-card p { margin: 0; }
-.flow-card .flow-app { display: flex; align-items: center; gap: var(--space-1); margin-bottom: var(--space-1); font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); }
+.flow-stage { display: grid; align-items: center; transition: opacity 0.4s var(--ease); }
+@media (min-width: 48rem) { .flow-stage { min-height: 26rem; } }
+.flow-scene { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-4); min-width: 0; }
+@media (min-width: 48rem) { .flow-scene { flex-direction: row; } }
+.flow.is-live .flow-scene { grid-area: 1 / 1; }
+.flow:not(.is-live) .flow-scene:not(.is-poster) { display: none; }
+
+/* Cards: white product screens */
+.flow-card { position: relative; flex: none; width: min(100%, 22rem); min-width: 0; padding: var(--space-2); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); box-shadow: var(--shadow-raised); text-align: left; }
+@media (min-width: 48rem) { .flow-card { flex: 0 1 19rem; width: auto; } .flow-card--wide { flex-basis: 26rem; } }  /* flex sizes only in the row: in the column they would set heights */
+.flow-card p, .flow-screen p { margin: 0; }
+.flow .flow-app { display: flex; align-items: center; gap: var(--space-1); margin-bottom: var(--space-1); font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); }
 .flow-dots { width: 1.7em; height: 0.5em; flex: none; background: radial-gradient(circle, var(--color-border) 42%, transparent 48%) 0 0 / 0.6em 0.5em repeat-x; }
 .flow-card .flow-title { font-size: var(--text-body); font-weight: 800; line-height: 1.25; }
 .flow-card .flow-meta { display: flex; justify-content: space-between; align-items: center; gap: var(--space-1); margin-top: var(--space-1); font-size: var(--text-note); color: var(--color-muted); }
@@ -1733,20 +1740,67 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow-map b { padding: 0.15rem 0.6rem; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-accent-text); font-size: var(--text-mock); white-space: nowrap; }
 .flow-card .flow-stamp { display: inline-block; margin-top: var(--space-2); padding: 0.2rem 0.6rem; border: 2px solid var(--color-accent-text); border-radius: var(--radius); color: var(--color-accent-text); font-size: var(--text-mock); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .flow-stamp::before { content: "\2713\00a0"; }
-/* Links: amber, drawn from the card before; down the gap when stacked, across it from 64rem. */
-.flow-link { position: absolute; z-index: -1; left: 50%; top: calc(-1 * var(--space-4)); width: 2px; height: var(--space-4); background: var(--color-amber); transform-origin: top; }
-@media (min-width: 64rem) { .flow-link { left: calc(-1 * var(--space-4)); top: 50%; width: var(--space-4); height: 2px; transform-origin: left; } }
+
+/* Scene 1: the Trek phone beside notes on navy */
+.flow-phone { flex: none; }
+.flow-phone img { display: block; width: 9rem; height: auto; filter: var(--shadow-cutout); }
+@media (min-width: 48rem) { .flow-phone img { width: 12rem; } }
+.flow-notes { max-width: 22rem; color: var(--color-on-fill); }
+.flow .flow-kicker { margin: 0 0 var(--space-2); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-amber); }
+.flow-chips { list-style: none; margin: 0; padding: 0; display: grid; justify-items: start; gap: var(--space-1); }
+.flow-chips li { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill); background: var(--color-on-fill-tint); font-size: var(--text-small); font-weight: 600; }
+.flow .flow-toast-row { display: grid; justify-items: start; margin: var(--space-3) 0 0; }
+.flow-toast { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1); border-radius: var(--radius-pill); background: var(--color-bg); color: var(--color-text); font-size: var(--text-note); font-weight: 600; box-shadow: var(--shadow-raised); }
+
+/* Scene 2: the asset record screenshot in a white frame, with the record's parts called out beside it */
+.flow-screen { flex: none; width: 100%; min-width: 0; margin: 0; padding: var(--space-1); border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-raised); }
+.flow-screen .flow-app { margin: var(--space-1) var(--space-1) var(--space-1); }
+.flow-screen img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+.flow-callouts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-1); width: 100%; }
+@media (min-width: 48rem) { .flow-screen { flex: 0 1 38rem; } .flow-callouts { flex: 0 1 15rem; grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 47.99rem) { .flow-callouts span { display: none; } .flow-chips li { font-size: var(--text-note); } }  /* names only on phones */
+.flow-callouts li { padding: var(--space-1) var(--space-2); border-left: 3px solid var(--color-amber); border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-raised); font-size: var(--text-note); line-height: 1.35; }
+.flow-callouts b { display: block; color: var(--color-text); }
+.flow-callouts span { color: var(--color-muted); }
+
+/* Scene 3: a month of fuel use that drops out, flagged */
+.flow-bars { display: flex; align-items: flex-end; gap: var(--space-1); height: 7rem; margin-top: var(--space-2); }
+.flow-bars span { flex: 1; height: var(--h); min-height: 3px; border-radius: 3px 3px 0 0; background: var(--color-chart-highlight); transform-origin: bottom; }
+.flow-bars .is-flag { background: var(--color-amber); }
+.flow-months { display: flex; gap: var(--space-1); margin-top: var(--space-1); }
+.flow-months span { flex: 1; text-align: center; font-size: var(--text-mock); color: var(--color-muted); }
+
+/* Links: amber, drawn from the card before; down between stacked cards, across from 48rem */
+.flow-link { flex: 0 0 var(--space-5); width: 2px; margin-block: calc(-1 * var(--space-4)); background: var(--color-amber); transform-origin: top; }
+@media (min-width: 48rem) { .flow-link { width: auto; height: 2px; margin-block: 0; margin-inline: calc(-1 * var(--space-4)); transform-origin: left; } }
 .flow-cursor { display: none; position: absolute; right: 24%; bottom: var(--space-1); width: 1.5rem; height: 1.5rem; pointer-events: none; }
 .flow-cursor svg { width: 100%; height: 100%; fill: var(--color-text); stroke: var(--color-bg); stroke-width: 1.5; stroke-linejoin: round; }
-/* Timeline states: flow.js adds .is-live, then .is-on / .is-off per step */
-.flow:not(.is-live) [data-off] { visibility: hidden; }
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) { .flow:not(.is-live) .flow-track { opacity: 0; } }  /* no flash of the finished cards before flow.js starts */
+
+/* Chapters: one button per scene; the playing one is filled */
+.flow-chapters { list-style: none; margin: 0; padding: 0 var(--space-5) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.flow-chapters button { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill); background: transparent; color: var(--color-on-fill); font: inherit; font-size: var(--text-label); font-weight: 600; cursor: pointer; transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
+.flow-chapters button:hover { border-color: var(--color-on-fill); }
+.flow-chapters button:focus-visible { outline: 3px solid var(--color-focus-on-dark); outline-offset: 2px; }
+.flow-chapters button.is-current { background: var(--color-on-fill); border-color: var(--color-on-fill); color: var(--color-text); }
+.flow:not(.is-live) .flow-chapters { display: none; }
+@media (max-width: 47.99rem) {  /* one swipeable row on phones instead of a column of pills */
+  .flow-chapters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: var(--space-4); padding: 3px var(--space-2) 3px 3px; }
+  .flow-chapters::-webkit-scrollbar { display: none; }
+  .flow-chapters button { white-space: nowrap; }
+}
+
+/* Timeline states: flow.js adds .is-live, then .is-on / .is-off per step; .is-ready a frame later */
+.flow:not(.is-live) [data-off]:not(.flow-scene) { visibility: hidden; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) { .flow:not(.is-live) .flow-stage { opacity: 0; } }  /* no flash of the poster before flow.js starts */
 .flow.is-ready [data-at]:not(.flow-cursor) { transition: opacity 0.45s var(--ease), transform 0.55s var(--ease); }
+.flow.is-ready [data-off]:not([data-at]) { transition: opacity 0.3s var(--ease); }
 .flow.is-live [data-at]:not(.is-on):not(.flow-cursor):not(.flow-link) { opacity: 0; transform: translateY(var(--space-1)); }
-.flow.is-ready [data-off] { transition: opacity 0.3s var(--ease); }
-.flow.is-live [data-off].is-off { opacity: 0; }
+.flow.is-live [data-off].is-off { opacity: 0; pointer-events: none; }
+.flow.is-live .flow-scene:not(.is-on) { pointer-events: none; }
 .flow.is-live .flow-link:not(.is-on) { transform: scaleY(0); }
-@media (min-width: 64rem) { .flow.is-live .flow-link:not(.is-on) { transform: scaleX(0); } }
+@media (min-width: 48rem) { .flow.is-live .flow-link:not(.is-on) { transform: scaleX(0); } }
+.flow.is-live .flow-bars:not(.is-on) span { transform: scaleY(0); }
+.flow.is-ready .flow-bars span:not(.is-flag) { transition: transform 0.6s var(--ease) calc(var(--i) * 60ms); }
 .flow.is-live .flow-cursor { display: block; opacity: 0; }
 .flow.is-live .flow-cursor.is-on { animation: flow-cursor 1.6s var(--ease) forwards; }
 @keyframes flow-cursor {
@@ -1758,16 +1812,8 @@ button.tour-step:hover { background: var(--color-section-alt); }
   88% { opacity: 1; }
   100% { opacity: 0; transform: none; }
 }
-/* Narrow screens: the cards play one at a time in one spot (a scene swap, like Zapier's film) instead of a tall
-   column; each leaves (.is-left) as the next arrives. The links have nothing to join there, so they stay hidden. */
-@media (max-width: 63.99rem) {
-  .flow { min-height: 0; padding-block: var(--space-4); }
-  .flow.is-live .flow-track > .flow-card { grid-area: 1 / 1; align-self: center; }
-  .flow.is-live .flow-card.is-left { opacity: 0; transform: translateY(calc(-1 * var(--space-1))); pointer-events: none; }
-  .flow.is-live .flow-link { display: none; }
-}
-.flow.is-resetting .flow-track { opacity: 0; }
-.flow .loop-toggle { top: auto; bottom: var(--space-2); z-index: 2; }
+.flow.is-resetting .flow-stage { opacity: 0; }
+.flow .loop-toggle { top: auto; bottom: var(--space-3); right: var(--space-3); z-index: 2; }
 .flow.is-paused *, .flow.is-offscreen * { animation-play-state: paused !important; }
 
 /* Motion: respect the visitor's setting */
