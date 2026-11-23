@@ -1691,15 +1691,15 @@ button.tour-step:hover { background: var(--color-section-alt); }
 }
 .hero .hero-industries a:hover, .hero .hero-industries a:focus-visible { background: var(--color-on-fill-tint); border-color: var(--color-on-fill); }
 
-/* Flow walk-through (home, under the hero; static/js/flow.js), after Zapier's product film under its hero: a wide
-   panel over a blurred field photo washed in the quote card's amber and blue glows, playing five scenes in one
-   spot: Trek capture offline, the asset record, an anomaly flag, routing, and reporting. Chapter buttons along
-   the bottom mark the playing scene and jump to any of them; the pause button sits lower right (data-loop).
-   Scenes lay out in a row from 48rem and a column below. Without JS or with reduced motion only the .is-poster
-   scene (the asset record) shows, finished, and the chapters are hidden. */
+/* Flow film (home, under the hero; static/js/flow.js), after Zapier's product film under its hero: a wide panel
+   over a blurred field photo washed in amber and blue glows, playing five scenes in one spot. Four are real Demo
+   Sandbox screens in a browser window (16:10, the screenshots cropped to match), with a cursor that glides and
+   clicks and a search box that types; one is the Trek phone. Chapter buttons along the bottom mark the playing
+   scene and jump to any of them; the pause button sits lower right (data-loop). Without JS or with reduced
+   motion only the .is-poster scene shows, on its last screen, and the chapters are hidden. */
 .flow-section { position: relative; z-index: 1; margin-top: calc(-1 * var(--space-overlap)); }
-.flow { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-2) var(--space-3); border-radius: var(--radius-lg); background: var(--color-dark-deep); box-shadow: var(--shadow-float); }
-@media (min-width: 40rem) { .flow { padding: var(--space-5) var(--space-4) var(--space-3); } }
+.flow { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--space-3); padding: var(--space-3) var(--space-2); border-radius: var(--radius-lg); background: var(--color-dark-deep); box-shadow: var(--shadow-float); }
+@media (min-width: 40rem) { .flow { padding: var(--space-4) var(--space-4) var(--space-3); } }
 .flow-backdrop { position: absolute; inset: 0; z-index: -1; }
 .flow-backdrop img { width: 100%; height: 100%; object-fit: cover; filter: blur(22px); transform: scale(1.15); opacity: 0.6; }
 .flow-backdrop::after {
@@ -1709,109 +1709,68 @@ button.tour-step:hover { background: var(--color-section-alt); }
               linear-gradient(160deg, color-mix(in srgb, var(--color-dark) 50%, transparent), color-mix(in srgb, var(--color-brand-deep) 35%, transparent));
 }
 .flow-stage { display: grid; align-items: center; transition: opacity 0.4s var(--ease); }
-@media (min-width: 48rem) { .flow-stage { min-height: 26rem; } }
 .flow-scene { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-4); min-width: 0; }
 @media (min-width: 48rem) { .flow-scene { flex-direction: row; } }
 .flow.is-live .flow-scene { grid-area: 1 / 1; }
 .flow:not(.is-live) .flow-scene:not(.is-poster) { display: none; }
 
-/* Cards: white product screens */
-.flow-card { position: relative; flex: none; width: min(100%, 22rem); min-width: 0; padding: var(--space-2); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); box-shadow: var(--shadow-raised); text-align: left; }
-@media (min-width: 48rem) { .flow-card { flex: 0 1 19rem; width: auto; } .flow-card--wide { flex-basis: 26rem; } }  /* flex sizes only in the row: in the column they would set heights */
-.flow-card p, .flow-screen p { margin: 0; }
-.flow .flow-app { display: flex; align-items: center; gap: var(--space-1); margin-bottom: var(--space-1); font-size: var(--text-mock); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); }
-.flow-dots { width: 1.7em; height: 0.5em; flex: none; background: radial-gradient(circle, var(--color-border) 42%, transparent 48%) 0 0 / 0.6em 0.5em repeat-x; }
-.flow-card .flow-title { font-size: var(--text-body); font-weight: 800; line-height: 1.25; }
-.flow-card .flow-meta { display: flex; justify-content: space-between; align-items: center; gap: var(--space-1); margin-top: var(--space-1); font-size: var(--text-note); color: var(--color-muted); }
-.flow .mock-chip { font-size: var(--text-mock); }
-.flow-swap { display: inline-grid; justify-items: end; }
-.flow-swap > * { grid-area: 1 / 1; }
-.flow-rows { margin: var(--space-2) 0 0; }
-.flow-rows > div, .flow-steps li, .flow-map li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-1); padding-block: var(--space-1); border-top: 1px solid var(--color-border); font-size: var(--text-note); }
-.flow-rows dt { color: var(--color-muted); }
-.flow-rows dd { margin: 0; font-weight: 700; text-align: right; }
-.flow-card .flow-button { margin-top: var(--space-2); padding: var(--space-1); border-radius: var(--radius-pill); background: var(--color-brand); color: var(--color-on-fill); text-align: center; font-size: var(--text-note); font-weight: 700; }
-.flow-button .flow-swap { justify-items: center; }
-.flow-steps, .flow-map { list-style: none; margin: var(--space-2) 0 0; padding: 0; }
-.flow-steps li > span:first-child { font-weight: 600; }
-.flow-steps small { display: block; font-size: var(--text-mock); font-weight: 400; color: var(--color-muted); }
-.flow-map span { color: var(--color-muted); }
-.flow-map span::after { content: " \2192"; color: var(--color-accent-text); }
-.flow-map b { padding: 0.15rem 0.6rem; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-accent-text); font-size: var(--text-mock); white-space: nowrap; }
-.flow-card .flow-stamp { display: inline-block; margin-top: var(--space-2); padding: 0.2rem 0.6rem; border: 2px solid var(--color-accent-text); border-radius: var(--radius); color: var(--color-accent-text); font-size: var(--text-mock); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-.flow-stamp::before { content: "\2713\00a0"; }
+/* The browser window: a title bar over a 16:10 view where the screenshots stack and crossfade */
+.flow-window { width: min(100%, 52rem); overflow: hidden; border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-raised); }
+.flow .flow-bar { display: flex; align-items: center; gap: var(--space-1); margin: 0; padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--color-border); background: var(--color-section-alt); font-size: var(--text-label); font-weight: 600; color: var(--color-muted); }
+.flow-dots { width: 1.7em; height: 0.5em; flex: none; background: radial-gradient(circle, var(--color-border-input) 42%, transparent 48%) 0 0 / 0.6em 0.5em repeat-x; }
+.flow-view { position: relative; aspect-ratio: 16 / 10; overflow: hidden; container-type: inline-size; background: var(--color-bg); }
+.flow-shot, .flow-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+.flow-video { object-fit: contain; object-position: center; background: var(--color-bg); }
+/* Typing: a white patch over the word already in the asset-search screenshot, where the word is typed again */
+.flow-typed { position: absolute; left: 22.62%; top: 22.6%; width: 3.6%; height: 2.72%; padding-left: 0.37cqw; background: var(--color-bg); color: var(--color-text); font-size: 1.06cqw; line-height: 2.6cqw; white-space: nowrap; }
+.flow-typed::after { content: ""; display: inline-block; width: 1px; height: 1.1em; margin-left: 1px; vertical-align: -0.2em; background: currentColor; animation: flow-caret 1s steps(1) infinite; }
+@keyframes flow-caret { 50% { opacity: 0; } }
+/* The cursor: its tip sits on the point; it glides between stops and dips with a ring on a click */
+.flow-pointer { position: absolute; z-index: 2; width: 2.4cqw; min-width: 1rem; aspect-ratio: 1; margin: -0.3cqw 0 0 -0.5cqw; pointer-events: none; transition: left 0.9s var(--ease), top 0.9s var(--ease); }
+.flow-pointer svg { width: 100%; height: 100%; fill: var(--color-text); stroke: var(--color-bg); stroke-width: 1.5; stroke-linejoin: round; filter: drop-shadow(0 2px 3px rgb(2 27 78 / 0.35)); transition: transform 0.15s var(--ease); }
+.flow-pointer::after { content: ""; position: absolute; left: 0.5cqw; top: 0.3cqw; width: 3cqw; aspect-ratio: 1; border: 2px solid var(--color-brand); border-radius: 50%; opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+.flow-pointer.is-click svg { transform: scale(0.82); }
+.flow-pointer.is-click::after { animation: flow-ring 0.45s var(--ease); }
+@keyframes flow-ring { 0% { opacity: 0.9; transform: translate(-50%, -50%) scale(0.3); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.4); } }
 
-/* Scene 1: the Trek phone beside notes on navy */
+/* Trek scene: the phone beside notes on navy */
 .flow-phone { flex: none; }
-.flow-phone img { display: block; width: 9rem; height: auto; filter: var(--shadow-cutout); }
-@media (min-width: 48rem) { .flow-phone img { width: 12rem; } }
+.flow-phone img { display: block; width: 8rem; height: auto; filter: var(--shadow-cutout); }
+@media (min-width: 48rem) { .flow-phone img { width: 13rem; } }
 .flow-notes { max-width: 22rem; color: var(--color-on-fill); }
 .flow .flow-kicker { margin: 0 0 var(--space-2); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-amber); }
 .flow-chips { list-style: none; margin: 0; padding: 0; display: grid; justify-items: start; gap: var(--space-1); }
 .flow-chips li { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill); background: var(--color-on-fill-tint); font-size: var(--text-small); font-weight: 600; }
 .flow .flow-toast-row { display: grid; justify-items: start; margin: var(--space-3) 0 0; }
+.flow-swap > * { grid-area: 1 / 1; }
 .flow-toast { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1); border-radius: var(--radius-pill); background: var(--color-bg); color: var(--color-text); font-size: var(--text-note); font-weight: 600; box-shadow: var(--shadow-raised); }
-
-/* Scene 2: the asset record screenshot in a white frame, with the record's parts called out beside it */
-.flow-screen { flex: none; width: 100%; min-width: 0; margin: 0; padding: var(--space-1); border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-raised); }
-.flow-screen .flow-app { margin: var(--space-1) var(--space-1) var(--space-1); }
-.flow-screen img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
-.flow-callouts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-1); width: 100%; }
-@media (min-width: 48rem) { .flow-screen { flex: 0 1 38rem; } .flow-callouts { flex: 0 1 15rem; grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 47.99rem) { .flow-callouts span { display: none; } .flow-chips li { font-size: var(--text-note); } }  /* names only on phones */
-.flow-callouts li { padding: var(--space-1) var(--space-2); border-left: 3px solid var(--color-amber); border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-raised); font-size: var(--text-note); line-height: 1.35; }
-.flow-callouts b { display: block; color: var(--color-text); }
-.flow-callouts span { color: var(--color-muted); }
-
-/* Scene 3: a month of fuel use that drops out, flagged */
-.flow-bars { display: flex; align-items: flex-end; gap: var(--space-1); height: 7rem; margin-top: var(--space-2); }
-.flow-bars span { flex: 1; height: var(--h); min-height: 3px; border-radius: 3px 3px 0 0; background: var(--color-chart-highlight); transform-origin: bottom; }
-.flow-bars .is-flag { background: var(--color-amber); }
-.flow-months { display: flex; gap: var(--space-1); margin-top: var(--space-1); }
-.flow-months span { flex: 1; text-align: center; font-size: var(--text-mock); color: var(--color-muted); }
-
-/* Links: amber, drawn from the card before; down between stacked cards, across from 48rem */
-.flow-link { flex: 0 0 var(--space-5); width: 2px; margin-block: calc(-1 * var(--space-4)); background: var(--color-amber); transform-origin: top; }
-@media (min-width: 48rem) { .flow-link { width: auto; height: 2px; margin-block: 0; margin-inline: calc(-1 * var(--space-4)); transform-origin: left; } }
-.flow-cursor { display: none; position: absolute; right: 24%; bottom: var(--space-1); width: 1.5rem; height: 1.5rem; pointer-events: none; }
-.flow-cursor svg { width: 100%; height: 100%; fill: var(--color-text); stroke: var(--color-bg); stroke-width: 1.5; stroke-linejoin: round; }
+.flow .mock-chip { font-size: var(--text-mock); }
+@media (max-width: 47.99rem) { .flow-chips li { font-size: var(--text-note); } }
 
 /* Chapters: one button per scene; the playing one is filled */
-.flow-chapters { list-style: none; margin: 0; padding: 0 var(--space-5) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.flow-chapters { list-style: none; margin: 0; padding: 0 var(--space-5) 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-1); }
 .flow-chapters button { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill); background: transparent; color: var(--color-on-fill); font: inherit; font-size: var(--text-label); font-weight: 600; cursor: pointer; transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
 .flow-chapters button:hover { border-color: var(--color-on-fill); }
 .flow-chapters button:focus-visible { outline: 3px solid var(--color-focus-on-dark); outline-offset: 2px; }
 .flow-chapters button.is-current { background: var(--color-on-fill); border-color: var(--color-on-fill); color: var(--color-text); }
 .flow:not(.is-live) .flow-chapters { display: none; }
 @media (max-width: 47.99rem) {  /* one swipeable row on phones instead of a column of pills */
-  .flow-chapters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: var(--space-4); padding: 3px var(--space-2) 3px 3px; }
+  .flow-chapters { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; margin-right: var(--space-4); padding: 3px var(--space-2) 3px 3px; }
   .flow-chapters::-webkit-scrollbar { display: none; }
   .flow-chapters button { white-space: nowrap; }
 }
 
-/* Timeline states: flow.js adds .is-live, then .is-on / .is-off per step; .is-ready a frame later */
+/* Timeline states: flow.js adds .is-live, toggles .is-on / .is-off by time, and adds .is-ready a frame later */
 .flow:not(.is-live) [data-off]:not(.flow-scene) { visibility: hidden; }
+.flow:not(.is-live) .flow-pointer, .flow:not(.is-live) .flow-typed { display: none; }
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) { .flow:not(.is-live) .flow-stage { opacity: 0; } }  /* no flash of the poster before flow.js starts */
-.flow.is-ready [data-at]:not(.flow-cursor) { transition: opacity 0.45s var(--ease), transform 0.55s var(--ease); }
+.flow.is-ready [data-at]:not(.flow-pointer):not(.flow-typed) { transition: opacity 0.5s var(--ease), transform 0.6s var(--ease); }
+.flow.is-ready .flow-pointer { transition: left 0.9s var(--ease), top 0.9s var(--ease), opacity 0.3s var(--ease); }
 .flow.is-ready [data-off]:not([data-at]) { transition: opacity 0.3s var(--ease); }
-.flow.is-live [data-at]:not(.is-on):not(.flow-cursor):not(.flow-link) { opacity: 0; transform: translateY(var(--space-1)); }
+.flow.is-live [data-at]:not(.is-on) { opacity: 0; }
+.flow.is-live .flow-scene[data-at]:not(.is-on), .flow.is-live .flow-phone:not(.is-on), .flow.is-live .flow-chips li:not(.is-on), .flow.is-live .flow-toast:not(.is-on) { transform: translateY(var(--space-1)); }
 .flow.is-live [data-off].is-off { opacity: 0; pointer-events: none; }
 .flow.is-live .flow-scene:not(.is-on) { pointer-events: none; }
-.flow.is-live .flow-link:not(.is-on) { transform: scaleY(0); }
-@media (min-width: 48rem) { .flow.is-live .flow-link:not(.is-on) { transform: scaleX(0); } }
-.flow.is-live .flow-bars:not(.is-on) span { transform: scaleY(0); }
-.flow.is-ready .flow-bars span:not(.is-flag) { transition: transform 0.6s var(--ease) calc(var(--i) * 60ms); }
-.flow.is-live .flow-cursor { display: block; opacity: 0; }
-.flow.is-live .flow-cursor.is-on { animation: flow-cursor 1.6s var(--ease) forwards; }
-@keyframes flow-cursor {
-  0% { opacity: 0; transform: translate(var(--space-5), var(--space-4)); }
-  15% { opacity: 1; }
-  60% { transform: translate(0, 0); }
-  68% { transform: scale(0.8); }
-  76% { transform: scale(1); }
-  88% { opacity: 1; }
-  100% { opacity: 0; transform: none; }
-}
 .flow.is-resetting .flow-stage { opacity: 0; }
 .flow .loop-toggle { top: auto; bottom: var(--space-3); right: var(--space-3); z-index: 2; }
 .flow.is-paused *, .flow.is-offscreen * { animation-play-state: paused !important; }

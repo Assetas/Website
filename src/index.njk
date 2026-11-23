@@ -30,114 +30,90 @@ cta:
 
 <section class="flow-section">
   <div class="container">
-    {#- Five scenes in one spot, played by flow.js: data-at="n" shows an element at step n, data-off="n" hides it
-        (step times are in flow.js). Values come from the demo panels on /forms, /workflows and /compliance, the
-        /assets record screenshot and tour, and the telemetry demo (PGEN fuel use). Without JS or with reduced
-        motion only the .is-poster scene shows, finished. -#}
-    <div class="flow" data-loop role="group" aria-label="Walk-through of the platform: offline capture, the asset record, anomaly flags, routing, and reporting">
+    {#- A product film in five scenes, played by flow.js. Every time is in milliseconds from the start of the loop:
+        data-at shows an element, data-off hides it, a .flow-pointer glides to each "ms:x,y" stop in its data-path
+        (x and y in % of the window; "!" clicks), .flow-typed types its word from data-at, and the report video plays
+        at half speed. The screenshots are real Demo Sandbox screens, cropped to the 16:10 window (img/home/flow/;
+        the signed-in user is painted out of asset-search). Without JS or with reduced motion only the .is-poster
+        scene shows, on its last screen (the Elm-02 asset record). -#}
+    <div class="flow" data-loop data-hold="49800" data-cycle="50500" role="group" aria-label="Product film: the task calendar, asset search, an inspection form, offline capture in Trek, and anomaly detection on a report">
       <div class="flow-backdrop" aria-hidden="true">
         <img src="/static/img/ldar/pressure-gauges.webp" width="1200" height="798" alt="">
       </div>
       <div class="flow-stage">
 
-        <div class="flow-scene" data-at="1" data-off="8">
-          <div class="flow-phone" data-at="2">
-            <img src="/static/img/platform/mobile-capture-phone.webp" width="352" height="661" alt="Trek on a phone, offline: an inspection round on Pipeline Segment 7 (PHMSA 192.739 valve inspection) with 4 records queued, no leakage observed, 742 psi within spec, and a geotagged photo.">
+        <div class="flow-scene" data-at="300" data-off="8200">
+          <div class="flow-window">
+            <p class="flow-bar"><span class="flow-dots" aria-hidden="true"></span>Assetas · Tasks</p>
+            <div class="flow-view">
+              <img class="flow-shot" data-at="300" data-off="2900" src="/static/img/home/flow/tasks-calendar.webp" width="1414" height="884" alt="Task calendar for November 23 to 29, 2026: a winter maintenance program, a work order for a potential oil release, a backflow test failure, monthly bacterial monitoring at an outfall, an LDAR work order, leak and risk findings on pipelines, and a hydraulic strut repair.">
+              <img class="flow-shot" data-at="2500" src="/static/img/home/flow/task-details.webp" width="1306" height="816" alt="Task details for the winter maintenance program for FLT00473: Maintenance, Normal priority, In Progress, conduct winter routine maintenance per the manufacturer's checklist, Workorder form, due 2026-11-23.">
+              <span class="flow-pointer" data-at="700" data-off="3000" data-path="700:78,80 1700:21.5,26.5 2200:21.5,26.5!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-scene is-poster" data-at="8500" data-off="21800">
+          <div class="flow-window">
+            <p class="flow-bar"><span class="flow-dots" aria-hidden="true"></span>Assetas · Assets</p>
+            <div class="flow-view">
+              <img class="flow-shot" data-at="8500" data-off="12700" src="/static/img/home/flow/asset-search.webp" width="1883" height="1177" alt="Asset search in the Demo Sandbox account: data filters for text, type, serial number, status, tracking code, model, property type, and associated analyses, calculation groups, assets, documents, and contacts.">
+              <span class="flow-typed" data-at="8500" data-off="12700" data-type="elm" data-type-at="10600" data-speed="260" aria-hidden="true">elm</span>
+              <img class="flow-shot" data-at="12400" data-off="14500" src="/static/img/home/flow/asset-list.webp" width="1485" height="928" alt="Asset list for Elm-02: a well, comp engine, compressor, fuel meter, two oil tanks, and a pneumatic controller at the Elm-02 Production Facility, with photos, types, statuses, and serial numbers.">
+              <img class="flow-shot" data-at="14200" src="/static/img/home/flow/asset-record.webp" width="1578" height="986" alt="Asset record for Elm-02 #02-01H: an active well at the Elm-02 Production Facility well pad in the DJ Basin, serial number 0201TR2340, in service since 2018-01-01, with a photo of the wellheads and its QR code.">
+              <span class="flow-pointer" data-at="8900" data-off="14400" data-path="8900:70,62 9900:36,24.5 10300:36,24.5! 11600:25.6,87.3 12100:25.6,87.3! 13400:10.4,27.4 13900:10.4,27.4!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-scene" data-at="22100" data-off="33700">
+          <div class="flow-window">
+            <p class="flow-bar"><span class="flow-dots" aria-hidden="true"></span>Assetas · Forms</p>
+            <div class="flow-view">
+              <img class="flow-shot" data-at="22100" data-off="24800" src="/static/img/home/flow/form-types.webp" width="1387" height="867" alt="Create Form: the Environmental category open, with AVO inspection, COGCC Bradenhead Form 17, fugitive emissions inspection, spill prevention, and stormwater corrective action forms.">
+              <img class="flow-shot" data-at="24500" data-off="27000" src="/static/img/home/flow/form-types-inspections.webp" width="1450" height="906" alt="Create Form with the Inspections category open: backflow device, Bradenhead pressure testing, compressor, daily compressor, daily crane, and equipment maintenance forms.">
+              <img class="flow-shot" data-at="26700" src="/static/img/home/flow/form-compressor-daily.webp" width="1470" height="919" alt="A new Compressor Inspection - Daily form: compressor tag ID, inspector Coll, Steve, start time 2026-11-23 2:14 PM, and checks for fluid levels, operating temperature, inlet filters, coolers, and belts and couplers.">
+              <span class="flow-pointer" data-at="22500" data-off="26900" data-path="22500:75,32 23700:22,89.5 24200:22,89.5! 25900:10.4,73.6 26400:10.4,73.6!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-scene" data-at="34000" data-off="40000">
+          <div class="flow-phone" data-at="34500">
+            <img src="/static/img/home/flow/trek-compressor-daily.webp" width="469" height="1006" alt="Trek on a phone: a draft Compressor Inspection - Daily form for Gas Plant 10 - Clark Compressor #10, inspector Coll, Steve, started 11/23/2026 14:03, with fluid level, temperature, inlet filter, and cooler checks switched on, and Submit and Save as draft buttons.">
           </div>
           <div class="flow-notes">
             <p class="flow-kicker">Trek · field capture</p>
             <ul class="flow-chips">
-              <li data-at="3">Works offline</li>
-              <li data-at="4">Timestamped and geotagged</li>
-              <li data-at="5">Photos and readings at the component</li>
+              <li data-at="35100">Works offline</li>
+              <li data-at="35600">Timestamped and geotagged</li>
+              <li data-at="36100">Photos and readings at the component</li>
             </ul>
             <p class="flow-swap flow-toast-row">
-              <span class="flow-toast" data-at="6" data-off="7"><span class="mock-chip mock-chip--amber">Offline</span>4 records queued on the device</span>
-              <span class="flow-toast" data-at="7"><span class="mock-chip">Synced</span>Back in range: 4 records synced</span>
+              <span class="flow-toast" data-at="36800" data-off="38400"><span class="mock-chip mock-chip--amber">Offline</span>4 records queued on the device</span>
+              <span class="flow-toast" data-at="38400"><span class="mock-chip">Synced</span>Back in range: 4 records synced</span>
             </p>
           </div>
         </div>
 
-        <div class="flow-scene is-poster" data-at="9" data-off="14">
-          <figure class="flow-screen" data-at="9">
-            <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Asset record · Orcutt AGC-ENG224</p>
-            <img src="/static/img/assets/hero-asset-record-screen.webp" width="1440" height="893" alt="Assetas asset record for Orcutt AGC-ENG224, an active Caterpillar CAT-3508 engine at Orcutt Hill Compressor Station: AIRS ID 123/9187/009, serial number 23701131, in service since 2006-01-15, with a photo of the engine and its QR code.">
-          </figure>
-          <ul class="flow-callouts">
-            <li data-at="10"><b>Telemetry tags</b><span>SCADA, production accounting, and IoT</span></li>
-            <li data-at="11"><b>Calculation groups</b><span>Emissions calculated as data arrives</span></li>
-            <li data-at="12"><b>Associated tasks</b><span>Maintenance, compliance, and inspection</span></li>
-            <li data-at="13"><b>Depreciation</b><span>Book value at a glance</span></li>
-          </ul>
-        </div>
-
-        <div class="flow-scene" data-at="15" data-off="19">
-          <div class="flow-card flow-card--wide">
-            <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Telemetry · PGEN fuel use</p>
-            <p class="flow-title">Primary generator, monthly fuel use (mcf)</p>
-            <div class="flow-bars" data-at="16" aria-hidden="true"><span style="--h:88%;--i:0"></span><span style="--h:95%;--i:1"></span><span style="--h:91%;--i:2"></span><span style="--h:98%;--i:3"></span><span style="--h:86%;--i:4"></span><span style="--h:93%;--i:5"></span><span style="--h:97%;--i:6"></span><span class="is-flag" data-at="17" style="--h:3%;--i:7"></span></div>
-            <div class="flow-months" aria-hidden="true"><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span></div>
-            <p class="flow-meta" data-at="17"><span class="mock-chip mock-chip--amber">Anomaly</span>August 9.66, expected 280.09–327.82</p>
-          </div>
-          <div class="flow-notes">
-            <p class="flow-kicker">Anomaly detection</p>
-            <ul class="flow-chips">
-              <li data-at="17">Each reading checked against its neighbors</li>
-              <li data-at="18">The outlier flagged for review</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="flow-scene" data-at="20" data-off="30">
-          <div class="flow-card">
-            <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Trek · FORM-2281</p>
-            <p class="flow-title">Skid A-114 · Relief valve RV-22</p>
-            <p class="flow-meta">Started 9:42 AM, offline</p>
-            <dl class="flow-rows">
-              <div data-at="21"><dt>Leak observed?</dt><dd>Yes</dd></div>
-              <div data-at="22"><dt>Estimated leak rate</dt><dd>42 SCFH</dd></div>
-              <div data-at="23"><dt>Component</dt><dd>From the registry</dd></div>
-            </dl>
-            <p class="flow-button" data-at="23"><span class="flow-swap"><span data-off="25">Submit</span><span data-at="25">Submitted</span></span></p>
-            <span class="flow-cursor" data-at="24" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
-          </div>
-          <span class="flow-link" data-at="26" aria-hidden="true"></span>
-          <div class="flow-card" data-at="26">
-            <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Workflow · FORM-2281</p>
-            <p class="flow-title">Routed by rule</p>
-            <ul class="flow-steps">
-              <li data-at="27"><span>Form submitted<small>9:47 AM, synced from offline</small></span><span class="mock-chip">Done</span></li>
-              <li data-at="28"><span>Escalated to supervisor<small>Leak rate above threshold</small></span><span class="mock-chip">Done</span></li>
-              <li data-at="29"><span>Work order dispatched<small>Repair, then retest</small></span><span class="mock-chip mock-chip--amber">Open</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="flow-scene" data-at="31">
-          <div class="flow-card">
-            <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Record · Skid A-114</p>
-            <p class="flow-title">Mapped to the rule</p>
-            <ul class="flow-map">
-              <li data-at="32"><span>Method 21 survey</span><b>NSPS OOOOb</b></li>
-              <li data-at="33"><span>Open days</span><b>Subpart W</b></li>
-            </ul>
-          </div>
-          <span class="flow-link" data-at="34" aria-hidden="true"></span>
-          <div class="flow-card" data-at="34">
-            <p class="flow-app"><span class="flow-dots" aria-hidden="true"></span>Reports · Ready to file</p>
-            <p class="flow-title">GHGRP subpart W</p>
-            <p class="flow-meta">e-GGRT <span class="mock-chip" data-at="35">Ready to export</span></p>
-            <p class="flow-stamp" data-at="35">Audit trail intact</p>
+        <div class="flow-scene" data-at="40300">
+          <div class="flow-window">
+            <p class="flow-bar"><span class="flow-dots" aria-hidden="true"></span>Assetas · Reports</p>
+            <div class="flow-view">
+              <video class="flow-video" data-at="40500" data-rate="0.5" muted playsinline preload="auto" width="1730" height="1000" aria-label="Elm-02 oil recovery volume in tonnes a month, drawn month by month against its expected range and expected value, with the readings outside the range marked.">
+                <source src="/static/video/report-anomaly-detection.mp4" type="video/mp4">
+              </video>
+            </div>
           </div>
         </div>
 
       </div>
-      <ol class="flow-chapters" aria-label="Walk-through chapters">
-        <li><button type="button" data-chapter="0">Capture offline</button></li>
-        <li><button type="button" data-chapter="1">One asset record</button></li>
-        <li><button type="button" data-chapter="2">Flag anomalies</button></li>
-        <li><button type="button" data-chapter="3">Route the work</button></li>
-        <li><button type="button" data-chapter="4">Report</button></li>
+      <ol class="flow-chapters" aria-label="Film chapters">
+        <li><button type="button" data-chapter="0">Plan the work</button></li>
+        <li><button type="button" data-chapter="1">Find the asset</button></li>
+        <li><button type="button" data-chapter="2">Fill the form</button></li>
+        <li><button type="button" data-chapter="3">Work offline</button></li>
+        <li><button type="button" data-chapter="4">Spot anomalies</button></li>
       </ol>
     </div>
   </div>
