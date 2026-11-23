@@ -33,10 +33,11 @@ cta:
     {#- A product film in five scenes, played by flow.js. Every time is in milliseconds from the start of the loop:
         data-at shows an element, data-off hides it, a .flow-pointer glides to each "ms:x,y" stop in its data-path
         (x and y in % of the window; "!" clicks), .flow-typed types its word from data-at, and the report video plays
-        at half speed. The screenshots are real Demo Sandbox screens, cropped to the 16:10 window (img/home/flow/;
-        the signed-in user is painted out of asset-search). Without JS or with reduced motion only the .is-poster
-        scene shows, on its last screen (the Elm-02 asset record). -#}
-    <div class="flow" data-loop data-hold="49800" data-cycle="50500" role="group" aria-label="Product film: the task calendar, asset search, an inspection form, offline capture in Trek, and anomaly detection on a report">
+        at half speed. The screenshots are real Demo Sandbox screens at one scale (1504 x 940 at the app's 100% zoom,
+        so text is the same size in each; img/home/flow/). Asset search is a taller page in a .flow-page that scrolls
+        up by its --shift at data-shift-at. Without JS or with reduced motion only the .is-poster scene shows, on its
+        last screen (the Elm-02 asset record). -#}
+    <div class="flow" data-loop data-hold="51800" data-cycle="52500" role="group" aria-label="Product film: the task calendar, asset search, an inspection form, offline capture in Trek, and anomaly detection on a report that starts a review and follow-up workflow">
       <div class="flow-backdrop" aria-hidden="true">
         <img src="/static/img/ldar/pressure-gauges.webp" width="1200" height="798" alt="">
       </div>
@@ -46,9 +47,9 @@ cta:
           <div class="flow-window">
             <p class="flow-bar"><span class="flow-dots" aria-hidden="true"></span>Assetas · Tasks</p>
             <div class="flow-view">
-              <img class="flow-shot" data-at="300" data-off="2900" src="/static/img/home/flow/tasks-calendar.webp" width="1414" height="884" alt="Task calendar for November 23 to 29, 2026: a winter maintenance program, a work order for a potential oil release, a backflow test failure, monthly bacterial monitoring at an outfall, an LDAR work order, leak and risk findings on pipelines, and a hydraulic strut repair.">
-              <img class="flow-shot" data-at="2500" src="/static/img/home/flow/task-details.webp" width="1306" height="816" alt="Task details for the winter maintenance program for FLT00473: Maintenance, Normal priority, In Progress, conduct winter routine maintenance per the manufacturer's checklist, Workorder form, due 2026-11-23.">
-              <span class="flow-pointer" data-at="700" data-off="3000" data-path="700:78,80 1700:21.5,26.5 2200:21.5,26.5!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
+              <img class="flow-shot" data-at="300" data-off="2900" src="/static/img/home/flow/tasks-calendar.webp" width="1504" height="940" alt="Task calendar for November 23 to 29, 2026: a winter maintenance program, a work order for a potential oil release, a backflow test failure, monthly bacterial monitoring at an outfall, an LDAR work order, leak and risk findings on pipelines, and a hydraulic strut repair.">
+              <img class="flow-shot" data-at="2500" src="/static/img/home/flow/task-details.webp" width="1504" height="940" alt="Task details for the winter maintenance program for FLT00473: Maintenance, Normal priority, In Progress, conduct winter routine maintenance per the manufacturer's checklist, Workorder form, due 2026-11-23.">
+              <span class="flow-pointer" data-at="700" data-off="3000" data-path="700:78,80 1700:20.2,24.9 2200:20.2,24.9!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
             </div>
           </div>
         </div>
@@ -57,11 +58,13 @@ cta:
           <div class="flow-window">
             <p class="flow-bar"><span class="flow-dots" aria-hidden="true"></span>Assetas · Assets</p>
             <div class="flow-view">
-              <img class="flow-shot" data-at="8500" data-off="12700" src="/static/img/home/flow/asset-search.webp" width="1883" height="1177" alt="Asset search in the Demo Sandbox account: data filters for text, type, serial number, status, tracking code, model, property type, and associated analyses, calculation groups, assets, documents, and contacts.">
-              <span class="flow-typed" data-at="8500" data-off="12700" data-type="elm" data-type-at="10600" data-speed="260" aria-hidden="true">elm</span>
-              <img class="flow-shot" data-at="12400" data-off="14500" src="/static/img/home/flow/asset-list.webp" width="1485" height="928" alt="Asset list for Elm-02: a well, comp engine, compressor, fuel meter, two oil tanks, and a pneumatic controller at the Elm-02 Production Facility, with photos, types, statuses, and serial numbers.">
-              <img class="flow-shot" data-at="14200" src="/static/img/home/flow/asset-record.webp" width="1578" height="986" alt="Asset record for Elm-02 #02-01H: an active well at the Elm-02 Production Facility well pad in the DJ Basin, serial number 0201TR2340, in service since 2018-01-01, with a photo of the wellheads and its QR code.">
-              <span class="flow-pointer" data-at="8900" data-off="14400" data-path="8900:70,62 9900:36,24.5 10300:36,24.5! 11600:25.6,87.3 12100:25.6,87.3! 13400:10.4,27.4 13900:10.4,27.4!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
+              <div class="flow-page" data-at="8500" data-off="12700" data-shift-at="11100" style="--shift: -36.49%">
+                <img class="flow-shot" src="/static/img/home/flow/asset-search.webp" width="1504" height="1480" alt="Asset search in the Demo Sandbox account: data filters for text, serial number, tracking code, model, property type, associated asset, and associated contact, with Search, Reset, and JSON Export buttons.">
+                <span class="flow-typed" data-at="8500" data-off="12700" data-type="elm" data-type-at="10600" data-speed="260" aria-hidden="true">elm</span>
+              </div>
+              <img class="flow-shot" data-at="12400" data-off="14500" src="/static/img/home/flow/asset-list.webp" width="1504" height="940" alt="Asset list for Elm-02: a well, comp engine, compressor, fuel meter, two oil tanks, and a pneumatic controller at the Elm-02 Production Facility, with photos, types, statuses, and serial numbers.">
+              <img class="flow-shot" data-at="14200" src="/static/img/home/flow/asset-record.webp" width="1504" height="940" alt="Asset record for Elm-02 #02-01H: an active well at the Elm-02 Production Facility well pad in the DJ Basin, serial number 0201TR2340, in service since 2018-01-01, with a photo of the wellheads and its QR code.">
+              <span class="flow-pointer" data-at="8900" data-off="14400" data-path="8900:80,70 9900:58.8,40 10300:58.8,40! 11700:41.8,85.1 12100:41.8,85.1! 13400:10.3,27.1 13900:10.3,27.1!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
             </div>
           </div>
         </div>
@@ -70,10 +73,10 @@ cta:
           <div class="flow-window">
             <p class="flow-bar"><span class="flow-dots" aria-hidden="true"></span>Assetas · Forms</p>
             <div class="flow-view">
-              <img class="flow-shot" data-at="22100" data-off="24800" src="/static/img/home/flow/form-types.webp" width="1387" height="867" alt="Create Form: the Environmental category open, with AVO inspection, COGCC Bradenhead Form 17, fugitive emissions inspection, spill prevention, and stormwater corrective action forms.">
-              <img class="flow-shot" data-at="24500" data-off="27000" src="/static/img/home/flow/form-types-inspections.webp" width="1450" height="906" alt="Create Form with the Inspections category open: backflow device, Bradenhead pressure testing, compressor, daily compressor, daily crane, and equipment maintenance forms.">
-              <img class="flow-shot" data-at="26700" src="/static/img/home/flow/form-compressor-daily.webp" width="1470" height="919" alt="A new Compressor Inspection - Daily form: compressor tag ID, inspector Coll, Steve, start time 2026-11-23 2:14 PM, and checks for fluid levels, operating temperature, inlet filters, coolers, and belts and couplers.">
-              <span class="flow-pointer" data-at="22500" data-off="26900" data-path="22500:75,32 23700:22,89.5 24200:22,89.5! 25900:10.4,73.6 26400:10.4,73.6!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
+              <img class="flow-shot" data-at="22100" data-off="24800" src="/static/img/home/flow/form-types.webp" width="1504" height="940" alt="Create Form: the Environmental category open, with AVO inspection, COGCC Bradenhead Form 17, fugitive emissions inspection, spill prevention, and stormwater corrective action forms.">
+              <img class="flow-shot" data-at="24500" data-off="27000" src="/static/img/home/flow/form-types-inspections.webp" width="1504" height="940" alt="Create Form with the Inspections category open: backflow device, Bradenhead pressure testing, compressor, daily compressor, daily crane, and equipment maintenance forms.">
+              <img class="flow-shot" data-at="26700" src="/static/img/home/flow/form-compressor-daily.webp" width="1504" height="940" alt="A new Compressor Inspection - Daily form: compressor tag ID, inspector Coll, Steve, start time 2026-11-23 2:14 PM, and checks for fluid levels, operating temperature, inlet filters, coolers, and belts and couplers.">
+              <span class="flow-pointer" data-at="22500" data-off="26900" data-path="22500:75,32 23700:20.3,83.7 24200:20.3,83.7! 25900:10,70.6 26400:10,70.6!" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></span>
             </div>
           </div>
         </div>
@@ -96,14 +99,26 @@ cta:
           </div>
         </div>
 
-        <div class="flow-scene" data-at="40300">
-          <div class="flow-window">
+        <div class="flow-scene flow-scene--notes" data-at="40300">
+          <div class="flow-window flow-window--wide">
             <p class="flow-bar"><span class="flow-dots" aria-hidden="true"></span>Assetas · Reports</p>
             <div class="flow-view">
               <video class="flow-video" data-at="40500" data-rate="0.5" muted playsinline preload="auto" width="1730" height="1000" aria-label="Elm-02 oil recovery volume in tonnes a month, drawn month by month against its expected range and expected value, with the readings outside the range marked.">
                 <source src="/static/video/report-anomaly-detection.mp4" type="video/mp4">
               </video>
             </div>
+          </div>
+          <div class="flow-notes">
+            <p class="flow-kicker">Workflow Automation</p>
+            <ul class="flow-chips">
+              <li data-at="42000">Notify the asset owner</li>
+              <li data-at="43500">Staff review the reading</li>
+              <li data-at="45000">Follow-up tracked to close</li>
+            </ul>
+            <p class="flow-swap flow-toast-row">
+              <span class="flow-toast" data-at="46500" data-off="48500"><span class="mock-chip mock-chip--amber">Flagged</span>Out of expected range</span>
+              <span class="flow-toast" data-at="48500"><span class="mock-chip">Assigned</span>Follow-up assigned</span>
+            </p>
           </div>
         </div>
 

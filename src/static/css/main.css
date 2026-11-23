@@ -1721,8 +1721,13 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow-view { position: relative; aspect-ratio: 16 / 10; overflow: hidden; container-type: inline-size; background: var(--color-bg); }
 .flow-shot, .flow-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; }
 .flow-video { object-fit: contain; object-position: center; background: var(--color-bg); }
-/* Typing: a white patch over the word already in the asset-search screenshot, where the word is typed again */
-.flow-typed { position: absolute; left: 22.62%; top: 22.6%; width: 3.6%; height: 2.72%; padding-left: 0.37cqw; background: var(--color-bg); color: var(--color-text); font-size: 1.06cqw; line-height: 2.6cqw; white-space: nowrap; }
+/* A page taller than the window (asset search): it scrolls up by its --shift when flow.js adds .is-shifted */
+.flow-page { position: absolute; inset: 0 0 auto; }
+.flow-page .flow-shot { position: static; display: block; height: auto; }
+.flow-page.is-shifted { transform: translateY(var(--shift)); }
+/* Typing: a white patch over the word already in the asset-search screenshot, where the word is typed again
+   (in % of the .flow-page, and cqw of the window) */
+.flow-typed { position: absolute; left: 36.93%; top: 23.43%; width: 5.88%; height: 2.82%; padding-left: 0.6cqw; background: var(--color-bg); color: var(--color-text); font-size: 1.73cqw; line-height: 4.24cqw; white-space: nowrap; }
 .flow-typed::after { content: ""; display: inline-block; width: 1px; height: 1.1em; margin-left: 1px; vertical-align: -0.2em; background: currentColor; animation: flow-caret 1s steps(1) infinite; }
 @keyframes flow-caret { 50% { opacity: 0; } }
 /* The cursor: its tip sits on the point; it glides between stops and dips with a ring on a click */
@@ -1735,9 +1740,18 @@ button.tour-step:hover { background: var(--color-section-alt); }
 
 /* Trek scene: the phone beside notes on navy */
 .flow-phone { flex: none; }
-.flow-phone img { display: block; width: 8rem; height: auto; filter: var(--shadow-cutout); }
-@media (min-width: 48rem) { .flow-phone img { width: 13rem; } }
+.flow-phone img { display: block; width: 10rem; height: auto; filter: var(--shadow-cutout); }
+@media (min-width: 48rem) { .flow-phone img { width: 17rem; } }
 .flow-notes { max-width: 22rem; color: var(--color-on-fill); }
+/* The report window is wider (the video is 1730 app pixels across, the screenshots 1504), so its text matches theirs */
+.flow-window--wide { width: min(100%, calc(52rem * 1730 / 1504)); }
+.flow-window--wide .flow-view { aspect-ratio: 1730 / 1000; }
+/* A window with notes beside it (the report scene): the window gives up the width the notes need */
+@media (min-width: 48rem) {
+  .flow-scene--notes { gap: var(--space-3); }
+  .flow-scene--notes .flow-window { flex: 0 1 auto; min-width: 0; }
+  .flow-scene--notes .flow-notes { flex: 0 0 15rem; }
+}
 .flow .flow-kicker { margin: 0 0 var(--space-2); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-amber); }
 .flow-chips { list-style: none; margin: 0; padding: 0; display: grid; justify-items: start; gap: var(--space-1); }
 .flow-chips li { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill); background: var(--color-on-fill-tint); font-size: var(--text-small); font-weight: 600; }
@@ -1767,6 +1781,7 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow.is-ready [data-at]:not(.flow-pointer):not(.flow-typed) { transition: opacity 0.5s var(--ease), transform 0.6s var(--ease); }
 .flow.is-ready .flow-pointer { transition: left 0.9s var(--ease), top 0.9s var(--ease), opacity 0.3s var(--ease); }
 .flow.is-ready [data-off]:not([data-at]) { transition: opacity 0.3s var(--ease); }
+.flow.is-ready .flow-view .flow-page[data-shift-at] { transition: opacity 0.5s var(--ease), transform 0.9s var(--ease); }
 .flow.is-live [data-at]:not(.is-on) { opacity: 0; }
 .flow.is-live .flow-scene[data-at]:not(.is-on), .flow.is-live .flow-phone:not(.is-on), .flow.is-live .flow-chips li:not(.is-on), .flow.is-live .flow-toast:not(.is-on) { transform: translateY(var(--space-1)); }
 .flow.is-live [data-off].is-off { opacity: 0; pointer-events: none; }

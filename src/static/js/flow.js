@@ -4,6 +4,7 @@
      data-off="ms"         ...and hides from then (.is-off); scenes and screenshots use both
      .flow-pointer data-path="ms:x,y ms:x,y! ..."   the cursor glides to x%,y% of the window at each time; "!" clicks
      .flow-typed data-type="elm" data-type-at="ms" data-speed="ms"   types the word from then, one letter per data-speed
+     .flow-page data-shift-at="ms" style="--shift: -n%"   a page taller than the window scrolls up by --shift (.is-shifted)
      video.flow-video data-rate="0.5"               plays from its data-at at that rate, once, until its scene ends
      .flow data-hold="ms" data-cycle="ms"           everything fades out at hold, and the loop restarts at cycle
    The chapter buttons ([data-chapter], one per .flow-scene) mark the playing scene and jump to its start. The
@@ -19,7 +20,7 @@
   [].forEach.call(document.querySelectorAll(".flow"), function (root) {
     var all = function (sel) { return [].slice.call(root.querySelectorAll(sel)); };
     var on = all("[data-at]"), off = all("[data-off]"), scenes = all(".flow-scene"), chapters = all("[data-chapter]");
-    var typed = all(".flow-typed"), videos = all("video.flow-video");
+    var typed = all(".flow-typed"), videos = all("video.flow-video"), shifts = all("[data-shift-at]");
     var row = root.querySelector(".flow-chapters");
     var hold = +root.getAttribute("data-hold"), cycle = +root.getAttribute("data-cycle");
     var t = 0, prev = 0, shown = -1;
@@ -38,6 +39,7 @@
     function render() {
       on.forEach(function (el) { el.classList.toggle("is-on", t >= +el.getAttribute("data-at")); });
       off.forEach(function (el) { el.classList.toggle("is-off", t >= +el.getAttribute("data-off")); });
+      shifts.forEach(function (el) { el.classList.toggle("is-shifted", t >= +el.getAttribute("data-shift-at")); });
 
       pointers.forEach(function (p) {
         var stop = p.stops[0];
