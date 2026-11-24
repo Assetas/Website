@@ -80,6 +80,15 @@
   --color-survey-ring: #021b4e;   /* ring around leak dots */
   --color-survey-center: #d5dbe5; /* gray at the record */
   --color-survey-edge: #ffffff;   /* ...fading to white at the edges */
+  /* Engine hero (/assets): the blue of the engine image's original backdrop (now the ink of the panels' check
+     marks), and the glass dashboard panels and links over the engine (decorative). The hero text sits on the
+     navy gradient: white 13:1+, --color-on-dark 7:1+. */
+  --color-engine-field: #0a334b;
+  --color-hud-fill: rgb(4 24 44 / 0.72);     /* panel glass: white text 12:1+ on it over the field */
+  --color-hud-line: rgb(111 216 255 / 0.5);
+  --color-hud-link: #6fd8ff;                 /* the cyan of the wireframe */
+  --color-hud-glow: rgb(111 216 255 / 0.4);
+  --color-hud-band: rgb(111 216 255 / 0.16); /* expected range behind the bars */
   --card-glow: radial-gradient(ellipse 90% 110% at 50% 100%, var(--color-section-alt), var(--color-bg) 80%); /* drawing area in outlined cards: the survey glow, lighter */
 
   /* Rule status pills (/ldar-rule-map): text on its own tint */

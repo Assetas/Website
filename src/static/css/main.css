@@ -1257,13 +1257,90 @@ main { background: var(--color-bg); overflow: hidden; }
 .hero--light h1, .hero--light .headline-run { color: var(--color-text); }
 .hero--light .headline-run { font-size: var(--text-run); line-height: 1.12; letter-spacing: -0.02em; max-width: 52rem; }  /* the section-head run size: statement in navy, the rest in muted */
 .hero--light .headline-run span { color: var(--color-muted); }
-.hero-screen img {
-  display: block; width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: var(--radius) 0 0 0;
-  -webkit-mask-image: linear-gradient(90deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent), linear-gradient(180deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(90deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent), linear-gradient(180deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent);
-  mask-composite: intersect;
+
+/* Engine hero (/assets): a generator drawn half as the machine and half as a blueprint wireframe, cut out of its
+   generated backdrop (transparent around the machine and between the wireframe's lines), sits whole in the right
+   60% beside the text, which keeps to the left third. Over it, an SVG in the image's 1800 x 1215 coordinates draws
+   glass dashboard panels above the engine, linked to points on it: monthly fuel use (the demo generator's months,
+   with August below its expected band at 60% of the others, flagged amber), a daily inspection, and cumulative
+   NOx, SOx and VOC against PTE for a NESHAP ZZZZ engine (illustrative actuals at 52 to 78% of PTE, each checked
+   within its limit). On load (CSS, once, about 3.1 s) the links draw in, the panels rise, the bars grow, August
+   turns amber, the checks tick, the emissions fill and check off. It plays once, with no pause button. Reduced
+   motion: everything drawn, nothing moves. On phones the image drops under the text at full width and the panel
+   text hides. */
+/* The hero's background, behind the cut-out engine (the image is transparent around the machine and between the
+   wireframe's lines): deep navy falling to near-black, a brand-blue spotlight under the engine, a cyan haze over
+   the wireframe side, the /ldar poster's blue glow under the headline, and the drafting grid, faded to a pool
+   around the engine. */
+.hero--engine {
+  display: grid; align-items: center; min-height: min(46vw, 50rem);
+  background:
+    radial-gradient(38rem 26rem at 70% 64%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
+    radial-gradient(30rem 22rem at 90% 30%, color-mix(in srgb, var(--color-hud-link) 16%, transparent), transparent 70%),
+    radial-gradient(44rem 34rem at 10% 46%, color-mix(in srgb, var(--color-brand-deep) 50%, transparent), transparent 70%),
+    linear-gradient(165deg, var(--color-dark) 0%, var(--color-dark-deep) 100%);
 }
+.hero--engine::before {
+  -webkit-mask-image: radial-gradient(ellipse 45% 60% at 70% 55%, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse 45% 60% at 70% 55%, #000, transparent 75%);
+}
+@media (max-width: 47.99rem) {
+  .hero--engine {
+    background:
+      radial-gradient(26rem 18rem at 50% 80%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
+      radial-gradient(30rem 22rem at 10% 14%, color-mix(in srgb, var(--color-brand-deep) 50%, transparent), transparent 70%),
+      linear-gradient(165deg, var(--color-dark) 0%, var(--color-dark-deep) 100%);
+  }
+  .hero--engine::before { -webkit-mask-image: radial-gradient(ellipse 70% 30% at 50% 78%, #000, transparent 75%); mask-image: radial-gradient(ellipse 70% 30% at 50% 78%, #000, transparent 75%); }
+}
+/* The engine, whole and smaller: 60% of the hero's width, right-aligned and centered on the hero's height */
+.engine-art { position: absolute; top: 50%; right: 2%; z-index: -1; width: 60%; aspect-ratio: 1800 / 1215; translate: 0 -50%; }
+.engine-art img, .engine-links { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero--engine .hero-copy { width: 33%; }
+.hero--engine .headline-run { font-size: var(--text-run); line-height: 1.12; letter-spacing: -0.02em; }
+.hero--engine .headline-run span { color: var(--color-on-dark); }
+@media (max-width: 47.99rem) {
+  .hero--engine { min-height: 0; padding-bottom: 0; }
+  .engine-art { position: relative; top: auto; right: auto; order: 2; width: auto; margin-top: var(--space-4); translate: none; }
+  .hero--engine .hero-copy { width: auto; }
+  .engine-links text { display: none; }
+}
+.engine-links :where(text) { font-family: var(--font-body); fill: var(--color-on-fill); }
+.engine-link { fill: none; stroke: var(--color-hud-link); stroke-width: 2.5; stroke-dasharray: 1; }
+.engine-node { fill: var(--color-hud-link); filter: drop-shadow(0 0 6px var(--color-hud-glow)); }
+.engine-panel-box { fill: var(--color-hud-fill); stroke: var(--color-hud-line); stroke-width: 2; filter: drop-shadow(0 0 12px var(--color-hud-glow)); }
+.engine-panel-tag { font-weight: 600; fill: var(--color-hud-link); }
+.engine-panel-text { font-weight: 600; }
+.engine-panel-label { fill: var(--color-on-dark-muted); }
+.engine-band, .engine-track { fill: var(--color-hud-band); }
+.engine-axis { stroke: var(--color-hud-line); stroke-width: 1.5; }
+.engine-bar { fill: var(--color-hud-link); transform-box: fill-box; transform-origin: 50% 100%; }
+.engine-bar--flag { fill: var(--color-amber); }
+.engine-fill { fill: var(--color-hud-link); transform-box: fill-box; transform-origin: 0 50%; }
+.engine-check-box { fill: var(--color-hud-link); transform-box: fill-box; transform-origin: center; }
+.engine-check-mark { fill: none; stroke: var(--color-engine-field); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; }
+/* Delays: --d per panel or link, --b per bar, --c per checklist or emissions row. Plays once on load, about 3.1 s,
+   so it needs no pause control (WCAG 2.2.2). */
+@media (prefers-reduced-motion: no-preference) {
+  .engine-link { animation: engine-draw 0.8s var(--d) var(--ease) both; }
+  .engine-node { animation: engine-fade 0.4s var(--d) both; }
+  .engine-panel { animation: engine-rise 0.6s var(--d) var(--ease) both; }
+  .engine-bar { animation: engine-grow 0.6s calc(1.1s + var(--b) * 0.12s) var(--ease) both; }
+  .engine-bar--flag { animation: engine-grow 0.6s 1.34s var(--ease) both, engine-flag 0.4s 2.1s both; }
+  .engine-check .engine-check-box { animation: engine-pop 0.3s calc(1.5s + var(--c) * 0.35s) var(--ease-spring) both; }
+  .engine-check .engine-check-mark { animation: engine-draw 0.3s calc(1.65s + var(--c) * 0.35s) var(--ease) both; }
+  .engine-fill { animation: engine-fill 0.9s calc(1.8s + var(--c) * 0.25s) var(--ease) both; }
+  .engine-limit .engine-check-box { animation: engine-pop 0.3s calc(2.6s + var(--c) * 0.25s) var(--ease-spring) both; }
+  .engine-limit .engine-check-mark { animation: engine-draw 0.3s calc(2.75s + var(--c) * 0.25s) var(--ease) both; }
+
+}
+@keyframes engine-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes engine-fade { from { opacity: 0; } }
+@keyframes engine-rise { from { opacity: 0; translate: 0 14px; } }
+@keyframes engine-grow { from { scale: 1 0; } }
+@keyframes engine-fill { from { scale: 0 1; } }
+@keyframes engine-flag { from { fill: var(--color-hud-link); } }
+@keyframes engine-pop { from { opacity: 0; scale: 0.3; } }
 
 /* Spacious rhythm (front matter pageClass: page--spacious; on trial on /ldar and /assets before it goes site-wide):
    fluid section padding that grows to 128px on wide screens, 160px for the hero, dark band and closing
