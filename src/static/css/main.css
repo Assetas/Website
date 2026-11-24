@@ -1096,6 +1096,7 @@ main { background: var(--color-bg); overflow: hidden; }
 .rail-card { display: grid; grid-template-rows: auto auto 1fr; align-content: start; gap: var(--space-1); }
 .rail-card > p { margin: 0; }
 .rail-card > .text-action { align-self: end; padding-top: var(--space-1); }
+.rail--story .rail-card > :is(p, .text-action) { margin-inline: var(--space-3); }  /* the line and link start where the name inside the tile does */
 .rail-card-media {
   --glow: var(--color-amber);
   position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 4 / 5; margin-bottom: var(--space-1);

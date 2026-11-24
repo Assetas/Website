@@ -163,11 +163,12 @@ cta:
     <div class="section-head section-head--run">
       <h2 class="headline-run">Capture in the field. Automated actions on the findings. Report out from the same record. <span>Seamlessly connect the field and office.</span></h2>
     </div>
-    {#- Capture, Act, Report as nine cards in the /assets story-rail style: an abstract art tile drawn in CSS (a
-        brand-color field, a pattern, and the Platform menu icon glowing white) with the name in its lower left, then
-        one short line and a link. Three cards each for capture, act, and report, in that order. The product screens
-        that sat here (img/home/capture-tablet-record.webp and others) are kept for later. -#}
-    <div class="rail rail--story" role="group" aria-label="Capture, act, and report on one record">
+    {#- The key features of Assetas as nine cards in the /assets story-rail style, in capture, act, report order: an
+        abstract art tile drawn in CSS (a brand-color field, a pattern, and the feature's Platform menu icon glowing
+        white) with the name in its lower left, then the feature's Platform menu blurb and a link. Security has its own
+        band further down. The product screens that sat here (img/home/capture-tablet-record.webp and others) are kept
+        for later. -#}
+    <div class="rail rail--story" role="group" aria-label="Key features of Assetas">
       <div class="rail-controls">
         <button class="rail-btn" type="button" data-rail="prev" aria-label="Scroll cards left">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
@@ -180,74 +181,74 @@ cta:
         <article class="rail-card">
           <div class="rail-card-media rail-card-media--forms">
             <img class="rail-card-icon" src="/static/img/icons/forms.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Forms that follow the answer</h3>
+            <h3 class="rail-card-title">Smart Forms &amp; Tasks</h3>
           </div>
-          <p>A field appears only when it applies, like a leak rate after a Yes.</p>
+          <p>Offline forms with photos, GPS, and signatures.</p>
           <a class="text-action" href="/forms">See Smart Forms &amp; Tasks</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--location">
+            <img class="rail-card-icon" src="/static/img/icons/capture.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Trek</h3>
+          </div>
+          <p>Assetas in your pocket for field crews.</p>
+          <a class="text-action" href="/trek">See Trek</a>
         </article>
         <article class="rail-card">
           <div class="rail-card-media rail-card-media--attributes">
             <img class="rail-card-icon" src="/static/img/icons/assets.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Filled from the registry</h3>
+            <h3 class="rail-card-title">Unified Asset Intelligence</h3>
           </div>
-          <p>Component and asset details come from the record, not retyped.</p>
-          <a class="text-action" href="/trek">See Trek</a>
-        </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--location">
-            <img class="rail-card-icon" src="/static/img/icons/location.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Dispatched by rule and site</h3>
-          </div>
-          <p>Rounds and tasks routed to the role that owns them.</p>
-          <a class="text-action" href="/forms">See task dispatch</a>
+          <p>Every asset in one searchable registry.</p>
+          <a class="text-action" href="/assets">See Unified Asset Intelligence</a>
         </article>
         <article class="rail-card">
           <div class="rail-card-media rail-card-media--association">
             <img class="rail-card-icon" src="/static/img/icons/workflows.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Routed and escalated</h3>
+            <h3 class="rail-card-title">Workflow Automation</h3>
           </div>
-          <p>Findings go to the right role by location and escalate before the SLA breaks.</p>
+          <p>Route work orders and escalate overdue items.</p>
           <a class="text-action" href="/workflows">See Workflow Automation</a>
         </article>
         <article class="rail-card">
           <div class="rail-card-media rail-card-media--telemetry">
             <img class="rail-card-icon" src="/static/img/icons/sensor-feeds.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Telemetry on the asset</h3>
+            <h3 class="rail-card-title">Telemetry</h3>
           </div>
-          <p>SCADA, IIoT, and production readings, stored on the asset.</p>
-          <a class="text-action" href="/assets">See Unified Asset Intelligence</a>
+          <p>Sensor feeds with anomaly detection.</p>
+          <a class="text-action" href="/telemetry">See Telemetry</a>
         </article>
         <article class="rail-card">
           <div class="rail-card-media rail-card-media--anomaly">
             <img class="rail-card-icon" src="/static/img/icons/ai-node.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Outliers flagged</h3>
+            <h3 class="rail-card-title">AI</h3>
           </div>
-          <p>An anomaly model checks each reading against its neighbors and flags the outliers for review.</p>
-          <a class="text-action" href="/assets/telemetry">See anomaly detection</a>
-        </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--depreciation">
-            <img class="rail-card-icon" src="/static/img/icons/calculate.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Calculated as data arrives</h3>
-          </div>
-          <p>Fuel use and run hours feed calculation groups for the GHG and state inventories.</p>
-          <a class="text-action" href="/platform/emissions">See emissions reporting</a>
+          <p>Models that run on governed, traceable history.</p>
+          <a class="text-action" href="/ai">See AI</a>
         </article>
         <article class="rail-card">
           <div class="rail-card-media rail-card-media--compliance">
-            <img class="rail-card-icon" src="/static/img/icons/submit.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Exported in agency formats</h3>
+            <img class="rail-card-icon" src="/static/img/icons/compliance.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Compliance</h3>
           </div>
-          <p>Subpart W to e-GGRT and state inventories, from tracked data rather than a rebuild before the deadline.</p>
-          <a class="text-action" href="/compliance">See Compliance &amp; Emissions</a>
+          <p>Permits and findings tracked against the rules.</p>
+          <a class="text-action" href="/compliance">See Compliance</a>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card-media rail-card-media--depreciation">
+            <img class="rail-card-icon" src="/static/img/icons/regulatory-emissions.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Emissions</h3>
+          </div>
+          <p>GHG inventory and permit limits from field records.</p>
+          <a class="text-action" href="/platform/emissions">See Emissions</a>
         </article>
         <article class="rail-card">
           <div class="rail-card-media rail-card-media--documentation">
-            <img class="rail-card-icon" src="/static/img/icons/field-documentation.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Answers that show their sources</h3>
+            <img class="rail-card-icon" src="/static/img/icons/aggregate.svg" width="64" height="64" alt="">
+            <h3 class="rail-card-title">Reporting</h3>
           </div>
-          <p>The assistant works on your records and the regulatory text, and shows what it read.</p>
-          <a class="text-action" href="/ai">See the assistant</a>
+          <p>Audit-ready reports from asset and field data.</p>
+          <a class="text-action" href="/reporting">See Reporting</a>
         </article>
       </div>
     </div>
