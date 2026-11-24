@@ -194,7 +194,7 @@ a { color: inherit; }
 }
 
 /* Main content area: the white page under the blue header */
-main { background: var(--color-bg); overflow: hidden; }
+main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip where supported: crops the same, without making main a scroll container (scroll-driven animations track the page) */
 
 /* Sections: the reusable patterns pages are built from */
 .section { padding-block: var(--space-5); }
@@ -1259,52 +1259,44 @@ main { background: var(--color-bg); overflow: hidden; }
 .hero--light .headline-run span { color: var(--color-muted); }
 
 /* Engine hero (/assets): a generator drawn half as the machine and half as a blueprint wireframe, cut out of its
-   generated backdrop (transparent around the machine and between the wireframe's lines), sits whole in the right
-   60% beside the text, which keeps to the left third. Over it, an SVG in the image's 1800 x 1215 coordinates draws
-   glass dashboard panels above the engine, linked to points on it: monthly fuel use (the demo generator's months,
-   with August below its expected band at 60% of the others, flagged amber), a daily inspection, and cumulative
-   NOx, SOx and VOC against PTE for a NESHAP ZZZZ engine (illustrative actuals at 52 to 78% of PTE, each checked
-   within its limit). On load (CSS, once, about 3.1 s) the links draw in, the panels rise, the bars grow, August
-   turns amber, the checks tick, the emissions fill and check off. It plays once, with no pause button. Reduced
-   motion: everything drawn, nothing moves. On phones the image drops under the text at full width and the panel
-   text hides. */
-/* The hero's background, behind the cut-out engine (the image is transparent around the machine and between the
-   wireframe's lines): deep navy falling to near-black, a brand-blue spotlight under the engine, a cyan haze over
-   the wireframe side, the /ldar poster's blue glow under the headline, and the drafting grid, faded to a pool
-   around the engine. */
+   generated backdrop (transparent around the machine and between the wireframe's lines), centered at the top of
+   the hero with the headline under it. Over it, an SVG in the image's 1800 x 1215 coordinates draws glass
+   dashboard panels above the engine, linked to points on it: monthly fuel use (the demo generator's months, with
+   August below its expected band at 60% of the others, flagged amber), a daily inspection, and cumulative NOx,
+   SOx and VOC against PTE for a NESHAP ZZZZ engine (illustrative actuals at 52 to 78% of PTE, each checked within
+   its limit). On load (CSS, once, about 3.1 s) the links draw in, the panels rise, the bars grow, August turns
+   amber, the checks tick, the emissions fill and check off; it plays once, with no pause button. As the hero
+   scrolls away the engine drifts down and fades (parallax, a CSS scroll-driven animation where supported). Reduced
+   motion: everything drawn, nothing moves. On phones the panel text hides. */
+/* The background, behind the cut-out engine: deep navy falling to near-black, a brand-blue spotlight under the
+   engine, a cyan haze over the wireframe side, a deep blue glow under the headline, and the drafting grid, faded
+   to a pool around the engine. */
 .hero--engine {
-  display: grid; align-items: center; min-height: min(46vw, 50rem);
   background:
-    radial-gradient(38rem 26rem at 70% 64%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
-    radial-gradient(30rem 22rem at 90% 30%, color-mix(in srgb, var(--color-hud-link) 16%, transparent), transparent 70%),
-    radial-gradient(44rem 34rem at 10% 46%, color-mix(in srgb, var(--color-brand-deep) 50%, transparent), transparent 70%),
-    linear-gradient(165deg, var(--color-dark) 0%, var(--color-dark-deep) 100%);
+    radial-gradient(40rem 28rem at 50% 36%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
+    radial-gradient(30rem 22rem at 78% 16%, color-mix(in srgb, var(--color-hud-link) 16%, transparent), transparent 70%),
+    radial-gradient(48rem 30rem at 18% 88%, color-mix(in srgb, var(--color-brand-deep) 45%, transparent), transparent 70%),
+    linear-gradient(170deg, var(--color-dark) 0%, var(--color-dark-deep) 100%);
 }
 .hero--engine::before {
-  -webkit-mask-image: radial-gradient(ellipse 45% 60% at 70% 55%, #000, transparent 75%);
-  mask-image: radial-gradient(ellipse 45% 60% at 70% 55%, #000, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 40% 38% at 50% 36%, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse 40% 38% at 50% 36%, #000, transparent 75%);
 }
-@media (max-width: 47.99rem) {
-  .hero--engine {
-    background:
-      radial-gradient(26rem 18rem at 50% 80%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
-      radial-gradient(30rem 22rem at 10% 14%, color-mix(in srgb, var(--color-brand-deep) 50%, transparent), transparent 70%),
-      linear-gradient(165deg, var(--color-dark) 0%, var(--color-dark-deep) 100%);
-  }
-  .hero--engine::before { -webkit-mask-image: radial-gradient(ellipse 70% 30% at 50% 78%, #000, transparent 75%); mask-image: radial-gradient(ellipse 70% 30% at 50% 78%, #000, transparent 75%); }
-}
-/* The engine, whole and smaller: 60% of the hero's width, right-aligned and centered on the hero's height */
-.engine-art { position: absolute; top: 50%; right: 2%; z-index: -1; width: 60%; aspect-ratio: 1800 / 1215; translate: 0 -50%; }
+.engine-art { position: relative; width: min(100%, 54rem); margin-inline: auto; aspect-ratio: 1800 / 1215; }
 .engine-art img, .engine-links { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero--engine .hero-copy { width: 33%; }
-.hero--engine .headline-run { font-size: var(--text-run); line-height: 1.12; letter-spacing: -0.02em; }
-.hero--engine .headline-run span { color: var(--color-on-dark); }
-@media (max-width: 47.99rem) {
-  .hero--engine { min-height: 0; padding-bottom: 0; }
-  .engine-art { position: relative; top: auto; right: auto; order: 2; width: auto; margin-top: var(--space-4); translate: none; }
-  .hero--engine .hero-copy { width: auto; }
-  .engine-links text { display: none; }
+.hero--engine { padding-top: var(--space-3); overflow: hidden; overflow: clip; }  /* clip, not hidden: hidden makes the hero a scroll container, and the parallax view() timeline would track it instead of the page */
+.hero--engine > .container { position: relative; z-index: 1; margin-top: var(--space-3); }
+/* The headline as one statement in two voices (after a studio's intro line): upright medium in white, with
+   phrases in Inter's true italic, regular weight, in the softer blue-gray */
+.hero-statement { max-width: 64rem; margin: 0; font-size: var(--text-run-hero); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; color: var(--color-on-fill); }
+.hero-statement em { font-style: italic; font-weight: 400; color: var(--color-on-dark-muted); padding-right: 0.04em; }
+@media (max-width: 47.99rem) { .engine-links text { display: none; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .engine-art { animation: engine-parallax linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+  }
 }
+@keyframes engine-parallax { to { translate: 0 28%; opacity: 0.35; } }
 .engine-links :where(text) { font-family: var(--font-body); fill: var(--color-on-fill); }
 .engine-link { fill: none; stroke: var(--color-hud-link); stroke-width: 2.5; stroke-dasharray: 1; }
 .engine-node { fill: var(--color-hud-link); filter: drop-shadow(0 0 6px var(--color-hud-glow)); }
