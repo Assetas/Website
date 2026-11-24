@@ -1577,23 +1577,9 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .stepper.is-live .stepper-media.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.4s var(--ease), transform 0.6s var(--ease), visibility 0s; }
 .stepper-media img { max-width: 34rem; height: auto; }
 
-/* Chapters (home "Capture / Act / Report", after Zapier's Build / Run / Govern): each chapter is its text
-   (kicker naming the modules, title, lead, stacked feature runs, links) beside one product screen on an
-   outlined glow panel; from 64rem the screen alternates sides. */
-.chapters { display: grid; gap: var(--space-section); }
-.chapter { display: grid; gap: var(--space-4); align-items: center; }
-@media (min-width: 64rem) {
-  .chapter { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: var(--space-5); }
-  .chapter:nth-child(even) .chapter-media { order: -1; }
-}
-.chapter-kicker { margin: 0 0 var(--space-1); font-size: var(--text-small); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-text); }
-.chapter-title { margin-bottom: var(--space-2); font-size: var(--text-h3); }
-.chapter-lead { margin-bottom: var(--space-3); color: var(--color-muted); }
+
+/* A row of module links under a home section (the security band) */
 .chapter-links { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); margin: var(--space-3) 0 0; }
-.chapter-media { display: grid; place-items: center; min-height: 22rem; padding: var(--space-4) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--card-glow); }
-.chapter-media img { display: block; width: 100%; max-width: 34rem; height: auto; }
-.chapter-media--phone img { width: auto; max-height: 30rem; }
-.chapter-media .chapter-screen { max-width: none; border: 1px solid var(--color-border); border-radius: var(--radius); }
 
 /* Story carousel (home): one .story per slide in a .rail, arrows above. */
 .rail--stories .rail-track { grid-auto-columns: 100%; padding-bottom: var(--space-4); }
@@ -1799,7 +1785,7 @@ button.tour-step:hover { background: var(--color-section-alt); }
    its right side, clear of the operator */
 .proof-photo-device { position: absolute; bottom: 0; right: 8%; height: 88%; width: auto; filter: var(--shadow-cutout); }
 /* Client numbers in one quiet row, Stripe-style: the figure bold in navy running into its label, the client under it */
-.proof-stats { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2) var(--space-4); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.proof-stats { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3) var(--space-5); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
 .proof-stats p { margin: 0; font-size: var(--text-lead); line-height: 1.45; color: var(--color-muted); }
 .proof-stats .stat { font-family: inherit; font-size: inherit; font-weight: 700; line-height: inherit; letter-spacing: 0; color: var(--color-text); }
 .proof-stats .proof-source { margin-top: var(--space-1); font-size: var(--text-small); }
