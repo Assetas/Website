@@ -38,9 +38,6 @@ cta:
         up by its --shift at data-shift-at. Without JS or with reduced motion only the .is-poster scene shows, on its
         last screen (the Elm-02 asset record). -#}
     <div class="flow" data-loop data-hold="51800" data-cycle="52500" role="group" aria-label="Product film: the task calendar, asset search, an inspection form, offline capture in Trek, and anomaly detection on a report that starts a review and follow-up workflow">
-      <div class="flow-backdrop" aria-hidden="true">
-        <img src="/static/img/ldar/pressure-gauges.webp" width="1200" height="798" alt="">
-      </div>
       <div class="flow-stage">
 
         <div class="flow-scene" data-at="300" data-off="8200">
@@ -134,26 +131,31 @@ cta:
   </div>
 </section>
 
-<section class="section">
+<section class="section section--proof">
   <div class="container">
-    <div class="section-head section-head--run">
-      <h2 class="headline-run">Proven where the work happens. <span>Reported by clients in defense, oil and gas, and water.</span></h2>
+    {#- Proof band, after Stripe's enterprise block: the statement beside its softer line, the client logos in a
+        row on white, a wide field photo with a
+        phone rising from its bottom edge, and the client numbers in one quiet row under it. -#}
+    <div class="proof-head">
+      <h2 class="headline-run">Proven where the work happens.</h2>
+      <p class="lead">Reported by clients in defense, oil and gas, and water.</p>
     </div>
-    <ul class="stat-row">
-      <li><p class="stat">92%</p><p>reduction in tool check-in transaction time</p><p class="stat-source">— 437th Maintenance Squadron, US Air Force</p></li>
-      <li><p class="stat">32%</p><p>less time completing &amp; submitting inspections</p><p class="stat-source">— Laramie Energy</p></li>
-      <li><p class="stat">34,632</p><p>maintainable assets across 57 countries</p><p class="stat-source">— Water Mission</p></li>
+    <ul class="proof-logos" aria-label="Trusted by leading operators">
+      <li><img style="--logo-scale:1.09" src="/static/img/logos/chevron.svg" width="82" height="91" alt="Chevron"></li>
+      <li><img style="--logo-scale:1.00" src="/static/img/logos/el-dorado-county.webp" width="94" height="94" alt="El Dorado County, California"></li>
+      <li><img style="--logo-scale:0.91" src="/static/img/logos/utah-gas-corp.webp" width="174" height="94" alt="Utah Gas Corp"></li>
+      <li><img style="--logo-scale:1.15" src="/static/img/logos/us-air-force.svg" width="116" height="91" alt="U.S. Air Force"></li>
+      <li><img style="--logo-scale:0.97" src="/static/img/logos/validus-energy.webp" width="231" height="94" alt="Validus Energy"></li>
     </ul>
-    <div class="logo-strip logo-strip--optical">
-      <p class="logo-strip-title">Trusted by leading operators</p>
-      <ul>
-        <li><img style="--logo-scale:1.09" src="/static/img/logos/chevron.svg" width="82" height="91" alt="Chevron"></li>
-        <li><img style="--logo-scale:1.00" src="/static/img/logos/el-dorado-county.webp" width="94" height="94" alt="El Dorado County, California"></li>
-        <li><img style="--logo-scale:0.91" src="/static/img/logos/utah-gas-corp.webp" width="174" height="94" alt="Utah Gas Corp"></li>
-        <li><img style="--logo-scale:1.15" src="/static/img/logos/us-air-force.svg" width="116" height="91" alt="U.S. Air Force"></li>
-        <li><img style="--logo-scale:0.97" src="/static/img/logos/validus-energy.webp" width="231" height="94" alt="Validus Energy"></li>
-      </ul>
-    </div>
+    <figure class="proof-photo">
+      <img class="proof-photo-field" src="/static/img/spcc/berm-inspection.webp" width="1200" height="899" loading="lazy" alt="Field inspection at a tank battery: an operator in a hard hat records a reading on a tablet beside a used-oil tank.">
+      <img class="proof-photo-device" src="/static/img/home/spcc-inspection-phone.webp" width="700" height="1074" loading="lazy" alt="An SPCC Annual Inspection form on a phone: inspector Doe, Jamie, started 2022-10-04 2:17 PM at the A100 Tank Battery, with sections for inspection information, oil spill, and bulk storage containers.">
+    </figure>
+    <ul class="proof-stats">
+      <li><p><span class="stat">92%</span> reduction in tool check-in transaction time</p><p class="proof-source">437th Maintenance Squadron, US Air Force</p></li>
+      <li><p><span class="stat">32%</span> less time completing &amp; submitting inspections</p><p class="proof-source">Laramie Energy</p></li>
+      <li><p><span class="stat">34,632</span> maintainable assets across 57 countries</p><p class="proof-source">Water Mission</p></li>
+    </ul>
   </div>
 </section>
 

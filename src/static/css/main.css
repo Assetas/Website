@@ -1656,9 +1656,9 @@ button.tour-step:hover { background: var(--color-section-alt); }
    left-aligned and free to wrap; the softer span is its own line, so nothing follows them and no gap shows. The passing
    phrases are CSS content on aria-hidden spans, so the heading's text (for search and screen readers) is the
    sentence as written. Reduced motion shows the last phrase. The bottom padding leaves room for the .flow panel,
-   which rises in by --space-overlap. */
+   which rises into it by a third of its own height (--flow-overlap, which flow.js measures; --space-overlap until then). */
 .hero.hero--run {
-  padding-block: var(--space-5) calc(var(--space-5) + var(--space-overlap));
+  padding-block: var(--space-5) calc(var(--space-5) + var(--flow-overlap, var(--space-overlap)));
   /* Irregular field: navy under the type for contrast (white 16.5:1, the soft line 9.6:1, amber well over AA),
      with blue pools of different sizes pushed to the edges and one low amber warmth, all under the drafting grid. */
   background-color: var(--color-dark);
@@ -1691,23 +1691,15 @@ button.tour-step:hover { background: var(--color-section-alt); }
 }
 .hero .hero-industries a:hover, .hero .hero-industries a:focus-visible { background: var(--color-on-fill-tint); border-color: var(--color-on-fill); }
 
-/* Flow film (home, under the hero; static/js/flow.js), after Zapier's product film under its hero: a wide panel
-   over a blurred field photo washed in amber and blue glows, playing five scenes in one spot. Four are real Demo
+/* Flow film (home, under the hero; static/js/flow.js), after Zapier's product film under its hero: a wide light gray
+   panel, playing five scenes in one spot. Four are real Demo
    Sandbox screens in a browser window (16:10, the screenshots cropped to match), with a cursor that glides and
    clicks and a search box that types; one is the Trek phone. Chapter buttons along the bottom mark the playing
    scene and jump to any of them; the pause button sits lower right (data-loop). Without JS or with reduced
    motion only the .is-poster scene shows, on its last screen, and the chapters are hidden. */
-.flow-section { position: relative; z-index: 1; margin-top: calc(-1 * var(--space-overlap)); }
-.flow { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--space-3); padding: var(--space-3) var(--space-2); border-radius: var(--radius-lg); background: var(--color-dark-deep); box-shadow: var(--shadow-float); }
+.flow-section { position: relative; z-index: 1; margin-top: calc(-1 * var(--flow-overlap, var(--space-overlap))); }
+.flow { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--space-3); padding: var(--space-3) var(--space-2); border: 1px solid var(--color-panel-line); border-radius: var(--radius-lg); background: var(--color-panel-gray); }
 @media (min-width: 40rem) { .flow { padding: var(--space-4) var(--space-4) var(--space-3); } }
-.flow-backdrop { position: absolute; inset: 0; z-index: -1; }
-.flow-backdrop img { width: 100%; height: 100%; object-fit: cover; filter: blur(22px); transform: scale(1.15); opacity: 0.6; }
-.flow-backdrop::after {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(42rem 28rem at 0% 0%, color-mix(in srgb, var(--color-amber) 50%, transparent), transparent 70%),
-              radial-gradient(52rem 34rem at 100% 100%, color-mix(in srgb, var(--color-brand) 75%, transparent), transparent 70%),
-              linear-gradient(160deg, color-mix(in srgb, var(--color-dark) 50%, transparent), color-mix(in srgb, var(--color-brand-deep) 35%, transparent));
-}
 .flow-stage { display: grid; align-items: center; transition: opacity 0.4s var(--ease); }
 .flow-scene { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-4); min-width: 0; }
 @media (min-width: 48rem) { .flow-scene { flex-direction: row; } }
@@ -1715,8 +1707,8 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow:not(.is-live) .flow-scene:not(.is-poster) { display: none; }
 
 /* The browser window: a title bar over a 16:10 view where the screenshots stack and crossfade */
-.flow-window { width: min(100%, 52rem); overflow: hidden; border-radius: var(--radius); background: var(--color-bg); box-shadow: var(--shadow-raised); }
-.flow .flow-bar { display: flex; align-items: center; gap: var(--space-1); margin: 0; padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--color-border); background: var(--color-section-alt); font-size: var(--text-label); font-weight: 600; color: var(--color-muted); }
+.flow-window { width: min(100%, 52rem); overflow: hidden; border: 1px solid var(--color-panel-line); border-radius: var(--radius); background: var(--color-bg); }
+.flow .flow-bar { display: flex; align-items: center; gap: var(--space-1); margin: 0; padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--color-panel-line); background: var(--color-section-alt); font-size: var(--text-label); font-weight: 600; color: var(--color-muted); }
 .flow-dots { width: 1.7em; height: 0.5em; flex: none; background: radial-gradient(circle, var(--color-border-input) 42%, transparent 48%) 0 0 / 0.6em 0.5em repeat-x; }
 .flow-view { position: relative; aspect-ratio: 16 / 10; overflow: hidden; container-type: inline-size; background: var(--color-bg); }
 .flow-shot, .flow-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; }
@@ -1740,9 +1732,9 @@ button.tour-step:hover { background: var(--color-section-alt); }
 
 /* Trek scene: the phone beside notes on navy */
 .flow-phone { flex: none; }
-.flow-phone img { display: block; width: 10rem; height: auto; filter: var(--shadow-cutout); }
+.flow-phone img { display: block; width: 10rem; height: auto; }
 @media (min-width: 48rem) { .flow-phone img { width: 17rem; } }
-.flow-notes { max-width: 22rem; color: var(--color-on-fill); }
+.flow-notes { max-width: 22rem; color: var(--color-text); }
 /* The report window is wider (the video is 1730 app pixels across, the screenshots 1504), so its text matches theirs */
 .flow-window--wide { width: min(100%, calc(52rem * 1730 / 1504)); }
 .flow-window--wide .flow-view { aspect-ratio: 1730 / 1000; }
@@ -1752,21 +1744,21 @@ button.tour-step:hover { background: var(--color-section-alt); }
   .flow-scene--notes .flow-window { flex: 0 1 auto; min-width: 0; }
   .flow-scene--notes .flow-notes { flex: 0 0 15rem; }
 }
-.flow .flow-kicker { margin: 0 0 var(--space-2); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-amber); }
+.flow .flow-kicker { margin: 0 0 var(--space-2); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-text); }
 .flow-chips { list-style: none; margin: 0; padding: 0; display: grid; justify-items: start; gap: var(--space-1); }
-.flow-chips li { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill); background: var(--color-on-fill-tint); font-size: var(--text-small); font-weight: 600; }
+.flow-chips li { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-panel-line); border-radius: var(--radius-pill); background: var(--color-bg); font-size: var(--text-small); font-weight: 600; }
 .flow .flow-toast-row { display: grid; justify-items: start; margin: var(--space-3) 0 0; }
 .flow-swap > * { grid-area: 1 / 1; }
-.flow-toast { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1); border-radius: var(--radius-pill); background: var(--color-bg); color: var(--color-text); font-size: var(--text-note); font-weight: 600; box-shadow: var(--shadow-raised); }
+.flow-toast { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1); border-radius: var(--radius-pill); background: var(--color-bg); color: var(--color-text); font-size: var(--text-note); font-weight: 600; border: 1px solid var(--color-panel-line); }
 .flow .mock-chip { font-size: var(--text-mock); }
 @media (max-width: 47.99rem) { .flow-chips li { font-size: var(--text-note); } }
 
 /* Chapters: one button per scene; the playing one is filled */
 .flow-chapters { list-style: none; margin: 0; padding: 0 var(--space-5) 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-1); }
-.flow-chapters button { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill); background: transparent; color: var(--color-on-fill); font: inherit; font-size: var(--text-label); font-weight: 600; cursor: pointer; transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
-.flow-chapters button:hover { border-color: var(--color-on-fill); }
-.flow-chapters button:focus-visible { outline: 3px solid var(--color-focus-on-dark); outline-offset: 2px; }
-.flow-chapters button.is-current { background: var(--color-on-fill); border-color: var(--color-on-fill); color: var(--color-text); }
+.flow-chapters button { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-border-input); border-radius: var(--radius-pill); background: var(--color-bg); color: var(--color-text); font: inherit; font-size: var(--text-label); font-weight: 600; cursor: pointer; transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
+.flow-chapters button:hover { border-color: var(--color-text); }
+.flow-chapters button:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.flow-chapters button.is-current { background: var(--color-text); border-color: var(--color-text); color: var(--color-on-fill); }
 .flow:not(.is-live) .flow-chapters { display: none; }
 @media (max-width: 47.99rem) {  /* one swipeable row on phones instead of a column of pills */
   .flow-chapters { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; margin-right: var(--space-4); padding: 3px var(--space-2) 3px 3px; }
@@ -1789,6 +1781,31 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow.is-resetting .flow-stage { opacity: 0; }
 .flow .loop-toggle { top: auto; bottom: var(--space-3); right: var(--space-3); z-index: 2; }
 .flow.is-paused *, .flow.is-offscreen * { animation-play-state: paused !important; }
+
+/* Proof band (home, under the film), after Stripe's enterprise block: the statement left and its softer line right,
+   the client logos in a row on white, a wide field photo, and the client numbers under it. More room above it than a
+   plain section, since the film over the hero sits right before it. */
+.page--spacious .section--proof { padding-top: var(--space-section-lg); }
+.proof-head { display: grid; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-4); }
+@media (min-width: 48rem) { .proof-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; } }
+.proof-head .headline-run, .proof-head .lead { margin: 0; }
+.proof-head .lead { color: var(--color-muted); }
+.proof-logos { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: flex; justify-content: space-between; align-items: center; gap: var(--space-1) var(--space-3); }
+.proof-logos li { display: flex; }
+.proof-logos img { height: calc(var(--logo-scale, 1) * 1.4rem); width: auto; max-width: 8rem; object-fit: contain; filter: grayscale(1); opacity: 0.7; mix-blend-mode: multiply; transition: opacity 0.25s var(--ease), filter 0.25s var(--ease); }
+@media (min-width: 48rem) { .proof-logos { margin-bottom: var(--space-4); padding-inline: var(--space-3); } .proof-logos img { height: calc(var(--logo-scale, 1) * 3rem); max-width: 12rem; } }
+.proof-logos li:hover img { filter: none; opacity: 1; }
+.proof-photo { position: relative; margin: 0 0 var(--space-4); overflow: hidden; border-radius: var(--radius-lg); aspect-ratio: 4 / 3; background: var(--color-section-alt); }
+@media (min-width: 48rem) { .proof-photo { aspect-ratio: 21 / 9; } }
+.proof-photo-field { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+/* The product on the field: a phone (cut off at the bottom in the image) rising from the photo's bottom edge on
+   its right side, clear of the operator */
+.proof-photo-device { position: absolute; bottom: 0; right: 8%; height: 88%; width: auto; filter: var(--shadow-cutout); }
+/* Client numbers in one quiet row, Stripe-style: the figure bold in navy running into its label, the client under it */
+.proof-stats { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2) var(--space-4); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.proof-stats p { margin: 0; font-size: var(--text-lead); line-height: 1.45; color: var(--color-muted); }
+.proof-stats .stat { font-family: inherit; font-size: inherit; font-weight: 700; line-height: inherit; letter-spacing: 0; color: var(--color-text); }
+.proof-stats .proof-source { margin-top: var(--space-1); font-size: var(--text-small); }
 
 /* Motion: respect the visitor's setting */
 @media (prefers-reduced-motion: reduce) {

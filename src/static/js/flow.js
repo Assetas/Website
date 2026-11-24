@@ -13,6 +13,15 @@
    `flow: true`. Without JS, or with reduced motion, the .is-poster scene shows its last screen and the chapter
    buttons stay hidden. */
 (function () {
+  // The hero runs down behind the top third of the panel: --flow-overlap is a third of the panel's height (it holds
+  // steady while the film plays, since every scene shares one grid cell). Set with or without motion.
+  var first = document.querySelector(".flow");
+  if (first && "ResizeObserver" in window) {
+    new ResizeObserver(function () {
+      document.documentElement.style.setProperty("--flow-overlap", Math.round(first.offsetHeight / 3) + "px");
+    }).observe(first);
+  }
+
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   var TICK = 100;
