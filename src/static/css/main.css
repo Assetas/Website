@@ -1764,27 +1764,20 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow-pointer.is-click::after { animation: flow-ring 0.45s var(--ease); }
 @keyframes flow-ring { 0% { opacity: 0.9; transform: translate(-50%, -50%) scale(0.3); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.4); } }
 
-/* Real-time data: the dashboard on a laptop, as the phone stands alone in Work offline; it zooms in on the gas chart
-   (--origin) at its data-shift-at before the anomaly scene takes over. The cursor's size reads this box. */
-.flow-scene--zoom { justify-self: center; width: min(100%, 56rem); overflow: clip; }  /* the zoom stays inside the laptop's own frame, clear of the chapter buttons */
-.flow-laptop { position: relative; width: min(100%, 56rem); container-type: inline-size; transform-origin: var(--origin, 50% 50%); }
+/* Real-time data: the dashboard on a laptop, as the phone stands alone in Work offline; a click on the gas chart
+   opens the chart recording in its own window. The cursor's size reads the laptop box. */
+.flow-scene--laptop { justify-self: center; width: min(100%, 56rem); }
+.flow-laptop { position: relative; width: min(100%, 56rem); container-type: inline-size; }
 .flow-laptop img { display: block; width: 100%; height: auto; }
-.flow-laptop.is-shifted { scale: 1.7; translate: -17% 14%; }  /* and slides the chart toward the middle */
-.flow.is-ready .flow-laptop[data-shift-at] { transition: scale 1.6s var(--ease), translate 1.6s var(--ease); }
+/* The chart recording is 1774 app pixels across (the screenshots 1504), so its window is wider by as much and its
+   text matches theirs */
+.flow-window--chart { width: min(100%, calc(52rem * 1774 / 1504)); }
+.flow-window--chart .flow-view { aspect-ratio: 1774 / 978; }
 /* Trek scene: the phone beside notes on navy */
 .flow-phone { flex: none; }
 .flow-phone img { display: block; width: 10rem; height: auto; }
 @media (min-width: 48rem) { .flow-phone img { width: 17rem; } }
 .flow-notes { max-width: 22rem; color: var(--color-text); }
-/* The report window is wider (the video is 1730 app pixels across, the screenshots 1504), so its text matches theirs */
-.flow-window--wide { width: min(100%, calc(52rem * 1730 / 1504)); }
-.flow-window--wide .flow-view { aspect-ratio: 1730 / 1000; }
-/* A window with notes beside it (the report scene): the window gives up the width the notes need */
-@media (min-width: 48rem) {
-  .flow-scene--notes { gap: var(--space-3); }
-  .flow-scene--notes .flow-window { flex: 0 1 auto; min-width: 0; }
-  .flow-scene--notes .flow-notes { flex: 0 0 15rem; }
-}
 .flow .flow-kicker { margin: 0 0 var(--space-2); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-text); }
 .flow-chips { list-style: none; margin: 0; padding: 0; display: grid; justify-items: start; gap: var(--space-1); }
 .flow-chips li { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-panel-line); border-radius: var(--radius-pill); background: var(--color-bg); font-size: var(--text-small); font-weight: 600; }
@@ -1815,6 +1808,16 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow.is-ready .flow-pointer { transition: left 0.9s var(--ease), top 0.9s var(--ease), opacity 0.3s var(--ease); }
 .flow.is-ready [data-off]:not([data-at]) { transition: opacity 0.3s var(--ease); }
 .flow.is-ready .flow-view .flow-page[data-shift-at] { transition: opacity 0.5s var(--ease), transform 0.9s var(--ease); }
+/* Compliance split: the permit PDF fills the window, then the digital record slides in from the right to cover two
+   thirds of it while the PDF shifts left, keeping its EPA header in the remaining third. The record is at the same
+   scale as every other screen, so its page is 150% of the panel wide (cropped on the right), and it scrolls down to
+   its requirements by --shift. */
+.flow-split { position: absolute; top: 0; right: 0; bottom: 0; z-index: 1; width: calc(200% / 3); overflow: hidden; border-left: 1px solid var(--color-panel-line); background: var(--color-bg); }
+.flow-split .flow-page { right: auto; width: 150%; }
+.flow.is-live .flow-view .flow-split[data-at]:not(.is-on) { opacity: 1; translate: 100% 0; }
+.flow.is-ready .flow-view .flow-split[data-at]:not(.flow-pointer) { transition: translate 1s var(--ease); }
+.flow-doc.is-shifted { translate: -19.4% 0; }
+.flow.is-ready .flow-view .flow-doc[data-shift-at]:not(.flow-pointer) { transition: opacity 0.5s var(--ease), translate 1s var(--ease); }
 .flow.is-live [data-at]:not(.is-on) { opacity: 0; }
 .flow.is-live .flow-scene[data-at]:not(.is-on), .flow.is-live .flow-phone:not(.is-on), .flow.is-live .flow-chips li:not(.is-on), .flow.is-live .flow-toast:not(.is-on) { transform: translateY(var(--space-1)); }
 .flow.is-live [data-off].is-off { opacity: 0; pointer-events: none; }

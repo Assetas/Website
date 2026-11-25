@@ -5,8 +5,8 @@
      .flow-pointer data-path="ms:x,y ms:x,y! ..."   the cursor glides to x%,y% of the window at each time; "!" clicks
      .flow-typed data-type="elm" data-type-at="ms" data-speed="ms"   types the word from then, one letter per data-speed
      .flow-page data-shift-at="ms" style="--shift: -n%"   a page taller than the window scrolls up by --shift (.is-shifted)
-     .flow-laptop data-shift-at="ms" style="--origin: x% y%"   the laptop zooms in on that point (.is-shifted)
-     video.flow-video data-rate="0.5"               plays from its data-at at that rate, once, until its scene ends
+     video.flow-video data-rate="0.5" data-start="s"   plays from its data-at at that rate (and from data-start
+                                                    seconds into the clip), once, then holds until its scene ends
      .flow data-hold="ms" data-cycle="ms"           everything fades out at hold, and the loop restarts at cycle
    The chapter buttons ([data-chapter], the index of the chapter's first .flow-scene; a chapter can span several
    scenes) mark the playing chapter and jump to its start. The
@@ -81,7 +81,7 @@
         if (live) {
           if (!v.hasAttribute("data-started")) {
             v.setAttribute("data-started", "");
-            v.currentTime = 0;
+            v.currentTime = +v.getAttribute("data-start") || 0;
             v.defaultPlaybackRate = v.playbackRate = +v.getAttribute("data-rate") || 1;
             if (running()) v.play().catch(function () {});
           } else if (v.paused && !v.ended && running()) {
