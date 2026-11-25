@@ -1097,9 +1097,12 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
 .rail-card > p { margin: 0; }
 .rail-card > .text-action { align-self: end; padding-top: var(--space-1); }
 .rail--story .rail-card > :is(p, .text-action) { margin-inline: var(--space-3); }  /* the line and link start where the name inside the tile does */
+/* The line sits a little clear of the tile, and the link follows it directly, in regular weight */
+.rail--story .rail-card > p { margin-top: var(--space-2); }
+.rail--story .rail-card > .text-action { align-self: start; padding-top: 0; font-weight: 400; }
 .rail-card-media {
   --glow: var(--color-amber);
-  position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 4 / 5; margin-bottom: var(--space-1);
+  position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 4 / 5; margin-bottom: var(--space-1); container-type: inline-size;
   display: grid; place-items: center; border-radius: var(--radius-lg); color: var(--color-on-fill); background: var(--color-dark-deep);
 }
 .rail-card-media::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
@@ -1108,7 +1111,8 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .rail-card-icon {
-  position: relative; z-index: 2; width: 38%; height: auto; margin-bottom: 12%;
+  /* one height for every icon (in tile widths), so wide and tall icons read the same size */
+  position: relative; z-index: 2; width: auto; height: 34cqw; margin-bottom: 12%;
   filter: brightness(0) invert(1) drop-shadow(0 0 0.6rem var(--glow)) drop-shadow(0 0 2.4rem var(--glow));
 }
 .rail-card-title {
