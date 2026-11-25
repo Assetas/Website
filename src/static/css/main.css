@@ -1257,8 +1257,15 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
 .hero--light h1, .hero--light .headline-run { color: var(--color-text); }
 .hero--light .headline-run { font-size: var(--text-run); line-height: 1.12; letter-spacing: -0.02em; max-width: 52rem; }  /* the section-head run size: statement in navy, the rest in muted */
 .hero--light .headline-run span { color: var(--color-muted); }
+.hero-screen img {
+  display: block; width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: var(--radius) 0 0 0;
+  -webkit-mask-image: linear-gradient(90deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent), linear-gradient(180deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent), linear-gradient(180deg, #000 82%, rgb(0 0 0 / 0.75) 90%, rgb(0 0 0 / 0.3) 96%, transparent);
+  mask-composite: intersect;
+}
 
-/* Engine hero (/assets): a generator drawn half as the machine and half as a blueprint wireframe, cut out of its
+/* Engine hero (home): a generator drawn half as the machine and half as a blueprint wireframe, cut out of its
    generated backdrop (transparent around the machine and between the wireframe's lines), centered at the top of
    the hero with the headline under it. Over it, an SVG in the image's 1800 x 1215 coordinates draws glass
    dashboard panels above the engine, linked to points on it: monthly fuel use (the demo generator's months, with
@@ -1284,7 +1291,10 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
 }
 .engine-art { position: relative; width: min(100%, 54rem); margin-inline: auto; aspect-ratio: 1800 / 1215; }
 .engine-art img, .engine-links { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero--engine { padding-top: var(--space-3); overflow: hidden; overflow: clip; }  /* clip, not hidden: hidden makes the hero a scroll container, and the parallax view() timeline would track it instead of the page */
+.hero--engine { padding-block: var(--space-3) calc(var(--space-5) + var(--flow-overlap, var(--space-overlap))); overflow: hidden; overflow: clip; }
+/* The bottom padding leaves room for the .flow film, which rises into the hero by a third of its height (--flow-overlap
+   from flow.js; --space-overlap until then). Overflow is clip, not hidden: hidden makes the hero a scroll container,
+   and the parallax view() timeline would track it instead of the page. */
 .hero--engine > .container { position: relative; z-index: 1; margin-top: var(--space-3); }
 /* The headline as one statement in two voices (after a studio's intro line): upright medium in white, with
    phrases in Inter's true italic, regular weight, in the softer blue-gray */
@@ -1705,40 +1715,6 @@ button.tour-step:hover { background: var(--color-section-alt); }
 }
 .bento-card .text-action { margin-top: auto; padding-top: var(--space-2); }
 
-/* Headline-run hero (home): no image or buttons, the H1 is a headline run (statement, then a softer span) on the
-   blue grid, in the original home wording. What operational technology meets (the run's amber-light <em>, large
-   text only) turns once through asset management, smart inspection and workflow automation, landing on
-   "regulatory compliance." (3.4 s in all, so no pause control). The phrases stack in one inline grid cell,
-   left-aligned and free to wrap; the softer span is its own line, so nothing follows them and no gap shows. The passing
-   phrases are CSS content on aria-hidden spans, so the heading's text (for search and screen readers) is the
-   sentence as written. Reduced motion shows the last phrase. The bottom padding leaves room for the .flow panel,
-   which rises into it by a third of its own height (--flow-overlap, which flow.js measures; --space-overlap until then). */
-.hero.hero--run {
-  padding-block: var(--space-5) calc(var(--space-5) + var(--flow-overlap, var(--space-overlap)));
-  /* Irregular field: navy under the type for contrast (white 16.5:1, the soft line 9.6:1, amber well over AA),
-     with blue pools of different sizes pushed to the edges and one low amber warmth, all under the drafting grid. */
-  background-color: var(--color-dark);
-  background-image:
-    radial-gradient(30rem 20rem at 6% -8%, color-mix(in srgb, var(--color-brand-deep) 70%, transparent), transparent 70%),
-    radial-gradient(52rem 34rem at 96% 6%, var(--color-brand), transparent 66%),
-    radial-gradient(22rem 30rem at 70% 62%, color-mix(in srgb, var(--color-brand-deep) 55%, transparent), transparent 72%),
-    radial-gradient(44rem 22rem at -6% 104%, color-mix(in srgb, var(--color-brand) 55%, transparent), transparent 70%),
-    radial-gradient(26rem 14rem at 84% 102%, color-mix(in srgb, var(--color-amber) 30%, transparent), transparent 72%),
-    radial-gradient(36rem 26rem at 30% 40%, var(--color-dark-deep), transparent 75%);
-}
-.hero--run .headline-run { max-width: 58rem; margin-bottom: 0; }
-.hero--run .headline-run > span { display: block; }  /* the softer line under the statement, as the original lead sat */
-.hero--run .hero-meets { font-style: italic; color: var(--color-amber); padding-right: 0.04em; }  /* Inter's true italic (loaded in base.njk) */
-.hero .headline-run .hero-rotate-words { display: inline-grid; justify-items: start; vertical-align: top; color: var(--color-on-fill); }
-.hero .headline-run .hero-rotate-words > span { grid-area: 1 / 1; color: inherit; font-weight: inherit; opacity: 0; animation: hero-word 0.86s var(--ease) calc(var(--i) * 0.86s) backwards; }
-.hero .headline-run .hero-rotate-words > .is-last { opacity: 1; animation-name: hero-word-last; }
-.hero-rotate-words > [data-word]::before { content: attr(data-word); }
-@keyframes hero-word {
-  0% { opacity: 0; transform: translateY(0.35em); filter: blur(8px); }
-  24%, 74% { opacity: 1; transform: none; filter: none; }
-  100% { opacity: 0; transform: translateY(-0.35em); filter: blur(8px); }
-}
-@keyframes hero-word-last { 0% { opacity: 0; transform: translateY(0.35em); filter: blur(8px); } 100% { opacity: 1; transform: none; filter: none; } }
 .hero-industries { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-1); }
 .hero .hero-industries a {
   display: inline-block; padding: var(--space-1) var(--space-2); border: 1px solid var(--color-on-fill-line); border-radius: var(--radius-pill);
