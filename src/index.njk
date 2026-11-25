@@ -5,7 +5,6 @@ description: "Asset management, digital inspections, and regulatory compliance o
 permalink: /index.html
 pageClass: page--spacious
 rail: true
-stepper: true
 flow: true
 cta:
   second:
@@ -350,48 +349,52 @@ cta:
     <div class="section-head section-head--run">
       <h2 class="headline-run">Follow one finding through the record. <span>A leak at Skid A-114, from the inspection form to the rule it satisfies.</span></h2>
     </div>
-    <div class="stepper">
-      <ol class="stepper-list">
-        <li class="stepper-item">
-          <h3 class="stepper-title"><span class="stepper-kicker">01 · Found</span> Leak logged at the relief valve</h3>
-          <div class="stepper-body"><p>Started offline at 9:42 AM. The leak-rate field appears only after a Yes.</p></div>
-        </li>
-        <li class="stepper-item">
-          <h3 class="stepper-title"><span class="stepper-kicker">02 · Routed</span> Escalated, then dispatched</h3>
-          <div class="stepper-body"><p>Above threshold, so it goes to the supervisor and a work order queues behind it.</p></div>
-        </li>
-        <li class="stepper-item">
-          <h3 class="stepper-title"><span class="stepper-kicker">03 · Recorded</span> On the skid's one record</h3>
-          <div class="stepper-body"><p>Telemetry, inspections, work orders, and the asset itself in one record. No re-keying.</p></div>
-        </li>
-        <li class="stepper-item">
-          <h3 class="stepper-title"><span class="stepper-kicker">04 · Mapped</span> Tied to the rule it satisfies</h3>
-          <div class="stepper-body"><p>The Method 21 survey maps to NSPS OOOOb, with the citation on the record.</p></div>
-        </li>
-      </ol>
-      <div class="stepper-stage">
-        <figure class="stepper-media"><img src="/static/img/forms/hero-form-in-progress.webp" width="639" height="407" loading="lazy" alt="Leak inspection form FORM-2281 in progress for Skid A-114, relief valve RV-22, started offline at 9:42 AM: leak observed yes, estimated leak rate 42 SCFH, component auto-filled from the registry. The leak-rate field appeared automatically after answering Yes."></figure>
-        <figure class="stepper-media"><img src="/static/img/forms/dispatch-workflow.webp" width="531" height="266" loading="lazy" alt="Workflow for FORM-2281: form submitted offline at 9:47 AM (done), escalated to supervisor because the leak rate is above threshold (in progress), work order dispatched (queued, waiting on escalation)."></figure>
-        <figure class="stepper-media"><img src="/static/img/platform/one-data-model.webp" width="611" height="556" loading="lazy" alt="One data model: Skid A-114 at Cedar Ridge Plant. Telemetry, inspections, work orders, and assets feed one unified record, mapped to Title V, current, last synced 4 minutes ago. Capture once, prove anywhere: no re-keying. Requirement mapping: 100% of records."></figure>
-        <figure class="stepper-media"><img src="/static/img/compliance/hero-requirement-mapping.webp" width="569" height="406" loading="lazy" alt="Requirement mapping: an LDAR Method 21 survey on Skid A-114 maps to the NSPS OOOOb methane rule, a berm inspection at Dry Creek Pad maps to SPCC 40 CFR 112 spill prevention, and a Title V annual report auto-drafted from readings maps to the EPA Title V operating permit. Every field record links to the exact citation it satisfies."></figure>
-      </div>
-    </div>
+    <ol class="bento bento--steps">
+      <li class="bento-card bento-card--full bento-card--split">
+        <div class="bento-card-text">
+          <p class="bento-kicker">01 · Found</p>
+          <h3 class="h4">Leak logged at the relief valve</h3>
+          <p>Started offline at 9:42 AM. The leak-rate field appears only after a Yes.</p>
+        </div>
+        <img class="bento-card-shot" src="/static/img/forms/hero-form-in-progress.webp" width="639" height="407" loading="lazy" alt="Leak inspection form FORM-2281 in progress for Skid A-114, relief valve RV-22, started offline at 9:42 AM: leak observed yes, estimated leak rate 42 SCFH, component auto-filled from the registry. The leak-rate field appeared automatically after answering Yes.">
+      </li>
+      <li class="bento-card bento-card--wide">
+        <img class="bento-card-media bento-card-media--shot" src="/static/img/forms/dispatch-workflow.webp" width="531" height="266" loading="lazy" alt="Workflow for FORM-2281: form submitted offline at 9:47 AM (done), escalated to supervisor because the leak rate is above threshold (in progress), work order dispatched (queued, waiting on escalation).">
+        <p class="bento-kicker">02 · Routed</p>
+        <h3 class="h4">Escalated, then dispatched</h3>
+        <p>Above threshold, so it goes to the supervisor and a work order queues behind it.</p>
+      </li>
+      <li class="bento-card">
+        <img class="bento-card-media bento-card-media--shot" src="/static/img/platform/one-data-model.webp" width="611" height="556" loading="lazy" alt="One data model: Skid A-114 at Cedar Ridge Plant. Telemetry, inspections, work orders, and assets feed one unified record, mapped to Title V, current, last synced 4 minutes ago. Capture once, prove anywhere: no re-keying. Requirement mapping: 100% of records.">
+        <p class="bento-kicker">03 · Recorded</p>
+        <h3 class="h4">On the skid's one record</h3>
+        <p>Telemetry, inspections, work orders, and the asset itself in one record. No re-keying.</p>
+      </li>
+      <li class="bento-card bento-card--full bento-card--split">
+        <div class="bento-card-text">
+          <p class="bento-kicker">04 · Mapped</p>
+          <h3 class="h4">Tied to the rule it satisfies</h3>
+          <p>The Method 21 survey maps to NSPS OOOOb, with the citation on the record.</p>
+        </div>
+        <img class="bento-card-shot" src="/static/img/compliance/hero-requirement-mapping.webp" width="569" height="406" loading="lazy" alt="Requirement mapping: an LDAR Method 21 survey on Skid A-114 maps to the NSPS OOOOb methane rule, a berm inspection at Dry Creek Pad maps to SPCC 40 CFR 112 spill prevention, and a Title V annual report auto-drafted from readings maps to the EPA Title V operating permit. Every field record links to the exact citation it satisfies.">
+      </li>
+    </ol>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="section-head section-head--run">
-      <h2 class="headline-run">Connects to what's already running. <span>Historians, RTUs, edge gateways, and your EAM feed the same record.</span></h2>
+      <h2 class="headline-run">Connects to what's already running. <span>SCADA, data historians, and production accounting feed the same record with automated workflows.</span></h2>
     </div>
     <ul class="bento">
       <li class="bento-card bento-card--full bento-card--split">
         <div class="bento-card-text">
-          <h3 class="h4">Live streams and two-way sync</h3>
-          <p>OPC-UA, Modbus TCP, and MQTT stream in; a REST API keeps EAM work orders in sync. Bulk-import existing records from your CMMS or ERP.</p>
+          <h3 class="h4">From live data to scheduled work</h3>
+          <p>SCADA and historian tags stream in over OPC-UA, and production accounting syncs daily volumes. Workflow Automation sets up maintenance and inspections on new assets and generates their emissions.</p>
           <a class="text-action" href="/platform">See the platform</a>
         </div>
-        <img class="bento-card-shot" src="/static/img/platform/integrations-panel.webp" width="563" height="391" loading="lazy" alt="Integrations, live streams: OPC-UA from a compressor station historian (1,240 tags), Modbus TCP from a metering skid RTU cluster (streaming), MQTT from remote site edge gateways (18 sites), and a bi-directional REST API for EAM work order sync.">
+        <img class="bento-card-shot" src="/static/img/home/integrations-sources.webp" width="563" height="391" loading="lazy" alt="Integrations, data sources: SCADA from compressor station RTUs (streaming), a data historian over OPC-UA (1,240 tags, live), and production accounting with daily volumes and allocations (synced), feeding Workflow Automation, which sets up maintenance and inspections on new assets and generates their emissions.">
       </li>
     </ul>
   </div>

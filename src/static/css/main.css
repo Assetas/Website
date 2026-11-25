@@ -1487,6 +1487,12 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
 /* Photo cards (home industries): --photo crops each photo to one shape so a row of cards lines up; --4 keeps
    four cards in one row from 64rem. */
 .bento-card-media--photo { aspect-ratio: 3 / 2; object-fit: cover; }
+/* Steps (home "Follow one finding"): a numbered kicker over each card's title, and drawn panels on their own white
+   canvas, padded like .bento-card-shot */
+.bento-kicker { margin: 0 0 var(--space-1); font-size: var(--text-small); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-text); }
+.bento-card-media--shot { padding: var(--space-3); object-fit: contain; }
+@media (min-width: 48rem) { .bento-card-media--shot { height: 22rem; } }  /* side by side, both panels get one height */
+.bento--steps .bento-card-shot { max-height: 26rem; object-fit: contain; }  /* near the panels' own size, not stretched to the card */
 @media (min-width: 64rem) { .bento--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 /* Feature runs (/ldar): each point is one paragraph, a bold title running into a softer explanation,
