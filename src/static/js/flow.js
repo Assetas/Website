@@ -5,9 +5,11 @@
      .flow-pointer data-path="ms:x,y ms:x,y! ..."   the cursor glides to x%,y% of the window at each time; "!" clicks
      .flow-typed data-type="elm" data-type-at="ms" data-speed="ms"   types the word from then, one letter per data-speed
      .flow-page data-shift-at="ms" style="--shift: -n%"   a page taller than the window scrolls up by --shift (.is-shifted)
+     .flow-laptop data-shift-at="ms" style="--origin: x% y%"   the laptop zooms in on that point (.is-shifted)
      video.flow-video data-rate="0.5"               plays from its data-at at that rate, once, until its scene ends
      .flow data-hold="ms" data-cycle="ms"           everything fades out at hold, and the loop restarts at cycle
-   The chapter buttons ([data-chapter], one per .flow-scene) mark the playing scene and jump to its start. The
+   The chapter buttons ([data-chapter], the index of the chapter's first .flow-scene; a chapter can span several
+   scenes) mark the playing chapter and jump to its start. The
    panel carries data-loop, so menu.js adds the pause button (WCAG 2.2.2) and .is-paused / .is-offscreen; the
    timeline and the video stand still on either, or while the tab is hidden. Loaded only on pages with
    `flow: true`. Without JS, or with reduced motion, the .is-poster scene shows its last screen and the chapter
@@ -94,18 +96,21 @@
 
       root.classList.toggle("is-resetting", t >= hold);
 
-      var current = -1;
+      var current = -1, chapter = -1;
       scenes.forEach(function (scene, i) { if (scene.classList.contains("is-on") && !scene.classList.contains("is-off")) current = i; });
+      // A chapter can span several scenes: its button names its first one, so the playing chapter is the last whose
+      // first scene has started
+      chapters.forEach(function (button) { var at = +button.getAttribute("data-chapter"); if (current >= 0 && at <= current) chapter = at; });
       chapters.forEach(function (button) {
-        var here = +button.getAttribute("data-chapter") === current;
+        var here = +button.getAttribute("data-chapter") === chapter;
         button.classList.toggle("is-current", here);
         if (here) button.setAttribute("aria-current", "step"); else button.removeAttribute("aria-current");
         // On phones the chapters are one scrolling row: slide the playing one into view (the row only, not the page)
-        if (here && current !== shown && row && row.scrollWidth > row.clientWidth) {
+        if (here && chapter !== shown && row && row.scrollWidth > row.clientWidth) {
           row.scrollTo({ left: button.offsetLeft - row.offsetLeft, behavior: "smooth" });
         }
       });
-      shown = current;
+      shown = chapter;
     }
 
     chapters.forEach(function (button) {

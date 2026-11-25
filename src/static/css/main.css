@@ -1729,7 +1729,9 @@ button.tour-step:hover { background: var(--color-section-alt); }
    clicks and a search box that types; one is the Trek phone. Chapter buttons along the bottom mark the playing
    scene and jump to any of them; the pause button sits lower right (data-loop). Without JS or with reduced
    motion only the .is-poster scene shows, on its last screen, and the chapters are hidden. */
-.flow-section { position: relative; z-index: 1; margin-top: calc(-1 * var(--flow-overlap, var(--space-overlap))); }
+.flow-section { position: relative; z-index: 1; margin-top: calc(-1 * var(--flow-overlap, var(--space-overlap))); padding-bottom: var(--space-section); }
+/* Light gray behind the film, from where it leaves the hero (its top part sits over the hero, so that stays clear) */
+.flow-section { background: linear-gradient(transparent var(--flow-overlap, var(--space-overlap)), var(--color-section-alt) 0); }
 .flow { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--space-3); padding: var(--space-3) var(--space-2); border: 1px solid var(--color-panel-line); border-radius: var(--radius-lg); background: var(--color-panel-gray); }
 @media (min-width: 40rem) { .flow { padding: var(--space-4) var(--space-4) var(--space-3); } }
 .flow-stage { display: grid; align-items: center; transition: opacity 0.4s var(--ease); }
@@ -1762,6 +1764,13 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow-pointer.is-click::after { animation: flow-ring 0.45s var(--ease); }
 @keyframes flow-ring { 0% { opacity: 0.9; transform: translate(-50%, -50%) scale(0.3); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.4); } }
 
+/* Real-time data: the dashboard on a laptop, as the phone stands alone in Work offline; it zooms in on the gas chart
+   (--origin) at its data-shift-at before the anomaly scene takes over. The cursor's size reads this box. */
+.flow-scene--zoom { justify-self: center; width: min(100%, 56rem); overflow: clip; }  /* the zoom stays inside the laptop's own frame, clear of the chapter buttons */
+.flow-laptop { position: relative; width: min(100%, 56rem); container-type: inline-size; transform-origin: var(--origin, 50% 50%); }
+.flow-laptop img { display: block; width: 100%; height: auto; }
+.flow-laptop.is-shifted { scale: 1.7; translate: -17% 14%; }  /* and slides the chart toward the middle */
+.flow.is-ready .flow-laptop[data-shift-at] { transition: scale 1.6s var(--ease), translate 1.6s var(--ease); }
 /* Trek scene: the phone beside notes on navy */
 .flow-phone { flex: none; }
 .flow-phone img { display: block; width: 10rem; height: auto; }
