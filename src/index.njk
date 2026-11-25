@@ -5,6 +5,7 @@ description: "Asset management, digital inspections, and regulatory compliance o
 permalink: /index.html
 pageClass: page--spacious
 rail: true
+stepper: true
 flow: true
 cta:
   second:
@@ -346,55 +347,54 @@ cta:
 
 <section class="section">
   <div class="container">
-    <div class="section-head section-head--run">
-      <h2 class="headline-run">Follow one finding through the record. <span>A leak at Skid A-114, from the inspection form to the rule it satisfies.</span></h2>
+    {#- After the Sandstone services panel: a light card on the left with the statement, the steps (stepper.js makes each a button that swaps the screen) and, at its
+        foot, the open step's line; the step screens on white on the right. Without JS every step and screen shows,
+        stacked. -#}
+    <div class="stepper stepper--panel">
+      <div class="stepper-card">
+        <h2 class="stepper-statement">Follow one finding through the record. <span>A leak at Skid A&#8209;114, from the inspection form to the rule it satisfies.</span></h2>
+        <ol class="stepper-list">
+          <li class="stepper-item">
+            <h3 class="stepper-title"><span class="stepper-num">01</span> Leak logged at the relief valve</h3>
+            <div class="stepper-body"><p>Started offline at 9:42 AM. The leak-rate field appears only after a Yes.</p></div>
+          </li>
+          <li class="stepper-item">
+            <h3 class="stepper-title"><span class="stepper-num">02</span> Escalated, then dispatched</h3>
+            <div class="stepper-body"><p>Above threshold, so it goes to the supervisor and a work order queues behind it.</p></div>
+          </li>
+          <li class="stepper-item">
+            <h3 class="stepper-title"><span class="stepper-num">03</span> On the skid's one record</h3>
+            <div class="stepper-body"><p>Telemetry, inspections, work orders, and the asset itself in one record. No re-keying.</p></div>
+          </li>
+          <li class="stepper-item">
+            <h3 class="stepper-title"><span class="stepper-num">04</span> Tied to the rule it satisfies</h3>
+            <div class="stepper-body"><p>The Method 21 survey maps to NSPS OOOOb, with the citation on the record.</p></div>
+          </li>
+        </ol>
+      </div>
+      <div class="stepper-stage">
+        <figure class="stepper-media"><img src="/static/img/forms/hero-form-in-progress.webp" width="639" height="407" loading="lazy" alt="Leak inspection form FORM-2281 in progress for Skid A-114, relief valve RV-22, started offline at 9:42 AM: leak observed yes, estimated leak rate 42 SCFH, component auto-filled from the registry. The leak-rate field appeared automatically after answering Yes."></figure>
+        <figure class="stepper-media"><img src="/static/img/forms/dispatch-workflow.webp" width="531" height="266" loading="lazy" alt="Workflow for FORM-2281: form submitted offline at 9:47 AM (done), escalated to supervisor because the leak rate is above threshold (in progress), work order dispatched (queued, waiting on escalation)."></figure>
+        <figure class="stepper-media"><img src="/static/img/platform/one-data-model.webp" width="611" height="556" loading="lazy" alt="One data model: Skid A-114 at Cedar Ridge Plant. Telemetry, inspections, work orders, and assets feed one unified record, mapped to Title V, current, last synced 4 minutes ago. Capture once, prove anywhere: no re-keying. Requirement mapping: 100% of records."></figure>
+        <figure class="stepper-media"><img src="/static/img/compliance/hero-requirement-mapping.webp" width="569" height="406" loading="lazy" alt="Requirement mapping: an LDAR Method 21 survey on Skid A-114 maps to the NSPS OOOOb methane rule, a berm inspection at Dry Creek Pad maps to SPCC 40 CFR 112 spill prevention, and a Title V annual report auto-drafted from readings maps to the EPA Title V operating permit. Every field record links to the exact citation it satisfies."></figure>
+      </div>
     </div>
-    <ol class="bento bento--steps">
-      <li class="bento-card bento-card--full bento-card--split">
-        <div class="bento-card-text">
-          <p class="bento-kicker">01 · Found</p>
-          <h3 class="h4">Leak logged at the relief valve</h3>
-          <p>Started offline at 9:42 AM. The leak-rate field appears only after a Yes.</p>
-        </div>
-        <img class="bento-card-shot" src="/static/img/forms/hero-form-in-progress.webp" width="639" height="407" loading="lazy" alt="Leak inspection form FORM-2281 in progress for Skid A-114, relief valve RV-22, started offline at 9:42 AM: leak observed yes, estimated leak rate 42 SCFH, component auto-filled from the registry. The leak-rate field appeared automatically after answering Yes.">
-      </li>
-      <li class="bento-card bento-card--wide">
-        <img class="bento-card-media bento-card-media--shot" src="/static/img/forms/dispatch-workflow.webp" width="531" height="266" loading="lazy" alt="Workflow for FORM-2281: form submitted offline at 9:47 AM (done), escalated to supervisor because the leak rate is above threshold (in progress), work order dispatched (queued, waiting on escalation).">
-        <p class="bento-kicker">02 · Routed</p>
-        <h3 class="h4">Escalated, then dispatched</h3>
-        <p>Above threshold, so it goes to the supervisor and a work order queues behind it.</p>
-      </li>
-      <li class="bento-card">
-        <img class="bento-card-media bento-card-media--shot" src="/static/img/platform/one-data-model.webp" width="611" height="556" loading="lazy" alt="One data model: Skid A-114 at Cedar Ridge Plant. Telemetry, inspections, work orders, and assets feed one unified record, mapped to Title V, current, last synced 4 minutes ago. Capture once, prove anywhere: no re-keying. Requirement mapping: 100% of records.">
-        <p class="bento-kicker">03 · Recorded</p>
-        <h3 class="h4">On the skid's one record</h3>
-        <p>Telemetry, inspections, work orders, and the asset itself in one record. No re-keying.</p>
-      </li>
-      <li class="bento-card bento-card--full bento-card--split">
-        <div class="bento-card-text">
-          <p class="bento-kicker">04 · Mapped</p>
-          <h3 class="h4">Tied to the rule it satisfies</h3>
-          <p>The Method 21 survey maps to NSPS OOOOb, with the citation on the record.</p>
-        </div>
-        <img class="bento-card-shot" src="/static/img/compliance/hero-requirement-mapping.webp" width="569" height="406" loading="lazy" alt="Requirement mapping: an LDAR Method 21 survey on Skid A-114 maps to the NSPS OOOOb methane rule, a berm inspection at Dry Creek Pad maps to SPCC 40 CFR 112 spill prevention, and a Title V annual report auto-drafted from readings maps to the EPA Title V operating permit. Every field record links to the exact citation it satisfies.">
-      </li>
-    </ol>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="section-head section-head--run">
-      <h2 class="headline-run">Connects to what's already running. <span>SCADA, data historians, and production accounting feed the same record with automated workflows.</span></h2>
+      <h2 class="headline-run">Connects to what's already running. <span>Data interoperability with enterprise architecture.</span></h2>
     </div>
     <ul class="bento">
       <li class="bento-card bento-card--full bento-card--split">
         <div class="bento-card-text">
           <h3 class="h4">From live data to scheduled work</h3>
-          <p>SCADA and historian tags stream in over OPC-UA, and production accounting syncs daily volumes. Workflow Automation sets up maintenance and inspections on new assets and generates their emissions.</p>
+          <p>SCADA and historian tags stream in, production accounting and GIS stay in sync, and Active Directory provisions users with single sign-on. Workflow Automation then sets up maintenance and inspections on new assets and generates their emissions.</p>
           <a class="text-action" href="/platform">See the platform</a>
         </div>
-        <img class="bento-card-shot" src="/static/img/home/integrations-sources.webp" width="563" height="391" loading="lazy" alt="Integrations, data sources: SCADA from compressor station RTUs (streaming), a data historian over OPC-UA (1,240 tags, live), and production accounting with daily volumes and allocations (synced), feeding Workflow Automation, which sets up maintenance and inspections on new assets and generates their emissions.">
+        <img class="bento-card-shot" src="/static/img/home/integrations-sources.webp" width="563" height="464" loading="lazy" alt="Integrations, data sources: SCADA and the data historian (RTUs, OPC-UA, 1,240 tags, streaming), production accounting with daily volumes and allocations (synced), GIS with asset locations and map layers (synced), and Active Directory for user provisioning and single sign-on (connected), feeding Workflow Automation, which sets up maintenance and inspections on new assets and generates their emissions.">
       </li>
     </ul>
   </div>
@@ -466,17 +466,28 @@ cta:
 </section>
 
 {#- Pricing teaser: every figure and line comes from /pricing; keep them in step with it. -#}
-<section class="section">
+<section class="section section--surface">
   <div class="container">
     <div class="section-head section-head--run">
-      <h2 class="headline-run">Start free. The record is never the upsell. <span>Every plan carries the full data model and audit trail; tiers differ by modules and integrations.</span></h2>
+      <h2 class="headline-run">The record is never the upsell. <span>Every plan includes the full data model, audit trail, offline capture, and encryption. Your data stays exportable in open formats.</span></h2>
     </div>
-    <ul class="stat-row" data-count="off">
-      <li><p class="stat">$0</p><p><b>Standard,</b> forever. For getting off spreadsheets and paper, with no commitment or end date.</p></li>
-      <li><p class="stat">$60</p><p><b>Professional,</b> per user a month. For small teams and operators, with dashboards and limited data integrations. Annual commitment.</p></li>
-      <li><p class="stat">$90</p><p><b>Enterprise,</b> per user a month. All modules, industrial AI models, and full API access, from 25 users. Annual commitment.</p></li>
+    <ul class="price-cards">
+      <li class="price-card">
+        <div class="price-card-top"><p class="price-card-figure">$0</p><p class="price-card-term">Forever</p></div>
+        <h3 class="price-card-name">Standard</h3>
+        <p>Get off spreadsheets and paper. No commitment or end date.</p>
+      </li>
+      <li class="price-card">
+        <div class="price-card-top"><p class="price-card-figure">$60</p><p class="price-card-term">Per user a month</p></div>
+        <h3 class="price-card-name">Professional</h3>
+        <p>Dashboards and limited data integrations for small teams. Annual commitment.</p>
+      </li>
+      <li class="price-card">
+        <div class="price-card-top"><p class="price-card-figure">$90</p><p class="price-card-term">Per user a month</p></div>
+        <h3 class="price-card-name">Enterprise</h3>
+        <p>All modules, AI models, and full API access. 25 users minimum, annual commitment.</p>
+      </li>
     </ul>
-    <p class="measure">In every plan: offline field capture, encryption and role-based access, and your data exportable in open formats.</p>
     <p class="chapter-links"><a class="text-action" href="/pricing">See pricing</a><a class="text-action" href="/security">See security</a></p>
   </div>
 </section>

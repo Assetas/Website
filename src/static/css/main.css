@@ -1484,12 +1484,6 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
   .bento-card-text { padding: var(--space-4); }
   .bento-card-shot { border-top: 0; border-left: 1px solid var(--color-border); padding: var(--space-4); }
 }
-/* Steps (home "Follow one finding"): a numbered kicker over each card's title, and drawn panels on their own white
-   canvas, padded like .bento-card-shot */
-.bento-kicker { margin: 0 0 var(--space-1); font-size: var(--text-small); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-text); }
-.bento-card-media--shot { padding: var(--space-3); object-fit: contain; }
-@media (min-width: 48rem) { .bento-card-media--shot { height: 22rem; } }  /* side by side, both panels get one height */
-.bento--steps .bento-card-shot { max-height: 26rem; object-fit: contain; }  /* near the panels' own size, not stretched to the card */
 
 /* Feature runs (/ldar): each point is one paragraph, a bold title running into a softer explanation,
    under a short amber tick. --stack puts them in one column. */
@@ -1552,6 +1546,17 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
 .stat-row--stack { grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; }
 .stat-row--stack li { padding: var(--space-3) 0; border-left: 0; border-top: 1px solid var(--color-border); }
 .stat-row--stack li:first-child { padding-top: 0; border-top: 0; }
+/* Price cards (home pricing teaser): tall white cards on a light gray section, the price large in the top left
+   with its term small in the top right, and the plan name and its line at the foot */
+.price-cards { list-style: none; margin: 0 0 var(--space-4); padding: 0; display: grid; gap: var(--space-2); }
+@media (min-width: 48rem) { .price-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.price-card { display: flex; flex-direction: column; min-height: 18rem; padding: var(--space-4) var(--space-4) var(--space-4); border-radius: var(--radius-lg); background: var(--color-bg); }
+.price-card-top { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); margin-bottom: auto; padding-bottom: var(--space-5); }
+.price-card .price-card-figure { margin: 0; font-size: var(--text-h3); font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--color-dark); }
+.price-card .price-card-term { margin: 0; font-size: var(--text-small); color: var(--color-muted); text-align: right; }
+.price-card-name { margin: 0 0 var(--space-1); font-size: var(--text-h4); }
+.price-card p:last-child { margin: 0; line-height: 1.5; color: var(--color-muted); }
+@media (min-width: 48rem) { .price-card p:last-child { min-height: calc(3 * 1.5em); } }  /* side by side, every line gets three lines' room so the plan names align */
 
 /* Story panel (/ldar): a client quote on a navy card beside the numbers it stands behind */
 .story { display: grid; gap: var(--space-4); }
@@ -1662,6 +1667,30 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .stepper:not(.is-ready) .stepper-media, .stepper:not(.is-ready) .stepper-item::before { transition: none !important; }  /* none on first paint */
 .stepper.is-live .stepper-media.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.4s var(--ease), transform 0.6s var(--ease), visibility 0s; }
 .stepper-media img { max-width: 34rem; height: auto; }
+/* Panel (home "Follow one finding", after the Sandstone services panel): one white rounded panel with a hairline
+   border, a light card standing inside its left edge with the statement on top, the steps as a hairline list in
+   the middle (the open one dark, the rest muted) and the open step's line at its foot, and the stage on white to
+   its right. Without JS the lines sit under their steps and every screen shows. */
+.stepper--panel { position: relative; isolation: isolate; gap: var(--space-2); margin-top: 0; padding: var(--space-2); overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg); }
+.stepper--panel .stepper-stage { padding: var(--space-4) var(--space-2); border: 0; border-radius: 0; background: none; }
+.stepper--panel .stepper-media img { max-width: 32rem; }
+.stepper-card { position: relative; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-4) var(--space-3); border-radius: var(--radius); background: var(--color-section-alt); }
+.stepper-statement { margin: 0; font-size: var(--text-h3); font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; color: var(--color-dark); }
+.stepper-statement span { font-weight: 600; color: var(--color-muted); }
+.stepper--panel .stepper-list { margin-top: auto; border-top: 1px solid var(--color-border); }
+.stepper--panel .stepper-item { padding: var(--space-2) 0; border-left: 0; border-bottom: 1px solid var(--color-border); }
+.stepper--panel .stepper-item::before { content: none; }
+.stepper--panel .stepper-title { font-size: var(--text-lead); font-weight: 600; }
+.stepper-num { margin-right: var(--space-1); font-size: var(--text-small); font-variant-numeric: tabular-nums; color: var(--color-accent-text); }
+.stepper--panel.is-live .stepper-card { padding-bottom: calc(var(--space-4) + 5.5rem); }  /* room for the open step's line */
+.stepper--panel.is-live .stepper-item { position: static; }
+.stepper--panel.is-live .stepper-body { position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-4); padding: 0; color: var(--color-muted); }
+@media (min-width: 64rem) {
+  .stepper--panel { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); align-items: stretch; min-height: 36rem; }
+  .stepper-card { padding: var(--space-5) var(--space-4); }
+  .stepper--panel.is-live .stepper-card { padding-bottom: calc(var(--space-5) + 5.5rem); }
+  .stepper--panel.is-live .stepper-body { left: var(--space-4); right: var(--space-4); bottom: var(--space-5); }
+}
 
 
 /* A row of module links under a home section (the security band) */
