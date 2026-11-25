@@ -1773,19 +1773,25 @@ button.tour-step:hover { background: var(--color-section-alt); }
    text matches theirs */
 .flow-window--chart { width: min(100%, calc(52rem * 1774 / 1504)); }
 .flow-window--chart .flow-view { aspect-ratio: 1774 / 978; }
-/* Trek scene: the phone beside notes on navy */
-.flow-phone { flex: none; }
-.flow-phone img { display: block; width: 10rem; height: auto; }
-@media (min-width: 48rem) { .flow-phone img { width: 17rem; } }
-.flow-notes { max-width: 22rem; color: var(--color-text); }
-.flow .flow-kicker { margin: 0 0 var(--space-2); font-size: var(--text-label); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-text); }
-.flow-chips { list-style: none; margin: 0; padding: 0; display: grid; justify-items: start; gap: var(--space-1); }
-.flow-chips li { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-panel-line); border-radius: var(--radius-pill); background: var(--color-bg); font-size: var(--text-small); font-weight: 600; }
-.flow .flow-toast-row { display: grid; justify-items: start; margin: var(--space-3) 0 0; }
-.flow-swap > * { grid-area: 1 / 1; }
-.flow-toast { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1); border-radius: var(--radius-pill); background: var(--color-bg); color: var(--color-text); font-size: var(--text-note); font-weight: 600; border: 1px solid var(--color-panel-line); }
+/* People, dispatch: the work order record stays put and the Trek iPad slides in over its right side, with lines
+   from the record's Status and Leak Repair Form rows to the same fields on the iPad. The layer sits exactly over
+   the window's 16:10 view, so the iPad and the lines are placed in the record's own pixels (1504 x 940): the iPad at
+   x 900, y -50, 746 x 1000, standing 142 px past the window's right edge, which .flow-dispatch leaves room for. */
+.flow-dispatch { width: min(100%, calc(52rem * 1646 / 1504)); }
+.flow-dispatch-box { position: relative; width: calc(100% * 1504 / 1646); }
+.flow-dispatch-box .flow-window { width: 100%; }
+.flow-dispatch-layer { position: absolute; left: 0; right: 0; bottom: 0; aspect-ratio: 1504 / 940; pointer-events: none; }
+.flow-tablet { position: absolute; left: calc(100% * 900 / 1504); top: calc(-100% * 50 / 940); width: calc(100% * 746 / 1504); height: auto; }
+.flow.is-live .flow-tablet:not(.is-on) { translate: 45% 0; }
+.flow.is-ready .flow-dispatch-layer .flow-tablet[data-at]:not(.flow-pointer) { transition: opacity 0.6s var(--ease), translate 1.1s var(--ease); }
+.flow-links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.flow-links path { fill: none; stroke: var(--color-brand); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.flow-links .is-on path { stroke-dashoffset: 0; transition: stroke-dashoffset 0.9s var(--ease-in-out); }
+.flow-links circle { fill: var(--color-brand); stroke: var(--color-bg); stroke-width: 3; }
+.flow .flow-caption { position: absolute; left: 3%; bottom: 1.5%; max-width: 42%; margin: 0; padding: var(--space-1) var(--space-2); border: 1px solid var(--color-panel-line); border-radius: var(--radius); background: var(--color-bg); font-size: var(--text-small); font-weight: 600; line-height: 1.35; color: var(--color-dark); }
+/* On phones the window is too small to hold it: the caption sits under the window instead */
+@media (max-width: 47.99rem) { .flow .flow-caption { top: calc(100% + var(--space-2)); bottom: auto; left: 0; max-width: none; font-size: var(--text-note); } }
 .flow .mock-chip { font-size: var(--text-mock); }
-@media (max-width: 47.99rem) { .flow-chips li { font-size: var(--text-note); } }
 
 /* Chapters: one button per scene; the playing one is filled */
 .flow-chapters { list-style: none; margin: 0; padding: 0 var(--space-5) 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-1); }
@@ -1810,16 +1816,18 @@ button.tour-step:hover { background: var(--color-section-alt); }
 .flow.is-ready .flow-view .flow-page[data-shift-at] { transition: opacity 0.5s var(--ease), transform 0.9s var(--ease); }
 /* Compliance split: the permit PDF fills the window, then the digital record slides in from the right to cover two
    thirds of it while the PDF shifts left, keeping its EPA header in the remaining third. The record is at the same
-   scale as every other screen, so its page is 150% of the panel wide (cropped on the right), and it scrolls down to
-   its requirements by --shift. */
+   scale as every other screen, so its page is 150% of the panel wide (cropped on the right); it scrolls down to its
+   requirements by --shift, and the requirement the cursor opens fades in over it and scrolls to its limit. The
+   scrolls ease in and out over 2 s, like a wheel scroll. */
 .flow-split { position: absolute; top: 0; right: 0; bottom: 0; z-index: 1; width: calc(200% / 3); overflow: hidden; border-left: 1px solid var(--color-panel-line); background: var(--color-bg); }
 .flow-split .flow-page { right: auto; width: 150%; }
+.flow.is-ready .flow-view .flow-split .flow-page[data-shift-at] { transition: opacity 0.6s var(--ease), transform 2s var(--ease-in-out); }
 .flow.is-live .flow-view .flow-split[data-at]:not(.is-on) { opacity: 1; translate: 100% 0; }
 .flow.is-ready .flow-view .flow-split[data-at]:not(.flow-pointer) { transition: translate 1s var(--ease); }
 .flow-doc.is-shifted { translate: -19.4% 0; }
 .flow.is-ready .flow-view .flow-doc[data-shift-at]:not(.flow-pointer) { transition: opacity 0.5s var(--ease), translate 1s var(--ease); }
 .flow.is-live [data-at]:not(.is-on) { opacity: 0; }
-.flow.is-live .flow-scene[data-at]:not(.is-on), .flow.is-live .flow-phone:not(.is-on), .flow.is-live .flow-chips li:not(.is-on), .flow.is-live .flow-toast:not(.is-on) { transform: translateY(var(--space-1)); }
+.flow.is-live .flow-scene[data-at]:not(.is-on), .flow.is-live .flow-caption:not(.is-on) { transform: translateY(var(--space-1)); }
 .flow.is-live [data-off].is-off { opacity: 0; pointer-events: none; }
 .flow.is-live .flow-scene:not(.is-on) { pointer-events: none; }
 .flow.is-resetting .flow-stage { opacity: 0; }

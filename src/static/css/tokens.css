@@ -164,5 +164,6 @@
 
   /* Motion */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);  /* slow start and finish: the film's page scrolls */
   --ease-spring: cubic-bezier(0.3, 1.35, 0.5, 1);  /* slight overshoot: menu icons on hover */
 }
