@@ -1777,8 +1777,6 @@ button.tour-step:hover { background: var(--color-section-alt); }
    scene and jump to any of them; the pause button sits lower right (data-loop). Without JS or with reduced
    motion only the .is-poster scene shows, on its last screen, and the chapters are hidden. */
 .flow-section { position: relative; z-index: 1; margin-top: calc(-1 * var(--flow-overlap, var(--space-overlap))); padding-bottom: var(--space-section); }
-/* Light gray behind the film, from where it leaves the hero (its top part sits over the hero, so that stays clear) */
-.flow-section { background: linear-gradient(transparent var(--flow-overlap, var(--space-overlap)), var(--color-section-alt) 0); }
 .flow { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--space-3); padding: var(--space-3) var(--space-2); border: 1px solid var(--color-panel-line); border-radius: var(--radius-lg); background: var(--color-panel-gray); }
 @media (min-width: 40rem) { .flow { padding: var(--space-4) var(--space-4) var(--space-3); } }
 .flow-stage { display: grid; align-items: center; transition: opacity 0.4s var(--ease); }
