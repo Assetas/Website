@@ -1100,6 +1100,18 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
 /* The line sits a little clear of the tile, and the link follows it directly, in regular weight */
 .rail--story .rail-card > p { margin-top: var(--space-2); }
 .rail--story .rail-card > .text-action { align-self: start; padding-top: 0; font-weight: 400; }
+/* Plain rail (home key features, after the Lexington service cards): very light cards with the module icon in the
+   top left (drawn from its menu icon as a mask, in brand blue), the name and its line at the foot, and a round
+   arrow link sitting in a notch cut from the bottom-right corner (a ring of the page color around the button). */
+.rail--plain .rail-track { grid-auto-columns: clamp(16rem, 30%, 24rem); }
+.rail-card--plain { position: relative; display: flex; flex-direction: column; min-height: 26rem; padding: var(--space-4) var(--space-4) calc(var(--space-4) + var(--space-2)); border-radius: var(--radius-lg); background: var(--color-section-alt); }
+.rail-card-glyph { display: block; width: 3rem; height: 3rem; background: var(--color-brand); -webkit-mask: var(--icon) left top / contain no-repeat; mask: var(--icon) left top / contain no-repeat; }
+.rail-card-name { margin: auto 0 var(--space-1); font-size: var(--text-h4); line-height: 1.2; letter-spacing: -0.01em; color: var(--color-dark); }
+.rail-card--plain p { margin: 0; max-width: 17rem; min-height: calc(3 * 1.5em); line-height: 1.5; color: var(--color-muted); }  /* clear of the arrow; three lines' room in every card, so the names align */
+.rail-card-go { position: absolute; right: 0; bottom: 0; display: grid; place-items: center; width: 3.75rem; height: 3.75rem; border-radius: 50%; background: var(--color-dark); color: var(--color-on-fill); box-shadow: 0 0 0 var(--space-1) var(--color-bg); transition: background 0.2s var(--ease), transform 0.2s var(--ease); }
+.rail-card-go svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rail-card-go:hover { background: var(--color-brand); transform: translateX(2px); }
+.rail-card-go:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
 .rail-card-media {
   --glow: var(--color-amber);
   position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 4 / 5; margin-bottom: var(--space-1); container-type: inline-size;

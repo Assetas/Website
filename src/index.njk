@@ -258,7 +258,7 @@ cta:
         white) with the name in its lower left, then the feature's Platform menu blurb and a link. Security has its own
         band further down. The product screens that sat here (img/home/capture-tablet-record.webp and others) are kept
         for later. -#}
-    <div class="rail rail--story" role="group" aria-label="Key features of Assetas">
+    <div class="rail rail--plain" role="group" aria-label="Key features of Assetas">
       <div class="rail-controls">
         <button class="rail-btn" type="button" data-rail="prev" aria-label="Scroll cards left">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
@@ -268,77 +268,59 @@ cta:
         </button>
       </div>
       <div class="rail-track" tabindex="0">
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--attributes">
-            <img class="rail-card-icon" src="/static/img/icons/assets.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Asset registry</h3>
-          </div>
-          <p>Every asset in one searchable registry.</p>
-          <a class="text-action" href="/assets">See Unified Asset Intelligence</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/assets.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">Asset registry</h3>
+          <p>Every asset in one registry. Searchable, with its full history.</p>
+          <a class="rail-card-go" href="/assets"><span class="visually-hidden">See Unified Asset Intelligence</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--compliance">
-            <img class="rail-card-icon" src="/static/img/icons/compliance.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Compliance</h3>
-          </div>
-          <p>Compliance calendar and workflows for rules and requirements.</p>
-          <a class="text-action" href="/compliance">See Compliance</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/compliance.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">Compliance</h3>
+          <p>A calendar for every rule. Workflows carry each requirement to done.</p>
+          <a class="rail-card-go" href="/compliance"><span class="visually-hidden">See Compliance</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--forms">
-            <img class="rail-card-icon" src="/static/img/icons/forms.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Smart Forms &amp; Tasks</h3>
-          </div>
-          <p>Offline forms with photos, GPS, and signatures.</p>
-          <a class="text-action" href="/forms">See Smart Forms &amp; Tasks</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/forms.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">Smart Forms &amp; Tasks</h3>
+          <p>Forms that work offline. Photos, GPS, and signatures on every record.</p>
+          <a class="rail-card-go" href="/forms"><span class="visually-hidden">See Smart Forms &amp; Tasks</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--association">
-            <img class="rail-card-icon" src="/static/img/icons/workflows.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Workflow Automation</h3>
-          </div>
-          <p>Route work orders and escalate overdue items.</p>
-          <a class="text-action" href="/workflows">See Workflow Automation</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/workflows.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">Workflow Automation</h3>
+          <p>Work orders routed to the right crew. Overdue items escalate.</p>
+          <a class="rail-card-go" href="/workflows"><span class="visually-hidden">See Workflow Automation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--location">
-            <img class="rail-card-icon" src="/static/img/icons/capture.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Trek mobile app</h3>
-          </div>
-          <p>Assetas in your pocket for field crews.</p>
-          <a class="text-action" href="/trek">See Trek</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/capture.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">Trek mobile app</h3>
+          <p>Assetas in your crew's pocket. Capture works without signal.</p>
+          <a class="rail-card-go" href="/trek"><span class="visually-hidden">See Trek</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--depreciation">
-            <img class="rail-card-icon" src="/static/img/icons/regulatory-emissions.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Emissions</h3>
-          </div>
-          <p>Track permitted, GHG, and emissions inventory.</p>
-          <a class="text-action" href="/platform/emissions">See Emissions</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/regulatory-emissions.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">Emissions</h3>
+          <p>Permitted, GHG, and inventory emissions. Calculated as data arrives.</p>
+          <a class="rail-card-go" href="/platform/emissions"><span class="visually-hidden">See Emissions</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--documentation">
-            <img class="rail-card-icon" src="/static/img/icons/aggregate.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Reporting</h3>
-          </div>
-          <p>Reports, dashboards, and electronic data deliveries.</p>
-          <a class="text-action" href="/reporting">See Reporting</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/aggregate.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">Reporting</h3>
+          <p>Reports and dashboards from one record. Electronic deliveries, ready to file.</p>
+          <a class="rail-card-go" href="/reporting"><span class="visually-hidden">See Reporting</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--telemetry">
-            <img class="rail-card-icon" src="/static/img/icons/sensor-feeds.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">Telemetry</h3>
-          </div>
-          <p>Sensor feeds with anomaly detection.</p>
-          <a class="text-action" href="/telemetry">See Telemetry</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/sensor-feeds.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">Telemetry</h3>
+          <p>Sensor feeds on the asset. Anomalies flagged as they happen.</p>
+          <a class="rail-card-go" href="/telemetry"><span class="visually-hidden">See Telemetry</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
-        <article class="rail-card">
-          <div class="rail-card-media rail-card-media--anomaly">
-            <img class="rail-card-icon" src="/static/img/icons/ai-node.svg" width="64" height="64" alt="">
-            <h3 class="rail-card-title">AI Assistants</h3>
-          </div>
-          <p>Models that analyze operational anomalies, data, and permit requirements.</p>
-          <a class="text-action" href="/ai">See AI</a>
+        <article class="rail-card rail-card--plain">
+          <span class="rail-card-glyph" style="--icon: url({{ '/static/img/icons/ai-node.svg' | url }})" aria-hidden="true"></span>
+          <h3 class="rail-card-name">AI Assistants</h3>
+          <p>Models that flag anomalies and read permits. Each shows the data it used.</p>
+          <a class="rail-card-go" href="/ai"><span class="visually-hidden">See AI</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
       </div>
     </div>
