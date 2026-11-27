@@ -1,9 +1,7 @@
 /* Step switcher: turns each .stepper block into steps beside one stage. Each .stepper-title becomes a button
-   that opens its step and shows its screen (.stepper-media, in the same order) on the stage; in a .stepper--panel,
-   pointing at a step opens it too, where the device can hover. Loaded only on pages with `stepper: true`
-   (currently home). Without JS every step and screen shows, stacked. */
+   that opens its step and shows its screen (.stepper-media, in the same order) on the stage. Loaded only on
+   pages with `stepper: true` (no page uses it now). Without JS every step and screen shows, stacked. */
 (function () {
-  var hover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   [].forEach.call(document.querySelectorAll(".stepper"), function (root, r) {
     var steps = [].slice.call(root.querySelectorAll(".stepper-item"));
     var media = [].slice.call(root.querySelectorAll(".stepper-media"));
@@ -19,7 +17,6 @@
       body.id = body.id || "stepper-" + r + "-body-" + i;
       button.setAttribute("aria-controls", body.id);
       button.addEventListener("click", function () { show(i); });
-      if (hover && root.classList.contains("stepper--panel")) button.addEventListener("mouseenter", function () { show(i); });
       return button;
     });
 

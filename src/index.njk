@@ -5,7 +5,6 @@ description: "Asset management, digital inspections, and regulatory compliance o
 permalink: /index.html
 pageClass: page--spacious
 rail: true
-stepper: true
 flow: true
 cta:
   second:
@@ -329,37 +328,39 @@ cta:
 
 <section class="section">
   <div class="container">
-    {#- After the Sandstone services panel: a light card on the left with the statement, the steps (stepper.js makes each a button that swaps the screen) and, at its
-        foot, the open step's line; the step screens on white on the right. Without JS every step and screen shows,
-        stacked. -#}
-    <div class="stepper stepper--panel">
-      <div class="stepper-card">
-        <h2 class="stepper-statement">Follow one finding through the record. <span>A leak at Skid A&#8209;114, from the inspection form to the rule it satisfies.</span></h2>
-        <ol class="stepper-list">
-          <li class="stepper-item">
-            <h3 class="stepper-title"><span class="stepper-num">01</span> Leak logged at the relief valve</h3>
-            <div class="stepper-body"><p>Started offline at 9:42 AM. The leak-rate field appears only after a Yes.</p></div>
-          </li>
-          <li class="stepper-item">
-            <h3 class="stepper-title"><span class="stepper-num">02</span> Escalated, then dispatched</h3>
-            <div class="stepper-body"><p>Above threshold, so it goes to the supervisor and a work order queues behind it.</p></div>
-          </li>
-          <li class="stepper-item">
-            <h3 class="stepper-title"><span class="stepper-num">03</span> On the skid's one record</h3>
-            <div class="stepper-body"><p>Telemetry, inspections, work orders, and the asset itself in one record. No re-keying.</p></div>
-          </li>
-          <li class="stepper-item">
-            <h3 class="stepper-title"><span class="stepper-num">04</span> Tied to the rule it satisfies</h3>
-            <div class="stepper-body"><p>The Method 21 survey maps to NSPS OOOOb, with the citation on the record.</p></div>
-          </li>
-        </ol>
+    {#- After the Carrington "Our Approach" section: a dark panel over a field photo stays pinned on the left while the
+        steps scroll on the right as white cards on light gray. Each card sticks a strip lower than the one before
+        (--i), so the next card slides over it and leaves its number and title showing: the steps collapse to their
+        titles as the reader scrolls. On narrow screens it is a plain stack. -#}
+    <div class="approach">
+      <div class="approach-lead">
+        <img class="approach-photo" src="/static/img/about/field-work-vernal-utah.webp" width="768" height="1024" loading="lazy" alt="">
+        <p class="eyebrow">One finding, four steps</p>
+        <h2>Follow one finding through the record.</h2>
+        <p>A leak at Skid A&#8209;114, from the inspection form to the rule it satisfies. Every step writes to the same record, so nothing is keyed twice.</p>
       </div>
-      <div class="stepper-stage">
-        <figure class="stepper-media"><img src="/static/img/forms/hero-form-in-progress.webp" width="639" height="407" loading="lazy" alt="Leak inspection form FORM-2281 in progress for Skid A-114, relief valve RV-22, started offline at 9:42 AM: leak observed yes, estimated leak rate 42 SCFH, component auto-filled from the registry. The leak-rate field appeared automatically after answering Yes."></figure>
-        <figure class="stepper-media"><img src="/static/img/forms/dispatch-workflow.webp" width="531" height="266" loading="lazy" alt="Workflow for FORM-2281: form submitted offline at 9:47 AM (done), escalated to supervisor because the leak rate is above threshold (in progress), work order dispatched (queued, waiting on escalation)."></figure>
-        <figure class="stepper-media"><img src="/static/img/platform/one-data-model.webp" width="611" height="556" loading="lazy" alt="One data model: Skid A-114 at Cedar Ridge Plant. Telemetry, inspections, work orders, and assets feed one unified record, mapped to Title V, current, last synced 4 minutes ago. Capture once, prove anywhere: no re-keying. Requirement mapping: 100% of records."></figure>
-        <figure class="stepper-media"><img src="/static/img/compliance/hero-requirement-mapping.webp" width="569" height="406" loading="lazy" alt="Requirement mapping: an LDAR Method 21 survey on Skid A-114 maps to the NSPS OOOOb methane rule, a berm inspection at Dry Creek Pad maps to SPCC 40 CFR 112 spill prevention, and a Title V annual report auto-drafted from readings maps to the EPA Title V operating permit. Every field record links to the exact citation it satisfies."></figure>
-      </div>
+      <ol class="approach-steps">
+        <li class="approach-step" style="--i: 0">
+          <div class="approach-step-head"><span class="approach-num">1</span><h3>Leak logged at the relief valve</h3></div>
+          <p>Started offline at 9:42 AM. The leak-rate field appears only after a Yes.</p>
+          <img class="approach-shot" src="/static/img/forms/hero-form-in-progress.webp" width="639" height="407" loading="lazy" alt="Leak inspection form FORM-2281 in progress for Skid A-114, relief valve RV-22, started offline at 9:42 AM: leak observed yes, estimated leak rate 42 SCFH, component auto-filled from the registry. The leak-rate field appeared automatically after answering Yes.">
+        </li>
+        <li class="approach-step" style="--i: 1">
+          <div class="approach-step-head"><span class="approach-num">2</span><h3>Escalated, then dispatched</h3></div>
+          <p>Above threshold, so it goes to the supervisor and a work order queues behind it.</p>
+          <img class="approach-shot" src="/static/img/forms/dispatch-workflow.webp" width="531" height="266" loading="lazy" alt="Workflow for FORM-2281: form submitted offline at 9:47 AM (done), escalated to supervisor because the leak rate is above threshold (in progress), work order dispatched (queued, waiting on escalation).">
+        </li>
+        <li class="approach-step" style="--i: 2">
+          <div class="approach-step-head"><span class="approach-num">3</span><h3>On the skid's one record</h3></div>
+          <p>Telemetry, inspections, work orders, and the asset itself in one record. No re-keying.</p>
+          <img class="approach-shot" src="/static/img/platform/one-data-model.webp" width="611" height="556" loading="lazy" alt="One data model: Skid A-114 at Cedar Ridge Plant. Telemetry, inspections, work orders, and assets feed one unified record, mapped to Title V, current, last synced 4 minutes ago. Capture once, prove anywhere: no re-keying. Requirement mapping: 100% of records.">
+        </li>
+        <li class="approach-step" style="--i: 3">
+          <div class="approach-step-head"><span class="approach-num">4</span><h3>Tied to the rule it satisfies</h3></div>
+          <p>The Method 21 survey maps to NSPS OOOOb, with the citation on the record.</p>
+          <img class="approach-shot" src="/static/img/compliance/hero-requirement-mapping.webp" width="569" height="406" loading="lazy" alt="Requirement mapping: an LDAR Method 21 survey on Skid A-114 maps to the NSPS OOOOb methane rule, a berm inspection at Dry Creek Pad maps to SPCC 40 CFR 112 spill prevention, and a Title V annual report auto-drafted from readings maps to the EPA Title V operating permit. Every field record links to the exact citation it satisfies.">
+        </li>
+      </ol>
     </div>
   </div>
 </section>
