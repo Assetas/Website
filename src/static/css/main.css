@@ -1323,7 +1323,7 @@ main { background: var(--color-bg); overflow: hidden; overflow: clip; }  /* clip
 /* The headline as one statement in two voices (after a studio's intro line): upright medium in white, with
    phrases in Inter's true italic, regular weight, in the softer blue-gray */
 .hero-statement { max-width: 64rem; margin: 0; font-size: var(--text-run-hero); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; color: var(--color-on-fill); }
-.hero-statement em { font-style: italic; font-weight: 400; color: var(--color-on-dark-muted); padding-right: 0.04em; }
+.hero-statement em { font-style: italic; font-weight: 400; color: var(--color-on-dark-gray); padding-right: 0.04em; }
 @media (max-width: 47.99rem) { .engine-links text { display: none; } }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {

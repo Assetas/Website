@@ -47,6 +47,7 @@
   --color-band: #021b4e;          /* dark bands and panels (stats, dark CTA, dark-band, tooltips) */
   --color-on-dark: #b5c6e6;       /* body text on navy: 9.6:1 */
   --color-on-dark-muted: #8fa3c8; /* secondary text on navy: 6.5:1 */
+  --color-on-dark-gray: #a7adb7;  /* neutral gray text on navy (home hero italics): about 7:1 */
   --color-accent-on-dark: #ffc21a;/* small accent text on navy: amber 10.2:1 */
   --color-on-fill: #ffffff;       /* text on blue (4.5:1) and navy (16.5:1) */
   --color-on-fill-line: rgb(255 255 255 / 0.22); /* rules and outlines on blue and navy */
