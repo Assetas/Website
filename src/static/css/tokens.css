@@ -161,7 +161,7 @@
   --radius-xl: 2rem;              /* 32px: testimonial card */
   --radius-pill: 999px;           /* buttons, tags */
   --sticky-top: 5rem;            /* height of the sticky site header (80px): where pinned parts stop */
-  --step-strip: 6.25rem;         /* how much of a stacked step card stays showing (its number and title) */
+  --step-strip: 7rem;            /* how much of a stacked step card stays showing: its number and two lines of its headline run */
   --grid-major: 120px;            /* drafting grid spacing */
   --grid-minor: 24px;
 
