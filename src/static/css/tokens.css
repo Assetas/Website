@@ -16,6 +16,8 @@
   --color-bg: #ffffff;            /* page */
   --color-surface: #edf4ff;       /* Ice: panels, icon circles, small surfaces */
   --color-section-alt: #f4f5f7;   /* Light gray: alternate page sections. Graphite text 15.5:1, muted 6.1:1, small blue text 5.8:1 */
+  --color-panel-gray: #eef0f3;   /* Flat gray panel (home film): navy text 15:1, muted 5.8:1, small blue text 5.5:1 */
+  --color-panel-line: #dcdfe5;   /* hairline around a flat gray panel and what sits on it (decorative) */
   --color-border: #d3e2f8;        /* dividers and card outlines (decorative) */
   --color-border-input: #7389b0;  /* form field outlines: 3.5:1 on white, 3.2:1 on ice */
   --color-rule: rgb(2 27 78 / 0.3); /* strong table rules */
@@ -40,6 +42,7 @@
 
   /* Navy bands and footer */
   --color-dark: #021b4e;          /* statement band, footer */
+  --color-dark-deep: #010d29;     /* deeper navy for the quote card field, under its glows. White text 18:1 */
   --color-band: #021b4e;          /* dark bands and panels (stats, dark CTA, dark-band, tooltips) */
   --color-on-dark: #b5c6e6;       /* body text on navy: 9.6:1 */
   --color-on-dark-muted: #8fa3c8; /* secondary text on navy: 6.5:1 */
@@ -77,6 +80,15 @@
   --color-survey-ring: #021b4e;   /* ring around leak dots */
   --color-survey-center: #d5dbe5; /* gray at the record */
   --color-survey-edge: #ffffff;   /* ...fading to white at the edges */
+  /* Engine hero (/assets): the blue of the engine image's original backdrop (now the ink of the panels' check
+     marks), and the glass dashboard panels and links over the engine (decorative). The hero text sits on the
+     navy gradient: white 13:1+, --color-on-dark 7:1+. */
+  --color-engine-field: #0a334b;
+  --color-hud-fill: rgb(4 24 44 / 0.72);     /* panel glass: white text 12:1+ on it over the field */
+  --color-hud-line: rgb(111 216 255 / 0.5);
+  --color-hud-link: #6fd8ff;                 /* the cyan of the wireframe */
+  --color-hud-glow: rgb(111 216 255 / 0.4);
+  --color-hud-band: rgb(111 216 255 / 0.16); /* expected range behind the bars */
   --card-glow: radial-gradient(ellipse 90% 110% at 50% 100%, var(--color-section-alt), var(--color-bg) 80%); /* drawing area in outlined cards: the survey glow, lighter */
 
   /* Rule status pills (/ldar-rule-map): text on its own tint */
@@ -138,6 +150,7 @@
   --space-section-lg: clamp(5rem, 3rem + 7vw, 10rem);   /* 80 → 160px: hero, dark band, closing band */
   --space-band: clamp(3rem, 2rem + 3vw, 5rem);          /* 48 → 80px: a thin band such as the logo strip */
   --space-head: clamp(2.5rem, 1.5rem + 3vw, 4rem);      /* 40 → 64px: section head to its content */
+  --space-overlap: clamp(3.5rem, 2rem + 5vw, 7rem);     /* 56 → 112px: how far the home flow panel rises into the hero until flow.js sets --flow-overlap (a third of the panel) */
 
   /* Layout */
   --container: 86rem;
@@ -146,10 +159,13 @@
   --radius-lg: 1.75rem;           /* 28px: cards, panels, media */
   --radius-xl: 2rem;              /* 32px: testimonial card */
   --radius-pill: 999px;           /* buttons, tags */
+  --sticky-top: 5rem;            /* height of the sticky site header (80px): where pinned parts stop */
+  --step-strip: 6.25rem;         /* how much of a stacked step card stays showing (its number and title) */
   --grid-major: 120px;            /* drafting grid spacing */
   --grid-minor: 24px;
 
   /* Motion */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);  /* slow start and finish: the film's page scrolls */
   --ease-spring: cubic-bezier(0.3, 1.35, 0.5, 1);  /* slight overshoot: menu icons on hover */
 }

@@ -1,0 +1,157 @@
+---
+layout: layouts/base.njk
+title: "Asset-Level Compliance & Emissions | Assetas"
+description: "Tank capacity, fuel use, and component counts on the asset record drive SPCC, LDAR, and GHG obligations: the tasks they create and the reports they feed."
+permalink: /assets/compliance.html
+sitemap: false
+pageClass: page--spacious
+cta:
+  heading: "Trace one asset to every rule it answers to."
+  text: "Thirty minutes. Your tanks, engines, and components, and the obligations their records already carry."
+---
+{#- Hidden child of /assets: not in the navigation or sitemap; linked from the /assets "Follow the record deeper" carousel.
+    The diesel tank, its attributes, its calculation groups and the Birch Valley Yard task come from the demo
+    record in managing-assets.mp4. Regulatory statements: confirm before going live (see Open items). -#}
+<section class="hero hero--light">
+  <div class="container hero-split">
+    <div class="hero-copy">
+      <p class="eyebrow"><a href="/assets">Assets</a><span class="sep">/</span>Compliance &amp; emissions</p>
+      <h1 class="headline-run">Where the nameplate meets the permit. <span>The attributes on an asset decide which rules it answers to, what work they create, and which reports they feed.</span></h1>
+    </div>
+    <div class="hero-panel">
+      <div class="mock" role="img" aria-label="Diesel tank record: diesel, 300 barrels, single-wall steel, fixed roof, associated with the primary generator. It falls under SPCC, 40 CFR 112, and feeds two calculation groups, GHG emissions and the Colorado emission inventory.">
+        <div class="mock-bar"><span class="mock-dots"></span>Diesel tank · Attributes</div>
+        <div class="mock-body">
+          <dl class="mock-fields mock-fields--filled">
+            <dt>Contents</dt><dd>Diesel</dd>
+            <dt>Capacity</dt><dd>300 bbl</dd>
+            <dt>Wall design</dt><dd>Single-wall, steel, fixed roof</dd>
+            <dt>Associated with</dt><dd>Primary generator</dd>
+          </dl>
+          <ul class="mock-rules">
+            <li class="is-match">Spill prevention <b>SPCC · 40 CFR 112</b></li>
+            <li>Calculation group <b>GHG emissions</b></li>
+            <li>Calculation group <b>Colorado emission inventory</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">From attribute to obligation, in four steps. <span>An attribute on the record, the rule it triggers, the work it creates, and the record it feeds.</span></h2>
+    </div>
+    <ul class="bento">
+      <li class="bento-card bento-card--full">
+        <h3 class="h4">A diesel tank, under SPCC</h3>
+        <ol class="chain">
+          <li><span class="chain-step">Attribute</span>300 bbl of diesel (12,600 gallons) in a single-wall tank.</li>
+          <li><span class="chain-step">Rule</span>SPCC, 40 CFR 112: over 1,320 gallons of aboveground oil storage. Containment for the largest tank plus freeboard.</li>
+          <li><span class="chain-step">Work</span>Berm and tank inspections on the compliance schedule. A leak opens a corrective action.</li>
+          <li><span class="chain-step">Record</span>The SPCC plan stays current from the inspection record, not from a binder.</li>
+        </ol>
+        <a class="text-action" href="/spcc">See SPCC</a>
+      </li>
+      <li class="bento-card bento-card--full">
+        <h3 class="h4">Fuel use, into the inventories</h3>
+        <ol class="chain">
+          <li><span class="chain-step">Attribute</span>A fuel use tag in mcf a month, pulled in from telemetry.</li>
+          <li><span class="chain-step">Rule</span>GHG reporting under 40 CFR 98, and the state emission inventory.</li>
+          <li><span class="chain-step">Work</span>Calculation groups compute emissions as each reading arrives, with our methods or yours.</li>
+          <li><span class="chain-step">Record</span>Monthly CO2 in metric tons, with the readings, method, and factor version behind it.</li>
+        </ol>
+        <a class="text-action" href="/platform/emissions">See emissions</a>
+      </li>
+      <li class="bento-card bento-card--full">
+        <h3 class="h4">Components, into an LDAR program</h3>
+        <ol class="chain">
+          <li><span class="chain-step">Attribute</span>Components and their service type, rolled up from component to plant.</li>
+          <li><span class="chain-step">Rule</span>NSPS OOOOb or the state program, applied by facility type and state.</li>
+          <li><span class="chain-step">Work</span>Survey rounds dispatched by rule. Repair, retest, and verification on each finding.</li>
+          <li><span class="chain-step">Record</span>Open days feed the fugitive emission record for subpart W.</li>
+        </ol>
+        <a class="text-action" href="/ldar">See LDAR</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">When a rule changes, you see what it touches. <span>Every asset, inspection, and form maps to the citation it satisfies, so a change reads across the fleet, not asset by asset.</span></h2>
+    </div>
+    <ul class="feature-runs">
+      <li><h3>Which assets does this rule govern?</h3><p>Each citation lists the assets mapped to it, across every site.</p></li>
+      <li><h3>What work did it create?</h3><p>Tasks are created against the compliance schedule, maintenance programs, and inspections, and sit on the asset.</p></li>
+      <li><h3>Which reports does this reading feed?</h3><p>Calculation lineage keeps the source readings behind every reported figure.</p></li>
+      <li><h3>What was the limit that day?</h3><p>Point-in-time requirements: the limit in force on the date the work was done.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split split--top">
+      <div class="section-head section-head--run section-head--flush">
+        <h2 class="headline-run">Tasks that create themselves. <span>A corrective action opened against the compliance schedule, on the asset it concerns, with an owner and a due date.</span></h2>
+      </div>
+      <div class="hero-panel">
+        <div class="mock" role="img" aria-label="Associated tasks on the diesel tank: a corrective action, in progress, for a leaking tank at Birch Valley Yard, due October 1, 2026, created automatically.">
+          <div class="mock-bar"><span class="mock-dots"></span>Diesel tank · Associated tasks</div>
+          <div class="mock-body">
+            <ul class="mock-sources"><li>Maintenance programs</li><li>Compliance schedule</li><li>Inspections</li></ul>
+            <dl class="mock-fields mock-fields--filled">
+              <dt>Summary</dt><dd>Leaking tank at Birch Valley Yard</dd>
+              <dt>Type</dt><dd><span class="mock-chip">Corrective action</span></dd>
+              <dt>Status</dt><dd><span class="mock-chip mock-chip--amber">In progress</span></dd>
+              <dt>Due</dt><dd>2026-10-01</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2 class="headline-run">Operators run their programs on the record. <span>Reported by a client running inspections and leak tracking in production.</span></h2>
+    </div>
+    <ul class="stat-row" data-count="off">
+      <li><p class="stat">32%</p><p>less time completing &amp; submitting inspections</p><p class="stat-source">— Laramie Energy</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--run">
+      <h2>What compliance leads ask about the record.</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Does this replace the Compliance, LDAR, and SPCC modules?</summary>
+        <div><p>No. Those modules run the programs. This is the asset side: the attributes and readings every program reads from.</p></div>
+      </details>
+      <details>
+        <summary>Can we use our own emission calculation methods?</summary>
+        <div><p>Yes. Use our calculation methodologies or build your own. The method and factor version are recorded with each result.</p></div>
+      </details>
+      <details>
+        <summary>Which rules can be mapped to an asset?</summary>
+        <div><p>Federal, state, and permit-specific: 40 CFR 98, 40 CFR 112, NSPS and NESHAP subparts, state inventories, and your Title V conditions.</p></div>
+      </details>
+      <details>
+        <summary>How does an auditor trace a reported figure?</summary>
+        <div><p>From the figure to its calculation, then to the readings, method, and factor version behind it, and on to the asset that produced them.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta-band.njk" %}

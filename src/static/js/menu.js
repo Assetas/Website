@@ -112,6 +112,32 @@ if (playOnce.length && "IntersectionObserver" in window && !window.matchMedia("(
   });
 }
 
+// Loop: an element with data-loop runs a CSS animation that repeats, so it gets a pause button (WCAG 2.2.2: motion
+// over 5 s needs one) and pauses while offscreen (.is-offscreen). Its CSS pauses on .is-paused and .is-offscreen.
+// Without JS or with reduced motion there is no button and the CSS leaves it still.
+const loops = document.querySelectorAll("[data-loop]");
+
+if (loops.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const PAUSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>';
+  const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  loops.forEach((el) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "survey-toggle loop-toggle";
+    const label = () => {
+      const paused = el.classList.contains("is-paused");
+      button.innerHTML = paused ? PLAY : PAUSE;
+      button.setAttribute("aria-label", paused ? "Play background animation" : "Pause background animation");
+    };
+    button.addEventListener("click", () => { el.classList.toggle("is-paused"); label(); });
+    label();
+    el.appendChild(button);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => { el.classList.toggle("is-offscreen", !entries[0].isIntersecting); }).observe(el);
+    }
+  });
+}
+
 // Stats: numbers count up from zero once, when they scroll into view. The final figure stays in the HTML,
 // so without JS, with reduced motion, or for screen readers (they read a hidden copy) it shows as written.
 // Counts plain figures of 10 or more with an optional $ or + in front and %, +, k or x after ("92%",

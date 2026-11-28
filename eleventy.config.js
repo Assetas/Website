@@ -28,7 +28,7 @@ export default function (eleventyConfig) {
     nav.footer.forEach((group) => group.links.forEach(name));
     nav.legal.forEach(name);
     const index = pages
-      .filter((p) => p.data.sitemap !== false && /(\.html|\/)$/.test(p.url) && p.url !== "/platform/")
+      .filter((p) => p.data.sitemap !== false && /(\.html|\/)$/.test(p.url) && p.url !== "/platform/" && p.url !== "/assets/")
       .map((p) => {
         const url = cleanUrl(p.url);
         const title = String(p.data.title || "").replace(/\s*\|\s*Assetas$/, "");

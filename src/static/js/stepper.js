@@ -1,6 +1,6 @@
 /* Step switcher: turns each .stepper block into steps beside one stage. Each .stepper-title becomes a button
    that opens its step and shows its screen (.stepper-media, in the same order) on the stage. Loaded only on
-   pages with `stepper: true` (currently /ldar). Without JS every step and screen shows, stacked. */
+   pages with `stepper: true` (no page uses it now). Without JS every step and screen shows, stacked. */
 (function () {
   [].forEach.call(document.querySelectorAll(".stepper"), function (root, r) {
     var steps = [].slice.call(root.querySelectorAll(".stepper-item"));
