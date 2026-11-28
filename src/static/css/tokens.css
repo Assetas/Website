@@ -15,6 +15,7 @@
   --color-muted: #4e5f80;         /* secondary text: 6.4:1 on white, 5.8:1 on ice */
   --color-bg: #ffffff;            /* page */
   --color-surface: #edf4ff;       /* Ice: panels, icon circles, small surfaces */
+  --color-arc: #cfe0fb;           /* a deeper ice: the decorative arc on light panels (home integrations) */
   --color-section-alt: #f4f5f7;   /* Light gray: alternate page sections. Graphite text 15.5:1, muted 6.1:1, small blue text 5.8:1 */
   --color-panel-gray: #eef0f3;   /* Flat gray panel (home film): navy text 15:1, muted 5.8:1, small blue text 5.5:1 */
   --color-panel-line: #dcdfe5;   /* hairline around a flat gray panel and what sits on it (decorative) */
